@@ -3,6 +3,7 @@ width: 100px;
 }
 
 table {
+border: 1px solid black;
 margin-top: 50px;
 }
 
@@ -13,4 +14,8 @@ padding: 50px;
 
 .display-4{
 margin-bottom: 100px;
+}
+
+.h2_custom-top{
+margin-top: 50px;
 }
