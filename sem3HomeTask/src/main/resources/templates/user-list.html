@@ -30,8 +30,6 @@
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.age}"></td>
                 <td th:text="${user.email}"></td>
-<!--                <td class="btn-custom"><a th:href="@{user-update/{id}(id=${user.id})}" type="button" class="btn btn-outline-primary">Edit</a></td>-->
-<!--                <td class="btn-custom"><a th:href="@{user-delete/{id}(id=${user.id})}" type="button" class="btn btn-outline-danger">Delete</a></td>-->
             </tr>
             </tbody>
         </table>
@@ -39,9 +37,18 @@
     <p><a href="/user-create" type="button" class="btn btn-primary">Create User</a></p>
     <div class="btn-group">
         <p><a href="/users-db" type="button" class="btn btn-outline-primary btn_custom2">All users</a></p>
-        <p><a href="/users-filter" type="button" class="btn btn-outline-primary btn_custom2">Users after 40 age</a></p>
         <p><a href="/users-sort" type="button" class="btn btn-outline-primary btn_custom2">Sort users</a></p>
     </div>
+    <form action="/users-filter" method="post">
+        <div class="input-group input_custom1">
+            <label for="age" class="input-group-text">Введите возраст, с которого отобразить пользователей</label>
+            <input type="text"  id="age" placeholder="Age" class="form-control" name="age">
+            <input type="submit" class="btn btn-primary" value="Filter">
+        </div>
+    </form>
 </div>
+
+
+
 </body>
 </html>

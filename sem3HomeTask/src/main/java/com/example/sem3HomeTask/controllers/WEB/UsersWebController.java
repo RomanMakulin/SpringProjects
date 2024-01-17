@@ -35,9 +35,9 @@ public class UsersWebController {
         return "redirect:/users-db";
     }
 
-    @GetMapping("/users-filter")
-    public String filterUsersDB(Model model){
-        List<User> users = tasksService.getDataBaseService().filterByAgeDB(39);
+    @PostMapping("/users-filter")
+    public String filterUsersDB(Model model, @RequestParam("age") int age){
+        List<User> users = tasksService.getDataBaseService().filterByAgeDB(age);
         model.addAttribute("users", users);
         return "user-list";
     }

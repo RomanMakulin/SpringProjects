@@ -1,5 +1,4 @@
 package com.example.sem3HomeTask.services;
-
 import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.repository.UserRepository2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class DataBaseService {
     }
 
     public List<User> filterByAgeDB(int age) {
-        String sql = "SELECT * FROM userTable WHERE age > " + age;
+        String sql = "SELECT * FROM userTable WHERE age >= " + age;
         return userRepository2.getJdbc().query(sql, userRepository2.rowMapperUser());
     }
 
