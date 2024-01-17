@@ -9,6 +9,10 @@ import java.util.List;
 @Component
 public class UserRepository {
 
+    /**
+     * Базовый репозиторий
+     * @return список пользователей
+     */
     public List<User> getUsers() {
         return users;
     }

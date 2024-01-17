@@ -2,16 +2,16 @@ package com.example.sem3HomeTask.domain;
 
 public class User {
 
-    private String name;
+    private String firstName;
     private int age;
     private String email;
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public int getAge() {
@@ -28,5 +28,10 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return getFirstName() + ", age: " + getAge() + ", email: " + getEmail();
     }
 }

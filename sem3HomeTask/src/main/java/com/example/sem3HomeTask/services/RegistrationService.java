@@ -6,24 +6,45 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RegistrationService {
-
-    public DataProcessingService getDataProcessingService() {
-        return dataProcessingService;
-    }
-
     @Autowired
-    private DataProcessingService dataProcessingService;
+    private TasksService tasksService;
 
-    //Поля UserService, NotificationService
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private NotificationService notificationService;
+    @Autowired
+    private NotificationService notificationService;
 
-    // Регистрация нового пользователя (создание и добавление в общий список)
+    public TasksService getTasksService() {
+        return tasksService;
+    }
+
+    public void setTasksService(TasksService tasksService) {
+        this.tasksService = tasksService;
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public NotificationService getNotificationService() {
+        return notificationService;
+    }
+
+    public void setNotificationService(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
+
+    /**
+     * Регистрация пользователя с использованием параметров в запросе
+     */
     public void processRegistration(String name, int age, String email){
         User user = userService.createUser(name, age, email);
-        dataProcessingService.addUserToList(user);
+        tasksService.addUserToList(user);
+        notificationService.sendNotification("User: " + user + "\nRegistration success!");
     }
 }
