@@ -7,10 +7,10 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepository2 {
+public class DataBaseRepository {
     private final JdbcTemplate jdbc;
 
-    public UserRepository2(JdbcTemplate jdbc) {
+    public DataBaseRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
 
@@ -27,4 +27,5 @@ public class UserRepository2 {
             return rowObject;
         };
     }
+
 }

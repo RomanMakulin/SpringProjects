@@ -2,7 +2,6 @@ package com.example.sem3HomeTask.services;
 
 import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.repository.UserRepository;
-import com.example.sem3HomeTask.repository.UserRepository2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +10,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TasksService {
+public class TasksService{
     @Autowired
     private UserRepository repository;
 
     @Autowired
-    private DataBaseService dataBaseService;
+    private DataBaseServiceImpl dataBaseServiceImpl;
 
-    public DataBaseService getDataBaseService() {
-        return dataBaseService;
+    public DataBaseServiceImpl getDataBaseService() {
+        return dataBaseServiceImpl;
     }
 
-    public void setDataBaseService(DataBaseService dataBaseService) {
-        this.dataBaseService = dataBaseService;
+    public void setDataBaseService(DataBaseServiceImpl dataBaseServiceImpl) {
+        this.dataBaseServiceImpl = dataBaseServiceImpl;
     }
 
     public UserRepository getRepository() {
@@ -79,6 +78,6 @@ public class TasksService {
     }
 
     public void createUserDB(User user){
-        dataBaseService.createToDB(user);
+        dataBaseServiceImpl.createToDB(user);
     }
 }
