@@ -1,6 +1,7 @@
 package com.example.sem3HomeTask.controllers.WEB;
 
 import com.example.sem3HomeTask.domain.User;
+import com.example.sem3HomeTask.services.TaskServiceImpl;
 import com.example.sem3HomeTask.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,16 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
+    @Autowired
+    TaskServiceImpl taskService;
+
     @GetMapping("/users-db")
     public String findAllDB(Model model){
         List<User> users = userService.getAllUsers();
+        String avg = taskService.calculateAverageAge(userService.getAllUsers());
+
         model.addAttribute("users", users);
+        model.addAttribute("average", avg);
         return "user-list";
     }
 

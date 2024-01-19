@@ -33,6 +33,4 @@ public class TasksController {
         model.addAttribute("users", users);
         return "user-list";
     }
-
-    // average in html
 }
