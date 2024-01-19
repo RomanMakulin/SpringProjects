@@ -3,6 +3,7 @@ package com.example.sem3HomeTask.controllers.WEB;
 import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.services.TaskServiceImpl;
 import com.example.sem3HomeTask.services.UserServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,18 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Controller
 public class TasksController {
     /**
      * Сервис реализации логики задач
      */
-    @Autowired
     private TaskServiceImpl taskService;
 
     /**
      * Сервис реализации логики управления пользователями
      */
-    @Autowired
     private UserServiceImpl userService;
 
     /**

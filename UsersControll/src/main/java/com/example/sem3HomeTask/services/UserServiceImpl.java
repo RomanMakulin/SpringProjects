@@ -2,6 +2,7 @@ package com.example.sem3HomeTask.services;
 
 import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.repository.DataBaseRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +13,22 @@ import java.util.List;
  * Имплемитирует UserService
  */
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
     /**
      * Автоинициализация в рамках бина класс Базы Данных
      */
-    @Autowired
-    DataBaseRepository dataBaseRepository;
+    private DataBaseRepository dataBaseRepository;
+
+    /**
+     * Строковое отображение (маппер) из БД
+     */
+    private UserRowMapper rowMapper;
 
     /**
      * Автоинициализация в рамках бина класс уведомлений
      */
-    @Autowired
-    NotificationService notificationService;
+    private NotificationService notificationService;
 
     /**
      * Создание пользователя
@@ -47,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         String sql = "SELECT * FROM userTable";
-        return dataBaseRepository.getJdbc().query(sql, dataBaseRepository.rowMapperUser());
+        return dataBaseRepository.getJdbc().query(sql, rowMapper.rowMapperUser());
     }
 
     /**
