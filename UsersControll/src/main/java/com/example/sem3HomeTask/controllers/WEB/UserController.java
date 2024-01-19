@@ -37,7 +37,6 @@ public class UserController {
     public String findAllDB(Model model) {
         List<User> users = userService.getAllUsers();
         String avg = taskService.calculateAverageAge(userService.getAllUsers());
-
         model.addAttribute("users", users);
         model.addAttribute("average", avg);
         return "user-list";
