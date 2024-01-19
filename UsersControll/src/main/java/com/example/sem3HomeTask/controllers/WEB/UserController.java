@@ -50,7 +50,8 @@ public class UserController {
      * @return страница создания пользователей
      */
     @GetMapping("/user-create")
-    public String getCreateFormDB(User user) {
+    public String getCreateFormDB(User user, Model model) {
+        model.addAttribute("title", "Create user:");
         return "user-create.html";
     }
 

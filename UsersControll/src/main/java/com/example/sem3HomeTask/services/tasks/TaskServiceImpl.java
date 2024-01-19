@@ -37,7 +37,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<User> filterUsersByAge(List<User> users, int age) {
         return users.stream()
-                .filter(user -> user.getAge() > age)
+                .filter(user -> user.getAge() >= age)
                 .collect(Collectors.toList());
     }
 
