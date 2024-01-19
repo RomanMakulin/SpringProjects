@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public class NotificationService {
     /**
      * Уведомление о создании нового пользователя
+     *
      * @param user пользователь из запроса
      */
     public void notifyUser(User user) {
@@ -15,6 +16,7 @@ public class NotificationService {
 
     /**
      * Управляемое уведомление
+     *
      * @param s текст уведомления
      */
     public void sendNotification(String s) {

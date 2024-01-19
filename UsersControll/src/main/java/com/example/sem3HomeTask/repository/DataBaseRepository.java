@@ -8,8 +8,16 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class DataBaseRepository {
+    /**
+     * Хранилище данных - База Данных
+     */
     private final JdbcTemplate jdbc;
 
+    /**
+     * Конструктор. Можно использовать Autowired
+     *
+     * @param jdbc специальный класс БД
+     */
     public DataBaseRepository(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
@@ -18,7 +26,12 @@ public class DataBaseRepository {
         return jdbc;
     }
 
-    public RowMapper<User> rowMapperUser(){
+    /**
+     * Формирование маппера (стрко) для данных из БД
+     *
+     * @return сформированный объект юзера на основе БД
+     */
+    public RowMapper<User> rowMapperUser() {
         return (r, i) -> {
             User rowObject = new User();
             rowObject.setId(r.getInt("id"));
