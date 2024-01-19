@@ -1,7 +1,10 @@
-package com.example.sem3HomeTask.services;
+package com.example.sem3HomeTask.services.users;
 
 import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.repository.DataBaseRepository;
+import com.example.sem3HomeTask.services.NotificationService;
+import com.example.sem3HomeTask.services.db.cfgSql;
+import com.example.sem3HomeTask.services.db.RowMapperService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,12 @@ public class UserServiceImpl implements UserService {
     private NotificationService notificationService;
 
     /**
+     * Файл конфигурации Базы Данных (содержит все запросы)
+     */
+    private cfgSql cfgSql;
+
+
+    /**
      * Создание пользователя
      *
      * @param user пользователь
@@ -37,8 +46,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User createUser(User user) {
-        String sql = "INSERT INTO userTable VALUES (DEFAULT, ?, ?, ?)";
-        dataBaseRepository.getJdbc().update(sql, user.getFirstName(), user.getAge(), user.getEmail());
+        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), user.getFirstName(), user.getAge(), user.getEmail());
         notificationService.notifyUser(user);
         return user;
     }
@@ -50,8 +58,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public List<User> getAllUsers() {
-        String sql = "SELECT * FROM userTable";
-        return dataBaseRepository.getJdbc().query(sql, rowMapper.rowMapperUser());
+        return dataBaseRepository.getJdbc().query(cfgSql.getAllUsers(), rowMapper.rowMapperUser());
     }
 
     /**
@@ -61,8 +68,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updateUser(User user) {
-        String sql = "UPDATE userTable SET firstName = ?, age = ?, email = ? WHERE id = ?;";
-        dataBaseRepository.getJdbc().update(sql, user.getFirstName(), user.getAge(), user.getEmail(), user.getId());
+        dataBaseRepository.getJdbc().update(cfgSql.getUpdateUserByID(), user.getFirstName(), user.getAge(), user.getEmail(), user.getId());
     }
 
     /**
@@ -72,8 +78,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void delUser(int id) {
-        String sql = "DELETE FROM userTable WHERE id=?";
-        dataBaseRepository.getJdbc().update(sql, id);
+        dataBaseRepository.getJdbc().update(cfgSql.getDelUserByID(), id);
     }
 
     /**
@@ -84,7 +89,6 @@ public class UserServiceImpl implements UserService {
      * @param email почта пользователя
      */
     public void createUserParam(String name, int age, String email) {
-        String sql = "INSERT INTO userTable VALUES (DEFAULT, ?, ?, ?)";
-        dataBaseRepository.getJdbc().update(sql, name, age, email);
+        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), name, age, email);
     }
 }

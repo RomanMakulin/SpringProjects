@@ -1,10 +1,9 @@
 package com.example.sem3HomeTask.controllers.REST;
 
 import com.example.sem3HomeTask.domain.User;
-import com.example.sem3HomeTask.services.TaskServiceImpl;
-import com.example.sem3HomeTask.services.UserServiceImpl;
+import com.example.sem3HomeTask.services.tasks.TaskServiceImpl;
+import com.example.sem3HomeTask.services.users.UserServiceImpl;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

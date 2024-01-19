@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Data
-@AllArgsConstructor
 @Repository
 public class DataBaseRepository {
     /**
