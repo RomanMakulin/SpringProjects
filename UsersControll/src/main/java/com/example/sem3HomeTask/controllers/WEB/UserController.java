@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -45,6 +46,10 @@ public class UserController {
         return "redirect:/users-db";
     }
 
-    // CRUD
+    @GetMapping("/user-delete/{id}")
+    public String delUser(@PathVariable("id") int id){
+        userService.delUser(id);
+        return "redirect:/users-db";
+    }
 
 }
