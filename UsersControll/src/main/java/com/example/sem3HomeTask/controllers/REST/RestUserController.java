@@ -12,9 +12,15 @@ import java.util.List;
 @RequestMapping("/users")
 public class RestUserController {
 
+    /**
+     * Сервис реализации логики задач
+     */
     @Autowired
     private TaskServiceImpl taskService;
 
+    /**
+     * Сервис реализации логики управления пользователями
+     */
     @Autowired
     private UserServiceImpl userService;
 
@@ -37,6 +43,13 @@ public class RestUserController {
         return userService.getAllUsers();
     }
 
+    /**
+     * Метод регистрации пользователя через параметры в адресной строке
+     * @param name имя пользователя
+     * @param age возраст пользователя
+     * @param email почта пользователя
+     * @return возвращает уведомлегние об успешном создании
+     */
     @PostMapping("/create-param")
     public String registrationParam(@RequestParam("name") String name,
                                     @RequestParam("age") int age,

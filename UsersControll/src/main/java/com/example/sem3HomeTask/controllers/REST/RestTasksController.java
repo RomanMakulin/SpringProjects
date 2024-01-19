@@ -15,9 +15,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/tasks")
 public class RestTasksController {
+    /**
+     * Сервис реализации логики задач
+     */
     @Autowired
     private TaskServiceImpl taskService;
 
+    /**
+     * Сервис реализации логики управления пользователями
+     */
     @Autowired
     private UserServiceImpl userService;
 
