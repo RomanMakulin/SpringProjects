@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Sem3HomeTaskApplication {
+public class UsersControll {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Sem3HomeTaskApplication.class, args);
+		SpringApplication.run(UsersControll.class, args);
 	}
 
 }

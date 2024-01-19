@@ -39,4 +39,9 @@ public class UserServiceImpl implements UserService{
         String sql = "DELETE FROM userTable WHERE id=?";
         dataBaseRepository.getJdbc().update(sql, id);
     }
+
+    public void createUserParam(String name, int age, String email){
+        String sql = "INSERT INTO userTable VALUES (DEFAULT, ?, ?, ?)";
+        dataBaseRepository.getJdbc().update(sql, name, age, email);
+    }
 }
