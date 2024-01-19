@@ -34,6 +34,17 @@ public class UserController {
         return "redirect:/users-db";
     }
 
+    @GetMapping("/user-update/{id}")
+    public String updateForm(User user){
+        return "user-update";
+    }
+
+    @PostMapping("/user-update")
+    public String updateUser(User user){
+        userService.updateUser(user);
+        return "redirect:/users-db";
+    }
+
     // CRUD
 
 }

@@ -1,8 +1,6 @@
 package com.example.sem3HomeTask.services;
 
 import com.example.sem3HomeTask.domain.User;
-import com.example.sem3HomeTask.repository.DataBaseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;

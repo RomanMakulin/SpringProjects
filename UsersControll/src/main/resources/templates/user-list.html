@@ -18,16 +18,22 @@
         <table class="table table-hover">
             <thead class="table-dark">
             <tr>
+                <th>id</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Email</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.age}"></td>
                 <td th:text="${user.email}"></td>
+                <td class="btn-custom"><a th:href="@{user-update/{id}(id=${user.id})}" type="button" class="btn btn-outline-primary">Edit</a></td>
+                <td class="btn-custom"><a th:href="@{user-delete/{id}(id=${user.id})}" type="button" class="btn btn-outline-danger">Delete</a></td>
             </tr>
             </tbody>
         </table>

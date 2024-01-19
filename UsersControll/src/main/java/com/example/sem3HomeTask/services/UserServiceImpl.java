@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User createUser(User user) {
-        String sql = "INSERT INTO userTable VALUES (?, ?, ?)";
+        String sql = "INSERT INTO userTable VALUES (DEFAULT, ?, ?, ?)";
         dataBaseRepository.getJdbc().update(sql, user.getFirstName(), user.getAge(), user.getEmail());
         notificationService.notifyUser(user);
         return user;
@@ -30,10 +30,8 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public void updateUser(User user) {
-        String sql = "UPDATE userTable\n" +
-                " SET firstName = ?, lastName = ? \n" +
-                " WHERE id = ?;";
-        dataBaseRepository.getJdbc().update(sql, user.getFirstName(), user.getAge(), user.getEmail());
+        String sql = "UPDATE userTable SET firstName = ?, age = ?, email = ? WHERE id = ?;";
+        dataBaseRepository.getJdbc().update(sql, user.getFirstName(), user.getAge(), user.getEmail(), user.getId());
     }
 
     @Override

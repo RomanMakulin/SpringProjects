@@ -21,6 +21,7 @@ public class DataBaseRepository {
     public RowMapper<User> rowMapperUser(){
         return (r, i) -> {
             User rowObject = new User();
+            rowObject.setId(r.getInt("id"));
             rowObject.setFirstName(r.getString("firstName"));
             rowObject.setAge(r.getInt("age"));
             rowObject.setEmail(r.getString("email"));
