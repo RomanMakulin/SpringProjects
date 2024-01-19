@@ -3,7 +3,6 @@ package com.example.sem3HomeTask.services;
 import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.repository.DataBaseRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class UserServiceImpl implements UserService {
     /**
      * Строковое отображение (маппер) из БД
      */
-    private UserRowMapper rowMapper;
+    private RowMapperService rowMapper;
 
     /**
      * Автоинициализация в рамках бина класс уведомлений
