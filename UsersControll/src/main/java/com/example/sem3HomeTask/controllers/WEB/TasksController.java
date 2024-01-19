@@ -14,21 +14,40 @@ import java.util.List;
 
 @Controller
 public class TasksController {
+    /**
+     * Сервис реализации логики задач
+     */
     @Autowired
-    TaskServiceImpl taskService;
+    private TaskServiceImpl taskService;
 
+    /**
+     * Сервис реализации логики управления пользователями
+     */
     @Autowired
-    UserServiceImpl userService;
+    private UserServiceImpl userService;
 
+    /**
+     * Функция реализации фильтрации пользователей
+     *
+     * @param model способ передачи значени шаблонизатору
+     * @param age   возраст пользователя
+     * @return возвращаем страницу всех пользователей
+     */
     @PostMapping("/users-filter")
-    public String filterUsersDB(Model model, @RequestParam("age") int age){
+    public String filterUsersDB(Model model, @RequestParam("age") int age) {
         List<User> users = taskService.filterUsersByAge(userService.getAllUsers(), age);
         model.addAttribute("users", users);
         return "user-list";
     }
 
+    /**
+     * Функция реализации сортировки пользователей
+     *
+     * @param model способ передачи значени шаблонизатору
+     * @return возвращаем страницу всех пользователей
+     */
     @GetMapping("/users-sort")
-    public String sortUsersDB(Model model){
+    public String sortUsersDB(Model model) {
         List<User> users = taskService.sortUsersByAge(userService.getAllUsers());
         model.addAttribute("users", users);
         return "user-list";

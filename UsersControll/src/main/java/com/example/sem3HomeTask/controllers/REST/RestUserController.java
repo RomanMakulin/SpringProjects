@@ -26,16 +26,18 @@ public class RestUserController {
 
     /**
      * Метод добавления пользователя с фронта в наш репозиторий
+     *
      * @param user пользователь полученный из тела запроса
      */
     @PutMapping("/create") // при создании прописывать айди
-    public void restCreateUser(@RequestBody User user){
+    public void restCreateUser(@RequestBody User user) {
         userService.createUser(user);
     }
 
     /**
      * Get запрос для выведения общего списка пользователей (зарег)
      * localhost:8080/user
+     *
      * @return список зарегистрированных пользователей
      */
     @GetMapping
@@ -45,8 +47,9 @@ public class RestUserController {
 
     /**
      * Метод регистрации пользователя через параметры в адресной строке
-     * @param name имя пользователя
-     * @param age возраст пользователя
+     *
+     * @param name  имя пользователя
+     * @param age   возраст пользователя
      * @param email почта пользователя
      * @return возвращает уведомлегние об успешном создании
      */

@@ -14,15 +14,26 @@ import java.util.List;
 
 @Controller
 public class UserController {
-
+    /**
+     * Сервис реализации логики задач
+     */
     @Autowired
-    UserServiceImpl userService;
+    private TaskServiceImpl taskService;
 
+    /**
+     * Сервис реализации логики управления пользователями
+     */
     @Autowired
-    TaskServiceImpl taskService;
+    private UserServiceImpl userService;
 
+    /**
+     * Нахождение всех пользователей
+     *
+     * @param model управление аргументами шаблонизатора
+     * @return возвращаем страницу всех пользователей
+     */
     @GetMapping("/users-db")
-    public String findAllDB(Model model){
+    public String findAllDB(Model model) {
         List<User> users = userService.getAllUsers();
         String avg = taskService.calculateAverageAge(userService.getAllUsers());
 
@@ -31,30 +42,60 @@ public class UserController {
         return "user-list";
     }
 
+    /**
+     * Создание пользователей. Страница создания (форма)
+     *
+     * @param user пользователей
+     * @return страница создания пользователей
+     */
     @GetMapping("/user-create")
-    public String getCreateFormDB(User user){
+    public String getCreateFormDB(User user) {
         return "user-create.html";
     }
 
+    /**
+     * Реализация создания пользователя
+     *
+     * @param user пользователь
+     * @return список всех юзеров
+     */
     @PostMapping("/user-create")
-    public String createUserDB(User user){
+    public String createUserDB(User user) {
         userService.createUser(user);
         return "redirect:/users-db";
     }
 
+    /**
+     * Обновление всех пользователей. Страница - форма
+     *
+     * @param user пользователь
+     * @return страница обновления пользователя
+     */
     @GetMapping("/user-update/{id}")
-    public String updateForm(User user){
+    public String updateForm(User user) {
         return "user-update";
     }
 
+    /**
+     * Функция реализации обновления пользователя
+     *
+     * @param user пользователь
+     * @return страница всех пользователей
+     */
     @PostMapping("/user-update")
-    public String updateUser(User user){
+    public String updateUser(User user) {
         userService.updateUser(user);
         return "redirect:/users-db";
     }
 
+    /**
+     * Удаление пользователя по ID
+     *
+     * @param id уникальный идентификатор пользователя
+     * @return страница всех пользователей
+     */
     @GetMapping("/user-delete/{id}")
-    public String delUser(@PathVariable("id") int id){
+    public String delUser(@PathVariable("id") int id) {
         userService.delUser(id);
         return "redirect:/users-db";
     }
