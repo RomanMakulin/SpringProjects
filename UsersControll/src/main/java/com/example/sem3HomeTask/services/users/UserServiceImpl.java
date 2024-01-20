@@ -99,8 +99,16 @@ public class UserServiceImpl implements UserService {
      * @param age   возраст пользователя
      * @param email почта пользователя
      */
-    public void createUserParam(String name, int age, String email, String password) {
-        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), name, age, email, password);
+    public void createUserParam(String name, int age, String email, String password, boolean isActive) {
+        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), name, age, email, password, isActive);
+    }
+
+    /**
+     * Помечаем администратора онлайн
+     */
+    public void loginAdmin(User user){
+        dataBaseRepository.getJdbc().update(
+                "UPDATE userTable SET isLogin=? WHERE isAdmin=?", true, true);
     }
 
 }

@@ -56,9 +56,10 @@ public class RestUserController {
     public String registrationParam(@RequestParam("name") String name,
                                     @RequestParam("age") int age,
                                     @RequestParam("email") String email,
-                                    @RequestParam("password") String password) {
+                                    @RequestParam("password") String password,
+                                    @RequestParam("password") boolean isLogin) {
 
-        userService.createUserParam(name, age, email, password);
+        userService.createUserParam(name, age, email, password, isLogin);
         return "User added from param request!";
     }
 }

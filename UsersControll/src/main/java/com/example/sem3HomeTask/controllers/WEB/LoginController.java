@@ -6,6 +6,7 @@ import com.example.sem3HomeTask.services.users.UserServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,16 +38,20 @@ public class LoginController {
      */
     @GetMapping("/check-login")
     public String checkLogin(@RequestParam("email") String email,
-                             @RequestParam("password") String password) {
-
+                             @RequestParam("password") String password,
+                             Model model) {
         try {
             User user = userService.getAllUsers().stream()
-                    .filter(item -> (item.getEmail().equals("sup.makulin@mail.ru")
-                            && item.getPassword().equals("12s"))).findFirst().get();
+                    .filter(item ->
+                    (item.getEmail().equals(email) && item.getPassword().equals(password)))
+                    .findFirst().get();
 
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+            if (user.isAdmin()) {
+                userService.loginAdmin(user);
+                model.addAttribute("isLogin", "online");
                 return "redirect:/users-db";
             } else return "404";
+
         } catch (Exception e) {
             return "404";
         }

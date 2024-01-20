@@ -10,4 +10,6 @@ public class User {
     private int age;
     private String email;
     private String password;
+    private boolean isLogin;
+    private boolean isAdmin;
 }
