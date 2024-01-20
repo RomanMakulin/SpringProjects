@@ -22,3 +22,7 @@ width: 100vw;
 height: 100vh;
 background-image: url("../error-back.jpg");
 }
+
+.login-background{
+background-image: url("../login-back.jpg");
+}
