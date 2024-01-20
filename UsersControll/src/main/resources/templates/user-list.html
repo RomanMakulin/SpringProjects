@@ -33,7 +33,12 @@
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.age}"></td>
                 <td th:text="${user.email}"></td>
-                <td style="color: green" th:if="${user.isLogin}">Online</td>
+                <td th:if="${user.isLogin}">
+                    <span style="color: green">Online</span>
+                </td>
+                <td th:if="${not user.isLogin}">
+                    <span style="color: red">Offline</span>
+                </td>
                 <td class="btn-custom"><a th:href="@{user-update/{id}(id=${user.id})}" type="button" class="btn btn-outline-primary">Edit</a></td>
                 <td class="btn-custom"><a th:href="@{user-delete/{id}(id=${user.id})}" type="button" class="btn btn-outline-danger">Delete</a></td>
             </tr>
