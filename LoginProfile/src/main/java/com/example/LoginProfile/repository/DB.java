@@ -1,2 +1,2 @@
-package com.example.LoginProfile.repository;public class Db {
+package com.example.LoginProfile.repository;public class DB {
 }

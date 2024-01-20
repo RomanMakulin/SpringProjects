@@ -6,6 +6,7 @@ import com.example.sem3HomeTask.services.NotificationService;
 import com.example.sem3HomeTask.services.db.cfgSql;
 import com.example.sem3HomeTask.services.db.RowMapperService;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,9 @@ import java.util.List;
  * Сервис управления пользователями
  * Имплемитирует UserService
  */
-@Service
 @AllArgsConstructor
+@Data
+@Service
 public class UserServiceImpl implements UserService {
     /**
      * Автоинициализация в рамках бина класс Базы Данных

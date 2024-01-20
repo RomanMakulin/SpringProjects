@@ -4,12 +4,14 @@ import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.services.tasks.TaskServiceImpl;
 import com.example.sem3HomeTask.services.users.UserServiceImpl;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -26,6 +28,13 @@ public class UserController {
      * Сервис реализации логики управления пользователями
      */
     private UserServiceImpl userService;
+
+
+    @GetMapping("/main")
+    public String mainPage(){
+        return "main";
+    }
+
 
     /**
      * Нахождение всех пользователей

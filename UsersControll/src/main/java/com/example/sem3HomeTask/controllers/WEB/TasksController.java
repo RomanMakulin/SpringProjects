@@ -4,6 +4,7 @@ import com.example.sem3HomeTask.domain.User;
 import com.example.sem3HomeTask.services.tasks.TaskServiceImpl;
 import com.example.sem3HomeTask.services.users.UserServiceImpl;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
