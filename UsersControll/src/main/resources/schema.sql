@@ -9,3 +9,4 @@ CREATE TABLE IF NOT EXISTS userTable (
 );
 
 INSERT INTO userTable VALUES (DEFAULT, 'Roman Wayz', 25, 'sup.makulin@mail.ru', '12s', default , 1);
+INSERT INTO userTable VALUES (DEFAULT, 'Test admin', 25, 'admin@mail.ru', '12s', default , 1);
