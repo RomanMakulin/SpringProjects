@@ -55,9 +55,10 @@ public class RestUserController {
     @PostMapping("/create-param")
     public String registrationParam(@RequestParam("name") String name,
                                     @RequestParam("age") int age,
-                                    @RequestParam("email") String email) {
+                                    @RequestParam("email") String email,
+                                    @RequestParam("password") String password) {
 
-        userService.createUserParam(name, age, email);
+        userService.createUserParam(name, age, email, password);
         return "User added from param request!";
     }
 }

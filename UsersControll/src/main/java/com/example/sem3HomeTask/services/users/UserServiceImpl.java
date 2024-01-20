@@ -48,7 +48,11 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User createUser(User user) {
-        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), user.getFirstName(), user.getAge(), user.getEmail());
+        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(),
+                user.getFirstName(),
+                user.getAge(),
+                user.getEmail(),
+                user.getPassword());
         notificationService.notifyUser(user);
         return user;
     }
@@ -70,7 +74,12 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updateUser(User user) {
-        dataBaseRepository.getJdbc().update(cfgSql.getUpdateUserByID(), user.getFirstName(), user.getAge(), user.getEmail(), user.getId());
+        dataBaseRepository.getJdbc().update(cfgSql.getUpdateUserByID(),
+                user.getFirstName(),
+                user.getAge(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getId());
     }
 
     /**
@@ -90,7 +99,7 @@ public class UserServiceImpl implements UserService {
      * @param age   возраст пользователя
      * @param email почта пользователя
      */
-    public void createUserParam(String name, int age, String email) {
-        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), name, age, email);
+    public void createUserParam(String name, int age, String email, String password) {
+        dataBaseRepository.getJdbc().update(cfgSql.getCreateUser(), name, age, email, password);
     }
 }

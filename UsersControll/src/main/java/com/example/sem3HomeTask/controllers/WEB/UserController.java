@@ -8,12 +8,10 @@ import lombok.Data;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Log
@@ -28,13 +26,6 @@ public class UserController {
      * Сервис реализации логики управления пользователями
      */
     private UserServiceImpl userService;
-
-
-    @GetMapping("/main")
-    public String mainPage(){
-        return "main";
-    }
-
 
     /**
      * Нахождение всех пользователей
@@ -108,6 +99,31 @@ public class UserController {
     public String delUser(@PathVariable("id") int id) {
         userService.delUser(id);
         return "redirect:/users-db";
+    }
+
+    // new version
+
+
+    @GetMapping("/main")
+    public String mainPage() {
+        return "main";
+    }
+
+    @GetMapping("/check-login")
+    public String checkLogin(@RequestParam("email") String email,
+                             @RequestParam("password") String password) {
+
+        try {
+            User user = userService.getAllUsers().stream()
+                    .filter(item -> (item.getEmail().equals("sup.makulin@mail.ru")
+                                    && item.getPassword().equals("12s"))).findFirst().get();
+
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                return "redirect:/users-db";
+            } else return "404";
+        } catch (Exception e) {
+            return "404";
+        }
     }
 
 }

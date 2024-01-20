@@ -1,9 +1,7 @@
 package com.example.sem3HomeTask.domain;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class User {
@@ -11,4 +9,5 @@ public class User {
     private String firstName;
     private int age;
     private String email;
+    private String password;
 }

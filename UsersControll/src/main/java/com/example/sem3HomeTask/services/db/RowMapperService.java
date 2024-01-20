@@ -18,6 +18,7 @@ public class RowMapperService {
             rowObject.setFirstName(r.getString("firstName"));
             rowObject.setAge(r.getInt("age"));
             rowObject.setEmail(r.getString("email"));
+            rowObject.setPassword(r.getString("password"));
             return rowObject;
         };
     }

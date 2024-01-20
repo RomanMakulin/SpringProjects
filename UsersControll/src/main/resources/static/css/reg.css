@@ -2,3 +2,23 @@
 margin: 0 auto;
 width: 400px;
 }
+
+.reg-form{
+margin-bottom: 10px;
+}
+
+.h1-title{
+margin-top: 50px;
+margin-bottom: 100px;
+}
+
+.wrong-login{
+        padding-top: 50px;
+        padding-left: 50px;
+}
+
+.back-error{
+width: 100vw;
+height: 100vh;
+background-image: url("../error-back.jpg");
+}
