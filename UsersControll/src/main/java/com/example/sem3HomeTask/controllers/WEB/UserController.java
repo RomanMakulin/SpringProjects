@@ -101,29 +101,4 @@ public class UserController {
         return "redirect:/users-db";
     }
 
-    // new version
-
-
-    @GetMapping("/main")
-    public String mainPage() {
-        return "main";
-    }
-
-    @GetMapping("/check-login")
-    public String checkLogin(@RequestParam("email") String email,
-                             @RequestParam("password") String password) {
-
-        try {
-            User user = userService.getAllUsers().stream()
-                    .filter(item -> (item.getEmail().equals("sup.makulin@mail.ru")
-                                    && item.getPassword().equals("12s"))).findFirst().get();
-
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                return "redirect:/users-db";
-            } else return "404";
-        } catch (Exception e) {
-            return "404";
-        }
-    }
-
 }
