@@ -111,4 +111,8 @@ public class UserServiceImpl implements UserService {
                 "UPDATE userTable SET isLogin=? WHERE isAdmin=?", true, true);
     }
 
+//    public User getAdmin(){
+//        return dataBaseRepository.getJdbc().query("SELECT * FROM userTable WHERE isAdmin=1", rowMapper.rowMapperUser());
+//    }
+
 }

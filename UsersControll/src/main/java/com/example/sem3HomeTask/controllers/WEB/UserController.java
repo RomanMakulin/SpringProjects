@@ -36,10 +36,16 @@ public class UserController {
     @GetMapping("/users-db")
     public String findAllDB(Model model) {
         List<User> users = userService.getAllUsers();
-        String avg = taskService.calculateAverageAge(userService.getAllUsers());
-        model.addAttribute("users", users);
-        model.addAttribute("average", avg);
-        return "user-list";
+
+        // Проверяем залогинился ли пользователь
+        // После чего можно перейти на страницу админ панели
+        User user = users.stream().filter(item -> item.isAdmin()).findFirst().get();
+        if (user.isLogin()){
+            String avg = taskService.calculateAverageAge(userService.getAllUsers());
+            model.addAttribute("users", users);
+            model.addAttribute("average", avg);
+            return "user-list";
+        } else return "404";
     }
 
     /**
