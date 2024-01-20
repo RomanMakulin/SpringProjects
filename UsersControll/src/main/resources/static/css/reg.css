@@ -26,3 +26,22 @@ background-image: url("../error-back.jpg");
 .login-background{
 background-image: url("../login-back.jpg");
 }
+
+.logout {
+    padding: 20px;
+    text-align: right;
+}
+
+.logout__btn{
+    text-decoration: none;
+    color: white;
+    background-color: #80808047;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+.logout__btn:hover{
+    background-color: black;
+    color: white;
+}

@@ -8,7 +8,11 @@ import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Log
@@ -47,13 +51,23 @@ public class LoginController {
                     .findFirst().get();
 
             if (user.isAdmin()) {
-                userService.loginAdmin(user);
+                userService.loginAdmin(user, true);
                 model.addAttribute("isLogin", "online");
-                return "redirect:/users-db";
+                model.addAttribute("idLogout", user.getId());
+                return "redirect:/users-db/" + user.getId();
             } else return "404";
 
         } catch (Exception e) {
             return "404";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        List<User> users = userService.getAllUsers();
+        User user = users.stream().filter(User::isLogin).findFirst().get();
+        userService.loginAdmin(user, false);
+//        user.setLogin(false);
+        return "redirect:/main";
     }
 }

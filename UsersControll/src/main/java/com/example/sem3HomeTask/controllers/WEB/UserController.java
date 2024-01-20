@@ -33,19 +33,21 @@ public class UserController {
      * @param model управление аргументами шаблонизатора
      * @return возвращаем страницу всех пользователей
      */
-    @GetMapping("/users-db")
-    public String findAllDB(Model model) {
+    @GetMapping("/users-db/{id}")
+    public String findAllDB(Model model, @PathVariable("id") int id) {
         List<User> users = userService.getAllUsers();
 
-        // Проверяем залогинился ли пользователь
-        // После чего можно перейти на страницу админ панели
-        User user = users.stream().filter(item -> item.isAdmin()).findFirst().get();
-        if (user.isLogin()){
-            String avg = taskService.calculateAverageAge(userService.getAllUsers());
-            model.addAttribute("users", users);
-            model.addAttribute("average", avg);
-            return "user-list";
-        } else return "404";
+        try {
+            User user = users.stream().filter(item -> item.getId() == id).findFirst().get();
+            if (user.isLogin()){
+                String avg = taskService.calculateAverageAge(userService.getAllUsers());
+                model.addAttribute("users", users);
+                model.addAttribute("average", avg);
+                return "user-list";
+            } else return "404";
+        } catch (Exception e){
+            return "404";
+        }
     }
 
     /**

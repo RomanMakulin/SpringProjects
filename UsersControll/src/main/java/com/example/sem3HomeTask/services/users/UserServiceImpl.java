@@ -106,9 +106,9 @@ public class UserServiceImpl implements UserService {
     /**
      * Помечаем администратора онлайн
      */
-    public void loginAdmin(User user){
+    public void loginAdmin(User user, boolean value){
         dataBaseRepository.getJdbc().update(
-                "UPDATE userTable SET isLogin=? WHERE email=?", true, user.getEmail());
+                "UPDATE userTable SET isLogin=? WHERE email=?", value, user.getEmail());
     }
 
 //    public User getAdmin(){
