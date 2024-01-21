@@ -1,15 +1,12 @@
-package com.example.sem3HomeTask.controllers.WEB;
+package com.example.AdminPanelV1.controllers.WEB;
 
-import com.example.sem3HomeTask.domain.User;
-import com.example.sem3HomeTask.services.tasks.TaskServiceImpl;
-import com.example.sem3HomeTask.services.users.UserServiceImpl;
+import com.example.AdminPanelV1.domain.User;
+import com.example.AdminPanelV1.services.users.UserServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;

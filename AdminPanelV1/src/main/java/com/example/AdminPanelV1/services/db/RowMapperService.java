@@ -1,6 +1,6 @@
-package com.example.sem3HomeTask.services.db;
+package com.example.AdminPanelV1.services.db;
 
-import com.example.sem3HomeTask.domain.User;
+import com.example.AdminPanelV1.domain.User;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 

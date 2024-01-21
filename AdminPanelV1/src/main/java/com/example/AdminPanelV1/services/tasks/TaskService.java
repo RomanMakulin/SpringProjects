@@ -1,6 +1,6 @@
-package com.example.sem3HomeTask.services.tasks;
+package com.example.AdminPanelV1.services.tasks;
 
-import com.example.sem3HomeTask.domain.User;
+import com.example.AdminPanelV1.domain.User;
 
 import java.util.List;
 

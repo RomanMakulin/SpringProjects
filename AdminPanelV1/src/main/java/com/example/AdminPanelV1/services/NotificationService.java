@@ -1,6 +1,6 @@
-package com.example.sem3HomeTask.services;
+package com.example.AdminPanelV1.services;
 
-import com.example.sem3HomeTask.domain.User;
+import com.example.AdminPanelV1.domain.User;
 import org.springframework.stereotype.Service;
 
 @Service

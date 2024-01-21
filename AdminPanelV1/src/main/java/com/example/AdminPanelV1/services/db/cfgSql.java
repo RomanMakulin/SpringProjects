@@ -1,4 +1,4 @@
-package com.example.sem3HomeTask.services.db;
+package com.example.AdminPanelV1.services.db;
 
 import lombok.Data;
 import lombok.Getter;

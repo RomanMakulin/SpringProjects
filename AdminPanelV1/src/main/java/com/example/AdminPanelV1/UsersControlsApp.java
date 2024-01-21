@@ -1,4 +1,4 @@
-package com.example.sem3HomeTask;
+package com.example.AdminPanelV1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

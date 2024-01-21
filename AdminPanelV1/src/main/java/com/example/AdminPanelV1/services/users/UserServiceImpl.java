@@ -1,10 +1,10 @@
-package com.example.sem3HomeTask.services.users;
+package com.example.AdminPanelV1.services.users;
 
-import com.example.sem3HomeTask.domain.User;
-import com.example.sem3HomeTask.repository.DataBaseRepository;
-import com.example.sem3HomeTask.services.NotificationService;
-import com.example.sem3HomeTask.services.db.cfgSql;
-import com.example.sem3HomeTask.services.db.RowMapperService;
+import com.example.AdminPanelV1.domain.User;
+import com.example.AdminPanelV1.repository.DataBaseRepository;
+import com.example.AdminPanelV1.services.NotificationService;
+import com.example.AdminPanelV1.services.db.cfgSql;
+import com.example.AdminPanelV1.services.db.RowMapperService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.sem3HomeTask.domain;
+package com.example.AdminPanelV1.domain;
 
 
 import lombok.Data;

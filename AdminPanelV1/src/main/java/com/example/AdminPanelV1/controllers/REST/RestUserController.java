@@ -1,8 +1,8 @@
-package com.example.sem3HomeTask.controllers.REST;
+package com.example.AdminPanelV1.controllers.REST;
 
-import com.example.sem3HomeTask.domain.User;
-import com.example.sem3HomeTask.services.tasks.TaskServiceImpl;
-import com.example.sem3HomeTask.services.users.UserServiceImpl;
+import com.example.AdminPanelV1.domain.User;
+import com.example.AdminPanelV1.services.tasks.TaskServiceImpl;
+import com.example.AdminPanelV1.services.users.UserServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
