@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/create-user}" th:object="${user}" method="post" class="form-custom">
+<!--    <h1 class="display-4" th:text="${title}"></h1>-->
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" th:field="*{firstName}" id="name" placeholder="Name" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" th:field="*{age}" id="age" placeholder="Age" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" th:field="*{email}" id="email" placeholder="Email" class="form-control">
+        <br/>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Create User">
+</form>
+
+</body>
+</html>
