@@ -1,17 +1,17 @@
-package com.example.SpringDataTest.models;
+package com.example.Scrum.board.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@Table(name = "users")
+@NoArgsConstructor
+@Entity(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "first_name")
     private String firstName;
     private String email;
-    private int age;
 }

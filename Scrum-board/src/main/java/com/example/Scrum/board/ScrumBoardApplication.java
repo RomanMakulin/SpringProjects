@@ -1,13 +1,13 @@
-package com.example.SpringDataTest;
+package com.example.Scrum.board;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringDataTestApplication {
+public class ScrumBoardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringDataTestApplication.class, args);
+		SpringApplication.run(ScrumBoardApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.example.SpringDataTest;
+package com.example.Scrum.board;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringDataTestApplicationTests {
+class UsersControllerApplicationTests {
 
 	@Test
 	void contextLoads() {
