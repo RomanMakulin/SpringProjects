@@ -1,0 +1,19 @@
+.task{
+background-color: #8080804f;
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+.complete {
+background-color: #8080801f;
+    padding: 2px 10px;
+    border-radius: 5px;
+}
+
+.complete:hover {
+    color: green;
+}
+
+.test {
+display: flex;
+}
