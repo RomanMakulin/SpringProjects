@@ -4,6 +4,8 @@ import com.example.Scrum.board.models.Task;
 import com.example.Scrum.board.services.TaskRepositoryService;
 import com.example.Scrum.board.services.UserRepositoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -29,8 +31,8 @@ public class TasksController {
      * @return Список пользователей
      */
     @GetMapping
-    public List<Task> getAllTasks() {
-        return taskService.getAll();
+    public ResponseEntity<List<Task>> getAllTasks() {
+        return new ResponseEntity<>(taskService.getAll(), HttpStatus.OK);
     }
 
     /**
@@ -41,9 +43,9 @@ public class TasksController {
      * @return статус выполнения запроса
      */
     @PostMapping("/give/{id}")
-    public String giveTask(@RequestBody Task task, @PathVariable("id") int id) {
+    public ResponseEntity<Void> giveTask(@RequestBody Task task, @PathVariable("id") int id) {
         taskService.create(task, userService.getById(id));
-        return "complete!";
+        return ResponseEntity.ok().build();
     }
 
 }

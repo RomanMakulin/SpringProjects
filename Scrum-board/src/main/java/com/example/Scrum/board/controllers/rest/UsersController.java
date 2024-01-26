@@ -4,6 +4,8 @@ package com.example.Scrum.board.controllers.rest;
 import com.example.Scrum.board.models.User;
 import com.example.Scrum.board.services.UserRepositoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +27,8 @@ public class UsersController {
      * @return статус выполнения
      */
     @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return userService.getAll();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
     }
 
     /**
@@ -36,8 +38,8 @@ public class UsersController {
      * @return статус выполнения
      */
     @PostMapping("/create-user")
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
     }
 
     /**
@@ -47,9 +49,9 @@ public class UsersController {
      * @return статус выполнения
      */
     @PostMapping("/update-user")
-    public String updateUser(@RequestBody User user) {
+    public ResponseEntity<Void> updateUser(@RequestBody User user) {
         userService.update(user);
-        return "complete!";
+        return ResponseEntity.ok().build();
     }
 
     /**
@@ -59,8 +61,8 @@ public class UsersController {
      * @return статус выполнения
      */
     @PostMapping("/delete-user")
-    public String deleteUser(@RequestBody User user) {
+    public ResponseEntity<Void> deleteUser(@RequestBody User user) {
         userService.deleteUser(user);
-        return "complete!";
+        return ResponseEntity.ok().build();
     }
 }
