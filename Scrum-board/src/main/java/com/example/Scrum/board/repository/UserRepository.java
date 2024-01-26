@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User getById(int id);
-
     @Modifying
     @Transactional
     @Query("UPDATE users SET firstName = :firstName, email = :email WHERE id = :id")

@@ -1,7 +1,6 @@
 package com.example.Scrum.board.controllers.rest;
 
 import com.example.Scrum.board.models.Task;
-import com.example.Scrum.board.models.User;
 import com.example.Scrum.board.services.TaskRepositoryService;
 import com.example.Scrum.board.services.UserRepositoryService;
 import lombok.RequiredArgsConstructor;

@@ -12,18 +12,15 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
-//    @Modifying
-//    @Transactional
-//    @Query("INSERT INTO tasks VALUES (DEFAULT, title = :title, description = :description, taskStatus = :taskStatus, user = :user)")
-//    void createTask(String title, String description, TaskStatus taskStatus, int user);
-
     List<Task> getByTitle(String title);
 
     List<Task> getByTaskStatus(TaskStatus taskStatus);
 
     Task getById(int id);
 
+    @Modifying
+    @Transactional
     @Query("UPDATE tasks SET title=:title, description=:description, taskStatus=:taskStatus WHERE id=:id")
-    Task updateTask(String title, String description, TaskStatus taskStatus, int id);
+    void updateTask(String title, String description, TaskStatus taskStatus, int id);
 
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Entity(name = "users")
@@ -14,4 +16,7 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
     private String email;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL )
+    private List<Task> task;
 }

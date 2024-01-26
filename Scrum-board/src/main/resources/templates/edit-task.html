@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Edit task</title>
 </head>
 <body>
-$END$
+
+<form action="#" th:action="@{'/edit-task/' + ${task.id}}" th:object="${task}" method="post" class="form-custom">
+  <h1 class="display-4">Edit task</h1>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Title" class="form-control">
+    <br/>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <input type="text" th:field="*{description}" id="description" placeholder="Description" class="form-control">
+    <br/>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Edit task">
+</form>
+
 </body>
 </html>
