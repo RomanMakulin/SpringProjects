@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * Сущность - таблица в Базе данных
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,10 +27,18 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
 
+    /**
+     * Метод конвертации статуса задачи в string для шаблонизатора
+     *
+     * @return строковое значение статуса
+     */
     public String taskToString() {
         return this.taskStatus.toString();
     }
 
+    /**
+     * Связь многие к одному для таблицы с пользователями
+     */
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id")

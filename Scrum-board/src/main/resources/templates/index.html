@@ -52,7 +52,7 @@
                         </div>
                         <!--                    <a th:href="@{task-doing/{id}(id=${task.id})}" type="button" class="btn btn-outline-primary">Edit</a>-->
                         <a class="complete" th:href="@{/task-doing/{id}(id=${task.id})}" type="button">doing</a>
-                        <a class="complete" th:href="@{edit-task/{id}(id=${task.id})}" type="button">edit</a>
+                        <a class="complete" th:href="@{/edit-task/{id}(id=${task.id})}" type="button">edit</a>
                         <a class="complete" th:href="@{/task-delete/{id}(id=${task.id})}" type="button">remove</a>
                     </div>
                 </div>
@@ -65,7 +65,9 @@
                             <p>
                                 <strong th:text="${task.title}"></strong>
                                 : <span th:text="${task.description}"> </span>
-                                (Created date: <span th:text="${task.date}"></span>)
+                                <br>
+                                Created: <span th:text="${task.date.getYear()}"></span>.<span th:text="${task.date.getMonthValue()}"></span>.<span th:text="${task.date.getDayOfMonth()}"></span>
+                                / Time: <span th:text="${task.date.getHour}"></span>:<span th:text="${task.date.getMinute}"></span>
                             </p>
                         </div>
                         <a class="complete" th:href="@{/task-done/{id}(id=${task.id})}" type="button">done</a>
@@ -83,7 +85,9 @@
                             <p>
                                 <strong th:text="${task.title}"></strong>
                                 : <span th:text="${task.description}"> </span>
-                                (Created date: <span th:text="${task.date}"></span>)
+                                <br>
+                                Created: <span th:text="${task.date.getYear()}"></span>.<span th:text="${task.date.getMonthValue()}"></span>.<span th:text="${task.date.getDayOfMonth()}"></span>
+                                / Time: <span th:text="${task.date.getHour}"></span>:<span th:text="${task.date.getMinute}"></span>
                             </p>
                         </div>
                         <a class="complete" th:href="@{/task-doing/{id}(id=${task.id})}" type="button">doing</a>
