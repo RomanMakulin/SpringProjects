@@ -10,25 +10,55 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class UserRepositoryService {
+    /**
+     * Управление пользователями в БД
+     */
     private final UserRepository userRepository;
 
-    public User createUser(User user){
+    /**
+     * Создание пользователя
+     *
+     * @param user новый пользователь
+     * @return пользователь
+     */
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
-    public List<User> getAll(){
+    /**
+     * Получить всех пользователей
+     *
+     * @return список пользователей
+     */
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 
-    public User getById(int id){
+    /**
+     * Получить пользователя по ID
+     *
+     * @param id уникальный идентификатор пользователя
+     * @return пользователь
+     */
+    public User getById(int id) {
         return userRepository.getById(id);
     }
 
-    public void update(User user){
+    /**
+     * Обновить пользователя
+     *
+     * @param user пользователь
+     */
+    public void update(User user) {
         userRepository.updateUser(user.getFirstName(), user.getEmail(), user.getId());
     }
 
-    public void deleteUser(User user){
+    /**
+     * Удалить пользователя
+     *
+     * @param user пользователь
+     */
+    public void deleteUser(User user) {
         userRepository.delete(user);
     }
 }

@@ -4,5 +4,8 @@ import lombok.Data;
 
 
 public enum TaskStatus {
+    /**
+     * Статусы выполнения задач
+     */
     TO_DO, DOING, DONE;
 }

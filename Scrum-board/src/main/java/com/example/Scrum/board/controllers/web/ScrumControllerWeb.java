@@ -113,4 +113,21 @@ public class ScrumControllerWeb {
         taskRepositoryService.updateTask(id, task.getTitle(), task.getDescription());
         return "redirect:/main";
     }
+
+    @GetMapping("/task-create/{id}")
+    public String getCreateTaskForm(Task task, @PathVariable("id") int id, Model model){
+        model.addAttribute("id", id);
+        return "task-create";
+    }
+
+    @PostMapping("/task-create/{id}")
+    public String createTask(Task task, @PathVariable("id") int id, Model model){
+        model.addAttribute("id", id);
+//        task.setTaskStatus(TaskStatus.TO_DO);
+
+        taskRepositoryService.taskInsert(task.getTitle(), task.getDescription(), id);
+
+//        taskRepositoryService.create(task, userRepositoryService.getById(id));
+        return "redirect:/main";
+    }
 }

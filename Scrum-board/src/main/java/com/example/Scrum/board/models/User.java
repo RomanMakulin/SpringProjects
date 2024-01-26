@@ -16,7 +16,9 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
     private String email;
-
+    /**
+     * Связываем одного пользователя ко многим задачам
+     */
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL )
     private List<Task> task;
 }

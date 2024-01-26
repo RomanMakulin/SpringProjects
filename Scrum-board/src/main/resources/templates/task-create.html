@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create task</title>
+</head>
+<body>
+
+<form action="#" th:action="@{'/task-create/' + ${id}}" th:object="${task}" method="post" class="form-custom">
+    <h1 class="display-4" th:text="${title}"></h1>
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" th:field="*{title}" id="title" placeholder="Title" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" th:field="*{description}" id="description" placeholder="Description" class="form-control">
+        <br/>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Create task">
+</form>
+
+</body>
+</html>

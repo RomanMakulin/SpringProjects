@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS tasks (
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
+--task_status varchar(50) NOT NULL DEFAULT 'TO_DO',
 
 INSERT INTO users VALUES (DEFAULT, 'Roman', 'sup.makulin@mail.ru');
 INSERT INTO users VALUES (DEFAULT, 'Olga', 'sadasdad@mail.ru');

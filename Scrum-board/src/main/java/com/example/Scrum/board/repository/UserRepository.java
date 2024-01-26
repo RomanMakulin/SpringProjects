@@ -9,7 +9,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    /**
+     * Получить пользователя по уникальному идентификатору
+     *
+     * @param id уникальный идентификатор
+     * @return пользователь
+     */
     User getById(int id);
+
+    /**
+     * Обновить пользователя по заданным параметрам
+     *
+     * @param firstName имя пользователя
+     * @param email     почта
+     * @param id        уникальный идентификатор
+     */
     @Modifying
     @Transactional
     @Query("UPDATE users SET firstName = :firstName, email = :email WHERE id = :id")
