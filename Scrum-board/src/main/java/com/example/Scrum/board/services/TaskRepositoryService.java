@@ -38,7 +38,7 @@ public class TaskRepositoryService {
         taskRepository.save(task);
     }
 
-    public void taskInsert(String title, String description, int id){
+    public void taskInsert(String title, String description, int id) {
         taskRepository.insertTask(title, description, id);
     }
 

@@ -50,6 +50,13 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("UPDATE tasks SET title=:title, description=:description, taskStatus=:taskStatus WHERE id=:id")
     void updateTask(String title, String description, TaskStatus taskStatus, int id);
 
+    /**
+     * Кастомный запрос на создание новой задачи
+     *
+     * @param title       Название задачи
+     * @param description опиание задачи
+     * @param id          уникальный идентификатор пользователя
+     */
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO tasks VALUES (DEFAULT, :title, :description, 'TO_DO', CURRENT_TIMESTAMP, :id)", nativeQuery = true)

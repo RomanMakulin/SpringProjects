@@ -114,20 +114,32 @@ public class ScrumControllerWeb {
         return "redirect:/main";
     }
 
+    /**
+     * Форма создания новой задачи
+     *
+     * @param task  передаваемая задача
+     * @param id    уникальный идентификатор пользователя
+     * @param model связь с шаблонизатором
+     * @return возвращаем форму html
+     */
     @GetMapping("/task-create/{id}")
-    public String getCreateTaskForm(Task task, @PathVariable("id") int id, Model model){
+    public String getCreateTaskForm(Task task, @PathVariable("id") int id, Model model) {
         model.addAttribute("id", id);
         return "task-create";
     }
 
+    /**
+     * Создание новой задачи
+     *
+     * @param task  передаваемая задача из браузера
+     * @param id    уникальный идентификатор пользователя
+     * @param model связь с шаблонизатором
+     * @return редирект на главную страницу
+     */
     @PostMapping("/task-create/{id}")
-    public String createTask(Task task, @PathVariable("id") int id, Model model){
+    public String createTask(Task task, @PathVariable("id") int id, Model model) {
         model.addAttribute("id", id);
-//        task.setTaskStatus(TaskStatus.TO_DO);
-
         taskRepositoryService.taskInsert(task.getTitle(), task.getDescription(), id);
-
-//        taskRepositoryService.create(task, userRepositoryService.getById(id));
         return "redirect:/main";
     }
 }
