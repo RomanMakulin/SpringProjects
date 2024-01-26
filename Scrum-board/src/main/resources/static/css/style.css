@@ -11,6 +11,10 @@ background-color: #8080801f;
     cursor: pointer;
 }
 
+h1{
+margin-bottom: 30px;
+}
+
 .complete:hover {
     color: blue;
 }
@@ -40,4 +44,9 @@ margin-bottom: 10px;
 
 a{
 text-decoration:none;
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 100px;
 }

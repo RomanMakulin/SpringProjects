@@ -50,7 +50,6 @@
                                 / Time: <span th:text="${task.date.getHour}"></span>:<span th:text="${task.date.getMinute}"></span>
                             </p>
                         </div>
-                        <!--                    <a th:href="@{task-doing/{id}(id=${task.id})}" type="button" class="btn btn-outline-primary">Edit</a>-->
                         <a class="complete" th:href="@{/task-doing/{id}(id=${task.id})}" type="button">doing</a>
                         <a class="complete" th:href="@{/edit-task/{id}(id=${task.id})}" type="button">edit</a>
                         <a class="complete" th:href="@{/task-delete/{id}(id=${task.id})}" type="button">remove</a>
@@ -71,7 +70,7 @@
                             </p>
                         </div>
                         <a class="complete" th:href="@{/task-done/{id}(id=${task.id})}" type="button">done</a>
-                        <span class="complete">edit</span>
+                        <a class="complete" th:href="@{/edit-task/{id}(id=${task.id})}" type="button">edit</a>
                         <a class="complete" th:href="@{/task-delete/{id}(id=${task.id})}" type="button">remove</a>
                         <a class="complete" th:href="@{/task-todo/{id}(id=${task.id})}" type="button">to do</a>
                     </div>
