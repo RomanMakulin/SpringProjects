@@ -50,3 +50,10 @@ text-decoration:none;
     margin-top: 50px;
     margin-bottom: 100px;
 }
+
+.done {
+background-color: #78ff001f;
+}
+.doing{
+    background-color: #ffbb001f;
+}

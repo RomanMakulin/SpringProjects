@@ -60,7 +60,7 @@
             <td>
                 <div th:each="task : ${user.task}" class="task-margin">
                     <div th:if="${task.taskToString() == 'DOING'}">
-                        <div class="task">
+                        <div class="task doing">
                             <p>
                                 <strong th:text="${task.title}"></strong>
                                 : <span th:text="${task.description}"> </span>
@@ -80,7 +80,7 @@
             <td>
                 <div th:each="task : ${user.task}" class="task-margin">
                     <div th:if="${task.taskToString() == 'DONE'}">
-                        <div class="task">
+                        <div class="task done">
                             <p>
                                 <strong th:text="${task.title}"></strong>
                                 : <span th:text="${task.description}"> </span>
