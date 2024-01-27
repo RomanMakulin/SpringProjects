@@ -2,7 +2,7 @@
 
 Hi! I present you my first user management application based on Spring technologies - Admin Panel.
 
-Stack technologies that I used during development: lombok, database h2, Spring framework, spring boot, thymeleaf.
+Stack technologies that I used during development: lombok, database h2, Spring framework, spring boot, thymeleaf, hibernate.
 
 Application features:
 - Login for administrators. If you don't do this - you can't manage userit. Also you can't go to the link with all users.
@@ -25,7 +25,7 @@ The application was made as part of the training as a homework assignment.
 
 Привет! Представляю вам свое первое приложение управления пользователями на основе технологий Spring - Админ панель.
 
-Стек технологии которые я использовал при разработке: lombok, database h2, Spring framework, spring boot, thymeleaf.
+Стек технологии которые я использовал при разработке: lombok, database h2, Spring framework, spring boot, thymeleaf, hibernate
 
 Функции приложения:
 - Вход в систему для администраторов. Если этого не сделать - управлять пользователяит не получится. Также нельзя перейти на ссылку со всеми пользователями.
