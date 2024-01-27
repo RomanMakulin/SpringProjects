@@ -1,10 +1,9 @@
 # Scrum Board
+#### Привет! Представляю вам приложение "Scrum Board".
 
-Привет! Представляю вам приложение "Scrum Board".
+###### Приложение выполнено в REST и WEB представлениях.
 
-Приложение выполнено в REST и WEB представлениях.
-
-**Стек технологий:** Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap.
+> Стек технологий: Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap.
 
 **WEB:**
 
@@ -26,21 +25,21 @@
 
 Пользователи:
 - localhost:8080/users - метод get покажет все задачи в БД;
-- localhost:8080/create-user  -метод post создаст нового пользователя;
+- localhost:8080/create-user -метод post создаст нового пользователя;
 - localhost:8080/update-user - метод post обновит пользователя
 - localhost:8080/delete-user - метод post удалить пользователя;
 
-Видео демонстрация: https://www.youtube.com/watch?v=hu0x4bNrNXo
+> **Видео демонстрация: https://www.youtube.com/watch?v=hu0x4bNrNXo**
 
 ---
 
 # Scrum Board
 
-Hi, I present you the application "Scrum Board".
+#### Hi, I present you the application "Scrum Board".
 
-The application is made in REST and WEB views.
+######  The application is made in REST and WEB views.
 
-**Technology Stack:** Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap.
+>  **Technology Stack:** Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap.
 
 **WEB:**
 
@@ -56,14 +55,14 @@ The second table on the page is a list of all users in the system (in the databa
 
 There are 2 controllers - user management and task management.
 
-Tasks:
+**Tasks:**
 - localhost:8080/tasks - get method will show all tasks in the database;
 - localhost:8080/tasks/give/id - the post method will create a new task by the given ID.
 
-Users:
+**Users:**
 - localhost:8080/users - the get method will show all tasks in the database;
 - localhost:8080/create-user - the post method will create a new user;
 - localhost:8080/update-user - the post method will update the user.
 - localhost:8080/delete-user - the post method will delete the user;
 
-Video demonstration: https://www.youtube.com/watch?v=hu0x4bNrNXo
+> **Video demonstration: https://www.youtube.com/watch?v=hu0x4bNrNXo**
