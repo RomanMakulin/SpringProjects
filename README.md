@@ -4,8 +4,9 @@ With each lesson, my knowledge and technology stack is evolving.
 
 Here are the following projects for demonstration:
 - Admin Panel v 1.3;
-- ...;
-
+- Scrum board;
+- Notes Rest;
+- Rick and Morty API;
 ---
 
 Привет! Это мои приложения разработанные в рамках изучения технологий Spring.
@@ -13,4 +14,6 @@ Here are the following projects for demonstration:
 
 Здесь представлены следующие проекты для демонстрации:
 - Admin Panel v 1.3;
-- ...;
+- Scrum board;
+- Notes Rest;
+- Rick and Morty API;
