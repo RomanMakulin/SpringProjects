@@ -7,6 +7,8 @@
 
 Функции работы с данными: фильтрация по статусу жизни, поиск по имени героя.
 
+Видео демонстрация работы: https://www.youtube.com/watch?v=jIqD4gj3N8s
+
 ---
 
 # Rick and Morty API connector
@@ -17,3 +19,5 @@ Technology stack: Lombok, Spring Web, Thymeleaf
 The application contains rest retrieves all data, and using (web) a templating engine exposes the content to **localhost8080**
 
 Data manipulation functions: filtering by life status, search by hero name.
+
+Video demonstration: https://www.youtube.com/watch?v=jIqD4gj3N8s
