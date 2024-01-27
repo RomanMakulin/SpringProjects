@@ -12,12 +12,26 @@ import java.util.List;
 @Data
 @RequiredArgsConstructor
 public class NoteService {
+    /**
+     * Интерфейс взаимодействия с Базой Данных
+     */
     private final NoteRepository noteRepository;
 
+    /**
+     * Получение всех заметок через БД
+     *
+     * @return список заметок
+     */
     public List<Note> getAllNotes() {
         return noteRepository.findAll();
     }
 
+    /**
+     * Получение заметки по идентификатору в БД
+     *
+     * @param id уникальный идентификатор
+     * @return заметка
+     */
     public Note getById(long id) {
         Note note;
         try {
@@ -29,10 +43,22 @@ public class NoteService {
         }
     }
 
+    /**
+     * Создание заметки в БД
+     *
+     * @param note заметка из запроса
+     * @return новая заметка
+     */
     public Note create(Note note) {
         return noteRepository.save(note);
     }
 
+    /**
+     * Обнорвление заметки в БД
+     *
+     * @param note заметка из запроса
+     * @return обновленная заметка
+     */
     public Note update(Note note) {
         Note updNote = getById(note.getId());
         updNote.setTitle(note.getTitle());
@@ -40,6 +66,11 @@ public class NoteService {
         return noteRepository.save(updNote);
     }
 
+    /**
+     * Удаление заметки из БД
+     *
+     * @param id уникальный идентификатор заметки
+     */
     public void delete(long id) {
         noteRepository.deleteById(id);
     }
