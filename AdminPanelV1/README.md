@@ -21,6 +21,8 @@ Data to log in to the admin panel:
 
 The application was made as part of the training as a homework assignment. 
 
+Video demonstration: https://www.youtube.com/watch?v=mq4shToaQZg 
+
 ---
 
 Привет! Представляю вам свое первое приложение управления пользователями на основе технологий Spring - Админ панель.
@@ -43,3 +45,5 @@ The application was made as part of the training as a homework assignment.
 2) login: admin@mail.ru  //   pass: 12s
 
 Приложение выполнено в рамках обучения в качестве домашнего задания. 
+
+Видео демонстрация: https://www.youtube.com/watch?v=mq4shToaQZg

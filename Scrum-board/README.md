@@ -30,6 +30,8 @@
 - localhost:8080/update-user - метод post обновит пользователя
 - localhost:8080/delete-user - метод post удалить пользователя;
 
+Видео демонстрация: https://www.youtube.com/watch?v=hu0x4bNrNXo
+
 ---
 
 # Scrum Board
@@ -63,3 +65,5 @@ Users:
 - localhost:8080/create-user - the post method will create a new user;
 - localhost:8080/update-user - the post method will update the user.
 - localhost:8080/delete-user - the post method will delete the user;
+
+Video demonstration: https://www.youtube.com/watch?v=hu0x4bNrNXo
