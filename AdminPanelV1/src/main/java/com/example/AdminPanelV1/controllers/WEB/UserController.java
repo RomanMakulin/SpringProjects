@@ -41,11 +41,17 @@ public class UserController {
                 String avg = taskService.calculateAverageAge(userService.getAllUsers());
                 model.addAttribute("users", users);
                 model.addAttribute("average", avg);
+                model.addAttribute("loginID", id);
                 return "user-list";
             } else return "404";
         } catch (Exception e){
             return "404";
         }
+    }
+
+    @GetMapping("/users-db")
+    public String usersDb(){
+        return "redirect:/users-db/" + userService.getAdminId();
     }
 
     /**
@@ -69,7 +75,7 @@ public class UserController {
     @PostMapping("/user-create")
     public String createUserDB(User user) {
         userService.createUser(user);
-        return "redirect:/users-db";
+        return "redirect:/users-db/" + userService.getAdminId();
     }
 
     /**
@@ -90,9 +96,9 @@ public class UserController {
      * @return страница всех пользователей
      */
     @PostMapping("/user-update")
-    public String updateUser(User user) {
+    public String updateUser(User user, Model model) {
         userService.updateUser(user);
-        return "redirect:/users-db";
+        return "redirect:/users-db/" + userService.getAdminId();
     }
 
     /**
@@ -104,7 +110,7 @@ public class UserController {
     @GetMapping("/user-delete/{id}")
     public String delUser(@PathVariable("id") int id) {
         userService.delUser(id);
-        return "redirect:/users-db";
+        return "redirect:/users-db/" + userService.getAdminId();
     }
 
 }

@@ -45,8 +45,8 @@
                 <td th:if="${not user.isLogin}">
                     <span style="color: red">Offline</span>
                 </td>
-                <td class="btn-custom"><a th:href="@{user-update/{id}(id=${user.id})}" type="button" class="btn btn-outline-primary">Edit</a></td>
-                <td class="btn-custom"><a th:href="@{user-delete/{id}(id=${user.id})}" type="button" class="btn btn-outline-danger">Delete</a></td>
+                <td class="btn-custom"><a th:href="@{/user-update/{id}(id=${user.id})}" type="button" class="btn btn-outline-primary">Edit</a></td>
+                <td class="btn-custom"><a th:href="@{/user-delete/{id}(id=${user.id})}" type="button" class="btn btn-outline-danger">Delete</a></td>
             </tr>
             </tbody>
         </table>
