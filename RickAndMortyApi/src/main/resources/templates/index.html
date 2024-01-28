@@ -45,7 +45,11 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" th:src="${result.image}" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text font-weight-bold h5" th:text="${result.name}"></p>
+<!--                    -->
+                    <a th:href="@{/character/{id}(id=${result.id})}">
+                        <p class="card-text font-weight-bold h5" th:text="${result.name}"></p>
+                    </a>
+
                     <!--                <p class="card-text alive" th:text="${result.status}"></p>-->
                     <p class="card-text die" th:if="${result.status == 'Dead'}" th:text="${result.status}"></p>
                     <p class="card-text alive" th:if="${result.status == 'Alive'}" th:text="${result.status}"></p>

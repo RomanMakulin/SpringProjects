@@ -3,6 +3,7 @@ package com.example.RickAndMortyApi.models;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class Results {
@@ -15,4 +16,5 @@ public class Results {
     private String image;
     private String url;
     private LocalDateTime created;
+    private Location location;
 }

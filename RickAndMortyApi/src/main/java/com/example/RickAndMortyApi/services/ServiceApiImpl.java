@@ -69,4 +69,14 @@ public class ServiceApiImpl implements ServiceApi {
     public List<Results> getByName(String name) {
         return getAllCharacters().getResults().stream().filter(item -> item.getName().equals(name)).collect(Collectors.toList());
     }
+
+    /**
+     * Получение персонажа по id
+     * @param id уникальный идентификатор персонажа
+     * @return персонаж
+     */
+    @Override
+    public Results getByID(Integer id) {
+        return getAllCharacters().getResults().stream().filter(item -> item.getId() == id).findFirst().get();
+    }
 }

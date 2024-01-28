@@ -80,4 +80,16 @@ public class WebControllerApi {
         model.addAttribute("results", serviceApi.getByName(name));
         return "index";
     }
+
+    /**
+     * Получаем персонажа по нажатию на его карточку
+     * @param id уникальный идентификатор пользователя
+     * @param model связь с шаблонизатором
+     * @return страница персонажа
+     */
+    @GetMapping("/character/{id}")
+    public String getCharacterPage(@PathVariable("id") Integer id, Model model){
+        model.addAttribute("characterById", serviceApi.getByID(id));
+        return "character";
+    }
 }

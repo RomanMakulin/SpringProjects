@@ -60,10 +60,21 @@ display: flex;
 }
 
 .cards-box{
-display: flex;
-gap: 30px;
-flex-wrap: wrap;
-padding-bottom: 100px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+}
+
+.cards-box-char{
+    background-repeat: no-repeat;
+    background-position: right;
+    background-image: beige;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+    background-image: url(/img/background.png);
 }
 
 .card {
@@ -71,6 +82,22 @@ padding-bottom: 100px;
     background: rgb(60, 62, 68);
     transition: 0.3s;
     box-shadow: 0 0 10px 0px #00000063;
+}
+
+.card-page {
+    width: 600px;
+    border-radius: 20px;
+    background: rgb(60, 62, 68);
+    transition: 0.3s;
+    box-shadow: 0 0 10px 0px #00000063;
+    flex-direction: row;
+    gap: 20px;
+        display: flex;
+
+}
+
+.img-cust-page{
+width: 300px;
 }
 
 .card:hover {

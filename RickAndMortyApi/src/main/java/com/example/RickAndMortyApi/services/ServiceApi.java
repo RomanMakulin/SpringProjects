@@ -10,4 +10,6 @@ public interface ServiceApi {
     public List<Results> getByStatus(String status);
 
     public List<Results> getByName(String name);
+
+    public Results getByID(Integer id);
 }
