@@ -1,5 +1,5 @@
-# Naruto API connector
-Привет! Представляю вам приложение **"Naruto API connector"**, подключающееся ко внешнему api naruto db.
+# Naruto API connector (REST and WEB)
+Привет! Представляю вам приложение **"Naruto API connector"**, подключающееся ко внешнему api naruto db. 
 
 Стек технологий: Lombok, Spring Web, Thymeleaf
 
