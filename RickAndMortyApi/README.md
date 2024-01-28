@@ -7,7 +7,7 @@
 
 Функции работы с данными: фильтрация по статусу жизни, поиск по имени героя.
 
-Видео демонстрация работы: https://www.youtube.com/watch?v=jIqD4gj3N8s
+> **Видео демонстрация работы: https://www.youtube.com/watch?v=jIqD4gj3N8s**
 
 ---
 
@@ -20,4 +20,4 @@ The application contains rest retrieves all data, and using (web) a templating e
 
 Data manipulation functions: filtering by life status, search by hero name.
 
-Video demonstration: https://www.youtube.com/watch?v=jIqD4gj3N8s
+> **Video demonstration: https://www.youtube.com/watch?v=jIqD4gj3N8s**

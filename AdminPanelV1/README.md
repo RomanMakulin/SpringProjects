@@ -21,7 +21,7 @@ Data to log in to the admin panel:
 
 The application was made as part of the training as a homework assignment. 
 
-Video demonstration: https://www.youtube.com/watch?v=mq4shToaQZg 
+> **Video demonstration: https://www.youtube.com/watch?v=mq4shToaQZg**
 
 ---
 
@@ -46,4 +46,4 @@ Video demonstration: https://www.youtube.com/watch?v=mq4shToaQZg
 
 Приложение выполнено в рамках обучения в качестве домашнего задания. 
 
-Видео демонстрация: https://www.youtube.com/watch?v=mq4shToaQZg
+> **Видео демонстрация: https://www.youtube.com/watch?v=mq4shToaQZg**
