@@ -6,7 +6,8 @@ Here are the following projects for demonstration:
 - Admin Panel v 1.3; demo: https://www.youtube.com/watch?v=mq4shToaQZg&t=21s
 - Scrum board; demo: https://www.youtube.com/watch?v=hu0x4bNrNXo
 - Notes Rest;
-- Rick and Morty API; demo: https://www.youtube.com/watch?v=jIqD4gj3N8s
+- Naruto connection API;
+- Rick and Morty connection API; demo: https://www.youtube.com/watch?v=jIqD4gj3N8s
 ---
 
 Привет! Это мои приложения разработанные в рамках изучения технологий Spring.
@@ -16,4 +17,5 @@ Here are the following projects for demonstration:
 - Admin Panel v 1.3; demo: https://www.youtube.com/watch?v=mq4shToaQZg&t=21s
 - Scrum board; demo: https://www.youtube.com/watch?v=hu0x4bNrNXo
 - Notes Rest;
-- Rick and Morty API; demo: https://www.youtube.com/watch?v=jIqD4gj3N8s
+- Naruto connection API;
+- Rick and Morty connection API; demo: https://www.youtube.com/watch?v=jIqD4gj3N8s
