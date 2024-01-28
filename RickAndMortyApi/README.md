@@ -1,4 +1,4 @@
-# Rick and Morty API connector
+# Rick and Morty API connector (REST and WEB)
 Привет! Представляю вам приложение **"Rick and Morty API connector"**, подключающееся ко внешнему api rick and morty.
 
 Стек технологий: Lombok, Spring Web, Thymeleaf
