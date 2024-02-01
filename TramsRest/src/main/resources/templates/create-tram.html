@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create tram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="display-4">Tram creation</h1>
+
+    <form action="#" th:action="@{/web/tram-create}" th:object="${tram}" method="post" class="form-custom">
+        <div class="mb-3">
+            <label for="code" class="form-label">Code</label>
+            <input type="text" th:field="*{code}" id="code" placeholder="code" class="form-control">
+            <br/>
+        </div>
+        <div class="mb-3">
+            <label for="start" class="form-label">Start point</label>
+            <input type="text" th:field="${tram.road.startPoint}" id="start" placeholder="Start point" class="form-control">
+            <br/>
+        </div>
+        <div class="mb-3">
+            <label for="end" class="form-label">End point</label>
+            <input type="text" th:field="${tram.road.endPoint}" id="end" placeholder="End point" class="form-control">
+            <br/>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create tram">
+    </form>
+
+</div>
+</body>
+</html>

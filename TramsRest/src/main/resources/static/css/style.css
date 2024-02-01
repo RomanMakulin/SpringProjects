@@ -1,0 +1,23 @@
+.container-cust{
+display: flex;
+flex-wrap: wrap;
+gap: 30px;
+margin-top: 50px;
+}
+
+.create-btn-cust{
+text-decoration: none;
+box-shadow: 0 0 10px #00000029;
+    border-radius: 10px;
+    padding: 6px 20px;
+    background-color: #cbcbcb29;
+}
+
+.main-title{
+margin-top: 100px;
+margin-bottom: 20px;
+}
+
+p{
+margin-left: 20px;
+}
