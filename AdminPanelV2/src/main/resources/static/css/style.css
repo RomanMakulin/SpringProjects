@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.head {
+  background-color: rgba(190, 190, 190, 0.3);
+  padding: 50px;
+  text-align: center;
+}
+.head__btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.head__btns_button {
+  background-color: aliceblue;
+  padding: 3px 20px;
+  border-radius: 7px;
+}
+.head__btns_button:hover {
+  background-color: rgb(227, 241, 253);
+}/*# sourceMappingURL=style.css.map */

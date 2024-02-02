@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.head {
+    background-color: rgb(190 190 190 / 30%);
+    padding: 50px;
+    text-align: center;
+    &__btns {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        &_button {
+            background-color: aliceblue;
+            padding: 3px 20px;
+            border-radius: 7px;
+            &:hover {
+                background-color: rgb(227, 241, 253);
+            }
+        }
+    }
+}
