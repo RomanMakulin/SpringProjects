@@ -1,37 +1,36 @@
-package com.example.AdminPanel.model;
+package com.example.AdminPanelV2.config;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.AdminPanelV2.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.List;
 
-@Data
-@Entity
-@Table(name = "users")
-@NoArgsConstructor
-public class User implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String username;
-    private String password;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+public class CustomUserDetails implements UserDetails {
+    private User user;
 
-    public User(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
+    public CustomUserDetails(User user) {
+        this.user = user;
+    }
+
+    public User getUser(){
+        return this.user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(user.getRole().name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return user.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return user.getUsername();
     }
 
     @Override

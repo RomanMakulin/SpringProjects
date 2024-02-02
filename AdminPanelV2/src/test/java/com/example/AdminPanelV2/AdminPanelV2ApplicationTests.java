@@ -1,4 +1,4 @@
-package com.example.RestJwt;
+package com.example.AdminPanelV2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

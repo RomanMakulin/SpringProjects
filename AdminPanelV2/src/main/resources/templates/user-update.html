@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/user-update}" th:object="${user}" method="post" class="form-custom">
+    <h1 class="display-4">Update user</h1>
+    <div class="mb-3">
+        <label for="id" class="form-label" >ID</label>
+        <input readonly type="number" th:field="*{id}" id="id" placeholder="ID" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="username" class="form-label">Name</label>
+        <input type="text" th:field="*{username}" id="username" placeholder="Name" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="text" th:field="*{age}" id="age" placeholder="Age" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" th:field="*{email}" id="email" placeholder="Email" class="form-control">
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" th:field="*{password}" id="password" placeholder="Password" class="form-control">
+        <br/>
+    </div>
+<!--    <div class="mb-3">-->
+<!--        <label for="password" class="form-label">Password</label>-->
+<!--        <input type="password" th:field="*{password}" id="password" placeholder="Password" class="form-control">-->
+<!--        <br/>-->
+<!--    </div>-->
+    <input type="submit" value="Update User" class="btn btn-primary">
+</form>
+
+</body>
+</html>
