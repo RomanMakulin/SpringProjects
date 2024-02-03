@@ -25,3 +25,41 @@ a {
         }
     }
 }
+
+.lc {
+    background-color: #f9d7fa42;
+    margin-top: 50px;
+    padding: 30px 60px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    &__flex {
+        margin-top: 50px;
+        display: flex;
+        gap: 30px;
+    }
+    &__info {
+        margin-left: 20px;
+    }
+    &__image {
+        width: 300px;
+    }
+}
+
+.h2_custom {
+    margin-bottom: 30px;
+}
+
+.logout {
+    background-color: black;
+    &_btn {
+        text-align: right;
+        margin-right: 50px;
+        padding: 10px 0px 10px 0;
+        &_link {
+            color: white;
+            &:hover {
+                color: rgb(96, 96, 255)
+            }
+        }
+    }
+}

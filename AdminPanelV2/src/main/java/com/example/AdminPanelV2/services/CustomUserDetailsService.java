@@ -10,14 +10,25 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
+    /**
+     * Управление Базой Данных
+     */
     private final UserRepository userRepository;
 
+    /**
+     * Загрузка пользователя, обновление
+     *
+     * @param username имя передаваемого пользователя
+     * @return обновленный пользователь авторизации
+     * @throws UsernameNotFoundException ошибка - пользоватеоль не найден
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userRepository.getByUsername(username);
@@ -59,6 +70,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         user.setPassword(new BCryptPasswordEncoder().encode(detailsUser.getPassword()));
         user.setEmail(detailsUser.getEmail());
         user.setRole(detailsUser.getRole());
+        user.setImage(detailsUser.getImage());
         userRepository.save(user);
     }
 
@@ -75,6 +87,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         user.setRole(Role.ROLE_USER);
         user.setAge(detailsUser.getAge());
         user.setEmail(detailsUser.getEmail());
+        user.setImage(detailsUser.getImage());
         return userRepository.save(user);
     }
 
@@ -87,13 +100,14 @@ public class CustomUserDetailsService implements UserDetailsService {
      * @param password пароль
      * @return новый администратор
      */
-    public User creteAdmin(String name, String email, int age, String password) {
+    public User creteAdmin(String name, String email, int age, String password, String image) {
         User user = new User();
         user.setUsername(name);
         user.setAge(age);
         user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setEmail(email);
         user.setRole(Role.ROLE_ADMIN);
+        user.setImage(image);
         return userRepository.save(user);
     }
 

@@ -1,21 +1,21 @@
 package com.example.AdminPanelV2.config;
 
 import com.example.AdminPanelV2.models.User;
+import lombok.Data;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.List;
 
+@Data
 public class CustomUserDetails implements UserDetails {
     private User user;
 
     public CustomUserDetails(User user) {
         this.user = user;
-    }
-
-    public User getUser(){
-        return this.user;
     }
 
     @Override

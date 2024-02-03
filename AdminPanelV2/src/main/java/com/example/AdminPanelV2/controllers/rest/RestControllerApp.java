@@ -1,4 +1,4 @@
-package com.example.AdminPanelV2.controllers;
+package com.example.AdminPanelV2.controllers.rest;
 
 import com.example.AdminPanelV2.models.User;
 import com.example.AdminPanelV2.services.CustomUserDetailsService;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class RestControllerApp {
     /**
-     * Кастомный
+     * Сервис управления пользователями
      */
     private final CustomUserDetailsService customUserDetailsService;
 
@@ -39,17 +39,29 @@ public class RestControllerApp {
                         user.getUsername(),
                         user.getEmail(),
                         user.getAge(),
-                        "123"),
+                        "123",
+                        user.getImage()),
                 HttpStatus.CREATED);
     }
 
+    /**
+     * Получение пользователя по уникальному идентификатору
+     *
+     * @param id идентификатор пользователя
+     * @return найденный пользователь
+     */
     @GetMapping("/api/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id){
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         return new ResponseEntity<User>(customUserDetailsService.getById(id).orElseThrow(), HttpStatus.OK);
     }
 
+    /**
+     * Запрос на удаление пользователя
+     *
+     * @param id уникальный идентификатор пользователя
+     */
     @DeleteMapping("/api/{id}")
-    public void delUserById(@PathVariable("id") Long id){
+    public void delUserById(@PathVariable("id") Long id) {
         customUserDetailsService.deleteUser(id);
     }
 }
