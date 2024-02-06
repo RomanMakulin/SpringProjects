@@ -5,7 +5,7 @@
 Приложение выполнено на базе **серверной** части (RESTfull) и **клиентской** (с использованием thymeleaf).
 
 
-### Сервер - UsersCardTransfer (REST). port: 8080:
+### 1) Сервер - UsersCardTransfer (REST). port: 8080:
 
 > Стек технологий: Spring Web, Spring Data JPA, h2 database, Thymeleaf,
 > Hibernate, Lombok
@@ -39,7 +39,7 @@ h2 database).
 В тело запроса передается "idSender", "idReciver", "moneyRecive" "pin".
 ```
 
-### UserClient - ClientAPI (WEB). port: 8000:
+### 2) UserClient - ClientAPI (WEB). port: 8000:
 
 > Стек технологий: Spring Web, Thymeleaf, Lombok, HTML + CSS
 
