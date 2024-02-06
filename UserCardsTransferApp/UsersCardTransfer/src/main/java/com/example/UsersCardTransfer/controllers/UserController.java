@@ -30,8 +30,8 @@ public class UserController {
      */
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
-        userService.getUserRepository().save(new User("Roman"));
-        userService.getUserRepository().save(new User("Olga"));
+//        userService.getUserRepository().save(new User("Roman"));
+//        userService.getUserRepository().save(new User("Olga"));
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 

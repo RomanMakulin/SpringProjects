@@ -26,7 +26,7 @@ public class UsersTransferService {
     /**
      * Ресурс Api
      */
-    private static final String USERS_API = "http://127.0.0.1:8080/api/1";
+    private static final String USERS_API = "http://127.0.0.1:8080/api";
 
     /**
      * Получение всех characters по внешнему Api
@@ -34,10 +34,10 @@ public class UsersTransferService {
      * @return Characters
      */
 
-    public User getAllUsers() {
+    public List<User> getAllUsers() {
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<User> response = template.exchange(USERS_API, HttpMethod.GET, entity, User.class);
+        ResponseEntity<List> response = template.exchange(USERS_API, HttpMethod.GET, entity, List.class);
         return response.getBody();
     }
 
