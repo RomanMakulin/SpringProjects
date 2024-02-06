@@ -1,7 +1,6 @@
 package com.example.ClientAPI.services;
 
 import com.example.ClientAPI.models.User;
-import com.example.ClientAPI.models.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class UsersTransferService {
     private static final String USERS_API = "http://127.0.0.1:8080/api";
 
     /**
-     * Получение всех characters по внешнему Api
+     * Получение всех users по внешнему Api
      *
      * @return Characters
      */

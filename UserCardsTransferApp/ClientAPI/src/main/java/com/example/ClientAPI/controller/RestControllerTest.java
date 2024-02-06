@@ -1,7 +1,6 @@
 package com.example.ClientAPI.controller;
 
 import com.example.ClientAPI.models.User;
-import com.example.ClientAPI.models.Users;
 import com.example.ClientAPI.services.UsersTransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Контроллер создан с целью проверки работоспособности подключения к своему внешнему серверу с данными
+ */
 @RestController
 public class RestControllerTest {
+    /**
+     * Сервис управления внешними данными
+     */
     @Autowired
     private UsersTransferService usersTransferService;
 
@@ -22,7 +27,7 @@ public class RestControllerTest {
      * @return статус выполнения запроса
      */
     @GetMapping("/api")
-    public ResponseEntity<List<User>> getAllCharacters() {
+    public ResponseEntity<List<User>> getAllUsers() {
         return new ResponseEntity<>(usersTransferService.getAllUsers(), HttpStatus.OK);
     }
 
