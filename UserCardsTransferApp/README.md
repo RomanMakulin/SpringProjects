@@ -29,7 +29,7 @@ h2 database).
 - localhost:8080/api/{id} (GET запрос) - получение конкретного пользователя по ID;
 ```
 
-**cars manage:**
+**cards manage:**
 ```
 - localhost:8080/api/recieve (POST запрос) - пополнение карточки пользователю. В тело запроса передается
 "idUser", "money", "pin";
