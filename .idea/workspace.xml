@@ -4,7 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="025369d4-9fd1-4133-9eac-ba7363a487ac" name="Changes" comment="" />
+    <list default="true" id="025369d4-9fd1-4133-9eac-ba7363a487ac" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/.idea/UserCardsTransferApp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/java/com/example/ClientAPI/ClientApiApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/java/com/example/ClientAPI/controller/RestControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/java/com/example/ClientAPI/models/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/java/com/example/ClientAPI/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/java/com/example/ClientAPI/services/Beans.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/java/com/example/ClientAPI/services/UsersTransferService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/ClientAPI/src/test/java/com/example/ClientAPI/ClientApiApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/UsersCardTransferApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/aspects/LoginAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/aspects/MyLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/controllers/CardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/dto/card/ActionMoneyDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/dto/card/CardUpdateDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/dto/card/TransferDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/dto/user/UserCreateDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/dto/user/UserUpdateDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/models/Card.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/models/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/services/CardServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/services/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/services/iCardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/java/com/example/UsersCardTransfer/services/iUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserCardsTransferApp/UsersCardTransfer/src/test/java/com/example/UsersCardTransfer/UsersCardTransferApplicationTests.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +78,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/it/SpringProjects/UserCardsTransferApp/ClientAPI"
+    "last_opened_file_path": "C:/it/SpringProjects/CardTransferApp"
   }
 }]]></component>
   <component name="RecentsManager">
