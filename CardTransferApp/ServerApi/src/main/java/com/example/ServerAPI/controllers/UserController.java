@@ -70,8 +70,17 @@ public class UserController {
         return new ResponseEntity<>(userService.updateUser(userUpdateDetails, id), HttpStatus.OK);
     }
 
+    @PostMapping("/update/{id}")
+    public String updateUserById(@PathVariable("id") Long id, User userDetails) {
+        User needUser = userService.getById(id).orElseThrow();
+        needUser.setUsername(userDetails.getUsername());
+        userService.updateUser(needUser);
+        return "redirect:http://localhost:8765/main/user";
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<User> getById(@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.getById(id).orElseThrow(), HttpStatus.OK);
     }
+
 }

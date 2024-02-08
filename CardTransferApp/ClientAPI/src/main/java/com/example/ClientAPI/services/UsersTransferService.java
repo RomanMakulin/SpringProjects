@@ -6,6 +6,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,11 +34,25 @@ public class UsersTransferService {
      * @return Characters
      */
 
+//    public List<User> getAllUsers() {
+//        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+//        HttpEntity<String> entity = new HttpEntity<>(headers);
+//        ResponseEntity<List> response = template.exchange(USERS_API, HttpMethod.GET, entity, List.class);
+//        return response.getBody();
+//    }
     public List<User> getAllUsers() {
+
+        List<User> users = new ArrayList<>();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<List> response = template.exchange(USERS_API, HttpMethod.GET, entity, List.class);
-        return response.getBody();
+        ResponseEntity<ArrayList> response = template.exchange(USERS_API, HttpMethod.GET, entity, ArrayList.class);
+
+        if (response.getStatusCodeValue() == 200) {
+            List<User> userList = response.getBody();
+            users.addAll(userList);
+        }
+
+        return users;
     }
 
 }

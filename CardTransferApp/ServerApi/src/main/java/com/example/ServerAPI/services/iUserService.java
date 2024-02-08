@@ -13,4 +13,5 @@ public interface iUserService {
     User updateUser(UserUpdateDetails userUpdateDetails, Long id);
     List<User> getAllUsers();
     Optional<User> getById(Long id);
+    User updateUser(User user);
 }

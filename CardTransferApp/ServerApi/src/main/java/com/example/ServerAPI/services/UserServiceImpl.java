@@ -45,7 +45,7 @@ public class UserServiceImpl implements iUserService {
     @Override
     public User createNew(UserCreateDetails userCreateDetails) {
         User user = new User();
-        user.setName(userCreateDetails.getName());
+        user.setUsername(userCreateDetails.getName());
         user.setCard(new Card());
         user.getCard().setPin(userCreateDetails.getPin());
         userRepository.save(user);
@@ -66,7 +66,7 @@ public class UserServiceImpl implements iUserService {
      * Логика обновления нового пользователя
      *
      * @param userUpdateDetails аргументы для обновления пользователя из  тела запроса
-     * @param id уникальный идентификатор
+     * @param id                уникальный идентификатор
      * @return обновленный пользователь
      */
     @Override
@@ -74,10 +74,20 @@ public class UserServiceImpl implements iUserService {
         Optional<User> needUser = userRepository.findById(id);
         User updUser = needUser.orElseThrow();
 
-        updUser.setName(userUpdateDetails.getName());
+        updUser.setUsername(userUpdateDetails.getName());
         updUser.setCashMoney(userUpdateDetails.getCashMoney());
         updUser.getCard().setPin(userUpdateDetails.getPin());
         return userRepository.save(updUser);
     }
 
+    /**
+     * Вторая реализация метода обновления пользователя
+     *
+     * @param user сущность с набором всех полей пользователя
+     * @return обновленнный пользователь
+     */
+    @Override
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
 }
