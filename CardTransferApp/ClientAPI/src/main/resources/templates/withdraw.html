@@ -7,18 +7,18 @@
 <body>
 
 <div class="container-custom">
-    <form action="#" th:action="@{'/server/update/'}" th:object="${user ?}" method="post" class="form-custom container">
+    <form action="#" th:action="@{'/server/withdraw/'}" th:object="${ActionMoneyDetails}" method="post" class="form-custom container">
         <h1 class="display-4">Снять деньги с банковской карты</h1>
         
         <div class="mb-3">
-            <label for="username" class="form-label">Введите сумму</label>
-            <input type="text" th:field="*{username}" id="username" placeholder="Name" >
+            <label for="money" class="form-label">Введите сумму</label>
+            <input type="number" th:field="*{money}" id="money" placeholder="Money" >
             <br/>
         </div>
         
         <div class="mb-3">
-            <label for="username" class="form-label">Ваш пин-код</label>
-            <input type="text" th:field="*{username}" id="username" placeholder="Name" >
+            <label for="pin" class="form-label">Ваш пин-код</label>
+            <input type="password" th:field="*{pin}" id="pin" placeholder="PIN" >
             <br/>
         </div>
         
