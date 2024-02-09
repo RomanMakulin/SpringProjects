@@ -10,7 +10,7 @@ spring:
         - id: ClientAPI
           uri: http://localhost:8081/
           predicates:
-            - Path=/main/**
+            - Path=/main/**, /css/**
         - id: UsersCardTransfer
           uri: http://localhost:8082/
           predicates:

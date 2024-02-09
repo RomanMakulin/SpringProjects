@@ -11,6 +11,7 @@ public interface iUserService {
     User createNew(UserCreateDetails userCreateDetails);
     void deleteUser(Long id);
     User updateUser(UserUpdateDetails userUpdateDetails, Long id);
+    User updateNameUser(User userDetails, Long id);
     List<User> getAllUsers();
     Optional<User> getById(Long id);
     User updateUser(User user);

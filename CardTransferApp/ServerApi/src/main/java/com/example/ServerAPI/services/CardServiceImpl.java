@@ -3,6 +3,7 @@ package com.example.ServerAPI.services;
 //import com.example.UsersCardTransfer.aspects.MyLog;
 import com.example.ServerAPI.aspects.MyLog;
 import com.example.ServerAPI.dto.card.ActionMoneyDetails;
+import com.example.ServerAPI.dto.card.CardUpdateDetails;
 import com.example.ServerAPI.dto.card.TransferDetails;
 import com.example.ServerAPI.models.User;
 import com.example.ServerAPI.repository.UserRepository;
@@ -33,8 +34,8 @@ public class CardServiceImpl implements iCardService {
     @Override
     @Transactional
     @MyLog
-    public String recieveMoney(ActionMoneyDetails actionMoneyDetails) {
-        User user = userRepository.findById(actionMoneyDetails.getIdUser()).orElseThrow(() ->
+    public void receiveMoney(ActionMoneyDetails actionMoneyDetails, Long id) {
+        User user = userRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException(actionMoneyDetails.getIdUser() + " not found id"));
 
         if (actionMoneyDetails.getPin() == user.getCard().getPin()
@@ -43,9 +44,7 @@ public class CardServiceImpl implements iCardService {
             Long resultMoneyOnCard = user.getCard().getCardMoney() + actionMoneyDetails.getMoney();
             user.getCard().setCardMoney(resultMoneyOnCard);
             userRepository.save(user);
-            return "Успешно! Текущий баланс карты: " + resultMoneyOnCard;
         }
-        return "something wrong!";
     }
 
     /**
@@ -57,8 +56,8 @@ public class CardServiceImpl implements iCardService {
     @Override
     @Transactional
     @MyLog
-    public String withdrawMoney(ActionMoneyDetails actionMoneyDetails) {
-        User user = userRepository.findById(actionMoneyDetails.getIdUser()).orElseThrow(() ->
+    public void withdrawMoney(ActionMoneyDetails actionMoneyDetails, Long id) {
+        User user = userRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException(actionMoneyDetails.getIdUser() + " not found id"));
 
         if (actionMoneyDetails.getPin() == user.getCard().getPin()
@@ -70,9 +69,7 @@ public class CardServiceImpl implements iCardService {
             user.getCard().setCardMoney(cardWithdraw);
             user.setCashMoney(newCash);
             userRepository.save(user);
-            return "Успешно! Текущий баланс карты: " + cardWithdraw;
         }
-        return "something wrong!";
     }
 
     /**
@@ -84,12 +81,12 @@ public class CardServiceImpl implements iCardService {
     @Override
     @Transactional
     @MyLog
-    public String transferMoney(TransferDetails transferDetails) {
+    public void transferMoney(TransferDetails transferDetails, Long id) {
 
         User reciever = userRepository.findById(transferDetails.getIdReciver()).orElseThrow(() ->
                 new NoSuchElementException(transferDetails.getIdReciver() + " not found id"));
 
-        User sender = userRepository.findById(transferDetails.getIdSender()).orElseThrow(() ->
+        User sender = userRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException(transferDetails.getIdSender() + " not found id"));
 
         if (sender.getCard().getPin() == transferDetails.getPin()
@@ -99,9 +96,13 @@ public class CardServiceImpl implements iCardService {
 
             userRepository.save(reciever);
             userRepository.save(sender);
-            return "Успешно! Перевод в размере " + transferDetails.getMoneyRecive() + " рублей поступил.";
         }
+    }
 
-        return "something wrong!";
+    @Override
+    public void changePin(CardUpdateDetails cardUpdateDetails, Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        user.getCard().setPin(cardUpdateDetails.getPin());
+        userRepository.save(user);
     }
 }

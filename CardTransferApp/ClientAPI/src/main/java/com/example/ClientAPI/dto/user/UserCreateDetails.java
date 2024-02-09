@@ -1,4 +1,4 @@
-package com.example.ServerAPI.dto.user;
+package com.example.ClientAPI.dto.user;
 
 import lombok.Data;
 
@@ -6,5 +6,4 @@ import lombok.Data;
 public class UserCreateDetails {
     private String name;
     private int pin;
-    private String password;
 }

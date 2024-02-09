@@ -26,7 +26,7 @@ public class UsersTransferService {
     /**
      * Ресурс Api
      */
-    private static final String USERS_API = "http://127.0.0.1:8082/server";
+    private static final String USERS_API = "http://127.0.0.1:8765/server";
 
     /**
      * Получение всех users по внешнему Api

@@ -3,6 +3,7 @@ package com.example.ServerAPI.services;
 import com.example.ServerAPI.dto.user.UserCreateDetails;
 import com.example.ServerAPI.dto.user.UserUpdateDetails;
 import com.example.ServerAPI.models.Card;
+import com.example.ServerAPI.models.Role;
 import com.example.ServerAPI.models.User;
 import com.example.ServerAPI.repository.UserRepository;
 import lombok.Data;
@@ -48,6 +49,8 @@ public class UserServiceImpl implements iUserService {
         user.setUsername(userCreateDetails.getName());
         user.setCard(new Card());
         user.getCard().setPin(userCreateDetails.getPin());
+        user.setPassword(userCreateDetails.getPassword());
+        user.setRole(Role.ROLE_USER);
         userRepository.save(user);
         return user;
     }
@@ -78,6 +81,14 @@ public class UserServiceImpl implements iUserService {
         updUser.setCashMoney(userUpdateDetails.getCashMoney());
         updUser.getCard().setPin(userUpdateDetails.getPin());
         return userRepository.save(updUser);
+    }
+
+    @Override
+    public User updateNameUser(User userDetails, Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        user.setUsername(userDetails.getUsername());
+        userRepository.save(user);
+        return user;
     }
 
     /**

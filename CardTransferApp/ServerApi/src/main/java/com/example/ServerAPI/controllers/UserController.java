@@ -1,5 +1,6 @@
 package com.example.ServerAPI.controllers;
 
+
 import com.example.ServerAPI.dto.user.UserCreateDetails;
 import com.example.ServerAPI.dto.user.UserUpdateDetails;
 import com.example.ServerAPI.models.User;
@@ -8,12 +9,12 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
-@Controller
+@RestController
 @Data
 @RequiredArgsConstructor
 @RequestMapping("/server")
@@ -22,6 +23,15 @@ public class UserController {
      * Управление пользователями в БД
      */
     private final UserServiceImpl userService;
+
+
+//    @GetMapping("/loginUser")
+//    public RedirectView redirectAfterLogin(){
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//        if (userDetails.getUser().getRole().name().equals("ROLE_ADMIN")) return new RedirectView("http://localhost:8765/main/admin");
+//        return new RedirectView("http://localhost:8765/main/user");
+//    }
 
     /**
      * Получеие всех пользователей из БД
@@ -69,15 +79,11 @@ public class UserController {
     public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody UserUpdateDetails userUpdateDetails) {
         return new ResponseEntity<>(userService.updateUser(userUpdateDetails, id), HttpStatus.OK);
     }
-
-    // ! Проработать возможность объединения в один метод с использованием UserUpdateDetails
     
-    @PostMapping("/update/{id}") // изменить на updateName/{id}
-    public String updateUsernameById(@PathVariable("id") Long id, User userDetails) {  // Response<String> сделать
-        User needUser = userService.getById(id).orElseThrow();
-        needUser.setUsername(userDetails.getUsername());
-        userService.updateUser(needUser);
-        return "redirect:http://localhost:8765/main/user";
+    @PostMapping("/updateName/{id}")
+    public RedirectView updateUsernameById(@PathVariable("id") Long id, User userDetails) {
+        userService.updateNameUser(userDetails, id);
+        return new RedirectView("http://localhost:8765/main/user");
     }
 
     @GetMapping("{id}")

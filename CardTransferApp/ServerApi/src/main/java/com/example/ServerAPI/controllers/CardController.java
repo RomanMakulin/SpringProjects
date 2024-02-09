@@ -1,18 +1,15 @@
 package com.example.ServerAPI.controllers;
 
 import com.example.ServerAPI.dto.card.ActionMoneyDetails;
+import com.example.ServerAPI.dto.card.CardUpdateDetails;
 import com.example.ServerAPI.dto.card.TransferDetails;
 import com.example.ServerAPI.services.CardServiceImpl;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
+@RestController
 @Data
 @RequiredArgsConstructor
 @RequestMapping("/server")
@@ -28,9 +25,10 @@ public class CardController {
      * @param actionMoneyDetails аргументы из тела запроса
      * @return обновленные данные
      */
-    @PostMapping("/recieve")
-    public ResponseEntity<String> recieveMoney(@RequestBody ActionMoneyDetails actionMoneyDetails) {
-        return new ResponseEntity<>(cardService.recieveMoney(actionMoneyDetails), HttpStatus.OK);
+    @PostMapping("/receive/{id}")
+    public RedirectView receiveMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) {
+        cardService.receiveMoney(actionMoneyDetails, id);
+        return new RedirectView("http://localhost:8765/main/user");
     }
 
     /**
@@ -39,9 +37,10 @@ public class CardController {
      * @param actionMoneyDetails аргументы из тела запроса
      * @return обновленные данные
      */
-    @PostMapping("/withdraw")
-    public ResponseEntity<String> withdrawMoney(@RequestBody ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
-        return new ResponseEntity<>(cardService.withdrawMoney(actionMoneyDetails), HttpStatus.OK);
+    @PostMapping("/withdraw/{id}")
+    public RedirectView withdrawMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
+        cardService.withdrawMoney(actionMoneyDetails, id);
+        return new RedirectView("http://localhost:8765/main/user");
     }
 
     /**
@@ -50,8 +49,15 @@ public class CardController {
      * @param transferDetails аргументы из тела запроса
      * @return обновленные данные
      */
-    @PostMapping("/transfer")
-    public ResponseEntity<String> transferMoney(@RequestBody TransferDetails transferDetails) {
-        return new ResponseEntity<>(cardService.transferMoney(transferDetails), HttpStatus.OK);
+    @PostMapping("/transfer/{id}")
+    public RedirectView transferMoney(@PathVariable("id") Long id, TransferDetails transferDetails) {
+        cardService.transferMoney(transferDetails, id);
+        return new RedirectView("http://localhost:8765/main/user");
+    }
+
+    @PostMapping("/changePin/{id}")
+    public RedirectView changePin(@PathVariable("id") Long id, CardUpdateDetails cardUpdateDetails) {
+        cardService.changePin(cardUpdateDetails, id);
+        return new RedirectView("http://localhost:8765/main/user");
     }
 }

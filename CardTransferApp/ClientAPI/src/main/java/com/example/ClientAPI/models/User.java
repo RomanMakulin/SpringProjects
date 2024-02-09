@@ -9,6 +9,9 @@ public class User {
     private String username;
     private Long cashMoney;
     private Card card;
+    private String password;
+    private Role role;
+
 
     @ModelAttribute("username")
     public String getUsername() {

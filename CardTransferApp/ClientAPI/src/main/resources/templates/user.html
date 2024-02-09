@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/main/user/css/style.css}" href="../static/css/style.css">
     <title>User</title>
 </head>
 <body>
@@ -36,19 +36,19 @@
             <td></td>
         </tr>
         <tr>
-            <td><a href="/" class="withdraw">Снять деньги с карты</a></td>
+            <td><a th:href="@{/main/user/withdraw/{id}(id=${user.id})}" class="withdraw">Снять деньги с карты</a></td>
             <td></td>
         </tr>
         <tr>
-            <td ><a href="/" class="increase">Пополнить баланс карты</a></td>
+            <td ><a th:href="@{/main/user/receive/{id}(id=${user.id})}" class="increase">Пополнить баланс карты</a></td>
             <td></td>
         </tr>
         <tr>
-            <td ><a href="/" class="transfer">Сделать перевод с карты</a></td>
+            <td ><a th:href="@{/main/user/transfer/{id}(id=${user.id})}" class="transfer">Сделать перевод с карты</a></td>
             <td></td>
         </tr>
         <tr>
-            <td ><a href="/" class="change-pin">Изменить пин-код доступа к карте</a></td>
+            <td ><a th:href="@{/main/user/changePin/{id}(id=${user.id})}" class="change-pin">Изменить пин-код доступа к карте</a></td>
             <td></td>
         </tr>
     </table>
