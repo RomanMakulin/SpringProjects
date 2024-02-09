@@ -30,9 +30,26 @@ public class WebUserController extends SpringBootServletInitializer {
         return "user";
     }
 
-    @GetMapping("/update-name/{id}")
+    @GetMapping("/update-name/{id}") // delete id
     public String getUpdateForm(User user){
         return "update-name.html";
     }
+
+    // recieve 
+    // создать dto (скопировать с сервера)
+    @GetMapping("/recieve")
+    public String recieveMoney(User user){
+        return "";
+    }
+
+    // withdraw
+    @GetMapping("/withdraw")
+    public String withdrawMoney(User user){
+        return "";
+    }
+
+    // transfer
+
+    // changePin
 
 }
