@@ -38,7 +38,7 @@ public class WebUserController extends SpringBootServletInitializer {
     // recieve 
     // создать dto (скопировать с сервера)
     @GetMapping("/recieve")
-    public String recieveMoney(User user){
+    public String recieveMoney(User user){ // ActionMoneyDetails actionMoneyDetails 
         return "";
     }
 
