@@ -40,7 +40,7 @@ public class CardController {
      * @return обновленные данные
      */
     @PostMapping("/withdraw")
-    public ResponseEntity<String> withdrawMoney(@RequestBody ActionMoneyDetails actionMoneyDetails) {
+    public ResponseEntity<String> withdrawMoney(@RequestBody ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
         return new ResponseEntity<>(cardService.withdrawMoney(actionMoneyDetails), HttpStatus.OK);
     }
 
