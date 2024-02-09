@@ -70,6 +70,8 @@ public class UserController {
         return new ResponseEntity<>(userService.updateUser(userUpdateDetails, id), HttpStatus.OK);
     }
 
+    // ! Проработать возможность объединения в один метод с использованием UserUpdateDetails
+    
     @PostMapping("/update/{id}") // изменить на updateName/{id}
     public String updateUsernameById(@PathVariable("id") Long id, User userDetails) {  // Response<String> сделать
         User needUser = userService.getById(id).orElseThrow();
