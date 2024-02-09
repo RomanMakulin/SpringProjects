@@ -44,8 +44,8 @@ public class WebUserController extends SpringBootServletInitializer {
 
     // withdraw
     @GetMapping("/withdraw")
-    public String withdrawMoney(User user){
-        return "";
+    public String withdrawMoney(User user){ // ActionMoneyDetails actionMoneyDetails 
+        return "withdraw";
     }
 
     // transfer
