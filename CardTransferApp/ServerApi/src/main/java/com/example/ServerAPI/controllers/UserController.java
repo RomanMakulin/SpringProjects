@@ -70,7 +70,7 @@ public class UserController {
         return new ResponseEntity<>(userService.updateUser(userUpdateDetails, id), HttpStatus.OK);
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/update/{id}") // изменить на updateName/{id}
     public String updateUsernameById(@PathVariable("id") Long id, User userDetails) {  // Response<String> сделать
         User needUser = userService.getById(id).orElseThrow();
         needUser.setUsername(userDetails.getUsername());
