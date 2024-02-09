@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateUserById(@PathVariable("id") Long id, User userDetails) {
+    public String updateUserById(@PathVariable("id") Long id, User userDetails) {  // Response<String> сделать
         User needUser = userService.getById(id).orElseThrow();
         needUser.setUsername(userDetails.getUsername());
         userService.updateUser(needUser);
