@@ -2,56 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" th:href="@{/main/user/css/style.css}" href="../static/css/style.css">
     <title>User</title>
 </head>
 <body>
 
-<div class="container">
-    <h1 class="title">ATM Web System v.1.1.0</h1>
-    <h6 class="subtitle">Transfers operation with your bank account</h6>
+<div class="container-custom container-custom-user">
+    <h1 class="display-4 title">ATM Web System v.1.1.0</h1>
+    <h6 class="display-4 subtitle">Transfers operation with your bank account</h6>
 
 
     <table class="user-card">
         <tr>
-            <td class="user-name">Имя пользователя: </td>
-            <td th:text="${user.username}"></td>
-            <td><a th:href="@{/main/user/update-name/{id}(id=${user.id})}" class="user-update">редактировать</a></td>
+            <td class="user-name td-custom">Имя пользователя:</td>
+            <td class="td-custom" th:text="${user.username}"></td>
+            <td class="td-custom"><a th:href="@{/main/user/update-name/{id}(id=${user.id})}" class="user-update">редактировать</a></td>
         </tr>
         <tr>
-            <td class="user-cash">Наличные средства:</td>
-            <td th:text="${user.cashMoney}"></td>
+            <td class="user-cash td-custom">Наличные средства:</td>
+            <td class="td-custom" th:text="${user.cashMoney}"></td>
         </tr>
         <tr>
-            <td class="user-money">Баланс карты:</td>
-            <td th:text="${user.card.cardMoney}"></td>
-        </tr>
-<!--        -->
-        <tr>
-            <td class="user-operations">Операции с банковской картой:</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><a th:href="@{/main/user/withdraw/{id}(id=${user.id})}" class="withdraw">Снять деньги с карты</a></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td ><a th:href="@{/main/user/receive/{id}(id=${user.id})}" class="increase">Пополнить баланс карты</a></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td ><a th:href="@{/main/user/transfer/{id}(id=${user.id})}" class="transfer">Сделать перевод с карты</a></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td ><a th:href="@{/main/user/changePin/{id}(id=${user.id})}" class="change-pin">Изменить пин-код доступа к карте</a></td>
-            <td></td>
+            <td class="user-money td-custom">Баланс карты:</td>
+            <td class="td-custom" th:text="${user.card.cardMoney}"></td>
         </tr>
     </table>
+
+    <p class="user-operations"><strong>Операции с банковской картой:</strong></p>
+
+    <p><a th:href="@{/main/user/receive/{id}(id=${user.id})}" class="increase">Пополнить баланс карты</a></p>
+    <p><a th:href="@{/main/user/transfer/{id}(id=${user.id})}" class="transfer">Сделать перевод с карты</a></p>
+    <p><a th:href="@{/main/user/changePin/{id}(id=${user.id})}" class="change-pin">Изменить пин-код доступа к карте</a></p>
 
 </div>
 

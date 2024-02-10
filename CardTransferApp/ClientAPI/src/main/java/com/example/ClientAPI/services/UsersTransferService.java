@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,35 +22,35 @@ public class UsersTransferService {
     private HttpHeaders headers;
 
     /**
-     * Ресурс Api
-     */
-    private static final String USERS_API = "http://127.0.0.1:8765/server";
-
-    /**
      * Получение всех users по внешнему Api
      *
      * @return Characters
      */
 
-//    public List<User> getAllUsers() {
-//        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-//        HttpEntity<String> entity = new HttpEntity<>(headers);
-//        ResponseEntity<List> response = template.exchange(USERS_API, HttpMethod.GET, entity, List.class);
-//        return response.getBody();
-//    }
+    /**
+     * Получение всех пользователей по внешнему API
+     *
+     * @return список пользователей
+     */
     public List<User> getAllUsers() {
-
-        List<User> users = new ArrayList<>();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<ArrayList> response = template.exchange(USERS_API, HttpMethod.GET, entity, ArrayList.class);
-
-        if (response.getStatusCodeValue() == 200) {
-            List<User> userList = response.getBody();
-            users.addAll(userList);
-        }
-
-        return users;
+        ResponseEntity<List> response = template.exchange("http://127.0.0.1:8765/server", HttpMethod.GET, entity, List.class);
+        return response.getBody();
     }
 
+    /**
+     * Получение одного пользователя
+     *
+     * @param id уникальный иднтификатор
+     * @return пользователь
+     */
+    public User getUser(Long id) {
+        RestTemplate template = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<User> response = template.exchange("http://localhost:8765/server/" + id, HttpMethod.GET, entity, User.class);
+        return response.getBody();
+    }
 }

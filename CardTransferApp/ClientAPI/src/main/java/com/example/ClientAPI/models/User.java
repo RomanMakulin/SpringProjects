@@ -12,7 +12,6 @@ public class User {
     private String password;
     private Role role;
 
-
     @ModelAttribute("username")
     public String getUsername() {
         return this.username;

@@ -16,8 +16,14 @@ public class WebAdminController {
     @Autowired
     private UsersTransferService usersTransferService;
 
+    /**
+     * Страница просмотра всех пользователей и их редактирования
+     *
+     * @param model связь с шаблонизатором
+     * @return страница просмотра всех пользователей
+     */
     @GetMapping
-    public String getAllUsers(Model model){
+    public String getAllUsers(Model model) {
         model.addAttribute("users", usersTransferService.getAllUsers());
         return "admin";
     }

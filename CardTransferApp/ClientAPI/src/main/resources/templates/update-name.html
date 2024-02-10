@@ -12,9 +12,9 @@
 <body>
 <div class="container-custom">
     <form action="#" th:action="@{'/server/updateName/' + ${user.id}}" th:object="${user}" method="post" class="form-custom container">
-        <h1 class="display-4">Update name: </h1>
+        <h1 class="display-4">Change name</h1>
         <div class="mb-3">
-            <label for="username" class="form-label">Name</label>
+            <label for="username" class="form-label">Input name</label>
             <input type="text" th:field="*{username}" id="username" placeholder="Name" >
             <br/>
         </div>

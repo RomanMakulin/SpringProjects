@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Objects;
 
-/**
- * Контроллер создан с целью проверки работоспособности подключения к своему внешнему серверу с данными
- */
 @Controller
 @RequestMapping("/main/user")
 public class WebUserController extends SpringBootServletInitializer {
@@ -27,39 +24,85 @@ public class WebUserController extends SpringBootServletInitializer {
     @Autowired
     private UsersTransferService usersTransferService;
 
+    /**
+     * Подключение собственных стилей
+     *
+     * @return путь к файлу стилей
+     */
     @GetMapping("/css/**")
     public String css() {
         return "../static/css/style.css";
     }
 
-    @GetMapping
-    public String getUserProfile(Model model){
-        model.addAttribute("user", usersTransferService.getAllUsers().get(0));
+    /**
+     * Получение профиля пользователя
+     *
+     * @param id    уникальный идентификатор пользователя
+     * @param model связь с шаблонизатором
+     * @return страница пользователя
+     */
+    @GetMapping("{id}")
+    public String getUserProfile(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("user", usersTransferService.getUser(id));
         return "user";
     }
 
+    /**
+     * Изменение имени пользователю
+     *
+     * @param user пользователь
+     * @return форма редактирования имени
+     */
     @GetMapping("/update-name/{id}")
-    public String getUpdateForm(User user){
+    public String getUpdateForm(User user) {
         return "update-name.html";
     }
 
+    /**
+     * Пополнение денег на карту
+     *
+     * @param actionMoneyDetails данные для выполнения операции
+     * @param user               пользователь
+     * @return форма операции
+     */
     @GetMapping("/receive/{id}")
-    public String receiveMoney(ActionMoneyDetails actionMoneyDetails, User user){
+    public String receiveMoney(ActionMoneyDetails actionMoneyDetails, User user) {
         return "receive";
     }
 
+    /**
+     * Снятие денег с карты
+     *
+     * @param actionMoneyDetails данные для выполнения операции
+     * @param user               пользователь
+     * @return форма операции
+     */
     @GetMapping("/withdraw/{id}")
-    public String withdrawMoney(ActionMoneyDetails actionMoneyDetails, User user){
+    public String withdrawMoney(ActionMoneyDetails actionMoneyDetails, User user) {
         return "withdraw";
     }
 
+    /**
+     * Перевод денег с карты на карту другого человека
+     *
+     * @param transferDetails данные для выполнения операции
+     * @param user            пользователь
+     * @return форма операции
+     */
     @GetMapping("/transfer/{id}")
-    public String transferMoney(TransferDetails transferDetails, User user){
+    public String transferMoney(TransferDetails transferDetails, User user) {
         return "transfer";
     }
 
+    /**
+     * Изменение логина
+     *
+     * @param cardUpdateDetails данные для выполнения операции
+     * @param user              пользователь
+     * @return форма операции
+     */
     @GetMapping("/changePin/{id}")
-    public String transferMoney(CardUpdateDetails cardUpdateDetails, User user){
+    public String transferMoney(CardUpdateDetails cardUpdateDetails, User user) {
         return "changePin";
     }
 }

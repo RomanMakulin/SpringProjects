@@ -1,8 +1,51 @@
 .container-custom{
     background-color: #5a6dfb26;
     margin: 0 auto;
-    width: 400px;
+    max-width: 700px;
     padding: 20px;
     border-radius: 20px;
     margin-top: 30vh;
+}
+.container-custom-user{
+        box-shadow: 0 0 20px #6ef67975;
+        background-color: #8affde1a;
+        border: 1px solid #57ff57;
+}
+
+input{
+padding-left: 20px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.title{
+color: #00a400;
+margin-bottom: 1rem;
+}
+
+.subtitle{
+color: grey;
+font-size: 1.5rem;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+.td-custom {
+    padding-right: 20px;
+}
+
+table {
+margin-top: 50px;
+margin-bottom: 30px;
+}
+
+tr {
+margin-bottom: 5px;
+}
+
+p {
+margin-bottom: 5px;
 }
