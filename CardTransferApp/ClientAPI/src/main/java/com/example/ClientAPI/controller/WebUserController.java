@@ -17,10 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main/user")
 public class WebUserController extends SpringBootServletInitializer {
     /**
-     * Сервис управления внешними данными
+     * Сервис управления внешними данными через OpenFeign
      */
     @Autowired
     private UserService userService;
+
     /**
      * Подключение собственных стилей
      *

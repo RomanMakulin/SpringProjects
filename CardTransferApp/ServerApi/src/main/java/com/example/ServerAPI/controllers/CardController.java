@@ -23,7 +23,7 @@ public class CardController {
      * Пополнить карточку
      *
      * @param actionMoneyDetails аргументы из тела запроса
-     * @return обновленные данные
+     * @return перенаправление на страницу пользоваетля
      */
     @PostMapping("/receive/{id}")
     public RedirectView receiveMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) {
@@ -35,7 +35,7 @@ public class CardController {
      * Снятие денег с карточки в наличку
      *
      * @param actionMoneyDetails аргументы из тела запроса
-     * @return обновленные данные
+     * @return перенаправление на страницу пользоваетля
      */
     @PostMapping("/withdraw/{id}")
     public RedirectView withdrawMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
@@ -47,7 +47,7 @@ public class CardController {
      * Перевод денег с карты на карту другому человеку по его id
      *
      * @param transferDetails аргументы из тела запроса
-     * @return обновленные данные
+     * @return перенаправление на страницу пользоваетля
      */
     @PostMapping("/transfer/{id}")
     public RedirectView transferMoney(@PathVariable("id") Long id, TransferDetails transferDetails) {
@@ -55,6 +55,13 @@ public class CardController {
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 
+    /**
+     * Запрос на изменение пин кода карты
+     *
+     * @param id                уникальный идентификатор пользователя
+     * @param cardUpdateDetails передаваемые данные
+     * @return перенаправление на страницу пользоваетля
+     */
     @PostMapping("/changePin/{id}")
     public RedirectView changePin(@PathVariable("id") Long id, CardUpdateDetails cardUpdateDetails) {
         cardService.changePin(cardUpdateDetails, id);

@@ -1,6 +1,7 @@
 package com.example.ServerAPI.services;
 
 //import com.example.UsersCardTransfer.aspects.MyLog;
+
 import com.example.ServerAPI.aspects.MyLog;
 import com.example.ServerAPI.dto.card.ActionMoneyDetails;
 import com.example.ServerAPI.dto.card.CardUpdateDetails;
@@ -99,6 +100,12 @@ public class CardServiceImpl implements iCardService {
         }
     }
 
+    /**
+     * Логика обновления-изменения пин кода карты
+     *
+     * @param cardUpdateDetails передаваемые данные от клиента
+     * @param id                уникальный идентификатор
+     */
     @Override
     public void changePin(CardUpdateDetails cardUpdateDetails, Long id) {
         User user = userRepository.findById(id).orElseThrow();

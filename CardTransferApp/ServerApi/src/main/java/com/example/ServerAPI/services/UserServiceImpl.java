@@ -83,6 +83,13 @@ public class UserServiceImpl implements iUserService {
         return userRepository.save(updUser);
     }
 
+    /**
+     * Обновление имени пользователя
+     *
+     * @param userDetails передаваемые детали от клиента
+     * @param id          уникальный ID
+     * @return обновленный пользователь
+     */
     @Override
     public User updateNameUser(User userDetails, Long id) {
         User user = userRepository.findById(id).orElseThrow();

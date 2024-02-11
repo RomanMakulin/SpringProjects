@@ -86,6 +86,11 @@ public class UserController {
         return new RedirectView("http://localhost:8765/main/user");
     }
 
+    /**
+     * Получение пользователя по ID
+     * @param id уникальный идентификатор
+     * @return
+     */
     @GetMapping("{id}")
     public ResponseEntity<User> getById(@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.getById(id).orElseThrow(), HttpStatus.OK);
