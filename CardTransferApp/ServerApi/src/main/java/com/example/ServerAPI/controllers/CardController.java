@@ -28,7 +28,7 @@ public class CardController {
     @PostMapping("/receive/{id}")
     public RedirectView receiveMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) {
         cardService.receiveMoney(actionMoneyDetails, id);
-        return new RedirectView("http://localhost:8765/main/user");
+        return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 
     /**
@@ -40,7 +40,7 @@ public class CardController {
     @PostMapping("/withdraw/{id}")
     public RedirectView withdrawMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
         cardService.withdrawMoney(actionMoneyDetails, id);
-        return new RedirectView("http://localhost:8765/main/user");
+        return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 
     /**
@@ -52,12 +52,12 @@ public class CardController {
     @PostMapping("/transfer/{id}")
     public RedirectView transferMoney(@PathVariable("id") Long id, TransferDetails transferDetails) {
         cardService.transferMoney(transferDetails, id);
-        return new RedirectView("http://localhost:8765/main/user");
+        return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 
     @PostMapping("/changePin/{id}")
     public RedirectView changePin(@PathVariable("id") Long id, CardUpdateDetails cardUpdateDetails) {
         cardService.changePin(cardUpdateDetails, id);
-        return new RedirectView("http://localhost:8765/main/user");
+        return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 }

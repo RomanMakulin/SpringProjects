@@ -37,6 +37,7 @@
     <p class="user-operations"><strong>Операции с банковской картой:</strong></p>
 
     <p><a th:href="@{/main/user/receive/{id}(id=${user.id})}" class="increase">Пополнить баланс карты</a></p>
+    <p><a th:href="@{/main/user/withdraw/{id}(id=${user.id})}" class="change-pin">Снять деньги с карты</a></p>
     <p><a th:href="@{/main/user/transfer/{id}(id=${user.id})}" class="transfer">Сделать перевод с карты</a></p>
     <p><a th:href="@{/main/user/changePin/{id}(id=${user.id})}" class="change-pin">Изменить пин-код доступа к карте</a></p>
 

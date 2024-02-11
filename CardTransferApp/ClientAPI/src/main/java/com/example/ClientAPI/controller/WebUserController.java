@@ -4,7 +4,7 @@ import com.example.ClientAPI.dto.card.ActionMoneyDetails;
 import com.example.ClientAPI.dto.card.CardUpdateDetails;
 import com.example.ClientAPI.dto.card.TransferDetails;
 import com.example.ClientAPI.models.User;
-import com.example.ClientAPI.services.UsersTransferService;
+import com.example.ClientAPI.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.stereotype.Controller;
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Objects;
-
 @Controller
 @RequestMapping("/main/user")
 public class WebUserController extends SpringBootServletInitializer {
@@ -22,8 +20,7 @@ public class WebUserController extends SpringBootServletInitializer {
      * Сервис управления внешними данными
      */
     @Autowired
-    private UsersTransferService usersTransferService;
-
+    private UserService userService;
     /**
      * Подключение собственных стилей
      *
@@ -43,7 +40,7 @@ public class WebUserController extends SpringBootServletInitializer {
      */
     @GetMapping("{id}")
     public String getUserProfile(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", usersTransferService.getUser(id));
+        model.addAttribute("user", userService.getSingleUser(id));
         return "user";
     }
 
