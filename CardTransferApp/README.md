@@ -5,7 +5,7 @@
 
 > Компоненты - модули (сервисы) приложения: server, client, gateway, eureka
 
-### [](https://github.com/RomanMakulin/SpringProjects/tree/main/UserCardsTransferApp#1-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80---userscardtransfer-rest-port-8080)1) Сервер - ServerApi (REST).
+### 1) Сервер - ServerApi (REST).
 
 > Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway
 
@@ -41,10 +41,21 @@
 
 ```
 
-### [](https://github.com/RomanMakulin/SpringProjects/tree/main/UserCardsTransferApp#2-userclient---clientapi-web-port-8000)2) UserClient - ClientAPI (WEB). port: 8000:
+### 2) UserClient - ClientAPI (WEB).
 
 > Стек технологий: Spring Web, Thymeleaf, Lombok, Eureka client, Gateway, Open Feign, HTML + CSS
 
 Клиентская часть реализует отрисовку наших web страниц при помощи шаблонизатора **Thymeleaf**, которые наполняются данными к ранее подключенному серверу, как к внешнему API.
 А также принимает все данные с сервера, как по внешнему API с использованием **Spring Cloud OpenFeign**.
 
+### 3) UsersGenerationDB (REST).
+
+// TO DO
+
+### 4) Spring Cloud Gateway.
+
+Покдлючение Gateway Server, настройка конфига и маршрутизации.
+
+### 5) Spring Cloud Eureka.
+
+Подключение Spring Cloud Eureka, настройка конфига.
