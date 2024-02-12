@@ -1,0 +1,20 @@
+--CREATE TABLE IF NOT EXISTS cards (
+--    id LONG AUTO_INCREMENT PRIMARY KEY,
+--    pin INT,
+--    cardMoney LONG
+--);
+--
+--CREATE TABLE IF NOT EXISTS users (
+--    id LONG AUTO_INCREMENT PRIMARY KEY,
+--    username varchar(50),
+--    cashMoney LONG,
+--    card_id LONG NOT NULL,
+--    `role` varchar(50),
+--    `password` varchar(50),
+--    FOREIGN KEY (card_id) REFERENCES cards (id)
+--);
+--
+--
+--
+--INSERT INTO cards VALUES (1, 123, 1000);
+--INSERT INTO users VALUES (DEFAULT, 'Roman', 100, 1, 'ROLE_USER', '123');

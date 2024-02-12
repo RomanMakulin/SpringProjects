@@ -37,7 +37,7 @@ public class CardServiceImpl implements iCardService {
     @MyLog
     public void receiveMoney(ActionMoneyDetails actionMoneyDetails, Long id) {
         User user = userRepository.findById(id).orElseThrow(() ->
-                new NoSuchElementException(actionMoneyDetails.getIdUser() + " not found id"));
+                new NoSuchElementException(id + " not found id"));
 
         if (actionMoneyDetails.getPin() == user.getCard().getPin()
                 && user.getCashMoney() >= actionMoneyDetails.getMoney()) {
@@ -59,7 +59,7 @@ public class CardServiceImpl implements iCardService {
     @MyLog
     public void withdrawMoney(ActionMoneyDetails actionMoneyDetails, Long id) {
         User user = userRepository.findById(id).orElseThrow(() ->
-                new NoSuchElementException(actionMoneyDetails.getIdUser() + " not found id"));
+                new NoSuchElementException(id + " not found id"));
 
         if (actionMoneyDetails.getPin() == user.getCard().getPin()
                 && user.getCard().getCardMoney() >= actionMoneyDetails.getMoney()) {
@@ -88,7 +88,7 @@ public class CardServiceImpl implements iCardService {
                 new NoSuchElementException(transferDetails.getIdReciver() + " not found id"));
 
         User sender = userRepository.findById(id).orElseThrow(() ->
-                new NoSuchElementException(transferDetails.getIdSender() + " not found id"));
+                new NoSuchElementException(id + " not found id"));
 
         if (sender.getCard().getPin() == transferDetails.getPin()
                 && sender.getCard().getCardMoney() >= transferDetails.getMoneyRecive()) {

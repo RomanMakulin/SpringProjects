@@ -24,15 +24,6 @@ public class UserController {
      */
     private final UserServiceImpl userService;
 
-
-//    @GetMapping("/loginUser")
-//    public RedirectView redirectAfterLogin(){
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-//        if (userDetails.getUser().getRole().name().equals("ROLE_ADMIN")) return new RedirectView("http://localhost:8765/main/admin");
-//        return new RedirectView("http://localhost:8765/main/user");
-//    }
-
     /**
      * Получеие всех пользователей из БД
      *
@@ -40,8 +31,6 @@ public class UserController {
      */
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
-//        userService.getUserRepository().save(new User("Roman"));
-//        userService.getUserRepository().save(new User("Olga"));
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
