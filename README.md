@@ -4,25 +4,39 @@
 **Стек технологий:**
 > Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
-- Admin Panel v.1 ; demo: https://www.youtube.com/watch?v=mq4shToaQZg&t=21s
-- Admin Panel v.2 (with spring security)
-- Scrum board; demo: https://www.youtube.com/watch?v=hu0x4bNrNXo
-- Notes Rest;
-- Naruto connection API;
-- Rick and Morty connection API; demo: https://www.youtube.com/watch?v=jIqD4gj3N8s
-- Trams (Маршруты) тестовое задание для МосТранспорта;
-- UserCardsTransferApp;
----
-# Description projects
-Hi, these are my applications developed as part of learning Spring technologies.
+**UserCardsTransferApp**   
+*Проект состоит из микро-сервисов*
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/CardTransferApp)
+``` Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway, OpenFeign ```
 
-Here are the following projects for demonstration:
-- Admin Panel v 1.3; demo: https://www.youtube.com/watch?v=mq4shToaQZg&t=21s
-- Admin Panel v.2 (with spring security)
-- Scrum board; demo: https://www.youtube.com/watch?v=hu0x4bNrNXo
-- Notes Rest;
-- Naruto connection API;
-- Rick and Morty connection API; demo: https://www.youtube.com/watch?v=jIqD4gj3N8s
-- Trams test task for Moscow Metro;
-- UserCardsTransferApp;
+**Admin Panel v.2**    (+ spring security)
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV2)
+``` Стек технологий: Spring Security, Spring Data JPA, Lombok, H2 Database, Spring Web, Hibernate, Thymeleaf, HTML5, CSS3. ```
 
+**Scrum board**   
+[Демонстрация работы](https://www.youtube.com/watch?v=hu0x4bNrNXo)
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/Scrum-board)
+``` Стек технологий: Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap. ```
+
+**Notes Rest**   
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/NotesRest)
+``` Стек технологий: Spring Data JPA, Lombok, H2 Database, Spring Web, hibernate. ```
+
+**Rick and Morty connection API**   
+[Демонстрация работы](https://www.youtube.com/watch?v=jIqD4gj3N8s)
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/RickAndMortyApi)
+``` Стек технологий: Lombok, Spring Web, Thymeleaf, HTML5, CSS3. ```
+
+**Trams (Маршруты)**   
+Тестовое задание для Московского Транспорта (успешно сдано)
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/TramsRest)
+``` Стек технологий: Spring Data JPA, Lombok, H2 Database, Spring Web, hibernate. ```
+
+**Admin Panel v.1**    
+[Демонстрация работы](https://www.youtube.com/watch?v=mq4shToaQZg&t=21s)
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV1)
+``` Стек технологий: lombok, database h2, Spring framework, spring boot, thymeleaf, hibernate. ```
+
+**Naruto connection API**   
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/NarutoApi)
+``` Стек технологий: Lombok, Spring Web, Thymeleaf, HTML5, CSS3. ```
