@@ -4,7 +4,7 @@
 **Стек технологий:**
 > Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
-**UserCardsTransferApp**   
+### **UserCardsTransferApp**   
 *Проект состоит из микро-сервисов*
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/CardTransferApp)
 
@@ -12,14 +12,14 @@
 
 ___
 
-**Admin Panel v.2**    (+ spring security)
+### **Admin Panel v.2**    (+ spring security)
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV2)
 
 ``` Стек технологий: Spring Security, Spring Data JPA, Lombok, H2 Database, Spring Web, Hibernate, Thymeleaf, HTML5, CSS3. ```
 
 ___
 
-**Scrum board**   
+### **Scrum board**   
 [Демонстрация работы](https://www.youtube.com/watch?v=hu0x4bNrNXo) / 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/Scrum-board)
 
@@ -27,14 +27,14 @@ ___
 
 ___
 
-**Notes Rest**   
+### **Notes Rest**   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/NotesRest)
 
 ``` Стек технологий: Spring Data JPA, Lombok, H2 Database, Spring Web, hibernate. ```
 
 ___
 
-**Rick and Morty connection API**   
+### **Rick and Morty connection API**   
 [Демонстрация работы](https://www.youtube.com/watch?v=jIqD4gj3N8s) / 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/RickAndMortyApi)
 
@@ -42,7 +42,7 @@ ___
 
 ___
 
-**Trams (Маршруты)**   
+### **Trams (Маршруты)**   
 Тестовое задание для Московского Транспорта (успешно сдано)
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/TramsRest)
 
@@ -50,7 +50,7 @@ ___
 
 ___
 
-**Admin Panel v.1**    
+### **Admin Panel v.1**    
 [Демонстрация работы](https://www.youtube.com/watch?v=mq4shToaQZg&t=21s) / 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV1)
 
@@ -58,7 +58,7 @@ ___
 
 ___
 
-**Naruto connection API**   
+### **Naruto connection API**   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/NarutoApi)
 
 ``` Стек технологий: Lombok, Spring Web, Thymeleaf, HTML5, CSS3. ```
