@@ -4,8 +4,6 @@
 **Стек технологий:**
 > Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
-
-
 - Admin Panel v.1 ; demo: https://www.youtube.com/watch?v=mq4shToaQZg&t=21s
 - Admin Panel v.2 (with spring security)
 - Scrum board; demo: https://www.youtube.com/watch?v=hu0x4bNrNXo
