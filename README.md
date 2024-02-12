@@ -2,15 +2,7 @@
 Добрый день! В данном репозитории представлены мои актуальные демонстрационные проекты.
 
 **Стек технологий:**
-- Java Core, JDK;
-- Spring Framework, Spring Boot (+ web, data JPA, security, cloud: eureka, gateway, OpenFeign), Thymeleaf;
-- MySQL, PostgreSQL, H2;
-- JDBC, Hibernate;
-- Многопоточность; Reflection API; UNIX, Docker; GIT & GitHub; Maven & Gradle;
-- JUnit & Mockito;
-- Jackson;
-- Serialization & Externalizable;
-- HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+> Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
 
 
