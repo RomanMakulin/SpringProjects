@@ -15,3 +15,7 @@ spring:
           uri: http://localhost:8082/
           predicates:
             - Path=/server/**
+        - id: GenerateUsers
+          uri: http://localhost:8083/
+          predicates:
+            - Path=/load-users

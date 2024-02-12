@@ -6,12 +6,16 @@ import com.example.ServerAPI.models.Card;
 import com.example.ServerAPI.models.Role;
 import com.example.ServerAPI.models.User;
 import com.example.ServerAPI.repository.UserRepository;
+import com.example.ServerAPI.services.loadUsers.GenerationService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @Data
@@ -22,6 +26,9 @@ public class UserServiceImpl implements iUserService {
      */
     private final UserRepository userRepository;
 
+    @Autowired
+    private GenerationService generationService;
+
     /**
      * Получение всех пользователей из БД
      *
@@ -30,6 +37,14 @@ public class UserServiceImpl implements iUserService {
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    /**
+     * Генерация рандомных пользователей
+     */
+    @Override
+    public void loadUsers() {
+        generationService.loadUsers().forEach(userRepository::save);
     }
 
     @Override

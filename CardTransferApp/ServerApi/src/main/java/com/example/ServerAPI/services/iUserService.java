@@ -13,6 +13,7 @@ public interface iUserService {
     User updateUser(UserUpdateDetails userUpdateDetails, Long id);
     User updateNameUser(User userDetails, Long id);
     List<User> getAllUsers();
+    void loadUsers();
     Optional<User> getById(Long id);
     User updateUser(User user);
 }

@@ -5,6 +5,7 @@ import com.example.ServerAPI.dto.user.UserCreateDetails;
 import com.example.ServerAPI.dto.user.UserUpdateDetails;
 import com.example.ServerAPI.models.User;
 import com.example.ServerAPI.services.UserServiceImpl;
+import com.example.ServerAPI.services.loadUsers.GenerationService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,11 @@ public class UserController {
      * Управление пользователями в БД
      */
     private final UserServiceImpl userService;
+
+    /**
+     * Класс для получения рандомных пользователей по внешнему API
+     */
+    private GenerationService generationService;
 
     /**
      * Получеие всех пользователей из БД
@@ -83,6 +89,12 @@ public class UserController {
     @GetMapping("{id}")
     public ResponseEntity<User> getById(@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.getById(id).orElseThrow(), HttpStatus.OK);
+    }
+
+    @GetMapping("/load")
+    public ResponseEntity<Void> loadUsersToDB(){
+        userService.loadUsers();
+        return ResponseEntity.ok().build();
     }
 
 }
