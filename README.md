@@ -16,7 +16,7 @@
 ``` Стек технологий: Spring Security, Spring Data JPA, Lombok, H2 Database, Spring Web, Hibernate, Thymeleaf, HTML5, CSS3. ```
 
 **Scrum board**   
-[Демонстрация работы](https://www.youtube.com/watch?v=hu0x4bNrNXo)
+[Демонстрация работы](https://www.youtube.com/watch?v=hu0x4bNrNXo) / 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/Scrum-board)
 
 ``` Стек технологий: Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap. ```
