@@ -1,5 +1,18 @@
 # Демонстрационные проекты
-Добрый день! Представляю вашему вниманию свои проекты для демонстрации:
+Добрый день! В данном репозитории представлены мои актуальные демонстрационные проекты.
+
+** Стек технологий:**
+> Java Core, JDK;
+> Spring Framework, Spring Boot (+ web, data JPA, security, cloud: eureka, gateway, OpenFeign), Thymeleaf;
+> MySQL, PostgreSQL, H2;
+> JDBC, Hibernate;
+> Многопоточность; Reflection API; UNIX, Docker; GIT & GitHub; Maven & Gradle;
+> JUnit & Mockito;
+> Jackson;
+> Serialization & Externalizable;
+> HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+
+
 
 - Admin Panel v.1 ; demo: https://www.youtube.com/watch?v=mq4shToaQZg&t=21s
 - Admin Panel v.2 (with spring security)
