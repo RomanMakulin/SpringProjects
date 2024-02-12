@@ -3,9 +3,11 @@
 
 Привет! Представляю вашему вниманию проект, состоящий из нескольких микро-сервисов, основная идея которого - это работа с банковскими карточками у пользователей. Приложение выполнено на базе  **серверной**  части (RESTfull) и  **клиентской**  (с использованием thymeleaf).
 
-### [](https://github.com/RomanMakulin/SpringProjects/tree/main/UserCardsTransferApp#1-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80---userscardtransfer-rest-port-8080)1) Сервер - ServerApi (REST). port: 8080:
+> Микросервисы: server, client, gateway, eureka
 
-> Стек технологий: Spring Web, Spring Data JPA, h2 database, Thymeleaf, Hibernate, Lombok, Eureka client, Spring Cloud (Gateway)
+### [](https://github.com/RomanMakulin/SpringProjects/tree/main/UserCardsTransferApp#1-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80---userscardtransfer-rest-port-8080)1) Сервер - ServerApi (REST).
+
+> Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway
 
 И так, у нас есть 2 главные сущности: пользователь и банковская карточка, которая у него есть. При регистрации нового пользователя, мы автоматически создаем и регистрируем в системе свою банковскую карту со своим пин-кодом.
 
@@ -19,34 +21,30 @@
 Серверные REST запросы
 - localhost:8765/server (PUT запрос) - создание нового пользователя. В тело запроса прописываем имя пользователя
 и пин-код. "name", "pin". Остальные данные задаются автоматически;
-- localhost:8080/server (GET запрос) - получение списка всех пользователей в базе данных;
-- localhost:8080/server/{id} (DELETE запрос) - удаление пользователя по ID;
-- localhost:8080/server/{id} (POST запрос) - обновление пользователя по ID. В тело запроса передаем поля:
+- localhost:8765/server (GET запрос) - получение списка всех пользователей в базе данных;
+- localhost:8765/server/{id} (DELETE запрос) - удаление пользователя по ID;
+- localhost:8765/server/{id} (POST запрос) - обновление пользователя по ID. В тело запроса передаем поля:
 "name", "cashMoney", "pin". Обновление наличных денег - функция для удобства в тестировании API;
-- localhost:8080/server/update/{id} (POST запрос) - обновление имени пользователя по ID. Значение имени приходит от клиент сервиса;
-- localhost:8080/server/{id} (GET запрос) - получение конкретного пользователя по ID;
+- localhost:8765/server/update/{id} (POST запрос) - обновление имени пользователя по ID. Значение имени приходит от клиент сервиса;
+- localhost:8765/server/{id} (GET запрос) - получение конкретного пользователя по ID;
 ```
 
 **cards manage:**
 
 ```
-- localhost:8080/server/recieve (POST запрос) - пополнение карточки пользователю. В тело запроса передается
+- localhost:8765/server/recieve (POST запрос) - пополнение карточки пользователю. В тело запроса передается
 "idUser", "money", "pin";
-- localhost:8080/server/withdraw (POST запрос) - снятие денег с карточки в наличные. В тело запроса передается
+- localhost:8765/server/withdraw (POST запрос) - снятие денег с карточки в наличные. В тело запроса передается
 "idUser", "money", "pin";
-- localhost:8080/server/transfer (POST запрос) - перевод денег с карточки другому пользователю. 
+- localhost:8765/server/transfer (POST запрос) - перевод денег с карточки другому пользователю. 
 В тело запроса передается "idSender", "idReciver", "moneyRecive" "pin".
 
 ```
 
 ### [](https://github.com/RomanMakulin/SpringProjects/tree/main/UserCardsTransferApp#2-userclient---clientapi-web-port-8000)2) UserClient - ClientAPI (WEB). port: 8000:
 
-> Стек технологий: Spring Web, Thymeleaf, Lombok, Eureka client, Spring Cloud (Gateway), HTML + CSS
+> Стек технологий: Spring Web, Thymeleaf, Lombok, Eureka client, Gateway, Open Feign, HTML + CSS
 
-Клиентская часть реализует отрисовку наших web страниц при помощи шаблонизатора thymeleaf, которые наполняются данными к ранее подключенному серверу, как к внешнему API.
+Клиентская часть реализует отрисовку наших web страниц при помощи шаблонизатора **Thymeleaf**, которые наполняются данными к ранее подключенному серверу, как к внешнему API.
+А также принимает все данные с сервера, как по внешнему API с использованием **Spring Cloud OpenFeign**.
 
-change log:
-- 08.02.2024 добавлена страница user.html для управление своим профилем пользователя в рамках функционала приложения (добавлен функционал редактирования имени, остальной недоступен. CSS стили не разработаны);
-- 08.02.2024 добавлена страница update-name.html - форма для изменения имени;
-- 08.02.2024 добавлена страница withdraw.html - форма реализации функционала снятия денег с банковской карты (не разработана);
-- 08.02.2024 добавлена страница admin.html для управления всеми пользователями сервиса (функционал не реализован, CSS стили не разработаны);
