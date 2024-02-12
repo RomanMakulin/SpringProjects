@@ -3,7 +3,7 @@
 
 Привет! Представляю вашему вниманию проект, состоящий из нескольких микро-сервисов, основная идея которого - это работа с банковскими карточками у пользователей. Приложение выполнено на базе  **серверной**  части (RESTfull) и  **клиентской**  (с использованием thymeleaf).
 
-> Микросервисы: server, client, gateway, eureka
+> Компоненты - модули (сервисы) приложения: server, client, gateway, eureka
 
 ### [](https://github.com/RomanMakulin/SpringProjects/tree/main/UserCardsTransferApp#1-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80---userscardtransfer-rest-port-8080)1) Сервер - ServerApi (REST).
 
