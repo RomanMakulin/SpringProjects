@@ -10,10 +10,12 @@
 
 ``` Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway, OpenFeign ```
 
+
 **Admin Panel v.2**    (+ spring security)
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV2)
 
 ``` Стек технологий: Spring Security, Spring Data JPA, Lombok, H2 Database, Spring Web, Hibernate, Thymeleaf, HTML5, CSS3. ```
+
 
 **Scrum board**   
 [Демонстрация работы](https://www.youtube.com/watch?v=hu0x4bNrNXo) / 
@@ -21,16 +23,19 @@
 
 ``` Стек технологий: Thymeleaf, Spring Data JPA, Lombok, H2 Database, Hibernate, Spring Web, HTML + CSS + Bootstrap. ```
 
+
 **Notes Rest**   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/NotesRest)
 
 ``` Стек технологий: Spring Data JPA, Lombok, H2 Database, Spring Web, hibernate. ```
 
+
 **Rick and Morty connection API**   
-[Демонстрация работы](https://www.youtube.com/watch?v=jIqD4gj3N8s)
+[Демонстрация работы](https://www.youtube.com/watch?v=jIqD4gj3N8s) / 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/RickAndMortyApi)
 
 ``` Стек технологий: Lombok, Spring Web, Thymeleaf, HTML5, CSS3. ```
+
 
 **Trams (Маршруты)**   
 Тестовое задание для Московского Транспорта (успешно сдано)
@@ -38,11 +43,13 @@
 
 ``` Стек технологий: Spring Data JPA, Lombok, H2 Database, Spring Web, hibernate. ```
 
+
 **Admin Panel v.1**    
-[Демонстрация работы](https://www.youtube.com/watch?v=mq4shToaQZg&t=21s)
+[Демонстрация работы](https://www.youtube.com/watch?v=mq4shToaQZg&t=21s) / 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV1)
 
 ``` Стек технологий: lombok, database h2, Spring framework, spring boot, thymeleaf, hibernate. ```
+
 
 **Naruto connection API**   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/NarutoApi)
