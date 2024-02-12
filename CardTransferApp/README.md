@@ -7,7 +7,7 @@
 
 ### 1) Сервер - ServerApi (REST).
 
-> Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway
+> Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway, OpenFeign
 
 И так, у нас есть 2 главные сущности: пользователь и банковская карточка, которая у него есть. При регистрации нового пользователя, мы автоматически создаем и регистрируем в системе свою банковскую карту со своим пин-кодом.
 
