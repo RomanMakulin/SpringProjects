@@ -5,7 +5,12 @@
 > Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
 ### **UserCardsTransferApp**   
-*Проект состоит из микро-сервисов*
+> Разработал микро-сервисный проект в fullstack подходе, состоящий из нескольких сервисов, основная идея которого - это управление пользователями и действиями с их банковской карточкой.
+> 
+- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру микро-сервисов в соответствии в паттернами и принципами ООП. Использована актуальная версия Spring Boot 3;
+- Реализовал облачное пространство для микро-сервисов, используя технологии Spring Cloud;
+- Самостоятельно разработал уникальную frontend часть с использованием технологии Thymeleaf, CSS3, HTML5;
+- Реализовал систему аутентификации и регистрации пользователей с помощью технологии Spring Security 6.
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/CardTransferApp)
 
 ``` Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway, OpenFeign ```
