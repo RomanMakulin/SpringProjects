@@ -4,6 +4,8 @@ import com.example.ServerAPI.dto.card.ActionMoneyDetails;
 import com.example.ServerAPI.dto.card.CardUpdateDetails;
 import com.example.ServerAPI.dto.card.TransferDetails;
 import com.example.ServerAPI.services.CardServiceImpl;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,11 @@ public class CardController {
      * Управление банковскими картами в БД
      */
     private final CardServiceImpl cardService;
+
+    /**
+     * Собственная метрика (счетчик переводов)
+     */
+    private final Counter requestCounter = Metrics.counter("transfer_counter");
 
     /**
      * Пополнить карточку
@@ -52,6 +59,7 @@ public class CardController {
     @PostMapping("/transfer/{id}")
     public RedirectView transferMoney(@PathVariable("id") Long id, TransferDetails transferDetails) {
         cardService.transferMoney(transferDetails, id);
+        requestCounter.increment();
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 

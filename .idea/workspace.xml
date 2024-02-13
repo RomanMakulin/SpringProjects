@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="025369d4-9fd1-4133-9eac-ba7363a487ac" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CardTransferApp/Gateway/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CardTransferApp/Gateway/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/src/main/java/com/example/CardTransferApp/CardTransferAppApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CardTransferApp/Gateway/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CardTransferApp/src/test/java/com/example/CardTransferApp/CardTransferAppApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="025369d4-9fd1-4133-9eac-ba7363a487ac" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

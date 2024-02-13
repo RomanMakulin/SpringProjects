@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: UsersCardTransfer
-#  security:
-#    form-login:
-#      login-page: 'http://localhost:8765/login'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus
