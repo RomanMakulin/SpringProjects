@@ -37,6 +37,7 @@ public class UserController {
      */
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
+        // TO DO: если getUsers empty -> загрузить пользователей по api
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
