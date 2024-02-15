@@ -5,7 +5,7 @@
 > Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
 ### **UserCardsTransferApp**   
-> Разработал микро-сервисный проект в fullstack подходе, состоящий из нескольких сервисов, основная идея которого - это управление пользователями и действиями с их банковской карточкой.
+> Разработал микро-сервисный проект в fullstack подходе, основная идея которого - это администрирование пользователей, управление счетом (операции с банковской карточкой: пополнение, снятие, перевод средств другому юзеру, изменение пин-кода и т.д..) в личном кабинете .
 > 
 - Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру микро-сервисов в соответствии в паттернами и принципами ООП. Использована актуальная версия Spring Boot 3;
 - Реализовал облачное пространство для микро-сервисов, используя технологии Spring Cloud;
@@ -14,7 +14,7 @@
   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/CardTransferApp)
 
-``` Стек технологий: Spring Web, Spring Data JPA, H2 DataBase, Hibernate, Lombok, JUnit, Mockito, AOP, Eureka client, Gateway, OpenFeign ```
+``` Стек технологий: Spring Web, Spring Data JPA, H2 DB, Spring Security 6, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, Lombok, JUnit, Mockito, AOP, HTML 5, CSS 3, Bootstrap ```
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AdminPanelV2)
 
-``` Стек технологий: Spring Security, Spring Data JPA, Lombok, H2 Database, Spring Web, Hibernate, Thymeleaf, HTML5, CSS3. ```
+``` Стек технологий: Spring Security 6, Spring Data JPA, Lombok, H2 Database, Spring Web, Hibernate, Thymeleaf, HTML5, CSS3, Bootstrap ```
 
 ___
 
