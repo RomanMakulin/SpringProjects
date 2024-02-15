@@ -1,8 +1,8 @@
 # Демонстрационные проекты
 Добрый день! В данном репозитории представлены мои актуальные демонстрационные проекты.
 
-**Стек технологий:**
-> Java Core, JDK, Spring Framework, Spring Boot, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+**Мой стек технологий:**
+> Java Core, JDK, Spring Framework, Spring Boot, Spring Data JPA, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Mockito, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
 
 ### **UserCardsTransferApp**   
 > Разработал микро-сервисный проект в fullstack подходе, основная идея которого - это администрирование пользователей, управление счетом (операции с банковской карточкой: пополнение, снятие, перевод средств другому юзеру, изменение пин-кода и т.д..) в личном кабинете .
