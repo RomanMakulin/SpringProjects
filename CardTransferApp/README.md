@@ -3,7 +3,14 @@
 
 Привет! Представляю вашему вниманию проект, состоящий из нескольких микро-сервисов,  основная идея которого - это управление пользователями и действиями с их банковской карточкой. Приложение выполнено на базе  **серверной**  части (RESTfull) и  **клиентской**  (с использованием thymeleaf).
 
-> Компоненты - модули (сервисы) приложения: server, client, gateway, eureka, UsersBaseApi 
+> Компоненты - модули (сервисы) приложения: server, client, gateway, eureka, UsersBaseApi
+
+> Общий стек: Spring Web, Spring Data JPA, Spring Integration, H2 DB, Spring Security 6, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, Lombok, JUnit, Mockito, AOP, HTML 5, CSS 3, Bootstrap
+
+**Общая инстркция по запуску сервиса:**
+- Запустить 5 микросервисов;
+- localhost:8765/server/load - рандомно загрузить 10 пользователей в БД;
+- localhost:8765/main/user/{id} - личный кабинет пользователя с набором функций (все действия с транзакциями логируются в файл с помощью Spring Integration - "fileLog");
 
 ### 1) Сервер - ServerApi (REST).
 
