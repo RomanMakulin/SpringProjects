@@ -3,45 +3,26 @@ package com.example.ServerAPI.controllers;
 import com.example.ServerAPI.dto.card.ActionMoneyDetails;
 import com.example.ServerAPI.dto.card.CardUpdateDetails;
 import com.example.ServerAPI.dto.card.TransferDetails;
-import com.example.ServerAPI.services.CardServiceImpl;
-import com.example.ServerAPI.services.UserServiceImpl;
-import com.example.ServerAPI.services.iFileGateway;
+import com.example.ServerAPI.services.AdapterService;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Metrics;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @RestController
 @Data
 @RequiredArgsConstructor
 @RequestMapping("/server")
 public class CardController {
-    /**
-     * Управление банковскими картами в БД
-     */
-    private final CardServiceImpl cardService;
 
     /**
-     * Управление пользователями в БД
+     * Адаптер: users service, card service, integrator
      */
-    private final UserServiceImpl userService;
-
-    /**
-     * Spring Integration interface for write logs
-     */
-    private final iFileGateway fileGateway;
-
-    /**
-     * Дата для записи логов
-     */
-    public String getParseDate(){
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.uuuu, HH:mm"));
-    }
+    @Autowired
+    private AdapterService adapterService;
 
     /**
      * Собственная метрика (счетчик переводов)
@@ -56,15 +37,13 @@ public class CardController {
      */
     @PostMapping("/receive/{id}")
     public RedirectView receiveMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) {
-
-        cardService.receiveMoney(actionMoneyDetails, id);
+        adapterService.getCardService().receiveMoney(actionMoneyDetails, id);
 
         // data for log
-        String userName = userService.getById(id).get().getUsername();
-        Long userCardMoney = userService.getById(id).get().getCard().getCardMoney();
+        String username = adapterService.getUserService().getById(id).get().getUsername();
+        Long moneyCard = adapterService.getUserService().getById(id).get().getCard().getCardMoney();
+        adapterService.getIntegrationLog().withdrawReceiveLog(id, username, moneyCard); // for Spring Integration
 
-        // log with Spring Integration
-        fileGateway.writeToFile("receive-log.txt", getParseDate() + " | New balance of user's (" + userName + ") bank card: " + userCardMoney);
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 
@@ -76,14 +55,12 @@ public class CardController {
      */
     @PostMapping("/withdraw/{id}")
     public RedirectView withdrawMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
-        cardService.withdrawMoney(actionMoneyDetails, id);
+        adapterService.getCardService().withdrawMoney(actionMoneyDetails, id);
 
         // data for log
-        String userName = userService.getById(id).get().getUsername();
-        Long userCardMoney = userService.getById(id).get().getCard().getCardMoney();
-
-        // log with Spring Integration
-        fileGateway.writeToFile("withdraw-log.txt", getParseDate() + " | New balance of user's (" + userName + ") bank card: " + userCardMoney);
+        String username = adapterService.getUserService().getById(id).get().getUsername();
+        Long moneyCard = adapterService.getUserService().getById(id).get().getCard().getCardMoney();
+        adapterService.getIntegrationLog().withdrawReceiveLog(id, username, moneyCard); // for Spring Integration
 
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
@@ -96,17 +73,13 @@ public class CardController {
      */
     @PostMapping("/transfer/{id}")
     public RedirectView transferMoney(@PathVariable("id") Long id, TransferDetails transferDetails) {
-        cardService.transferMoney(transferDetails, id);
-        requestCounter.increment();
+        adapterService.getCardService().transferMoney(transferDetails, id);
+        requestCounter.increment(); // for Grafana metrics
 
-        // data for log
-        String userNameSender = userService.getById(id).get().getUsername();
-        String userNameReceiver = userService.getById(transferDetails.getIdReciver()).get().getUsername();
-        Long receiveMoney = transferDetails.getMoneyRecive();
-
-        // log with Spring Integration
-        fileGateway.writeToFile("transfer-log.txt",
-                getParseDate() + " | " + userNameSender + " successfully sent the money (" + receiveMoney + ") to " + userNameReceiver);
+        // for Spring Integration
+        String nameSender = adapterService.getUserService().getById(id).get().getUsername();
+        String nameReceiver = adapterService.getUserService().getById(transferDetails.getIdReciver()).get().getUsername();
+        adapterService.getIntegrationLog().transferLog(transferDetails, id, nameSender, nameReceiver);
 
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
@@ -120,7 +93,7 @@ public class CardController {
      */
     @PostMapping("/changePin/{id}")
     public RedirectView changePin(@PathVariable("id") Long id, CardUpdateDetails cardUpdateDetails) {
-        cardService.changePin(cardUpdateDetails, id);
+        adapterService.getCardService().changePin(cardUpdateDetails, id);
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 }

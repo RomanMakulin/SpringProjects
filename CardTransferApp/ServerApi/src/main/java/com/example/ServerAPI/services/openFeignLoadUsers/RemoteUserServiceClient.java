@@ -1,4 +1,4 @@
-package com.example.ServerAPI.services.loadUsers;
+package com.example.ServerAPI.services.openFeignLoadUsers;
 
 import com.example.ServerAPI.models.User;
 import org.springframework.cloud.openfeign.FeignClient;

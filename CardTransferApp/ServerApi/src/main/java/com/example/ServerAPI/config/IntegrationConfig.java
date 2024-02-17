@@ -39,7 +39,7 @@ public class IntegrationConfig {
     @ServiceActivator(inputChannel = "fileWriterChanel")
     public FileWritingMessageHandler messageHandler(){
         FileWritingMessageHandler handler = new FileWritingMessageHandler(
-                new File("C:/it/SpringProjects/CardTransferApp/logFile"));
+                new File("D:/roma/SpringProjects/CardTransferApp"));
         handler.setExpectReply(false);
         handler.setFileExistsMode(FileExistsMode.APPEND);
         handler.setAppendNewLine(true);

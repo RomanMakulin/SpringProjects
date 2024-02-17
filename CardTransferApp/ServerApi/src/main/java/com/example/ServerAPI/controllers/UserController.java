@@ -5,7 +5,7 @@ import com.example.ServerAPI.dto.user.UserCreateDetails;
 import com.example.ServerAPI.dto.user.UserUpdateDetails;
 import com.example.ServerAPI.models.User;
 import com.example.ServerAPI.services.UserServiceImpl;
-import com.example.ServerAPI.services.loadUsers.GenerationService;
+import com.example.ServerAPI.services.openFeignLoadUsers.GenerationService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

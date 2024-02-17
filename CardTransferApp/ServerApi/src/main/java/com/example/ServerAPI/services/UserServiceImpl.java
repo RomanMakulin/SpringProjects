@@ -6,16 +6,14 @@ import com.example.ServerAPI.models.Card;
 import com.example.ServerAPI.models.Role;
 import com.example.ServerAPI.models.User;
 import com.example.ServerAPI.repository.UserRepository;
-import com.example.ServerAPI.services.loadUsers.GenerationService;
+import com.example.ServerAPI.services.openFeignLoadUsers.GenerationService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 @Data
