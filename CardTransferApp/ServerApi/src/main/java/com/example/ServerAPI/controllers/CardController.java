@@ -3,7 +3,7 @@ package com.example.ServerAPI.controllers;
 import com.example.ServerAPI.dto.card.ActionMoneyDetails;
 import com.example.ServerAPI.dto.card.CardUpdateDetails;
 import com.example.ServerAPI.dto.card.TransferDetails;
-import com.example.ServerAPI.services.AdapterService;
+import com.example.ServerAPI.services.AllServices;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Metrics;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class CardController {
      * Адаптер: users service, card service, integrator
      */
     @Autowired
-    private AdapterService adapterService;
+    private AllServices allServices;
 
     /**
      * Собственная метрика (счетчик переводов)
@@ -37,12 +37,12 @@ public class CardController {
      */
     @PostMapping("/receive/{id}")
     public RedirectView receiveMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) {
-        adapterService.getCardService().receiveMoney(actionMoneyDetails, id);
+        allServices.getCardService().receiveMoney(actionMoneyDetails, id);
 
         // data for log
-        String username = adapterService.getUserService().getById(id).get().getUsername();
-        Long moneyCard = adapterService.getUserService().getById(id).get().getCard().getCardMoney();
-        adapterService.getIntegrationLog().withdrawReceiveLog(id, username, moneyCard); // for Spring Integration
+        String username = allServices.getUserService().getById(id).get().getUsername();
+        Long moneyCard = allServices.getUserService().getById(id).get().getCard().getCardMoney();
+        allServices.getIntegrationLog().withdrawReceiveLog(id, username, moneyCard); // for Spring Integration
 
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
@@ -55,12 +55,12 @@ public class CardController {
      */
     @PostMapping("/withdraw/{id}")
     public RedirectView withdrawMoney(@PathVariable("id") Long id, ActionMoneyDetails actionMoneyDetails) { // Убрать RequestBody
-        adapterService.getCardService().withdrawMoney(actionMoneyDetails, id);
+        allServices.getCardService().withdrawMoney(actionMoneyDetails, id);
 
         // data for log
-        String username = adapterService.getUserService().getById(id).get().getUsername();
-        Long moneyCard = adapterService.getUserService().getById(id).get().getCard().getCardMoney();
-        adapterService.getIntegrationLog().withdrawReceiveLog(id, username, moneyCard); // for Spring Integration
+        String username = allServices.getUserService().getById(id).get().getUsername();
+        Long moneyCard = allServices.getUserService().getById(id).get().getCard().getCardMoney();
+        allServices.getIntegrationLog().withdrawReceiveLog(id, username, moneyCard); // for Spring Integration
 
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
@@ -73,13 +73,13 @@ public class CardController {
      */
     @PostMapping("/transfer/{id}")
     public RedirectView transferMoney(@PathVariable("id") Long id, TransferDetails transferDetails) {
-        adapterService.getCardService().transferMoney(transferDetails, id);
+        allServices.getCardService().transferMoney(transferDetails, id);
         requestCounter.increment(); // for Grafana metrics
 
         // for Spring Integration
-        String nameSender = adapterService.getUserService().getById(id).get().getUsername();
-        String nameReceiver = adapterService.getUserService().getById(transferDetails.getIdReciver()).get().getUsername();
-        adapterService.getIntegrationLog().transferLog(transferDetails, id, nameSender, nameReceiver);
+        String nameSender = allServices.getUserService().getById(id).get().getUsername();
+        String nameReceiver = allServices.getUserService().getById(transferDetails.getIdReciver()).get().getUsername();
+        allServices.getIntegrationLog().transferLog(transferDetails, id, nameSender, nameReceiver);
 
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
@@ -93,7 +93,7 @@ public class CardController {
      */
     @PostMapping("/changePin/{id}")
     public RedirectView changePin(@PathVariable("id") Long id, CardUpdateDetails cardUpdateDetails) {
-        adapterService.getCardService().changePin(cardUpdateDetails, id);
+        allServices.getCardService().changePin(cardUpdateDetails, id);
         return new RedirectView("http://localhost:8765/main/user/" + id);
     }
 }

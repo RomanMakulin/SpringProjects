@@ -1,4 +1,4 @@
-package com.example.ServerAPI.services;
+package com.example.ServerAPI.services.integrationLog;
 
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.file.FileHeaders;
