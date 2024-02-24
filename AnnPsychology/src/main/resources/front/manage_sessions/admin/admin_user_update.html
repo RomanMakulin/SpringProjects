@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style_admin.css">
+    <title>Manage page</title>
+</head>
+
+<body>
+
+    <article class="container">
+        <!-- menu logo -->
+        <aside class="logo-menu">
+            <div class="logo_title-box">
+                <h1 class="logo-title">Личный кабинет</h1>
+                <h2 class="logo-subtitle">управление сессиями</h2>
+            </div>
+            <div class="logo_submenu">
+                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/" class="logo_main-link">выход</a>
+            </div>
+        </aside>
+        <!--  -->
+
+        <div class="user-page">
+            <p class="user_name">Ann</p>
+            <p class="user_name" style="padding-left: 20px;">Novikova</p>
+        </div>
+
+        <hr>
+
+        <p class="sessions">Управление сессией $USER</p>
+
+        <div class="second-menu">
+            <a href="admin.html" class="second-menu_link">Список сессий</a>
+            <a href="admin_latest.html" class="second-menu_link">Недавно завершенные</a>
+            <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
+            <a href="admin_users.html" class="second-menu_link">Все клиенты</a>
+        </div>
+
+        <div class="sessions-list">
+            <form action="/" method="post" class="input-grid">
+
+                <div class="update-input">
+                    <label class="text" for="date">Выбор даты</label>
+                    <input class="text input-zoom" type="date" name="date" id="date">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="time">Выбор времени</label>
+                    <select class="text input-zoom" name="time" name="time" id="time">
+                        <option selected value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
+                        <option value="16:00">16:00</option>
+                        <option value="16:30">16:30</option>
+                        <option value="17:00">17:00</option>
+                        <option value="17:30">17:30</option>
+                        <option value="18:00">18:00</option>
+                    </select>
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="link">Ссылка на сессию: </label>
+                    <input class="input-zoom" type="text" name="link" id="link">
+                </div>
+
+                <input type="submit" value="Подтвердить" class="submit text">
+            </form>
+        </div>
+
+
+    </article>
+
+</body>
+
+</html>

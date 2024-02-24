@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Admin panel</title>
+</head>
+
+<body>
+
+    <!-- logo -->
+    <article class="adm-header">
+        <p class="adm-header_title">Панель управления</p>
+    </article>
+
+    <!-- menu -->
+    <section class="admin-menu">
+        <h3 class="admin-menu_name">Manage</h3>
+        <h2 class="admin-menu_title">Пользователи</h2>
+        <p class="admin-menu_subtitle">Показать зарегистрированных пользователей</p>
+        <p class="admin-menu_subtitle">Показать пользователей со статусом “оплачено”</p>
+        <p class="admin-menu_subtitle">Показать пользователей со статусом “не оплачено”</p>
+        <p class="admin-menu_subtitle">Показать VIP пользователей</p>
+        <p class="admin-menu_subtitle">Показать активных пользователей</p>
+        <p class="admin-menu_subtitle">Показать неактивных пользователей</p>
+        <p class="admin-menu_subtitle">Сортировка пользователей по дате регистрации (новые)</p>
+        <p class="admin-menu_subtitle">Сортировка пользователей по дате регистрации (старые)</p>
+        <h2 class="admin-menu_title">Сессии</h2>
+        <p class="admin-menu_subtitle">Список ближайших сессий</p>
+        <p class="admin-menu_subtitle">Список всех сессий</p>
+    </section>
+
+    <!-- window -->
+    <section class="window-box">
+        <form>
+            <p class="window-box__search"><input type="search" name="q" placeholder="Search ..." class="window-box__search_input">
+                <input type="submit" value="Найти" class="window-box__search_btn"></p>
+        </form>
+
+        <article class="window-box__container">
+            <!-- блоки формирующиеся с помощью JS -->
+        </article>
+    </section>
+
+</body>
+
+</html>

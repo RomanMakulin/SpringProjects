@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style_admin.css">
+    <title>User sessions</title>
+</head>
+
+<body>
+
+    <article class="container">
+        <!-- menu logo -->
+        <aside class="logo-menu">
+            <div class="logo_title-box">
+                <h1 class="logo-title">Личный кабинет</h1>
+                <h2 class="logo-subtitle">управление сессиями</h2>
+            </div>
+            <div class="logo_submenu">
+                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/" class="logo_main-link">выход</a>
+            </div>
+        </aside>
+        <!--  -->
+
+        <div class="user-page">
+            <p class="user_name">Ann</p>
+            <p class="user_name_2">Novikova</p>
+        </div>
+
+        <hr>
+
+        <p class="sessions">Сессии клиента &USER</p>
+
+        <div class="second-menu">
+            <a href="/" class="second-menu_link">Активные сессии</a>
+            <a href="admin.html" class="second-menu_link">Список сессий</a>
+            <a href="/" class="second-menu_link">Аналитика по клиентам</a>
+            <a href="admin_users.html" class="second-menu_link">Все клиенты</a>
+        </div>
+
+        <div class="sessions-list">
+            <div class="sessions-list_item">
+                <div class="sessions-list_item_group1">
+                    <p class="sessions-list_item_field">Активно</p>
+                    <p class="sessions-list_item_field">25.02.2024, 15:00</p>
+                    <p class="sessions-list_item_field">Name Test</p>
+                    <p class="sessions-list_item_field">Оплачено ✅</p>
+                    <a href="/" class="sessions-list_item_link">Ссылка zoom</a>
+                    <!-- <form action="/" method="post">
+                        <input type="number" placeholder="ex:zoom.ru/dasdasdad" class="sessions-list_item_field input-zoom">
+                        <input type="submit" value="✅" class="submit">
+                    </form> -->
+
+                </div>
+                <div class="sessions-list_item_group2">
+
+                    <!-- <form action="/" method="post">
+                        <select name="time">
+                            <option value="13:00">13:00</option>
+                            <option selected value="15:00">15:00</option>
+                          </select>
+                        <input type="submit" value="✅" class="submit">
+                    </form> -->
+                    <a href="/" class="sessions-list_item_link">Изменить время</a>
+                    <a href="/" class="sessions-list_item_link">Отменить</a>
+                </div>
+            </div>
+        </div>
+
+
+    </article>
+
+</body>
+
+</html>

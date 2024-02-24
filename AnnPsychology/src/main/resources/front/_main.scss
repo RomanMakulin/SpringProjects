@@ -1,0 +1,510 @@
+    @keyframes flareAnimation {
+        0% {
+            left: -150%;
+        }
+        100% {
+            left: 150%;
+        }
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    hr {
+        margin-top: 80px;
+        margin-bottom: 30px;
+        box-shadow: 0px 0px 10px 1px rgb(252, 200, 199);
+    }
+    
+    body {
+        background-image: url("./img/back4.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    
+    ul {
+        padding: 10px;
+        background-color: #fde6d613;
+        border-radius: 10px;
+    }
+    
+    li {
+        @include fontStyle(#FFF,
+        19px,
+        100,
+        0px);
+        list-style-type: none;
+        /* Убираем маркеры у списка */
+        line-height: 28px;
+        margin-bottom: 15px;
+        margin-left: 5px;
+    }
+    
+    li:before {
+        content: "✔ ";
+        /* Добавляем в качестве маркера символ */
+    }
+    
+    .line1 {
+        width: 500px;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 40px;
+    }
+    
+    .header {
+        background: linear-gradient(180deg, #FFF 0%, rgb(65%, 55%, 53%, 0.5) 100%);
+        padding-bottom: 20px;
+        &__logo {
+            text-align: center;
+            max-width: 300px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            &_img {
+                border: solid 2px #7e402f57;
+                filter: drop-shadow(0 0 10px #3a2a23);
+                box-shadow: 0px 0px 20px 1px #9c7461;
+                border-radius: 300px;
+                margin-top: 30px;
+                transition: 0.4s;
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+        &__text-block {
+            // @include flexColumn();
+            display: grid;
+            justify-items: center;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            &_description {
+                @include fontStyle(black,
+                16px,
+                400,
+                2.5px);
+            }
+            &_title {
+                @include fontStyle(#fff,
+                41px,
+                100,
+                3px);
+                text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px #fff;
+            }
+            &_text {
+                @include fontStyle(#000,
+                17px,
+                300,
+                1px);
+                margin-bottom: 5px;
+                text-align: center;
+            }
+        }
+    }
+    
+    .menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        border: 0px solid #725D58;
+        background: #31231a;
+        box-shadow: 0px 0px 10px 0px #725D58;
+        padding: 30px;
+        margin-bottom: 60px;
+        &_link {
+            @include fontStyle(#FFF,
+            17px,
+            300,
+            1px);
+            text-align: center;
+            padding: 17px;
+            width: 170px;
+            border-radius: 22px;
+            border: 2px solid $mainColor;
+            box-shadow: 0px 0px 15px 0px #020202;
+            transition: 0.4s;
+            &:hover {
+                transform: scale(1.05);
+                background: $mainColor;
+                box-shadow: 0px 0px 15px 0px #020202;
+                color: rgb(0, 0, 0);
+            }
+            &:last-child {
+                background: $mainColor;
+                color: rgb(0, 0, 0);
+                border: 3px solid #ffffff;
+                position: relative;
+                overflow-x: hidden;
+                &:hover {
+                    background: #ffffff;
+                    color: rgb(0, 0, 0);
+                    border: 3px solid #ffffff;
+                    transform: none;
+                    box-shadow: 0px 0px 15px 0px #a68772;
+                }
+                & .flare {
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 45px;
+                    animation: flareAnimation;
+                    left: -150%;
+                    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+                    animation: flareAnimation 1.5s infinite linear;
+                }
+            }
+        }
+    }
+    
+    .rules {
+        @include block();
+        display: flex;
+        align-items: center;
+        gap: 100px;
+        transition: 0.2s;
+        position: relative;
+        &::after {
+            content: "";
+            background-image: url(./img/roses.png);
+            opacity: 0.2;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+        &:hover {
+            transform: scale(1.01);
+        }
+        &__left {
+            border-radius: 20px;
+            border: 2px solid #FFF;
+            box-shadow: 0px 0px 30px 5px #EAB9A0;
+            max-width: 400px;
+        }
+        &__left {
+            transition: 0.4s;
+            &:hover {
+                transform: scale(1.01);
+            }
+        }
+        &__right {
+            &_title {
+                @include fontStyle(#FFF,
+                50px,
+                100,
+                3px);
+                margin-bottom: 50px;
+            }
+            &_text {
+                @include fontStyle(#FFF,
+                18px,
+                100,
+                1px);
+                line-height: 28px;
+                margin-bottom: 40px;
+            }
+            &__box {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                align-items: center;
+                margin-bottom: 20px;
+                &_name {
+                    @include fontStyle(#FFF,
+                    12px,
+                    400,
+                    0px);
+                    border-radius: 15px;
+                    // background: rgba(120, 54, 34, 0.34);
+                    background: rgba(82, 45, 34, 0.575);
+                    padding: 7px 20px;
+                    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25) inset;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+    
+    .work-instruments {
+        @include block();
+        transition: 0.2s;
+        &:hover {
+            transform: scale(1.01);
+        }
+        &_title {
+            @include fontStyle(#FEEAE6,
+            40px,
+            200,
+            3px);
+            margin-bottom: 20px;
+        }
+        &__container {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 20px;
+            &__item {
+                box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.5);
+                padding: 10px;
+                width: 320px;
+                border-radius: 10px;
+                background: rgba(167, 139, 134, 0.53);
+                transition: 0.2s;
+                &:hover {
+                    transform: scale(1.01);
+                    background: rgba(197, 167, 162, 0.53);
+                }
+                &_name {
+                    @include fontStyle(#4d403d,
+                    16px,
+                    500,
+                    0px);
+                    max-width: 190px;
+                    border-radius: 10px;
+                    padding: 5px 10px;
+                    // background: #fad3cb;
+                    background: $mainColor;
+                    // background: rgba(82, 45, 34, 0.575);
+                    // background: #422e22;
+                    box-shadow: 0px 0px 5px 0px black;
+                    margin-bottom: 10px;
+                }
+                &_text {
+                    @include fontStyle(#FFF,
+                    14px,
+                    200,
+                    1px);
+                }
+            }
+        }
+    }
+    
+    .requests {
+        @include block();
+        transition: 0.2s;
+        &:hover {
+            transform: scale(1.01);
+        }
+        &_title {
+            @include fontStyle(#FEEAE6,
+            40px,
+            200,
+            3px);
+            margin-bottom: 40px;
+        }
+        &__box {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            // background-image: url(./img/horror.png);
+            // background-position: left;
+            // background-repeat: no-repeat;
+            &__left {
+                filter: drop-shadow(0 0 50px #3a2a23);
+            }
+            &__right {
+                padding: 20px 30px;
+                box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+            }
+            &__right_title {
+                @include fontStyle(#4d403d,
+                16px,
+                500,
+                0px);
+                max-width: 150px;
+                border-radius: 5px;
+                padding: 3px 8px;
+                background-color: $mainColor;
+                // background: rgba(255, 226, 220, 0.32);
+                box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.3);
+                margin-bottom: 5px;
+            }
+            &__right_subtitle {
+                @include fontStyle(white,
+                14px,
+                200,
+                0px);
+                margin-bottom: 15px;
+            }
+        }
+    }
+    
+    .results {
+        @include block();
+        transition: 0.2s;
+        &:hover {
+            transform: scale(1.01);
+        }
+        &_img {
+            width: 300px;
+        }
+        &__flex {
+            display: flex;
+            align-items: center
+        }
+        &_title {
+            @include fontStyle(white,
+            40px,
+            200,
+            3px);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        &__box {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            &_name {
+                @include fontStyle(rgb(255, 255, 255),
+                18px,
+                200,
+                1px);
+                border-radius: 5px;
+                padding: 3px 8px;
+                background-color: rgb(66 35 34 / 58%);
+                // background: rgba(255, 226, 220, 0.32);
+                box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.7);
+                transition: 0.4s;
+                &:hover {
+                    transform: scale(1.03);
+                    background-color: rgba(117, 73, 71, 0.37);
+                }
+            }
+        }
+    }
+    
+    .price {
+        @include block();
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 60px;
+        transition: 0.2s;
+        position: relative;
+        &::after {
+            content: "";
+            background-image: url(./img/roses.png);
+            opacity: 0.2;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+        &:hover {
+            transform: scale(1.01);
+        }
+        &_title {
+            @include fontStyle(#FFF,
+            50px,
+            200,
+            1px);
+            width: 100%;
+        }
+        &__box {
+            border: 1px solid #EAB9A0;
+            border-left: 5px solid #EAB9A0;
+            box-shadow: 0px 0px 15px 2px #EAB9A0;
+            padding-left: 10px;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: rgba(66, 35, 34, 0.58);
+            width: 400px;
+            position: relative;
+            transition: 0.4s;
+            &:hover {
+                transform: scale(1.05);
+                border: 1px solid white;
+                border-left: 5px solid white;
+                box-shadow: 0px 0px 15px 2px white;
+            }
+            &_item {
+                @include fontStyle(#FFF,
+                18px,
+                200,
+                1px);
+                margin-bottom: 10px;
+                &_salary {
+                    @include fontStyle(#FFF,
+                    12px,
+                    200,
+                    1px);
+                    padding: 2px 10px;
+                    background-color: rgba(255, 0, 0, 0.712);
+                    border-radius: 5px;
+                    top: 8px;
+                    right: 20px;
+                    position: absolute;
+                }
+                &_rub {
+                    @include fontStyle(rgb(255 208 208),
+                    18px,
+                    500,
+                    1px);
+                }
+            }
+            &_btn {
+                @include fontStyle(#000,
+                18px,
+                200,
+                1px);
+                background-color: $mainColor;
+                padding: 3px 10px;
+                border-radius: 5px;
+                transition: 0.4s;
+                &:hover {
+                    background-color: rgb(252, 226, 156);
+                }
+            }
+        }
+        &_description {
+            @include fontStyle(#FFF,
+            14px,
+            200,
+            0px);
+            max-width: 650px;
+        }
+        &_apply {
+            @include fontStyle(rgb(83, 44, 44),
+            30px,
+            300,
+            1px);
+            border: 3px solid rgb(255, 255, 255);
+            padding: 5px 30px;
+            background-color: $mainColor;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+            &:hover {
+                background-color: white;
+                box-shadow: 0px 0px 10px 1px rgb(255, 255, 255);
+            }
+        }
+    }
+    
+    .footer {
+        background-color: #000;
+        padding: 20px;
+        &_text {
+            @include fontStyle(#FFF,
+            14px,
+            200,
+            0px);
+            width: 1200px;
+            margin: 0 auto;
+            text-align: right;
+        }
+    }
+    
+    //

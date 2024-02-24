@@ -1,0 +1,37 @@
+.about {
+    @include block();
+    position: relative;
+    &::after {
+        content: "";
+        background-image: url(./img/roses.png);
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }
+    &_title {
+        @include fontStyle(#FFF, 50px, 200, 3px);
+        margin-bottom: 40px;
+    }
+    &_text {
+        @include fontStyle(#FFF, 25px, 100, 1px);
+        line-height: 35px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba(82, 31, 31, 0.096);
+    }
+    &__box {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        &_img {
+            width: 400px;
+            box-shadow: 0px 0px 20px 5px $mainColor;
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+    }
+}
