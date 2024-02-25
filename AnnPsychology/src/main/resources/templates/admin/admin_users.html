@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/admin/css/style_admin.css}" href="../../static/css/style_admin.css">
+    <title>Manage users page</title>
+</head>
+
+<body>
+
+    <article class="container">
+        <!-- menu logo -->
+        <aside class="logo-menu">
+            <div class="logo_title-box">
+                <h1 class="logo-title">Личный кабинет</h1>
+                <h2 class="logo-subtitle">управление сессиями</h2>
+            </div>
+            <div class="logo_submenu">
+                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/logout" class="logo_main-link">выход</a>
+            </div>
+        </aside>
+        <!--  -->
+
+        <div class="user-page">
+            <p class="user_name">Ann</p>
+            <p class="user_name" style="padding-left: 20px;">Novikova</p>
+        </div>
+
+        <hr>
+
+        <p class="sessions">Управление клиентами</p>
+
+        <div class="second-menu">
+            <a href="/admin" class="second-menu_link">Список сессий</a>
+            <a href="admin_latest.html" class="second-menu_link">Недавно завершенные</a>
+            <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
+            <a href="/admin/all-users" class="second-menu_link">Все клиенты</a>
+        </div>
+
+        <div class="sessions-list">
+
+            <table class="table">
+                <thead>
+                    <tr class="table-title">
+                        <th scope="col">Имя Фамилия</th>
+<!--                        <th scope="col">Почта</th>-->
+                        <th scope="col">Телеграм</th>
+                        <th scope="col">Телефон</th>
+                        <th scope="col">Возраст</th>
+                        <th scope="col">Сессий</th>
+                        <th scope="col">Изменить стоимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="table-field" th:each="user : ${users}">
+                        <td class="users-list_item_field">
+                            <span th:text="${user.username}"></span>
+                            <span th:text="${user.lastname}"></span>
+                        </td>
+
+                        <td class="users-list_item_field">
+                            <a th:text="${user.socialLink}" class="sessions-list_item_link" th:href="@{'https://t.me/' + ${user.socialLink}}"></a>
+                        </td>
+
+                        <td th:text="${user.phone}" class="users-list_item_field">792423123</td>
+                        <td th:text="${user.getAge}" class="users-list_item_field">25</td>
+                        <td th:text="${user.getSessionsCount}" class="users-list_item_field">5</td>
+
+                        <td class="users-list_item_field">
+                            <!-- <a href="admin_user_session.html" class="sessions-list_item_link">Редактировать</a> -->
+                            <form action="#" th:action="@{'/admin/change-price/' + ${user.id}}" th:object="${user}" method="post">
+                                <div class="update-input">
+                                    <input th:value="${user.price}" class="text input-zoom" style="width: 100px; text-align: center;" type="number" name="price" id="price">
+                                    <input type="submit" value="готово" class="submit-price text">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </article>
+
+</body>
+
+</html>

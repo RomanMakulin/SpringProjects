@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" th:href="@{/admin/css/style_admin.css}" href="../../static/css/style_admin.css">
     <title>Stats</title>
 </head>
 
@@ -27,7 +27,7 @@
             </div>
             <div class="logo_submenu">
                 <a href="admin.html" class="logo_main-link">главная</a>
-                <a href="/" class="logo_main-link">выход</a>
+                <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
         <!--  -->

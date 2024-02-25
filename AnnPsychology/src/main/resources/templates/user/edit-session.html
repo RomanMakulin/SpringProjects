@@ -9,11 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style_admin.css">
-    <title>Manage page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/admin/css/user.css}" href="../../static/css/user.css">
+    <title>Запись</title>
 </head>
 
 <body>
@@ -27,28 +25,28 @@
             </div>
             <div class="logo_submenu">
                 <a href="admin.html" class="logo_main-link">главная</a>
-                <a href="/" class="logo_main-link">выход</a>
+                <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
         <!--  -->
 
         <div class="user-page">
-            <p class="user_name">Ann</p>
-            <p class="user_name" style="padding-left: 20px;">Novikova</p>
+            <p class="user_field" style="font-weight: 500; font-size: 30px;">Ann Novikova, <span>25</span></p>
+            <p class="user_field">Почта: <span>email@mail.ru</span></p>
+            <p class="user_field">Telegram: <span>adadsa</span></p>
+            <p class="user_field">Phone: <span>79423234</span></p>
+            <p class="user_field">Стоимость сессий: <span>2000</span></p>
+            <a href="/" class="user_field edit-link">редактировать профиль</a>
         </div>
 
         <hr>
 
-        <p class="sessions">Управление сессией $USER</p>
 
-        <div class="second-menu">
-            <a href="admin.html" class="second-menu_link">Список сессий</a>
-            <a href="admin_latest.html" class="second-menu_link">Недавно завершенные</a>
-            <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
-            <a href="admin_users.html" class="second-menu_link">Все клиенты</a>
-        </div>
+
+        <p class="sessions">Редактировать время сессии</p>
 
         <div class="sessions-list">
+
             <form action="/" method="post" class="input-grid">
 
                 <div class="update-input">
@@ -73,13 +71,9 @@
                     </select>
                 </div>
 
-                <div class="update-input">
-                    <label class="text" for="link">Ссылка на сессию: </label>
-                    <input class="input-zoom" type="text" name="link" id="link">
-                </div>
-
                 <input type="submit" value="Подтвердить" class="submit text">
             </form>
+
         </div>
 
 

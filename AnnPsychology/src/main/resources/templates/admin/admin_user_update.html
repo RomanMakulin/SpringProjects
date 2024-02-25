@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" th:href="@{/admin/css/style_admin.css}" href="../../static/css/style_admin.css">
     <title>Manage page</title>
 </head>
 
@@ -27,7 +27,7 @@
             </div>
             <div class="logo_submenu">
                 <a href="admin.html" class="logo_main-link">главная</a>
-                <a href="/" class="logo_main-link">выход</a>
+                <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
         <!--  -->
@@ -39,7 +39,7 @@
 
         <hr>
 
-        <p class="sessions">Список сессий</p>
+        <p class="sessions">Управление сессией $USER</p>
 
         <div class="second-menu">
             <a href="admin.html" class="second-menu_link">Список сессий</a>
@@ -49,41 +49,37 @@
         </div>
 
         <div class="sessions-list">
+            <form action="/" method="post" class="input-grid">
 
-            <!--  -->
-            <table class="table">
-                <thead>
-                    <tr class="table-title">
-                        <th scope="col">Дата и время</th>
-                        <th scope="col">Имя Фамилия</th>
-                        <th scope="col">ДЗ</th>
-                    </tr>
-                </thead>
-                <tbody>
+                <div class="update-input">
+                    <label class="text" for="date">Выбор даты</label>
+                    <input class="text input-zoom" type="date" name="date" id="date">
+                </div>
 
-                    <tr class="table-field">
+                <div class="update-input">
+                    <label class="text" for="time">Выбор времени</label>
+                    <select class="text input-zoom" name="time" name="time" id="time">
+                        <option selected value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="14:00">14:00</option>
+                        <option value="14:30">14:30</option>
+                        <option value="15:00">15:00</option>
+                        <option value="15:30">15:30</option>
+                        <option value="16:00">16:00</option>
+                        <option value="16:30">16:30</option>
+                        <option value="17:00">17:00</option>
+                        <option value="17:30">17:30</option>
+                        <option value="18:00">18:00</option>
+                    </select>
+                </div>
 
-                        <td class="users-list_item_field">25.02.2024, 15:00</td>
-                        <td class="users-list_item_field">Екатерина Павлова</td>
+                <div class="update-input">
+                    <label class="text" for="link">Ссылка на сессию: </label>
+                    <input class="input-zoom" type="text" name="link" id="link">
+                </div>
 
-                        <td class="users-list_item_field">
-                            <form action="/" method="post" class="">
-                                <div class="update-input" style="display: flex; gap: 10px; justify-content: center;">
-                                    <!-- <input class="text input-zoom" style="height: 100px;" type="textarea"
-                                        name="dz" id="dz"> -->
-                                        <textarea class="text input-zoom" style="width: 400px; border: 1px solid rgba(205, 205, 205, 0.582);" name="dz" id="dz" cols="30" rows="5"></textarea>
-                                    <input type="submit" value="готово" class="submit-price text">
-                                </div>
-                            </form>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-            <!--  -->
-
-
+                <input type="submit" value="Подтвердить" class="submit text">
+            </form>
         </div>
 
 

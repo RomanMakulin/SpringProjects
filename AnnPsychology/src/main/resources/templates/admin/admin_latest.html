@@ -12,9 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
         rel="stylesheet">
-
-    <link rel="stylesheet" href="style_admin.css">
-    <title>Manage users page</title>
+    <link rel="stylesheet" th:href="@{/admin/css/style_admin.css}" href="../../static/css/style_admin.css">
+    <title>Manage page</title>
 </head>
 
 <body>
@@ -28,7 +27,7 @@
             </div>
             <div class="logo_submenu">
                 <a href="admin.html" class="logo_main-link">главная</a>
-                <a href="/" class="logo_main-link">выход</a>
+                <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
         <!--  -->
@@ -40,7 +39,7 @@
 
         <hr>
 
-        <p class="sessions">Управление клиентами</p>
+        <p class="sessions">Список сессий</p>
 
         <div class="second-menu">
             <a href="admin.html" class="second-menu_link">Список сессий</a>
@@ -51,48 +50,42 @@
 
         <div class="sessions-list">
 
+            <!--  -->
             <table class="table">
                 <thead>
                     <tr class="table-title">
+                        <th scope="col">Дата и время</th>
                         <th scope="col">Имя Фамилия</th>
-                        <th scope="col">Почта</th>
-                        <th scope="col">Телеграм</th>
-                        <th scope="col">Телефон</th>
-                        <th scope="col">Возраст</th>
-                        <th scope="col">Сессий</th>
-                        <th scope="col">Изменить стоимость</th>
+                        <th scope="col">ДЗ</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr class="table-field">
-                        <td class="users-list_item_field">Екатерина Власова</td>
-                        <td class="users-list_item_field">katy@mailk.ru</td>
+
+                        <td class="users-list_item_field">25.02.2024, 15:00</td>
+                        <td class="users-list_item_field">Екатерина Павлова</td>
 
                         <td class="users-list_item_field">
-                            <a class="sessions-list_item_link" href="https://t.me/rmakulin">@mdo</a>
-                        </td>
-
-                        <td class="users-list_item_field">792423123</td>
-                        <td class="users-list_item_field">25</td>
-                        <td class="users-list_item_field">5</td>
-
-                        <td class="users-list_item_field">
-                            <!-- <a href="admin_user_session.html" class="sessions-list_item_link">Редактировать</a> -->
                             <form action="/" method="post" class="">
-
-                                <div class="update-input">
-                                    <input value="2000" class="text input-zoom" style="width: 60px;" type="number" name="date" id="date">
+                                <div class="update-input" style="display: flex; gap: 10px; justify-content: center;">
+                                    <!-- <input class="text input-zoom" style="height: 100px;" type="textarea"
+                                        name="dz" id="dz"> -->
+                                        <textarea class="text input-zoom" style="width: 400px; border: 1px solid rgba(205, 205, 205, 0.582);" name="dz" id="dz" cols="30" rows="5"></textarea>
                                     <input type="submit" value="готово" class="submit-price text">
                                 </div>
                             </form>
                         </td>
+
                     </tr>
 
                 </tbody>
             </table>
+            <!--  -->
+
 
         </div>
+
 
     </article>
 

@@ -5,7 +5,11 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -24,12 +28,24 @@ public class User {
     private String email;
     @Column(name = "social_link")
     private String socialLink;
+    @Column(name = "phone")
+    private String phone;
     @Column(name = "date_birth")
-    private LocalDateTime dateBirth;
+    private LocalDate dateBirth;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Session> sessionList;
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private String password;
+    private BigDecimal price;
+
+    public int getAge(){
+        return Period.between(dateBirth, LocalDate.now()).getYears();
+    }
+
+    public int getSessionsCount(){
+        return sessionList.size();
+    }
+
 }

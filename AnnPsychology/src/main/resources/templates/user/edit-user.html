@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/user/css/user.css}" href="../../static/css/user.css">
+    <title>Редактировать</title>
+</head>
+
+<body>
+
+    <article class="container">
+        <!-- menu logo -->
+        <aside class="logo-menu">
+            <div class="logo_title-box">
+                <h1 class="logo-title">Личный кабинет</h1>
+                <h2 class="logo-subtitle">управление сессиями</h2>
+            </div>
+            <div class="logo_submenu">
+                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/logout" class="logo_main-link">выход</a>
+            </div>
+        </aside>
+        <!--  -->
+
+        <div class="user-page">
+            <p class="user_field" style="font-weight: 500; font-size: 30px;">
+                <span th:text="${user.username}"></span>
+                <span th:text="${user.lastname}"></span>,
+                <span th:text="${user.getAge}"></span>
+            </p>
+            <p class="user_field">Почта: <span th:text="${user.email}"></span></p>
+            <p class="user_field">Telegram: <span th:text="${user.socialLink}"></span></p>
+            <p class="user_field">Phone: <span th:text="${user.phone}"></span></p>
+            <p class="user_field">Стоимость сессий: <span th:text="${user.price}"></span> <span> руб.</span></p>
+        </div>
+
+        <hr>
+
+        <p class="sessions">Редактировать свои данные</p>
+
+        <div class="sessions-list">
+
+            <form action="#" th:action="@{'/user/edit/' + ${user.id}}" th:object="${user}" method="post" class="input-grid">
+
+                <div class="update-input">
+                    <label class="text" for="username">Имя</label>
+                    <input th:field="*{username}" class="text input-zoom" type="text" name="username" id="username">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="lastname">Фамилия</label>
+                    <input th:field="*{lastname}" class="text input-zoom" type="text" name="lastname" id="lastname">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="date">Дата рождения</label>
+                    <input th:field="*{dateBirth}" class="text input-zoom" type="date" name="date" id="date">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="email">Почта</label>
+                    <input th:field="*{email}" class="text input-zoom" type="email" name="email" id="email">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="Telegram">Telegram</label>
+                    <input th:field="*{socialLink}" class="text input-zoom" type="text" name="Telegram" id="Telegram">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="Phone">Phone</label>
+                    <input th:field="*{phone}" class="text input-zoom" type="text" name="Phone" id="Phone">
+                </div>
+
+                <div class="update-input">
+                    <label class="text" for="password">Password</label>
+                    <input th:field="*{password}" class="text input-zoom" type="password" name="password" id="password">
+                </div>
+
+                <input type="submit" value="Подтвердить" class="submit text">
+            </form>
+
+        </div>
+
+
+    </article>
+
+</body>
+
+</html>

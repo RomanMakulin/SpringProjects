@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/user/css/user.css}" href="../../static/css/user.css">
+    <title>Manage page</title>
+</head>
+
+<body>
+
+    <article class="container">
+        <!-- menu logo -->
+        <aside class="logo-menu">
+            <div class="logo_title-box">
+                <h1 class="logo-title">Личный кабинет</h1>
+                <h2 class="logo-subtitle">управление сессиями</h2>
+            </div>
+            <div class="logo_submenu">
+                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/logout" class="logo_main-link">выход</a>
+            </div>
+        </aside>
+        <!--  -->
+
+        <div class="user-page">
+            <p class="user_field" style="font-weight: 500; font-size: 30px;">
+                <span th:text="${user.username}"></span>
+                <span th:text="${user.lastname}"></span>,
+                <span th:text="${user.getAge}"></span>
+            </p>
+            <p class="user_field">Почта: <span th:text="${user.email}"></span></p>
+            <p class="user_field">Telegram: <span th:text="${user.socialLink}"></span></p>
+            <p class="user_field">Phone: <span th:text="${user.phone}"></span></p>
+            <p class="user_field">Стоимость сессий: <span th:text="${user.price}"></span> <span> руб.</span></p>
+            <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
+        </div>
+
+        <hr>
+
+
+
+        <p class="sessions">Список сессий</p>
+
+        <div class="sessions-list">
+
+            <a href="/user/sign-up-session" class="go text">Записаться</a>
+
+            <!--  -->
+            <table class="table">
+                <thead>
+                    <tr class="table-title">
+                        <th scope="col">Статус</th>
+                        <th scope="col">Дата и время</th>
+                        <th scope="col">К встрече</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="table-field" th:each="session_item : ${user.sessionList}">
+                        <td>
+                            <p class="sessions-list_item_field">Активно</p>
+                        </td>
+
+
+                        <td th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field">25.02.2024, 15:00</td>
+
+                        <td class="users-list_item_field" th:switch="${session_item.sessionLink}">
+                            <p class="sessions-list_item_link" th:case="null">Скоро ссылка появится</p>
+                            <a th:case="*" th:href="${session_item.sessionLink}" class="sessions-list_item_link">Google Meet</a>
+                        </td>
+
+                        <td class="users-list_item_field">
+                            <a href="admin_user_update.html" class="sessions-list_item_link">Изменить дату и время</a>
+                        </td>
+
+                        <td class="users-list_item_field">
+                            <a href="/" class="sessions-list_item_link">Отменить</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!--  -->
+
+
+        </div>
+
+
+    </article>
+
+</body>
+
+</html>

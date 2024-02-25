@@ -27,11 +27,11 @@ hr {
     transition: 0.2s;
 }
 
-.submit:hover{
+.submit:hover {
     background-color: rgb(239 239 239 / 78%);
-  }
+}
 
-.submit-price{
+.submit-price {
     border: none;
     background: none;
     cursor: pointer;
@@ -91,7 +91,7 @@ hr {
     transition: 0.3s;
 }
 
-.logo_main-link:hover{
+.logo_main-link:hover {
     background-color: white;
     color: black;
 }
@@ -103,25 +103,14 @@ hr {
     background-position: right;
     background-repeat: no-repeat;
     background-size: 600px;
-    background-image: url(../../img/cat2.png);
+    background-image: url(static/img/cat2.png);
     position: relative;
     padding-top: 50px;
     padding-bottom: 50px;
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    gap: 10px;
-}
-
-.user-edid {
-    position: absolute;
-    color: grey;
-    right: 300px;
-    top: 50px;
-    /*  */
-    font-family: Inter;
-    font-size: 25px;
-    font-weight: 300;
+    gap: 15px;
 }
 
 .user_name {
@@ -131,11 +120,21 @@ hr {
     font-weight: 100;
 }
 
-user_name_2 .user_field {
+.user_field {
     color: black;
     font-family: Inter;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 300;
+}
+
+.edit-link {
+    color: grey;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.edit-link:hover {
+    color: blue;
 }
 
 .input-zoom {
@@ -197,8 +196,8 @@ user_name_2 .user_field {
     transition: 0.2s;
 }
 
-.second-menu_link:hover{
-  border-bottom: 1px solid rgb(191, 0, 255);
+.second-menu_link:hover {
+    border-bottom: 1px solid rgb(191, 0, 255);
 }
 
 
@@ -220,9 +219,7 @@ user_name_2 .user_field {
 }
 
 .sessions-list_item {
-
     /* margin: 5px 0; */
-   
     align-items: center;
     display: flex;
     justify-content: space-around;
@@ -230,7 +227,6 @@ user_name_2 .user_field {
 
 .sessions-list_item:hover {
     background-color: rgba(224, 224, 224, 0.568);
-
 }
 
 .sessions-list_item_group1 {
@@ -285,7 +281,6 @@ user_name_2 .user_field {
     color: blue;
 }
 
-
 th,
 td {
     border: none;
@@ -301,16 +296,17 @@ td {
 table {
     padding: 10px;
     box-shadow: 0 0 30px #dbdbdb;
-    border-collapse: collapse; /* Убираем двойные рамки */
-   }
+    border-collapse: collapse;
+    /* Убираем двойные рамки */
+}
 
-.table-title{
+.table-title {
     border-top: 2px solid rgba(169, 169, 169, 0.308);
     border-bottom: 2px solid rgba(169, 169, 169, 0.308);
     background-color: #e0e0e069;
 }
 
-.table-field{
+.table-field {
     border-bottom: 1px solid rgba(169, 169, 169, 0.308);
 }
 
@@ -318,14 +314,14 @@ table {
     background-color: rgba(235, 235, 235, 0.236);
 }
 
-.text{
+.text {
     color: black;
     font-family: Inter;
     font-size: 16px;
     font-weight: 300;
 }
 
-.input-grid{
+.input-grid {
     display: grid;
     justify-items: start;
     gap: 10px;
@@ -334,12 +330,12 @@ table {
 
 /* stats */
 
-.stats{
+.stats {
     display: grid;
-    gap:10px;
+    gap: 10px;
 }
 
-.stats-field{
+.stats-field {
     max-width: 600px;
     border-radius: 10px;
     background-color: #d3d3d324;
@@ -350,14 +346,26 @@ table {
     font-weight: 300;
 }
 
-.stats-field:hover{
+.stats-field:hover {
     background-color: #d3d3d363;
 }
 
-.hr300{
+.hr300 {
     max-width: 620px;
     margin: 20px 0;
     background-color: rgba(216, 216, 216, 0.178);
     border-top: 1px solid rgba(216, 216, 216, 0.178);
 }
 
+.go {
+    color: white;
+    /* max-width: 100px; */
+    right: 0;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #000000ed;
+}
+
+.go:hover {
+    background-color: black;
+}

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "sessions_date")
@@ -16,4 +17,8 @@ public class SessionDate {
     private Long id;
     @Column(name = "session_date")
     private LocalDateTime sessionDate;
+
+    public String parsingDate(){
+        return sessionDate.format(DateTimeFormatter.ofPattern("dd.MM, HH:mm"));
+    }
 }
