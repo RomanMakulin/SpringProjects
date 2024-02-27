@@ -1,8 +1,8 @@
 package com.AnnPsychology.AnnPsychology.controller.web;
 
 import com.AnnPsychology.AnnPsychology.models.User;
-import com.AnnPsychology.AnnPsychology.services.AdminPageService.AdminService;
-import com.AnnPsychology.AnnPsychology.services.AdminPageService.SessionService;
+import com.AnnPsychology.AnnPsychology.services.AdminServiceImpl;
+import com.AnnPsychology.AnnPsychology.services.SessionService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Data
 @RequestMapping("/admin")
 public class AdminController {
-    private final AdminService adminService;
+    private final AdminServiceImpl adminService;
     private final SessionService sessionService;
 
     @GetMapping("/css/**")
@@ -27,7 +27,7 @@ public class AdminController {
 
     @GetMapping
     public String adminPage(Model model){
-        model.addAttribute("sessions", sessionService.getAll());
+        model.addAttribute("sessions", adminService.getAllSessions());
         return "/admin/admin.html";
     }
 

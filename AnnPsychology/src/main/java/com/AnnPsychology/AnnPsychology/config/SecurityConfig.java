@@ -1,6 +1,6 @@
 package com.AnnPsychology.AnnPsychology.config;
 
-import com.AnnPsychology.AnnPsychology.services.UserPageService.CustomUserDetailsService;
+import com.AnnPsychology.AnnPsychology.services.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -43,15 +44,22 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
 //                        .requestMatchers("/css/**", "/favicon.ico", "/login").permitAll()
-                        .requestMatchers("/registration/**", "/").anonymous()
-                        .requestMatchers("/user/**").hasAnyRole("USER")
-                        .requestMatchers("/admin/**").hasAnyRole("ADMIN")
-                        .requestMatchers("/loginUser").authenticated()
+                                .requestMatchers("/registration/**", "/registration-user", "/").anonymous()
+                                .requestMatchers("/user/**").hasAnyRole("USER")
+                                .requestMatchers("/admin/**").hasAnyRole("ADMIN")
+                                .requestMatchers("/welcome").authenticated()
                 )
-                .formLogin(login -> login
-                        .defaultSuccessUrl("/user", true).permitAll())
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/"));
+                .formLogin(
+                        form -> form
+                                .loginPage("/login")
+                                .loginProcessingUrl("/login")
+                                .defaultSuccessUrl("/welcome", true)
+                                .permitAll()
+                ).logout(
+                        logout -> logout
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .permitAll()
+                );
         return http.build();
     }
 

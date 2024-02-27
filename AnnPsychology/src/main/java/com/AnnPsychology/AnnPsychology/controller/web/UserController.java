@@ -2,7 +2,8 @@ package com.AnnPsychology.AnnPsychology.controller.web;
 
 import com.AnnPsychology.AnnPsychology.config.CustomUserDetails;
 import com.AnnPsychology.AnnPsychology.models.User;
-import com.AnnPsychology.AnnPsychology.services.UserPageService.CustomUserDetailsService;
+import com.AnnPsychology.AnnPsychology.services.SessionService;
+import com.AnnPsychology.AnnPsychology.services.CustomUserDetailsService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,7 @@ import java.time.LocalTime;
 public class UserController {
 //    private final UserService userService;
     private final CustomUserDetailsService customUserDetailsService;
+    private final SessionService sessionService;
 
     @GetMapping("/css/**")
     public String css() {
@@ -55,15 +57,27 @@ public class UserController {
     public String signUpSession(@PathVariable("id") Long id,
                                 @ModelAttribute("date") LocalDate date,
                                 @ModelAttribute("time") LocalTime time){
-        customUserDetailsService.signUpSession(id, date, time);
+        sessionService.signUpSession(id, date, time);
         return "redirect:/user";
     }
 
+    /**
+     * Отменить сессию и вернуть деньги
+     * @param id уникальный идентификатор пользователя
+     * @return личный кабинет пользователя
+     */
+    @GetMapping("/cancel/{id}")
+    public String cancelSession(@PathVariable("id") Long id){
+        sessionService.cancelSession(id);
+        return "redirect:/user";
+    }
+
+//    optional
     public User getAuthUser(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 
-        customUserDetailsService.loadUserByUsername(userDetails.getUsername());
+        customUserDetailsService.loadUserByUsername(userDetails.getEmail());
         return customUserDetailsService.getById(userDetails.getUser().getId());
     }
 }

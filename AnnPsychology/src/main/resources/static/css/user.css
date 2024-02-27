@@ -207,6 +207,7 @@ hr {
 /* sessions list */
 
 .sessions-list {
+    position: relative;
     max-width: 1000px;
     margin-bottom: 50px;
     margin: 30px auto;
@@ -358,14 +359,29 @@ table {
 }
 
 .go {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-width: 200px;
     color: white;
-    /* max-width: 100px; */
     right: 0;
     text-align: center;
-    padding: 10px 20px;
-    background-color: #000000ed;
+    padding: 10px 40px;
+    background-color: #282828ed;
 }
 
 .go:hover {
     background-color: black;
+}
+
+.update-input {
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    justify-items: start;
+}
+
+.sign-session{
+padding: 10px;
+    top: -50px;
+    position: absolute;
+    right: 0;
 }

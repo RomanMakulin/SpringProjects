@@ -1,4 +1,4 @@
-package com.AnnPsychology.AnnPsychology.services.AdminPageService;
+package com.AnnPsychology.AnnPsychology.services;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.User;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Data
-public class AdminServiceImpl implements AdminService {
+public class AdminServiceImpl {
 
     private final SessionsRepository sessionsRepository;
     private final UserRepository userRepository;
@@ -28,7 +28,6 @@ public class AdminServiceImpl implements AdminService {
      *
      * @return Отсортированный спиоск
      */
-    @Override
     public List<Session> getAllSessions() {
         return sessionsRepository.findAll().stream().sorted(
                 Comparator.comparing(s -> s.getSessionDate().getSessionDate())
@@ -40,7 +39,6 @@ public class AdminServiceImpl implements AdminService {
      *
      * @return Отсортированный и отфильтрованный список
      */
-    @Override
     public List<Session> getRecentlyCompletedSessions() {
         return sessionsRepository.findAll().stream().
                 filter(item -> item.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusDays(7))).
@@ -54,12 +52,10 @@ public class AdminServiceImpl implements AdminService {
      *
      * @return список всех пользователей
      */
-    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    @Override
     public void changePrice(Long id, BigDecimal newPrice) {
         User user = userRepository.findById(id).orElseThrow();
         user.setPrice(newPrice);
