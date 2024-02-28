@@ -24,7 +24,7 @@
                 <h2 class="logo-subtitle">управление сессиями</h2>
             </div>
             <div class="logo_submenu">
-                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/welcome" class="logo_main-link">главная</a>
                 <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
@@ -65,14 +65,14 @@
                         <th scope="col">Статус</th>
                         <th scope="col">Дата и время</th>
                         <th scope="col">К встрече</th>
-                        <th scope="col"></th>
+<!--                        <th scope="col"></th>-->
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr class="table-field" th:each="session_item : ${user.sessionList}">
-                        <td th:switch="${session_item.sessionStatus}">
+                        <td th:switch="${session_item.sessionStatus}" style="text-align: center;width: 150px;">
                             <p th:case="${session_item.sessionStatus.SESSION_DONE}" class="sessions-list_item_field" style="background-color: #c3c3c37a;">Закончена</p>
                             <p th:case="${session_item.sessionStatus.SESSION_ACTIVE}" class="sessions-list_item_field">Активна</p>
                             <p th:case="${session_item.sessionStatus.SESSION_CANCELLED}" class="sessions-list_item_field" style="background-color:#ff0c0ca3; color: white;">Отменена</p>
@@ -86,9 +86,9 @@
                             <a th:case="*" th:href="${session_item.sessionLink}" class="sessions-list_item_link">Google Meet</a>
                         </td>
 
-                        <td class="users-list_item_field">
-                            <a href="admin_user_update.html" class="sessions-list_item_link">Изменить дату и время</a>
-                        </td>
+<!--                        <td class="users-list_item_field">-->
+<!--                            <a href="admin_user_update.html" class="sessions-list_item_link">Изменить дату и время</a>-->
+<!--                        </td>-->
 
                         <td class="users-list_item_field">
                             <a th:href="@{'/user/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>

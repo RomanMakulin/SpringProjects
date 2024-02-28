@@ -26,7 +26,7 @@
                 <h2 class="logo-subtitle">управление сессиями</h2>
             </div>
             <div class="logo_submenu">
-                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/welcome" class="logo_main-link">главная</a>
                 <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
@@ -39,7 +39,7 @@
 
         <hr>
 
-        <p class="sessions">Управление сессией $USER</p>
+        <p class="sessions">Управление сессией <span th:text="${user.username}"></span></p>
 
         <div class="second-menu">
             <a href="admin.html" class="second-menu_link">Список сессий</a>
@@ -49,16 +49,16 @@
         </div>
 
         <div class="sessions-list">
-            <form action="/" method="post" class="input-grid">
+            <form action="#" th:action="@{'/admin/edit-session/' + ${sess.id}}" th:object="${sess}" method="post" class="input-grid">
 
                 <div class="update-input">
                     <label class="text" for="date">Выбор даты</label>
-                    <input class="text input-zoom" type="date" name="date" id="date">
+                    <input class="text input-zoom" type="date" name="date" id="date" th:value="${date}">
                 </div>
 
                 <div class="update-input">
                     <label class="text" for="time">Выбор времени</label>
-                    <select class="text input-zoom" name="time" name="time" id="time">
+                    <select class="text input-zoom" name="time" id="time" th:value="${time}">
                         <option selected value="13:00">13:00</option>
                         <option value="13:30">13:30</option>
                         <option value="14:00">14:00</option>
@@ -73,10 +73,10 @@
                     </select>
                 </div>
 
-                <div class="update-input">
-                    <label class="text" for="link">Ссылка на сессию: </label>
-                    <input class="input-zoom" type="text" name="link" id="link">
-                </div>
+<!--                <div class="update-input">-->
+<!--                    <label class="text" for="link">Ссылка на сессию: </label>-->
+<!--                    <input class="input-zoom" type="text" name="link" th:value="${link}" id="link">-->
+<!--                </div>-->
 
                 <input type="submit" value="Подтвердить" class="submit text">
             </form>

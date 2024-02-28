@@ -27,7 +27,7 @@
                 <h2 class="logo-subtitle">управление сессиями</h2>
             </div>
             <div class="logo_submenu">
-                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/welcome" class="logo_main-link">главная</a>
                 <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
@@ -80,7 +80,6 @@
                         <td th:text="${user.getSessionsCount}" class="users-list_item_field">5</td>
 
                         <td class="users-list_item_field">
-                            <!-- <a href="admin_user_session.html" class="sessions-list_item_link">Редактировать</a> -->
                             <form action="#" th:action="@{'/admin/change-price/' + ${user.id}}" th:object="${user}" method="post">
                                 <div class="update-input">
                                     <input th:value="${user.price}" class="text input-zoom" style="width: 100px; text-align: center;" type="number" name="price" id="price">

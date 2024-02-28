@@ -57,9 +57,10 @@ public class UserController {
     public String signUpSession(@PathVariable("id") Long id,
                                 @ModelAttribute("date") LocalDate date,
                                 @ModelAttribute("time") LocalTime time){
-        sessionService.signUpSession(id, date, time);
-        return "redirect:/user";
+        boolean result = sessionService.signUpSession(id, date, time);
+        return (result) ? "redirect:/user" : "redirect:/user/sign-up-session";
     }
+
 
     /**
      * Отменить сессию и вернуть деньги
@@ -68,8 +69,8 @@ public class UserController {
      */
     @GetMapping("/cancel/{id}")
     public String cancelSession(@PathVariable("id") Long id){
-        sessionService.cancelSession(id);
-        return "redirect:/user";
+        boolean result = sessionService.cancelSession(id);
+        return (result) ? "redirect:/user" : "redirect:/user/sign-up-session";
     }
 
 //    optional

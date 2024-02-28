@@ -26,7 +26,7 @@
                 <h2 class="logo-subtitle">управление сессиями</h2>
             </div>
             <div class="logo_submenu">
-                <a href="admin.html" class="logo_main-link">главная</a>
+                <a href="/welcome" class="logo_main-link">главная</a>
                 <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
@@ -66,8 +66,10 @@
                 <tbody>
 
                     <tr class="table-field" th:each="session_item : ${sessions}">
-                        <td>
-                            <p class="sessions-list_item_field">Активно</p>
+                        <td th:switch="${session_item.sessionStatus}" style="text-align: center;width: 150px;">
+                            <p th:case="${session_item.sessionStatus.SESSION_DONE}" class="sessions-list_item_field" style="background-color: #c3c3c37a;">Закончена</p>
+                            <p th:case="${session_item.sessionStatus.SESSION_ACTIVE}" class="sessions-list_item_field">Активна</p>
+                            <p th:case="${session_item.sessionStatus.SESSION_CANCELLED}" class="sessions-list_item_field" style="background-color:#ff0c0ca3; color: white;">Отменена</p>
                         </td>
 
 
@@ -83,12 +85,19 @@
                         </td>
 
                         <td class="users-list_item_field" th:switch="${session_item.sessionLink}">
-                            <p class="sessions-list_item_link" th:case="null">Выдай ссылку человеку...</p>
-                            <a th:case="*" th:href="${session_item.sessionLink}" class="sessions-list_item_link">Google Meet</a>
+<!--                            <a class="sessions-list_item_link" th:case="null">Выдай ссылку человеку...</a>-->
+                            <form th:case="null" action="#" th:action="@{'/admin/change-link/' + ${session_item.id}}" th:object="${session}" method="post">
+                                <div class="update-input">
+                                    <input th:value="${sessionLink}" class="text input-zoom" style="width: 150px; text-align: center;" type="text" name="sessionLink" id="sessionLink">
+                                    <input type="submit" value="OK" class="submit-price text">
+                                </div>
+                            </form>
+
+                            <a th:case="*" th:href="@{'https://' + ${session_item.sessionLink}}" target="_blank" class="sessions-list_item_link">Google Meet</a>
                         </td>
 
                         <td class="users-list_item_field">
-                            <a href="admin_user_update.html" class="sessions-list_item_link">Редактировать</a>
+                            <a th:href="@{'/admin/edit-session-form/' + ${session_item.id}}" class="sessions-list_item_link">Редактировать</a>
                         </td>
 
                         <td class="users-list_item_field">
