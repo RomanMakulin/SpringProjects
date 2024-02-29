@@ -25,21 +25,22 @@
             </div>
             <div class="logo_submenu">
                 <a href="/welcome" class="logo_main-link">главная</a>
+                <a href="/welcome" class="logo_main-link">мой кабинет</a>
                 <a href="/logout" class="logo_main-link">выход</a>
             </div>
         </aside>
         <!--  -->
 
         <div class="user-page">
-            <p class="user_field" style="font-weight: 500; font-size: 30px;">
+            <p class="user_field username">
                 <span th:text="${user.username}"></span>
                 <span th:text="${user.lastname}"></span>,
                 <span th:text="${user.getAge}"></span>
             </p>
-            <p class="user_field">Почта: <span th:text="${user.email}"></span></p>
-            <p class="user_field">Telegram: <span th:text="${user.socialLink}"></span></p>
-            <p class="user_field">Phone: <span th:text="${user.phone}"></span></p>
-            <p class="user_field">Стоимость сессий: <span th:text="${user.price}"></span> <span> руб.</span></p>
+            <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>
+            <p class="user_field"><span>Telegram:</span> <span th:text="${user.socialLink}"></span></p>
+            <p class="user_field"><span>Phone:</span> <span th:text="${user.phone}"></span></p>
+            <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.price}"></span> <span> руб.</span></p>
             <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
         </div>
 
@@ -65,16 +66,16 @@
                         <th scope="col">Статус</th>
                         <th scope="col">Дата и время</th>
                         <th scope="col">К встрече</th>
-<!--                        <th scope="col"></th>-->
+                        <th scope="col">Домашняя работа</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr class="table-field" th:each="session_item : ${user.sessionList}">
+                    <tr class="table-field" th:each="session_item : ${userSessions}">
                         <td th:switch="${session_item.sessionStatus}" style="text-align: center;width: 150px;">
                             <p th:case="${session_item.sessionStatus.SESSION_DONE}" class="sessions-list_item_field" style="background-color: #c3c3c37a;">Закончена</p>
-                            <p th:case="${session_item.sessionStatus.SESSION_ACTIVE}" class="sessions-list_item_field">Активна</p>
+                            <p th:case="${session_item.sessionStatus.SESSION_ACTIVE}" class="sessions-list_item_field" style="background-color: rgba(70, 250, 109, 0.479);">Активна</p>
                             <p th:case="${session_item.sessionStatus.SESSION_CANCELLED}" class="sessions-list_item_field" style="background-color:#ff0c0ca3; color: white;">Отменена</p>
                         </td>
 
@@ -86,9 +87,10 @@
                             <a th:case="*" th:href="${session_item.sessionLink}" class="sessions-list_item_link">Google Meet</a>
                         </td>
 
-<!--                        <td class="users-list_item_field">-->
-<!--                            <a href="admin_user_update.html" class="sessions-list_item_link">Изменить дату и время</a>-->
-<!--                        </td>-->
+                        <td th:switch="${session_item.sessionHomework}">
+                            <p th:case="null" class="sessions-list_item_link">Пока чиллим!)</p>
+                            <a href="/" th:case="*" class="sessions-list_item_link">Перейти</a>
+                        </td>
 
                         <td class="users-list_item_field">
                             <a th:href="@{'/user/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>

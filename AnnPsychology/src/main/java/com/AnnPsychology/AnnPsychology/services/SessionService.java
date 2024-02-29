@@ -15,9 +15,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -28,25 +26,13 @@ public class SessionService {
     private final DateRepository dateRepository;
     private final long daysForCancel = 1;
 
-    public Session getById(Long id){
+    public Session getById(Long id) {
         Optional<Session> session = sessionsRepository.findById(id);
         return session.orElseThrow();
     }
 
-    public User getUserBySessionId(Long id){
+    public User getUserBySessionId(Long id) {
         return sessionsRepository.findById(id).orElseThrow().getUser();
-    }
-
-    public void giveSessionLink(Long id, String link){
-        Session session = sessionsRepository.findById(id).orElseThrow();
-        session.setSessionLink(link);
-        sessionsRepository.save(session);
-    }
-
-    public void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time){
-        Session session = sessionsRepository.findById(sessionId).orElseThrow();
-        session.getSessionDate().setSessionDate(LocalDateTime.of(date, time));
-        sessionsRepository.save(session);
     }
 
     public boolean signUpSession(Long id, LocalDate date, LocalTime time) {
@@ -68,16 +54,13 @@ public class SessionService {
         } else return false;
     }
 
-    public boolean cancelSession(Long id){
+    public boolean cancelSession(Long id) {
         Session session = sessionsRepository.findById(id).orElseThrow();
         LocalDateTime sessionTime = session.getSessionDate().getSessionDate();
         LocalDateTime currentTime = LocalDateTime.now();
-
         long daysDiff = ChronoUnit.DAYS.between(currentTime, sessionTime);
 
-        System.out.println(daysDiff);
-
-        if (daysDiff >= daysForCancel){
+        if (daysDiff >= daysForCancel) {
             // TO DO: возврат денег
             session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
             sessionsRepository.save(session);
@@ -85,9 +68,12 @@ public class SessionService {
         } else return false;
     }
 
+    public List<Session> sortSessions(List<Session> sessionList) {
+        return sessionList.stream()
+                .sorted(Comparator.comparing(Session::getSessionStatus).thenComparing(Session::getDate)).toList();
+    }
 
-
-//service
+    //service
     public boolean validCheck(LocalDate date, LocalTime time) {
         List<LocalDateTime> localDateTimeList = new ArrayList<>();
         dateRepository.findAll().forEach(item -> {

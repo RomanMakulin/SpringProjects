@@ -237,7 +237,6 @@ user_name_2 .user_field {
 }
 
 .sessions-list_item_field:first-child {
-    background-color: rgba(70, 250, 109, 0.479);
     border-radius: 10px;
     font-weight: 400;
 }

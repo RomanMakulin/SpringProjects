@@ -31,6 +31,7 @@ public class UserController {
 
     @GetMapping
     public String allUsers(Model model){
+        model.addAttribute("userSessions", sessionService.sortSessions(getAuthUser().getSessionList()));
         model.addAttribute("user", getAuthUser());
         return "/user/user.html";
     }
@@ -70,7 +71,7 @@ public class UserController {
     @GetMapping("/cancel/{id}")
     public String cancelSession(@PathVariable("id") Long id){
         boolean result = sessionService.cancelSession(id);
-        return (result) ? "redirect:/user" : "redirect:/user/sign-up-session";
+        return "redirect:/user";
     }
 
 //    optional

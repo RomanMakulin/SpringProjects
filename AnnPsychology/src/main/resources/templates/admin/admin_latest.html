@@ -10,84 +10,101 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
+            rel="stylesheet">
     <link rel="stylesheet" th:href="@{/admin/css/style_admin.css}" href="../../static/css/style_admin.css">
     <title>Manage page</title>
 </head>
 
 <body>
 
-    <article class="container">
-        <!-- menu logo -->
-        <aside class="logo-menu">
-            <div class="logo_title-box">
-                <h1 class="logo-title">Личный кабинет</h1>
-                <h2 class="logo-subtitle">управление сессиями</h2>
-            </div>
-            <div class="logo_submenu">
-                <a href="/welcome" class="logo_main-link">главная</a>
-                <a href="/logout" class="logo_main-link">выход</a>
-            </div>
-        </aside>
+<article class="container">
+    <!-- menu logo -->
+    <aside class="logo-menu">
+        <div class="logo_title-box">
+            <h1 class="logo-title">Личный кабинет</h1>
+            <h2 class="logo-subtitle">управление сессиями</h2>
+        </div>
+        <div class="logo_submenu">
+            <a href="/welcome" class="logo_main-link">главная</a>
+            <a href="/welcome" class="logo_main-link">мой кабинет</a>
+            <a href="/logout" class="logo_main-link">выход</a>
+        </div>
+    </aside>
+    <!--  -->
+
+    <div class="user-page">
+        <p class="user_name">Ann</p>
+        <p class="user_name" style="padding-left: 20px;">Novikova</p>
+    </div>
+
+    <hr>
+
+    <p class="sessions">Список сессий</p>
+
+    <div class="second-menu">
+        <a href="/admin" class="second-menu_link">Список сессий</a>
+        <a href="/admin/latest" class="second-menu_link">Недавно завершенные</a>
+        <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
+        <a href="/admin/all-users" class="second-menu_link">Все клиенты</a>
+    </div>
+
+    <div class="sessions-list">
+
         <!--  -->
+        <table class="table">
+            <thead>
+            <tr class="table-title">
+                <th scope="col">Дата и время</th>
+                <th scope="col">Имя Фамилия</th>
+                <th scope="col">ДЗ</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        <div class="user-page">
-            <p class="user_name">Ann</p>
-            <p class="user_name" style="padding-left: 20px;">Novikova</p>
-        </div>
+            <tr class="table-field" th:each="session_item : ${latestSession}">
 
-        <hr>
+                <div th:switch="${session_item.sessionHomework}">
 
-        <p class="sessions">Список сессий</p>
-
-        <div class="second-menu">
-            <a href="admin.html" class="second-menu_link">Список сессий</a>
-            <a href="admin_latest.html" class="second-menu_link">Недавно завершенные</a>
-            <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
-            <a href="admin_users.html" class="second-menu_link">Все клиенты</a>
-        </div>
-
-        <div class="sessions-list">
-
-            <!--  -->
-            <table class="table">
-                <thead>
-                    <tr class="table-title">
-                        <th scope="col">Дата и время</th>
-                        <th scope="col">Имя Фамилия</th>
-                        <th scope="col">ДЗ</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr class="table-field">
-
-                        <td class="users-list_item_field">25.02.2024, 15:00</td>
-                        <td class="users-list_item_field">Екатерина Павлова</td>
+                    <div th:case="null">
+                        <td th:text="${session_item.sessionDate.parsingDate}"
+                            class="sessions-list_item_field"></td>
+                        <td class="sessions-list_item_field">
+                            <span th:text="${session_item.user.username}"></span>
+                            <span th:text="${session_item.user.lastname}"></span>
+                        </td>
 
                         <td class="users-list_item_field">
-                            <form action="/" method="post" class="">
-                                <div class="update-input" style="display: flex; gap: 10px; justify-content: center;">
-                                    <!-- <input class="text input-zoom" style="height: 100px;" type="textarea"
-                                        name="dz" id="dz"> -->
-                                        <textarea class="text input-zoom" style="width: 400px; border: 1px solid rgba(205, 205, 205, 0.582);" name="dz" id="dz" cols="30" rows="5"></textarea>
+                            <form action="#" th:action="@{'/admin/give-hw/' + ${session_item.id}}"
+                                  th:object="${session}" method="post">
+                                <div class="update-input"
+                                     style="display: flex; gap: 10px; justify-content: center;">
+                                    <textarea th:value="${sessionHomework}" class="text input-zoom"
+                                              style="width: 400px; border: 1px solid rgba(205, 205, 205, 0.582);"
+                                              name="sessionHomework" id="sessionHomework" cols="30" rows="5"></textarea>
                                     <input type="submit" value="готово" class="submit-price text">
                                 </div>
                             </form>
                         </td>
+                    </div>
 
-                    </tr>
-
-                </tbody>
-            </table>
-            <!--  -->
+                    <div th:case="*"></div>
 
 
-        </div>
+                </div>
 
 
-    </article>
+            </tr>
+
+            </tbody>
+        </table>
+        <!--  -->
+
+
+    </div>
+
+
+</article>
 
 </body>
 

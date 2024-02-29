@@ -125,6 +125,16 @@ hr {
     font-family: Inter;
     font-size: 19px;
     font-weight: 300;
+    padding: 5px 20px;
+}
+
+.username{
+border-radius: 20px;
+    width: 350px;
+    background-color: #cfcfcf4a;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 30px;
 }
 
 .edit-link {
@@ -237,7 +247,6 @@ hr {
 }
 
 .sessions-list_item_field:first-child {
-    background-color: rgba(70, 250, 109, 0.479);
     border-radius: 10px;
     font-weight: 400;
 }

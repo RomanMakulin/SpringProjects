@@ -35,4 +35,10 @@ public class Session {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "date_id", referencedColumnName = "id")
     private SessionDate sessionDate;
+    @Column(name = "session_homework")
+    private String sessionHomework;
+
+    public LocalDateTime getDate(){
+        return sessionDate.getSessionDate();
+    }
 }

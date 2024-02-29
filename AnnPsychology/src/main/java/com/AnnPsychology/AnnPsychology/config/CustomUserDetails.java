@@ -1,5 +1,6 @@
 package com.AnnPsychology.AnnPsychology.config;
 
+import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,10 @@ public class CustomUserDetails implements UserDetails {
 
     public String getRole(){
         return user.getUserRole().name();
+    }
+
+    public List<Session> getSessions(){
+        return user.getSessionList();
     }
 
     @Override
