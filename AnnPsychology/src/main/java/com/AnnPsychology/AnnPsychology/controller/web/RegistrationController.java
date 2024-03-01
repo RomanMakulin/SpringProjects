@@ -2,8 +2,7 @@ package com.AnnPsychology.AnnPsychology.controller.web;
 
 import com.AnnPsychology.AnnPsychology.config.CustomUserDetails;
 import com.AnnPsychology.AnnPsychology.models.User;
-import com.AnnPsychology.AnnPsychology.models.enums.UserRole;
-import com.AnnPsychology.AnnPsychology.services.CustomUserDetailsService;
+import com.AnnPsychology.AnnPsychology.services.user.CustomUserDetailsService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -11,7 +10,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor

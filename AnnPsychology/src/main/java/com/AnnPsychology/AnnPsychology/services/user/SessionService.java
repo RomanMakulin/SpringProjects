@@ -1,9 +1,10 @@
-package com.AnnPsychology.AnnPsychology.services;
+package com.AnnPsychology.AnnPsychology.services.user;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
+import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.repository.DateRepository;
 import com.AnnPsychology.AnnPsychology.repository.SessionsRepository;
 import com.AnnPsychology.AnnPsychology.repository.UserRepository;
@@ -11,33 +12,33 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Data
 public class SessionService {
-    private final SessionsRepository sessionsRepository;
-    private final UserRepository userRepository;
-    private final DateRepository dateRepository;
+    private final AdapterRepository adapterRepository;
     private final long daysForCancel = 1;
 
     public Session getById(Long id) {
-        Optional<Session> session = sessionsRepository.findById(id);
+        Optional<Session> session = adapterRepository.getSessionsRepository().findById(id);
         return session.orElseThrow();
     }
 
     public User getUserBySessionId(Long id) {
-        return sessionsRepository.findById(id).orElseThrow().getUser();
+        return adapterRepository.getSessionsRepository().findById(id).orElseThrow().getUser();
     }
 
     public boolean signUpSession(Long id, LocalDate date, LocalTime time) {
         if (validCheck(date, time)) {
-            User updUser = userRepository.findById(id).orElseThrow();
+            User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
 
             Session session = new Session();
             session.setUser(updUser);
@@ -49,13 +50,17 @@ public class SessionService {
             session.setSessionDate(sessionDate);
 
             updUser.getSessionList().add(session);
-            userRepository.save(updUser);
+            adapterRepository.getUserRepository().save(updUser);
             return true;
         } else return false;
     }
 
+    public String getHomeWork(Long sessionId) {
+        return adapterRepository.getSessionsRepository().findById(sessionId).orElseThrow().getSessionHomework();
+    }
+
     public boolean cancelSession(Long id) {
-        Session session = sessionsRepository.findById(id).orElseThrow();
+        Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
         LocalDateTime sessionTime = session.getSessionDate().getSessionDate();
         LocalDateTime currentTime = LocalDateTime.now();
         long daysDiff = ChronoUnit.DAYS.between(currentTime, sessionTime);
@@ -63,7 +68,7 @@ public class SessionService {
         if (daysDiff >= daysForCancel) {
             // TO DO: возврат денег
             session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
-            sessionsRepository.save(session);
+            adapterRepository.getSessionsRepository().save(session);
             return true;
         } else return false;
     }
@@ -76,7 +81,7 @@ public class SessionService {
     //service
     public boolean validCheck(LocalDate date, LocalTime time) {
         List<LocalDateTime> localDateTimeList = new ArrayList<>();
-        dateRepository.findAll().forEach(item -> {
+        adapterRepository.getDateRepository().findAll().forEach(item -> {
             localDateTimeList.add(item.getSessionDate());
         });
 

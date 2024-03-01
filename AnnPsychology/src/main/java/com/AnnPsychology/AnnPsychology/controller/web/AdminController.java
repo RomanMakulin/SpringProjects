@@ -1,11 +1,8 @@
 package com.AnnPsychology.AnnPsychology.controller.web;
 
-import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.User;
-import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.services.admin.AdminAdapter;
-import com.AnnPsychology.AnnPsychology.services.admin.AdminSessionService;
-import com.AnnPsychology.AnnPsychology.services.SessionService;
+import com.AnnPsychology.AnnPsychology.services.user.SessionService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,9 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor

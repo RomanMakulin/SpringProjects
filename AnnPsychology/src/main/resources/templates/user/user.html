@@ -89,7 +89,7 @@
 
                         <td th:switch="${session_item.sessionHomework}">
                             <p th:case="null" class="sessions-list_item_link">Пока чиллим!)</p>
-                            <a href="/" th:case="*" class="sessions-list_item_link">Перейти</a>
+                            <a th:href="@{'/user/hw/' + ${session_item.id}}" th:case="*" class="sessions-list_item_link">Перейти</a>
                         </td>
 
                         <td class="users-list_item_field">

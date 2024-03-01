@@ -1,6 +1,6 @@
 package com.AnnPsychology.AnnPsychology.config;
 
-import com.AnnPsychology.AnnPsychology.services.CustomUserDetailsService;
+import com.AnnPsychology.AnnPsychology.services.user.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

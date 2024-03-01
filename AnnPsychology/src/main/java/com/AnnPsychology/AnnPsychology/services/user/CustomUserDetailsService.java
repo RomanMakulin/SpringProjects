@@ -1,4 +1,4 @@
-package com.AnnPsychology.AnnPsychology.services;
+package com.AnnPsychology.AnnPsychology.services.user;
 
 import com.AnnPsychology.AnnPsychology.config.CustomUserDetails;
 import com.AnnPsychology.AnnPsychology.models.Session;

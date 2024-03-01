@@ -120,6 +120,14 @@ hr {
     font-weight: 100;
 }
 
+.hw-box{
+    margin: 50px auto;
+    max-width: 1000px;
+    border-radius: 10px;
+    background-color: rgb(249 249 249);
+    box-shadow: 0 0 10px #837a7269;
+}
+
 .user_field {
     color: black;
     font-family: Inter;
