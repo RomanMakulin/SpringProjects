@@ -15,4 +15,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return результат поиска пользователя
      */
     Optional<User> getByUsername(String username);
+    User getByEmail(String email);
 }

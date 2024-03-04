@@ -68,7 +68,6 @@ public class UserController {
 
         if (date == null | time == null) return "redirect:/user/repeat-sign-up-session";
         return sessionService.signUpSession(id, date, time) ? "redirect:/user": "redirect:/user/repeat-sign-up-session";
-
     }
 
     /**
@@ -78,9 +77,11 @@ public class UserController {
      * @return личный кабинет пользователя
      */
     @GetMapping("/cancel/{id}")
-    public String cancelSession(@PathVariable("id") Long id) {
-        boolean result = sessionService.cancelSession(id);
-        return "redirect:/user";
+    public String cancelSession(@PathVariable("id") Long id, Model model) {
+        if (sessionService.cancelSession(id)) return "redirect:/user";
+        model.addAttribute("user", getAuthUser());
+        model.addAttribute("errorMessage", "Отмена сессии менее чем за сутки невозможна.");
+        return "/user/cancel-error.html";
     }
 
     @GetMapping("/hw/{id}")

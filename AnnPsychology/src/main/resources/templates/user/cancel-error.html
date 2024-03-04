@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/user/css/user.css}" href="../../static/css/user.css">
+    <title>Manage page</title>
+</head>
+
+<body>
+
+<article class="container">
+    <!-- menu logo -->
+    <aside class="logo-menu">
+        <div class="logo_title-box">
+            <h1 class="logo-title">Личный кабинет</h1>
+            <h2 class="logo-subtitle">управление сессиями</h2>
+        </div>
+        <div class="logo_submenu">
+            <a href="/welcome" class="logo_main-link">главная</a>
+            <a href="/welcome" class="logo_main-link">мой кабинет</a>
+            <a href="/logout" class="logo_main-link">выход</a>
+        </div>
+    </aside>
+    <!--  -->
+
+    <div class="user-page">
+        <p class="user_field username">
+            <span th:text="${user.username}"></span>
+            <span th:text="${user.lastname}"></span>,
+            <span th:text="${user.getAge}"></span>
+        </p>
+        <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>
+        <p class="user_field"><span>Telegram:</span> <span th:text="${user.socialLink}"></span></p>
+        <p class="user_field"><span>Phone:</span> <span th:text="${user.phone}"></span></p>
+        <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.price}"></span> <span> руб.</span></p>
+        <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
+    </div>
+
+    <hr>
+
+
+
+    <p class="sessions">Error</p>
+
+    <div class="sessions-list">
+
+        <div class="sign-session">
+            <a href="/user/sign-up-session" class="go text">Записаться</a>
+        </div>
+
+        <p class="text" th:text="${errorMessage}" style="color: #ff6666"></p>
+
+
+
+    </div>
+
+
+</article>
+
+</body>
+
+</html>

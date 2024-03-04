@@ -1,8 +1,10 @@
 package com.AnnPsychology.AnnPsychology.services.admin;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
+import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
+import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.repository.SessionsRepository;
 import com.AnnPsychology.AnnPsychology.repository.UserRepository;
 import lombok.Data;
@@ -22,8 +24,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Data
 public class AdminSessionService {
-
-    private final SessionsRepository sessionsRepository;
+    private final AdapterRepository adapterRepository;
 
     /**
      * Получить список всех сессий в отсортированном виде
@@ -32,13 +33,16 @@ public class AdminSessionService {
      */
     public List<Session> getAllSessions() {
 
-        List<Session> sessionList = sessionsRepository.findAll().stream().sorted(
-                Comparator.comparing(Session::getSessionStatus).thenComparing(Session::getDate)).toList();
+        List<Session> sessionList = adapterRepository.getSessionsRepository()
+                .findAll()
+                .stream()
+                .filter(i -> i.getSessionStatus() != SessionStatus.SESSION_CANCELLED)
+                .sorted(Comparator.comparing(Session::getSessionStatus).thenComparing(Session::getDate)).toList();
 
         sessionList.forEach(item -> {
-            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE & item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
+            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
                 item.setSessionStatus(SessionStatus.SESSION_DONE);
-                sessionsRepository.save(item);
+                adapterRepository.getSessionsRepository().save(item);
             }
         });
         return sessionList;
@@ -52,34 +56,36 @@ public class AdminSessionService {
      * @return список сессий
      */
     public List<Session> getLatest() {
-        return sessionsRepository.findAll().stream().filter(item -> item.getSessionStatus() == SessionStatus.SESSION_DONE)
+        return adapterRepository.getSessionsRepository().findAll().stream().filter(item -> item.getSessionStatus() == SessionStatus.SESSION_DONE)
                 .filter(item -> ChronoUnit.DAYS.between(LocalDateTime.now(), item.getSessionDate().getSessionDate()) < 7)
                 .sorted(Comparator.comparing(s -> s.getSessionDate().getSessionDate()))
                 .toList();
     }
 
     public void giveSessionLink(Long id, String link) {
-        Session session = sessionsRepository.findById(id).orElseThrow();
+        Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
         session.setSessionLink(link);
-        sessionsRepository.save(session);
+        adapterRepository.getSessionsRepository().save(session);
     }
 
     public void giveSessionHomeWork(Long id, String sessionHomework) {
-        Session session = sessionsRepository.findById(id).orElseThrow();
+        Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
         session.setSessionHomework(sessionHomework);
-        sessionsRepository.save(session);
+        adapterRepository.getSessionsRepository().save(session);
     }
 
     public void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time) {
-        Session session = sessionsRepository.findById(sessionId).orElseThrow();
+        Session session = adapterRepository.getSessionsRepository().findById(sessionId).orElseThrow();
         session.getSessionDate().setSessionDate(LocalDateTime.of(date, time));
-        sessionsRepository.save(session);
+        adapterRepository.getSessionsRepository().save(session);
     }
 
     public void cancelSession(Long id) {
-        Session session = sessionsRepository.findById(id).orElseThrow();
+        Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
         // TO DO: возврат денег
         session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
-        sessionsRepository.save(session);
+        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
+        adapterRepository.getDateRepository().deleteById(sessionDate.getId());
+        adapterRepository.getSessionsRepository().save(session);
     }
 }

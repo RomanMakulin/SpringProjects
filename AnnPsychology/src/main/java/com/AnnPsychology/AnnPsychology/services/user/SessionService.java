@@ -67,16 +67,32 @@ public class SessionService {
 
         if (daysDiff >= daysForCancel) {
             // TO DO: возврат денег
+
             session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
+            SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
+            adapterRepository.getDateRepository().deleteById(sessionDate.getId());
             adapterRepository.getSessionsRepository().save(session);
             return true;
         } else return false;
     }
 
     public List<Session> sortSessions(List<Session> sessionList) {
+
         return sessionList.stream()
-                .sorted(Comparator.comparing(Session::getSessionStatus).thenComparing(Session::getDate)).toList();
+                .sorted(Comparator.comparing(Session::getSessionStatus, (status1, status2) -> {
+                    if (status1 == SessionStatus.SESSION_ACTIVE ||
+                            status1 == SessionStatus.SESSION_DONE ||
+                            status1 == SessionStatus.SESSION_CANCELLED) {
+                        return -1;
+                    } else if (status2 == SessionStatus.SESSION_ACTIVE ||
+                            status2 == SessionStatus.SESSION_DONE ||
+                            status2 == SessionStatus.SESSION_CANCELLED) {
+                        return 1;
+                    }
+                    return 0;
+                }).thenComparing(Session::getDate)).toList();
     }
+
 
     //service
     public boolean validCheck(LocalDate date, LocalTime time) {

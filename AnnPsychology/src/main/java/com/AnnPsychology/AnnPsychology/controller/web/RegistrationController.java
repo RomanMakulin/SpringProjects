@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -38,9 +39,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration-user")
-    public String registration(User user){
-        customUserDetailsService.createUser(user);
-        return "redirect:/login";
+    public String registration(User user,Model model){
+        model.addAttribute("errorMessage", "Данный email уже занят другим пользователем");
+        return customUserDetailsService.createUser(user) ? "redirect:/login" : "/registration/registration-error.html";
     }
 
     @GetMapping("/registration/css/**")

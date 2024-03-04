@@ -14,26 +14,37 @@ CREATE TABLE users
     last_name VARCHAR(55) NOT NULL,
     email VARCHAR(200) NOT NULL,
     social_link VARCHAR(300) NOT NULL,
-    date_birth DATE,
+    date_birth DATE NOT NULL,
+    phone VARCHAR(300) NOT NULL,
     `password`VARCHAR(300) NOT NULL,
-    user_role VARCHAR(30) NOT NULL
+    user_role VARCHAR(30) NOT NULL,
+    price DECIMAL NOT NULL
+);
+
+-- создаем таблицу сессий
+CREATE TABLE sessions_date
+(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    session_date DATETIME
 );
 
 -- создаем таблицу сессий
 CREATE TABLE user_session
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    session_title VARCHAR(25),
-    session_description VARCHAR(25),
     session_price INT,
-    session_date DATE,
     session_link VARCHAR(305),
     payment_status BOOL,
     session_status VARCHAR(30),
+    session_homework VARCHAR(1000),
+    
+    date_id INT NOT NULL, -- задаем айди группы 
+    FOREIGN KEY (date_id)  REFERENCES sessions_date (id) ON DELETE SET NULL ON UPDATE SET NULL,
     
     user_id INT NOT NULL, -- задаем айди группы 
-    FOREIGN KEY (user_id)  REFERENCES users (id) ON DELETE CASCADE
+    FOREIGN KEY (user_id)  REFERENCES users (id) ON DELETE SET NULL ON UPDATE SET NULL
     
 );
+
 
 select * from users;

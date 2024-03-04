@@ -39,6 +39,7 @@ public class Session {
     private String sessionHomework;
 
     public LocalDateTime getDate(){
+        if (sessionDate == null) return LocalDateTime.now();
         return sessionDate.getSessionDate();
     }
 }
