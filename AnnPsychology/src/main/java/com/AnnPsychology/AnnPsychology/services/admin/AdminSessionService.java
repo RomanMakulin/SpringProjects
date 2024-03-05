@@ -36,7 +36,6 @@ public class AdminSessionService {
         List<Session> sessionList = adapterRepository.getSessionsRepository()
                 .findAll()
                 .stream()
-                .filter(i -> i.getSessionStatus() != SessionStatus.SESSION_CANCELLED)
                 .sorted(Comparator.comparing(Session::getSessionStatus).thenComparing(Session::getDate)).toList();
 
         sessionList.forEach(item -> {
