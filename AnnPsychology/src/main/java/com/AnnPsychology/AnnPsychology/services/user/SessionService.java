@@ -37,22 +37,23 @@ public class SessionService {
     }
 
     public boolean signUpSession(Long id, LocalDate date, LocalTime time) {
-        if (validCheck(date, time)) {
-            User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
 
-            Session session = new Session();
-            session.setUser(updUser);
-            session.setSessionStatus(SessionStatus.SESSION_ACTIVE);
-            session.setSessionPrice(updUser.getPrice());
+        if (!validCheck(date, time)) return false;
+        
+        User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
+        Session session = new Session();
+        
+        session.setUser(updUser);
+        session.setSessionStatus(SessionStatus.SESSION_ACTIVE); // при создании задавать 
+        session.setSessionPrice(updUser.getPrice());
 
-            SessionDate sessionDate = new SessionDate();
-            sessionDate.setSessionDate(LocalDateTime.of(date, time));
-            session.setSessionDate(sessionDate);
+        SessionDate sessionDate = new SessionDate();
+        sessionDate.setSessionDate(LocalDateTime.of(date, time));
+        session.setSessionDate(sessionDate);
 
-            updUser.getSessionList().add(session);
-            adapterRepository.getUserRepository().save(updUser);
-            return true;
-        } else return false;
+        updUser.getSessionList().add(session);
+        adapterRepository.getUserRepository().save(updUser);
+        return true;
     }
 
     public String getHomeWork(Long sessionId) {
