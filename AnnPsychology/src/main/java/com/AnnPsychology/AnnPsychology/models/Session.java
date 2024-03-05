@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -41,6 +43,14 @@ public class Session {
     public LocalDateTime getDate(){
         if (sessionDate == null) return LocalDateTime.now();
         return sessionDate.getSessionDate();
+    }
+
+    public Session(User user, LocalDate date, LocalTime time) {
+        this.user = user;
+        this.sessionPrice = user.getPrice();
+        this.sessionDate = new SessionDate();
+        sessionDate.setSessionDate(LocalDateTime.of(date, time));
+        this.sessionStatus = SessionStatus.SESSION_ACTIVE;
     }
 
     // добавить конструктор, где принимается пользователь (одно поле)

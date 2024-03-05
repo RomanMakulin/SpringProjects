@@ -41,17 +41,8 @@ public class SessionService {
         if (!validCheck(date, time)) return false;
         
         User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
-        Session session = new Session(); // добавить сюда юзера, используя новый конструктор
-        
-        // session.setUser(updUser);
-        // session.setSessionStatus(SessionStatus.SESSION_ACTIVE); // при создании задавать 
-        // session.setSessionPrice(updUser.getPrice());
 
-        // SessionDate sessionDate = new SessionDate();
-        // sessionDate.setSessionDate(LocalDateTime.of(date, time));
-        // session.setSessionDate(sessionDate);
-
-        updUser.getSessionList().add(session);
+        updUser.getSessionList().add(new Session(updUser, date, time));
         adapterRepository.getUserRepository().save(updUser);
         return true;
     }
@@ -81,15 +72,15 @@ public class SessionService {
 
         // Проверить результат работы сортировки
         
-        List<Session> sortedList = listSession.stream()
+        return sessionList.stream()
     .sorted((s1, s2) -> {
         int result = s1.getSessionStatus().compareTo(s2.getSessionStatus());
         if (result == 0) {
-            result = s1.getSessionDate().compareTo(s2.getSessionDate());
+            result = s1.getSessionDate().getSessionDate().compareTo(s2.getSessionDate().getSessionDate());
         }
         return result;
     })
-    .collect(Collectors.toList());
+    .toList();
 
         // return sessionList.stream()
         //         .sorted(Comparator.comparing(Session::getSessionStatus, (status1, status2) -> {
