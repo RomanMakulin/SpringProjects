@@ -94,7 +94,7 @@ public class SessionService {
     }
 
 
-    //service
+    //service methods
     public boolean validCheck(LocalDate date, LocalTime time) {
         List<LocalDateTime> localDateTimeList = new ArrayList<>();
         adapterRepository.getDateRepository().findAll().forEach(item -> {
