@@ -41,15 +41,15 @@ public class SessionService {
         if (!validCheck(date, time)) return false;
         
         User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
-        Session session = new Session();
+        Session session = new Session(); // добавить сюда юзера, используя новый конструктор
         
-        session.setUser(updUser);
-        session.setSessionStatus(SessionStatus.SESSION_ACTIVE); // при создании задавать 
-        session.setSessionPrice(updUser.getPrice());
+        // session.setUser(updUser);
+        // session.setSessionStatus(SessionStatus.SESSION_ACTIVE); // при создании задавать 
+        // session.setSessionPrice(updUser.getPrice());
 
-        SessionDate sessionDate = new SessionDate();
-        sessionDate.setSessionDate(LocalDateTime.of(date, time));
-        session.setSessionDate(sessionDate);
+        // SessionDate sessionDate = new SessionDate();
+        // sessionDate.setSessionDate(LocalDateTime.of(date, time));
+        // session.setSessionDate(sessionDate);
 
         updUser.getSessionList().add(session);
         adapterRepository.getUserRepository().save(updUser);
