@@ -79,19 +79,31 @@ public class SessionService {
 
     public List<Session> sortSessions(List<Session> sessionList) {
 
-        return sessionList.stream()
-                .sorted(Comparator.comparing(Session::getSessionStatus, (status1, status2) -> {
-                    if (status1 == SessionStatus.SESSION_ACTIVE ||
-                            status1 == SessionStatus.SESSION_DONE ||
-                            status1 == SessionStatus.SESSION_CANCELLED) {
-                        return -1;
-                    } else if (status2 == SessionStatus.SESSION_ACTIVE ||
-                            status2 == SessionStatus.SESSION_DONE ||
-                            status2 == SessionStatus.SESSION_CANCELLED) {
-                        return 1;
-                    }
-                    return 0;
-                }).thenComparing(Session::getDate)).toList();
+        // Проверить результат работы сортировки
+        
+        List<Session> sortedList = listSession.stream()
+    .sorted((s1, s2) -> {
+        int result = s1.getSessionStatus().compareTo(s2.getSessionStatus());
+        if (result == 0) {
+            result = s1.getSessionDate().compareTo(s2.getSessionDate());
+        }
+        return result;
+    })
+    .collect(Collectors.toList());
+
+        // return sessionList.stream()
+        //         .sorted(Comparator.comparing(Session::getSessionStatus, (status1, status2) -> {
+        //             if (status1 == SessionStatus.SESSION_ACTIVE ||
+        //                     status1 == SessionStatus.SESSION_DONE ||
+        //                     status1 == SessionStatus.SESSION_CANCELLED) {
+        //                 return -1;
+        //             } else if (status2 == SessionStatus.SESSION_ACTIVE ||
+        //                     status2 == SessionStatus.SESSION_DONE ||
+        //                     status2 == SessionStatus.SESSION_CANCELLED) {
+        //                 return 1;
+        //             }
+        //             return 0;
+        //         }).thenComparing(Session::getDate)).toList();
     }
 
 
