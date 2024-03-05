@@ -32,7 +32,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//        Optional<User> user = userRepository.getByUsername(username);
         Optional<User> user = userRepository.findAll().stream().filter(item -> item.getEmail().equals(email)).findAny();
         return user.map(CustomUserDetails::new).
                 orElseThrow(() -> new UsernameNotFoundException(email + " not found!"));
@@ -43,23 +42,23 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public boolean createUser(User userDetails) {
-        if (userRepository.getByEmail(userDetails.getEmail()) == null){
-            User user = new User();
-            user.setId(userDetails.getId());
-            user.setUsername(userDetails.getUsername());
-            user.setLastname(userDetails.getLastname());
-            user.setEmail(userDetails.getEmail());
-            user.setPassword(new BCryptPasswordEncoder().encode(userDetails.getPassword()));
-            user.setUserRole(UserRole.ROLE_USER);
-            user.setDateBirth(userDetails.getDateBirth());
-            user.setSessionList(userDetails.getSessionList());
-            user.setSocialLink(userDetails.getSocialLink());
-            user.setPhone(userDetails.getPhone());
-            user.setPrice(new BigDecimal(2000));
-            userRepository.save(user);
-            return true;
-        }
-        return false;
+        
+        if (userRepository.getByEmail(userDetails.getEmail()) != null) return false;
+
+        User user = new User();
+        user.setId(userDetails.getId());
+        user.setUsername(userDetails.getUsername());
+        user.setLastname(userDetails.getLastname());
+        user.setEmail(userDetails.getEmail());
+        user.setPassword(new BCryptPasswordEncoder().encode(userDetails.getPassword()));
+        user.setUserRole(UserRole.ROLE_USER);
+        user.setDateBirth(userDetails.getDateBirth());
+        user.setSessionList(userDetails.getSessionList());
+        user.setSocialLink(userDetails.getSocialLink());
+        user.setPhone(userDetails.getPhone());
+        user.setPrice(new BigDecimal(2000));
+        userRepository.save(user);
+        return true;
     }
 
     public void updateUser(Long id, User userDetails) {
@@ -73,7 +72,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         user.setPhone(userDetails.getPhone());
         userRepository.save(user);
     }
-
-
-
 }
