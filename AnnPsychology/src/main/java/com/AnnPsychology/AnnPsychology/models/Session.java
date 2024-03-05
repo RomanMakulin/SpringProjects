@@ -42,4 +42,10 @@ public class Session {
         if (sessionDate == null) return LocalDateTime.now();
         return sessionDate.getSessionDate();
     }
+
+    // добавить конструктор, где принимается пользователь (одно поле)
+    // Constructor(User user)
+    // this.sessionPrice = user.getPrice();
+    // this.paymentStatus = STATUS...;
+    
 }
