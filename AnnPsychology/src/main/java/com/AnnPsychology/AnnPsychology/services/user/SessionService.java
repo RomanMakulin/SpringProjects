@@ -8,6 +8,7 @@ import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.repository.DateRepository;
 import com.AnnPsychology.AnnPsychology.repository.SessionsRepository;
 import com.AnnPsychology.AnnPsychology.repository.UserRepository;
+import com.AnnPsychology.AnnPsychology.services.publicService.PublicSessionService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -55,7 +56,6 @@ public class SessionService {
 
         if (daysDiff >= daysForCancel) {
             // TO DO: возврат денег
-
             session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
             SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
             adapterRepository.getDateRepository().deleteById(sessionDate.getId());
@@ -65,32 +65,7 @@ public class SessionService {
     }
 
     public List<Session> sortSessions(List<Session> sessionList) {
-
-        // Проверить результат работы сортировки
-        
-        return sessionList.stream()
-    .sorted((s1, s2) -> {
-        int result = s1.getSessionStatus().compareTo(s2.getSessionStatus());
-        if (result == 0) {
-            result = s1.getSessionDate().getSessionDate().compareTo(s2.getSessionDate().getSessionDate());
-        }
-        return result;
-    })
-    .toList();
-
-        // return sessionList.stream()
-        //         .sorted(Comparator.comparing(Session::getSessionStatus, (status1, status2) -> {
-        //             if (status1 == SessionStatus.SESSION_ACTIVE ||
-        //                     status1 == SessionStatus.SESSION_DONE ||
-        //                     status1 == SessionStatus.SESSION_CANCELLED) {
-        //                 return -1;
-        //             } else if (status2 == SessionStatus.SESSION_ACTIVE ||
-        //                     status2 == SessionStatus.SESSION_DONE ||
-        //                     status2 == SessionStatus.SESSION_CANCELLED) {
-        //                 return 1;
-        //             }
-        //             return 0;
-        //         }).thenComparing(Session::getDate)).toList();
+         return new PublicSessionService().sortSession(sessionList);
     }
 
 

@@ -40,7 +40,7 @@
             <p class="user_field">Почта: <span th:text="${user.email}"></span></p>
             <p class="user_field">Telegram: <span th:text="${user.socialLink}"></span></p>
             <p class="user_field">Phone: <span th:text="${user.phone}"></span></p>
-            <p class="user_field">Стоимость сессий: <span th:text="${user.price}"></span> <span> руб.</span></p>
+            <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.getStringPrice}"></span></p>
         </div>
 
         <hr>

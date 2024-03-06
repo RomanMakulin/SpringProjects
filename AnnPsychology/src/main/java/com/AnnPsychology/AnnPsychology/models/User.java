@@ -10,12 +10,13 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,10 +47,13 @@ public class User {
 
     public User(){
         this.sessionList = new ArrayList<>();
-        this.userRole = ROLE_USER;
+        this.userRole = UserRole.ROLE_USER;
         this.price = new BigDecimal(2000);
     }
     
+    public String getStringPrice(){
+        return this.price.intValue() + " руб.";
+    }
 
     public int getSessionsCount(){
         return sessionList.size();
