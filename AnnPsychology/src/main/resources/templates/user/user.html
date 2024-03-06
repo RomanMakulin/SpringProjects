@@ -80,10 +80,10 @@
                         </td>
 
 
-                        <div th:switch="${session_item.sessionDate}">
-                            <td th:case="null">No time</td>
-                            <td th:case="*" th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field">25.02.2024, 15:00</td>
-                        </div>
+                        <td th:switch="${session_item.sessionDate}">
+                            <p th:case="null">No time</p>
+                            <p th:case="*" th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field">25.02.2024, 15:00</p>
+                        </td>
 
 
                         <td class="users-list_item_field" th:switch="${session_item.sessionLink}">
@@ -96,8 +96,8 @@
                             <a th:href="@{'/user/hw/' + ${session_item.id}}" th:case="*" class="sessions-list_item_link">Перейти</a>
                         </td>
 
-                        <td class="users-list_item_field">
-                            <a th:href="@{'/user/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>
+                        <td class="users-list_item_field" th:switch="${session_item.sessionStatus}">
+                            <a th:case="${session_item.sessionStatus.SESSION_ACTIVE}" th:href="@{'/user/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>
                         </td>
                     </tr>
 

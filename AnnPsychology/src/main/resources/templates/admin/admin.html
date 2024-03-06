@@ -74,15 +74,17 @@
                         </td>
 
 
-                        <div th:switch="${session_item.sessionDate}">
-                            <td th:case="null">No time</td>
-                            <td th:case="*" th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field">25.02.2024, 15:00</td>
-                        </div>
+                        <td th:switch="${session_item.sessionDate}">
+                            <p th:case="null">No time</p>
+                            <p th:case="*" th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field"></p>
+                        </td>
 <!--                        <td th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field"></td>-->
 
                         <td class="sessions-list_item_field">
                             <span th:text="${session_item.user.username}"></span>
                             <span th:text="${session_item.user.lastname}"></span>
+                            <br>
+                            <span th:text="${session_item.user.phone}"></span>
                         </td>
 
                         <td class="sessions-list_item_field" th:switch="${session_item.paymentStatus}">
@@ -102,12 +104,12 @@
                             <a th:case="*" th:href="@{'https://' + ${session_item.sessionLink}}" target="_blank" class="sessions-list_item_link">Google Meet</a>
                         </td>
 
-                        <td class="users-list_item_field">
-                            <a th:href="@{'/admin/edit-session-form/' + ${session_item.id}}" class="sessions-list_item_link">Редактировать</a>
+                        <td th:switch="${session_item.sessionStatus}" class="users-list_item_field">
+                            <a th:case="${session_item.sessionStatus.SESSION_ACTIVE}" th:href="@{'/admin/edit-session-form/' + ${session_item.id}}" class="sessions-list_item_link">Ред.</a>
                         </td>
 
-                        <td class="users-list_item_field">
-                            <a th:href="@{'/admin/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>
+                        <td th:switch="${session_item.sessionStatus}" class="users-list_item_field">
+                            <a th:case="${session_item.sessionStatus.SESSION_ACTIVE}" th:href="@{'/admin/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>
                         </td>
                     </tr>
 

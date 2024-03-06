@@ -11,7 +11,9 @@ import com.AnnPsychology.AnnPsychology.repository.UserRepository;
 import com.AnnPsychology.AnnPsychology.services.publicService.PublicSessionService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,6 +26,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Data
 public class SessionService {
+    @Autowired
+    private PublicSessionService publicSessionService;
     private final AdapterRepository adapterRepository;
     private final long daysForCancel = 1;
 
@@ -37,7 +41,7 @@ public class SessionService {
     }
 
     public boolean signUpSession(Long id, LocalDate date, LocalTime time) {
-        if (!validCheck(date, time)) return false;
+        if (!new ValidationSessionService().validCheck(date, time, adapterRepository)) return false;
         User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
         updUser.getSessionList().add(new Session(updUser, date, time));
         adapterRepository.getUserRepository().save(updUser);
@@ -50,43 +54,14 @@ public class SessionService {
 
     public boolean cancelSession(Long id) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
-        LocalDateTime sessionTime = session.getSessionDate().getSessionDate();
-        LocalDateTime currentTime = LocalDateTime.now();
-        long daysDiff = ChronoUnit.DAYS.between(currentTime, sessionTime);
-
-        if (daysDiff >= daysForCancel) {
-            // TO DO: возврат денег
-            session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
-            SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
-            adapterRepository.getDateRepository().deleteById(sessionDate.getId());
-            adapterRepository.getSessionsRepository().save(session);
-            return true;
-        } else return false;
+        long daysDiff = ChronoUnit.DAYS.between(LocalDateTime.now(), session.getSessionDate().getSessionDate()); // day difference
+        if (!(daysDiff >= daysForCancel)) return false;
+        publicSessionService.cancelAndDeleteDate(session, adapterRepository);
+        return true;
     }
 
     public List<Session> sortSessions(List<Session> sessionList) {
-         return new PublicSessionService().sortSession(sessionList);
-    }
-
-
-    //service methods
-    public boolean validCheck(LocalDate date, LocalTime time) {
-        List<LocalDateTime> localDateTimeList = new ArrayList<>();
-        adapterRepository.getDateRepository().findAll().forEach(item -> {
-            localDateTimeList.add(item.getSessionDate());
-        });
-
-        boolean validDateContain = localDateTimeList.contains(LocalDateTime.of(date, time));
-
-        boolean validSessionBefore = localDateTimeList.contains(LocalDateTime.of(date, time.plusHours(1))) |
-                localDateTimeList.contains(LocalDateTime.of(date, time.plusMinutes(30)));
-
-        boolean validSessionAfter = localDateTimeList.contains(LocalDateTime.of(date, time.minusHours(1))) |
-                localDateTimeList.contains(LocalDateTime.of(date, time.minusMinutes(30)));
-
-        boolean validSessionToLate = LocalDateTime.of(date, time).isAfter(LocalDateTime.now());
-
-        return !validDateContain & !validSessionBefore & !validSessionAfter & validSessionToLate;
+        return publicSessionService.sortSession(sessionList);
     }
 
 }

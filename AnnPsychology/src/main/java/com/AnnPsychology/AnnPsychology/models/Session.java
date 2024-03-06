@@ -52,10 +52,5 @@ public class Session {
         sessionDate.setSessionDate(LocalDateTime.of(date, time));
         this.sessionStatus = SessionStatus.SESSION_ACTIVE;
     }
-
-    // добавить конструктор, где принимается пользователь (одно поле)
-    // Constructor(User user)
-    // this.sessionPrice = user.getPrice();
-    // this.paymentStatus = STATUS...;
     
 }

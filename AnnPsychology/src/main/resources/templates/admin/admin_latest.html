@@ -57,6 +57,7 @@
             <tr class="table-title">
                 <th scope="col">Дата и время</th>
                 <th scope="col">Имя Фамилия</th>
+                <th scope="col">Телефон</th>
                 <th scope="col">ДЗ</th>
             </tr>
             </thead>
@@ -73,6 +74,8 @@
                             <span th:text="${session_item.user.username}"></span>
                             <span th:text="${session_item.user.lastname}"></span>
                         </td>
+
+                        <td th:text="${session_item.user.phone}"></td>
 
                         <td class="users-list_item_field">
                             <form action="#" th:action="@{'/admin/give-hw/' + ${session_item.id}}"

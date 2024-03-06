@@ -7,8 +7,10 @@ import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.repository.SessionsRepository;
 import com.AnnPsychology.AnnPsychology.repository.UserRepository;
+import com.AnnPsychology.AnnPsychology.services.publicService.PublicSessionService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -24,6 +26,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Data
 public class AdminSessionService {
+    @Autowired
+    private PublicSessionService publicSessionService;
     private final AdapterRepository adapterRepository;
 
     /**
@@ -34,16 +38,10 @@ public class AdminSessionService {
     public List<Session> getAllSessions() {
 
         List<Session> sessionList = adapterRepository.getSessionsRepository()
-                .findAll()
-                .stream()
-                .sorted(Comparator.comparing(Session::getSessionStatus).thenComparing(Session::getDate)).toList();
+                .findAll();
 
-        sessionList.forEach(item -> {
-            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
-                item.setSessionStatus(SessionStatus.SESSION_DONE);
-                adapterRepository.getSessionsRepository().save(item);
-            }
-        });
+        sessionList = publicSessionService.sortSession(sessionList);
+        setDone(sessionList);
         return sessionList;
     }
 
@@ -56,7 +54,6 @@ public class AdminSessionService {
      */
     public List<Session> getLatest() {
         return adapterRepository.getSessionsRepository().findAll().stream().filter(item -> item.getSessionStatus() == SessionStatus.SESSION_DONE)
-                .filter(item -> ChronoUnit.DAYS.between(LocalDateTime.now(), item.getSessionDate().getSessionDate()) < 7)
                 .sorted(Comparator.comparing(s -> s.getSessionDate().getSessionDate()))
                 .toList();
     }
@@ -81,10 +78,15 @@ public class AdminSessionService {
 
     public void cancelSession(Long id) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
-        // TO DO: возврат денег
-        session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
-        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
-        adapterRepository.getDateRepository().deleteById(sessionDate.getId());
-        adapterRepository.getSessionsRepository().save(session);
+        new PublicSessionService().cancelAndDeleteDate(session, adapterRepository);
+    }
+
+    public void setDone(List<Session> sessionList) {
+        sessionList.forEach(item -> {
+            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
+                item.setSessionStatus(SessionStatus.SESSION_DONE);
+                adapterRepository.getSessionsRepository().save(item);
+            }
+        });
     }
 }
