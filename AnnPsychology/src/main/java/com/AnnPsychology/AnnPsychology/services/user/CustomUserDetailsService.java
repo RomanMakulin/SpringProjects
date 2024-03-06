@@ -46,17 +46,17 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (userRepository.getByEmail(userDetails.getEmail()) != null) return false;
 
         User user = new User();
-        user.setId(userDetails.getId());
+        // user.setId(userDetails.getId());
         user.setUsername(userDetails.getUsername());
         user.setLastname(userDetails.getLastname());
         user.setEmail(userDetails.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(userDetails.getPassword()));
-        user.setUserRole(UserRole.ROLE_USER);
+        // user.setUserRole(UserRole.ROLE_USER);
         user.setDateBirth(userDetails.getDateBirth());
-        user.setSessionList(userDetails.getSessionList());
+        // user.setSessionList(userDetails.getSessionList());
         user.setSocialLink(userDetails.getSocialLink());
         user.setPhone(userDetails.getPhone());
-        user.setPrice(new BigDecimal(2000));
+        // user.setPrice(new BigDecimal(2000));
         userRepository.save(user);
         return true;
     }
