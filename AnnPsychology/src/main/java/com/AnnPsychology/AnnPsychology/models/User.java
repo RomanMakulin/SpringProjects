@@ -44,6 +44,13 @@ public class User {
         return Period.between(dateBirth, LocalDate.now()).getYears();
     }
 
+    public User(){
+        this.sessionList = new ArrayList<>();
+        this.userRole = ROLE_USER;
+        this.price = new BigDecimal(2000);
+    }
+    
+
     public int getSessionsCount(){
         return sessionList.size();
     }
