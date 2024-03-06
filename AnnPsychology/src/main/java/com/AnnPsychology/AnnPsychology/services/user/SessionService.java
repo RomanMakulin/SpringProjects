@@ -11,7 +11,6 @@ import com.AnnPsychology.AnnPsychology.repository.UserRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,11 +36,8 @@ public class SessionService {
     }
 
     public boolean signUpSession(Long id, LocalDate date, LocalTime time) {
-
         if (!validCheck(date, time)) return false;
-        
         User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
-
         updUser.getSessionList().add(new Session(updUser, date, time));
         adapterRepository.getUserRepository().save(updUser);
         return true;
