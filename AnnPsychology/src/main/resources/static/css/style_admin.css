@@ -356,3 +356,49 @@ table {
     background-color: rgba(216, 216, 216, 0.178);
     border-top: 1px solid rgba(216, 216, 216, 0.178);
 }
+
+.stat__main{
+display: flex;
+gap: 50px;
+}
+
+.left-box{
+box-shadow: 0 0 100px #0000003d;
+    display: grid;
+    gap: 30px;
+    justify-items: center;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    background-color: #d3d3d32e;
+}
+
+.right-box{
+box-shadow: 0 0 100px #0000003d;
+    display: grid;
+    gap: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    width: 500px;
+    background-color: #d3d3d32e;
+    align-items: center;
+}
+
+
+.stat-title{
+color:white;
+}
+
+.stat-text{
+    border-radius: 3px;
+    padding: 10px;
+    color: white;
+    background-color: #272727;
+}
+
+.stat-box {
+    border-radius: 5px;
+    background-color: #272727;
+    padding: 10px 20px;
+    width: 200px;
+}

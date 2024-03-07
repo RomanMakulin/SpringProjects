@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -44,6 +45,7 @@ public class SessionService {
         if (!new ValidationSessionService().validCheck(date, time, adapterRepository)) return false;
         User updUser = adapterRepository.getUserRepository().findById(id).orElseThrow();
         updUser.getSessionList().add(new Session(updUser, date, time));
+        if (updUser.getSessionList().size() == 1) updUser.setPrice(new BigDecimal(2000));
         adapterRepository.getUserRepository().save(updUser);
         return true;
     }

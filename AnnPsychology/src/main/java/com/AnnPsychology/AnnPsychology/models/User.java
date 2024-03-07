@@ -48,7 +48,7 @@ public class User {
     public User(){
         this.sessionList = new ArrayList<>();
         this.userRole = UserRole.ROLE_USER;
-        this.price = new BigDecimal(2000);
+        this.price = new BigDecimal(1500);
     }
     
     public String getStringPrice(){
