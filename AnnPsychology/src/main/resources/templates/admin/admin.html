@@ -101,7 +101,7 @@
                                 </div>
                             </form>
 
-                            <a th:case="*" th:href="@{'https://' + ${session_item.sessionLink}}" target="_blank" class="sessions-list_item_link">Google Meet</a>
+                            <a th:case="*" th:href="${session_item.sessionLink}" target="_blank" class="sessions-list_item_link">Google Meet</a>
                         </td>
 
                         <td th:switch="${session_item.sessionStatus}" class="users-list_item_field">

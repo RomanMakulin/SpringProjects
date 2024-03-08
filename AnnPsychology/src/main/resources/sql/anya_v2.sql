@@ -38,10 +38,10 @@ CREATE TABLE user_session
     session_status VARCHAR(30),
     session_homework VARCHAR(1000),
     
-    date_id INT NOT NULL, -- задаем айди группы 
+    date_id INT, -- задаем айди группы
     FOREIGN KEY (date_id)  REFERENCES sessions_date (id) ON DELETE SET NULL ON UPDATE SET NULL,
-    
-    user_id INT NOT NULL, -- задаем айди группы 
+
+    user_id INT, -- задаем айди группы
     FOREIGN KEY (user_id)  REFERENCES users (id) ON DELETE SET NULL ON UPDATE SET NULL
     
 );
