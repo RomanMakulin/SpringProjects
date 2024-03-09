@@ -31,20 +31,20 @@
     </aside>
     <!--  -->
 
-    <div class="user-page">
-        <p class="user_field username">
-            <span th:text="${user.username}"></span>
-            <span th:text="${user.lastname}"></span>,
-            <span th:text="${user.getAge}"></span>
-        </p>
-        <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>
-        <p class="user_field"><span>Telegram:</span> <span th:text="${user.socialLink}"></span></p>
-        <p class="user_field"><span>Phone:</span> <span th:text="${user.phone}"></span></p>
-        <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.getStringPrice}"></span></p>
-        <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
-    </div>
+<!--    <div class="user-page">-->
+<!--        <p class="user_field username">-->
+<!--            <span th:text="${user.username}"></span>-->
+<!--            <span th:text="${user.lastname}"></span>,-->
+<!--            <span th:text="${user.getAge}"></span>-->
+<!--        </p>-->
+<!--        <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>-->
+<!--        <p class="user_field"><span>Телеграм:</span> <span th:text="${user.socialLink}"></span></p>-->
+<!--        <p class="user_field"><span th:text="${user.phone}"></span></p>-->
+<!--        <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.getStringPrice}"></span></p>-->
+<!--        <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>-->
+<!--    </div>-->
 
-    <hr>
+<!--    <hr>-->
 
 
 
@@ -55,6 +55,7 @@
         </div>
 
         <div class="hw-box">
+            <p class="text hw-text hw-title" style="font-weight: 400">ДЗ от <span th:text="${sessionItem.sessionDate.parsingDate}"></span></p>
             <p th:text="${hw}" class="text hw-text" style="padding: 30px;"></p>
         </div>
 

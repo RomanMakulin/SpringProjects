@@ -44,30 +44,35 @@
 
     <div class="second-menu">
         <a href="/admin" class="second-menu_link">Список сессий</a>
-        <a href="/admin/latest" class="second-menu_link">Выдать ДЗ</a>
+        <a href="/admin/latest" class="second-menu_link">Домашняя работа</a>
         <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
         <a href="/admin/all-users" class="second-menu_link">Все клиенты</a>
     </div>
 
-    <div class="sessions-list">
 
-        <!--  -->
-        <table class="table">
-            <thead>
-            <tr class="table-title">
-                <th scope="col">Дата и время</th>
-                <th scope="col">Имя Фамилия</th>
-                <th scope="col">Телефон</th>
-                <th scope="col">ДЗ</th>
-            </tr>
-            </thead>
-            <tbody>
+    <div th:switch="${isEmpty}">
+        <div th:case="true" class="all-hw-done">
+            <p class="text" style="font-weight: 400; padding: 10px;">Все домашки выданы!</p>
+        </div>
 
-            <tr class="table-field" th:each="session_item : ${latestSession}">
+        <div th:case="false">
+            <div class="sessions-list">
+                <!--  -->
+                <table class="table">
+                    <thead>
+                    <tr class="table-title">
+                        <th scope="col">Дата и время</th>
+                        <th scope="col">Имя Фамилия</th>
+                        <th scope="col">Телефон</th>
+                        <th scope="col">ДЗ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                <div th:switch="${session_item.sessionHomework}">
 
-                    <div th:case="null">
+                    <tr class="table-field" th:each="session_item : ${latestSession}">
+
+
                         <td th:text="${session_item.sessionDate.parsingDate}"
                             class="sessions-list_item_field"></td>
                         <td class="sessions-list_item_field">
@@ -89,20 +94,54 @@
                                 </div>
                             </form>
                         </td>
-                    </div>
 
-                    <div th:case="*"></div>
+                    </tr>
 
+                    </tbody>
+                </table>
+                <!--  -->
+            </div>
+        </div>
+    </div>
 
-                </div>
+    <!--  user list  -->
+    <div class="sessions-list">
 
+        <table class="table">
+            <thead>
+            <tr class="table-title">
+                <th scope="col">Имя Фамилия</th>
+                <!--                        <th scope="col">Почта</th>-->
+                <th scope="col">Телеграм</th>
+                <th scope="col">Телефон</th>
+                <th scope="col">Завершено</th>
+                <th scope="col">История ДЗ</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr class="table-field" th:each="user : ${users}">
+                <td class="users-list_item_field">
+                    <span th:text="${user.username}"></span>
+                    <span th:text="${user.lastname}"></span>
+                </td>
+
+                <td class="users-list_item_field">
+                    <a th:text="${user.socialLink}" class="sessions-list_item_link"
+                       th:href="@{'https://t.me/' + ${user.socialLink}}"></a>
+                </td>
+
+                <td th:text="${user.phone}" class="users-list_item_field"></td>
+                <td th:text="${user.getDoneSessionsSize}" class="users-list_item_field"></td>
+
+                <td class="users-list_item_field">
+                    <a th:href="@{'/admin/hw-history/' + ${user.id}}" class="sessions-list_item_link">Перейти</a>
+                </td>
 
             </tr>
 
             </tbody>
         </table>
-        <!--  -->
-
 
     </div>
 

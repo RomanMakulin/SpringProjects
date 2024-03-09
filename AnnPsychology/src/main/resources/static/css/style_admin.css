@@ -402,3 +402,23 @@ color:white;
     padding: 10px 20px;
     width: 200px;
 }
+
+.hw-user__box{
+    border-radius: 5px;
+    padding: 10px;
+    gap: 10px;
+    display: grid;
+    background-color: #d6e5ff5c;
+    transition: 0.2s;
+}
+
+.hw-user__box:hover{
+    background-color: #d6e5ff96;
+}
+
+.all-hw-done{
+    background-color: #0000000d;
+    border-radius: 5px;
+    max-width: 1000px;
+    margin: 30px auto;
+}

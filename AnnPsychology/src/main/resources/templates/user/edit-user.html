@@ -32,15 +32,16 @@
         <!--  -->
 
         <div class="user-page">
-            <p class="user_field" style="font-weight: 500; font-size: 30px;">
+            <p class="user_field username">
                 <span th:text="${user.username}"></span>
                 <span th:text="${user.lastname}"></span>,
                 <span th:text="${user.getAge}"></span>
             </p>
-            <p class="user_field">Почта: <span th:text="${user.email}"></span></p>
-            <p class="user_field">Telegram: <span th:text="${user.socialLink}"></span></p>
-            <p class="user_field">Phone: <span th:text="${user.phone}"></span></p>
+            <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>
+            <p class="user_field"><span>Телеграм:</span> <span th:text="${user.socialLink}"></span></p>
+            <p class="user_field"><span th:text="${user.phone}"></span></p>
             <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.getStringPrice}"></span></p>
+            <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
         </div>
 
         <hr>
@@ -63,7 +64,7 @@
 
                 <div class="update-input">
                     <label class="text" for="date">Дата рождения</label>
-                    <input th:field="*{dateBirth}" class="text input-zoom" type="date" name="date" id="date">
+                    <input th:field="*{dateBirth}" class="text input-zoom" type="date" name="date" id="date" required>
                 </div>
 
                 <div class="update-input">
@@ -72,17 +73,17 @@
                 </div>
 
                 <div class="update-input">
-                    <label class="text" for="Telegram">Telegram</label>
+                    <label class="text" for="Telegram">Телеграмм</label>
                     <input th:field="*{socialLink}" class="text input-zoom" type="text" name="Telegram" id="Telegram">
                 </div>
 
                 <div class="update-input">
-                    <label class="text" for="Phone">Phone</label>
+                    <label class="text" for="Phone">Телефон</label>
                     <input th:field="*{phone}" class="text input-zoom" type="text" name="Phone" id="Phone">
                 </div>
 
                 <div class="update-input">
-                    <label class="text" for="password">Password</label>
+                    <label class="text" for="password">Пароль</label>
                     <input th:field="*{password}" class="text input-zoom" type="password" name="password" id="password">
                 </div>
 

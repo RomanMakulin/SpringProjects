@@ -1,5 +1,6 @@
 package com.AnnPsychology.AnnPsychology.models;
 
+import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.models.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -49,6 +50,18 @@ public class User {
         this.sessionList = new ArrayList<>();
         this.userRole = UserRole.ROLE_USER;
         this.price = new BigDecimal(1500);
+    }
+
+    public List<Session> getDoneSessions(){
+        return sessionList.stream().filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE).toList();
+    }
+
+    public int getDoneSessionsSize(){
+        return getDoneSessions().size();
+    }
+
+    public int getIntPrice(){
+        return this.price.intValue();
     }
     
     public String getStringPrice(){

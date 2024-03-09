@@ -45,7 +45,7 @@
 
         <div class="second-menu">
             <a href="/admin" class="second-menu_link">Список сессий</a>
-            <a href="/admin/latest" class="second-menu_link">Выдать ДЗ</a>
+            <a href="/admin/latest" class="second-menu_link">Домашняя работа</a>
             <a href="admin_statistics.html" class="second-menu_link">Аналитика по клиентам</a>
             <a href="/admin/all-users" class="second-menu_link">Все клиенты</a>
         </div>
@@ -76,14 +76,14 @@
                             <a th:text="${user.socialLink}" class="sessions-list_item_link" th:href="@{'https://t.me/' + ${user.socialLink}}"></a>
                         </td>
 
-                        <td th:text="${user.phone}" class="users-list_item_field">792423123</td>
-                        <td th:text="${user.getAge}" class="users-list_item_field">25</td>
-                        <td th:text="${user.getSessionsCount}" class="users-list_item_field">5</td>
+                        <td th:text="${user.phone}" class="users-list_item_field"></td>
+                        <td th:text="${user.getAge}" class="users-list_item_field"></td>
+                        <td th:text="${user.getSessionsCount}" class="users-list_item_field"></td>
 
                         <td class="users-list_item_field">
                             <form action="#" th:action="@{'/admin/change-price/' + ${user.id}}" th:object="${user}" method="post">
                                 <div class="update-input">
-                                    <input th:value="${user.price}" class="text input-zoom" style="width: 100px; text-align: center;" type="number" name="price" id="price">
+                                    <input th:value="${user.getIntPrice}" class="text input-zoom" style="width: 100px; text-align: center;" type="number" name="price" id="price">
                                     <input type="submit" value="готово" class="submit-price text">
                                 </div>
                             </form>

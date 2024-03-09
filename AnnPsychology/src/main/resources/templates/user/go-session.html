@@ -32,14 +32,14 @@
         <!--  -->
 
         <div class="user-page">
-            <p class="user_field" style="font-weight: 500; font-size: 30px;">
+            <p class="user_field username">
                 <span th:text="${user.username}"></span>
                 <span th:text="${user.lastname}"></span>,
                 <span th:text="${user.getAge}"></span>
             </p>
-            <p class="user_field">Почта: <span th:text="${user.email}"></span></p>
-            <p class="user_field">Telegram: <span th:text="${user.socialLink}"></span></p>
-            <p class="user_field">Phone: <span th:text="${user.phone}"></span></p>
+            <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>
+            <p class="user_field"><span>Телеграм:</span> <span th:text="${user.socialLink}"></span></p>
+            <p class="user_field"><span th:text="${user.phone}"></span></p>
             <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.getStringPrice}"></span></p>
             <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
         </div>

@@ -48,14 +48,21 @@ public class AdminSessionService {
     /**
      * Получить список недавно завершенных сессий
      * 1. Фильтр по статусу сессий (done)
-     *
+     * <p>
      * 2. Фильтр по разнице даты и времени сессии с текущим now (сессии за неделю)
      *
      * @return список сессий
      */
     public List<Session> getLatest() {
-        return adapterRepository.getSessionsRepository().findAll().stream().filter(item -> item.getSessionStatus() == SessionStatus.SESSION_DONE)
+        return adapterRepository.getSessionsRepository().findAll().stream()
+                .filter(item -> item.getSessionStatus() == SessionStatus.SESSION_DONE)
                 .sorted(Comparator.comparing(s -> s.getSessionDate().getSessionDate()))
+                .toList();
+    }
+
+    public List<Session> getLatestWithoutHW() {
+        return getLatest().stream()
+                .filter(item -> item.getSessionHomework() == null)
                 .toList();
     }
 
@@ -90,4 +97,5 @@ public class AdminSessionService {
             }
         });
     }
+
 }

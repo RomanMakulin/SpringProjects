@@ -24,6 +24,10 @@ public class AdminUserService {
         return userRepository.findAll();
     }
 
+    public User getUserByID(Long id){
+        return userRepository.findById(id).orElseThrow();
+    }
+
     public void changePriceUser(Long id, BigDecimal newPrice) {
         User user = userRepository.findById(id).orElseThrow();
         user.setPrice(newPrice);

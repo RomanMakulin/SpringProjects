@@ -88,6 +88,7 @@ public class UserController {
     public String getHomeWork(@PathVariable("id") Long sessionId, Model model) {
         model.addAttribute("user", getAuthUser());
         model.addAttribute("hw", sessionService.getHomeWork(sessionId));
+        model.addAttribute("sessionItem", sessionService.getById(sessionId));
         return "/user/user-hw.html";
     }
 

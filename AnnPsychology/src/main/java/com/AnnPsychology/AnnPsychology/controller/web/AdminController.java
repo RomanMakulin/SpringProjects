@@ -1,5 +1,6 @@
 package com.AnnPsychology.AnnPsychology.controller.web;
 
+import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.services.admin.AdminAdapter;
 import com.AnnPsychology.AnnPsychology.services.user.SessionService;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -71,23 +74,38 @@ public class AdminController {
     }
 
     @GetMapping("/cancel/{id}")
-    public String cancelSession(@PathVariable("id") Long id){
+    public String cancelSession(@PathVariable("id") Long id) {
         adminService.getAdminSessionService().cancelSession(id);
         return "redirect:/admin";
     }
 
     @GetMapping("/latest")
-    public String latest(Model model){
-        model.addAttribute("latestSession", adminService.getAdminSessionService().getLatest());
+    public String latest(Model model) {
+        List<Session> withoutHomeWork = adminService.getAdminSessionService().getLatestWithoutHW();
+
+        model.addAttribute("latestSession", withoutHomeWork);
+        model.addAttribute("users", adminService.getAdminUserService().getAllUsers());
+        model.addAttribute("isEmpty", withoutHomeWork.isEmpty());
         return "/admin/admin_latest.html";
     }
 
     @PostMapping("/give-hw/{id}")
     public String giveHomework(@PathVariable("id") Long id,
-                             @ModelAttribute("sessionHomework") String sessionHomework) {
+                               @ModelAttribute("sessionHomework") String sessionHomework) {
 
         adminService.getAdminSessionService().giveSessionHomeWork(id, sessionHomework);
-        return "redirect:/admin";
+        return "redirect:/admin/latest";
+    }
+
+    @GetMapping("/hw-history/{id}")
+    public String getHomeworkSession(Model model, @PathVariable("id") Long userId) {
+        User user = adminService.getAdminUserService().getUserByID(userId);
+        List<Session> sessionList = user.getSessionList().stream().filter(i -> i.getSessionHomework() != null).toList();
+
+        model.addAttribute("user", user);
+        model.addAttribute("userHomeworks", sessionList);
+
+        return "/admin/admin_hw_history.html";
     }
 
 }
