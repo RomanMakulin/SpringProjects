@@ -33,13 +33,13 @@ public class UserController {
     public String allUsers(Model model) {
         model.addAttribute("userSessions", sessionService.sortSessions(getAuthUser().getSessionList()));
         model.addAttribute("user", getAuthUser());
-        return "/user/user.html";
+        return "user/user.html";
     }
 
     @GetMapping("/edit")
     public String editForm(Model model) {
         model.addAttribute("user", getAuthUser());
-        return "/user/edit-user.html";
+        return "user/edit-user.html";
     }
 
     @PostMapping("/edit/{id}")
@@ -51,14 +51,14 @@ public class UserController {
     @GetMapping("/sign-up-session")
     public String signUpSessionForm(Model model) {
         model.addAttribute("user", getAuthUser());
-        return "/user/go-session.html";
+        return "user/go-session.html";
     }
 
     @GetMapping("/repeat-sign-up-session")
     public String repeatSignUpSessionForm(Model model) {
         model.addAttribute("user", getAuthUser());
         model.addAttribute("errorMessage", "Дата недоступна, возможно она уже занята!");
-        return "/user/error-date.html";
+        return "user/error-date.html";
     }
 
     @PostMapping("/sign-up-session/{id}")
@@ -81,7 +81,7 @@ public class UserController {
         if (sessionService.cancelSession(id)) return "redirect:/user";
         model.addAttribute("user", getAuthUser());
         model.addAttribute("errorMessage", "Отмена сессии менее чем за сутки невозможна.");
-        return "/user/cancel-error.html";
+        return "user/cancel-error.html";
     }
 
     @GetMapping("/hw/{id}")
@@ -89,7 +89,7 @@ public class UserController {
         model.addAttribute("user", getAuthUser());
         model.addAttribute("hw", sessionService.getHomeWork(sessionId));
         model.addAttribute("sessionItem", sessionService.getById(sessionId));
-        return "/user/user-hw.html";
+        return "user/user-hw.html";
     }
 
     //    optional

@@ -1,9 +1,12 @@
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
   jpa:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/anya
-    username: root
-    password: 631048s
+    url: jdbc:mysql://45.8.251.41/anya
+    username: test
+    password: 631048sS
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -32,13 +32,13 @@ public class AdminController {
     @GetMapping
     public String adminPage(Model model) {
         model.addAttribute("sessions", adminService.getAdminSessionService().getAllSessions());
-        return "/admin/admin.html";
+        return "admin/admin.html";
     }
 
     @GetMapping("/all-users")
     public String allUsers(Model model) {
         model.addAttribute("users", adminService.getAdminUserService().getAllUsers());
-        return "/admin/admin_users.html";
+        return "admin/admin_users.html";
     }
 
     @PostMapping("/change-price/{id}")
@@ -53,7 +53,7 @@ public class AdminController {
         model.addAttribute("sess", sessionService.getById(id));
         model.addAttribute("user", sessionService.getUserBySessionId(id));
 
-        return "/admin/admin_user_update.html";
+        return "admin/admin_user_update.html";
     }
 
     @PostMapping("/edit-session/{id}")
@@ -86,7 +86,7 @@ public class AdminController {
         model.addAttribute("latestSession", withoutHomeWork);
         model.addAttribute("users", adminService.getAdminUserService().getAllUsers());
         model.addAttribute("isEmpty", withoutHomeWork.isEmpty());
-        return "/admin/admin_latest.html";
+        return "admin/admin_latest.html";
     }
 
     @PostMapping("/give-hw/{id}")
@@ -105,7 +105,7 @@ public class AdminController {
         model.addAttribute("user", user);
         model.addAttribute("userHomeworks", sessionList);
 
-        return "/admin/admin_hw_history.html";
+        return "admin/admin_hw_history.html";
     }
 
 }
