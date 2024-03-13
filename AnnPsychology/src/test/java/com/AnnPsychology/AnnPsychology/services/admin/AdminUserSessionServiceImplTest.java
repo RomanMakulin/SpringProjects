@@ -17,16 +17,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class AdminSessionServiceTest {
+class AdminUserSessionServiceImplTest {
 
     @Mock
     public SessionsRepository sessionsRepository;
     @Mock
-    public AdminUserService adminUserService;
+    public AdminUserServiceImpl adminUserServiceImpl;
     @Mock
     public AdapterRepository adapterRepository;
     @InjectMocks
-    public AdminSessionService adminSessionService;
+    public AdminSessionImplServiceImpl adminSessionService;
 
 
     @Test
