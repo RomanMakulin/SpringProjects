@@ -24,8 +24,6 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     @Autowired
     private final AdapterRepository adapterRepository;
 
-
-
     /**
      * Получить список всех сессий в отсортированном виде
      *
@@ -33,9 +31,7 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
      */
     @Override
     public List<Session> getAllSessions() {
-
-        List<Session> sessionList = adapterRepository.getSessionsRepository()
-                .findAll();
+        List<Session> sessionList = adapterRepository.getSessionsRepository().findAll();
         sortSessionList(sessionList);
         setDone(sessionList);
         return sessionList;
@@ -44,7 +40,6 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     @Override
     public boolean cancelSession(Long id) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
-//        new PublicSessionService().cancelAndDeleteDate(session, adapterRepository);
         cancelAndDelete(session, adapterRepository);
         return true;
     }
