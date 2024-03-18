@@ -12,7 +12,7 @@ public interface iAdminSessionService {
     AdapterRepository getAdapterRepository();
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
-    List<Session> getAllSessions();
+    // List<Session> getAllSessions();
     boolean cancelSession(Long id);
     List<Session> getLatestWithoutHW();
     void giveSessionLink(Long id, String link);
