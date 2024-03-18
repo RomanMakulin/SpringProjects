@@ -21,7 +21,7 @@ public class UserSessionController {
 
     @GetMapping
     public String allSessions(Model model) {
-        model.addAttribute("userSessions", userSessionService.getAllSessions()); // передать список сессий авторизованного юзера userDetailsService.getAuthUser()...
+        model.addAttribute("userSessions", userSessionService.getAllSessions()); // TO DO: передать список сессий авторизованного юзера userDetailsService.getAuthUser()...
         model.addAttribute("user", userDetailsService.getAuthUser());
         return "user/user.html";
     }
