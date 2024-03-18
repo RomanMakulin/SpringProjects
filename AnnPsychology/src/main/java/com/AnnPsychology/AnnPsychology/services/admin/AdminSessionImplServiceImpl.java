@@ -1,6 +1,7 @@
 package com.AnnPsychology.AnnPsychology.services.admin;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
+import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.services.SessionServiceImpl;
@@ -24,13 +25,21 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     @Autowired
     private final AdapterRepository adapterRepository;
 
-    // @Override
-    // public List<Session> getAllSessions() {
-    //     List<Session> sessionList = adapterRepository.getSessionsRepository().findAll();
-    //     sortSessionList(sessionList);
-    //     setDone(sessionList);
-    //     return sessionList;
-    // }
+    @Override
+    public void calendarManage(LocalDateTime localDateTime){
+        SessionDate sessionDate = new SessionDate();
+        sessionDate.setSessionDate(localDateTime);
+        sessionDate.setOpen(true);
+        adapterRepository.getDateRepository().save(sessionDate);
+    }
+
+    @Override
+    public List<Session> getAllSessions() {
+        List<Session> sessionList = adapterRepository.getSessionsRepository().findAll();
+        sortSessionList(sessionList);
+        setDone(sessionList, adapterRepository);
+        return sessionList;
+    }
 
     @Override
     public boolean cancelSession(Long id) {

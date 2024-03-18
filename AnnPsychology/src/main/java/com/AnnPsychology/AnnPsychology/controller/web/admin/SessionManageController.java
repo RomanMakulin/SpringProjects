@@ -1,6 +1,7 @@
 package com.AnnPsychology.AnnPsychology.controller.web.admin;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
+import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.services.admin.iAdminSessionService;
 import com.AnnPsychology.AnnPsychology.services.admin.iAdminUserService;
@@ -11,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -29,7 +32,7 @@ public class SessionManageController {
 
     @GetMapping
     public String adminPage(Model model) {
-        model.addAttribute("sessions", adminSessionService.getAllSessions()); // Передавать список всех сессий из репозитория сессий
+        model.addAttribute("sessions", adminSessionService.getAllSessions());
         return "admin/admin.html";
     }
 
@@ -81,6 +84,22 @@ public class SessionManageController {
 
         adminSessionService.giveSessionHomeWork(id, sessionHomework);
         return "redirect:/admin/latest";
+    }
+
+
+//    another class
+    @GetMapping("/calendar")
+    public String calendar(Model model){
+        List<SessionDate> dates = adminSessionService.getAdapterRepository().getDateRepository().findAll();
+        model.addAttribute("closeDates", dates);
+        return "admin/calendar.html";
+    }
+
+    @PostMapping("/calendar/new")
+    public String openSession(@ModelAttribute("date") LocalDate date,
+                              @ModelAttribute("time") LocalTime time){
+        adminSessionService.calendarManage(LocalDateTime.of(date, time));
+        return "redirect:/admin/calendar";
     }
 
 }

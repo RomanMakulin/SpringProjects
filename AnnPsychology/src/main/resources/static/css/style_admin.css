@@ -16,6 +16,11 @@ hr {
     max-width: 1000px;
 }
 
+.center {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .submit {
     margin-top: 20px;
     border: none;

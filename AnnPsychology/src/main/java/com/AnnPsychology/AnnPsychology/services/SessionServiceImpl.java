@@ -5,20 +5,13 @@ import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
+
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class SessionServiceImpl implements iSessionService {\
-
-// TO DO: добавить Override метод (общий для получения списка всех сессий)
-   @Override
-   public List<Session> getAllSessions(List<Session> sessionList) {
-       sortSessionList(sessionList);
-       setDone(sessionList);
-       return sessionList;
-   }
-
+public abstract class SessionServiceImpl implements iSessionService {
     @Override
     public Session getSessionById(Long sessionId, AdapterRepository adapterRepository) {
         Optional<Session> session = adapterRepository.getSessionsRepository().findById(sessionId);
@@ -49,7 +42,7 @@ public abstract class SessionServiceImpl implements iSessionService {\
     }
 
    @Override
-    public void setDone(List<Session> sessionList) {
+    public void setDone(List<Session> sessionList, AdapterRepository adapterRepository) {
         sessionList.forEach(item -> {
             if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
                 item.setSessionStatus(SessionStatus.SESSION_DONE);

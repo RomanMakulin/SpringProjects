@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface iUserSessionService {
+    List<Session> getAllSessions();
     String getUserHomework(Long sessionID);
     AdapterRepository getAdapterRepository();
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);

@@ -5,11 +5,13 @@ import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 public interface iAdminSessionService {
     AdapterRepository getAdapterRepository();
+    List<Session> getAllSessions();
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
     // List<Session> getAllSessions();
@@ -18,6 +20,6 @@ public interface iAdminSessionService {
     void giveSessionLink(Long id, String link);
     void giveSessionHomeWork(Long id, String sessionHomework);
     void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time);
-    // void setDone(List<Session> sessionList);
+    void calendarManage(LocalDateTime localDateTime);
     List<Session> getLatest();
 }

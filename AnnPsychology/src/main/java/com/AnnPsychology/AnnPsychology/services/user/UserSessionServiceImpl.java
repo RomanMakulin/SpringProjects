@@ -4,15 +4,12 @@ import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.services.SessionServiceImpl;
+import jakarta.persistence.PostUpdate;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -41,12 +38,14 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         return true;
     }
 
-    // @Override
-    // public List<Session> getAllSessions() {
-    //     List<Session> userSessionList = customUserDetailsServiceImpl.getAuthUser().getSessionList();
-    //     sortSessionList(userSessionList);
-    //     return userSessionList;
-    // }
+    @Override
+    public List<Session> getAllSessions() {
+        List<Session> userSessionList = customUserDetailsServiceImpl.getAuthUser().getSessionList();
+        sortSessionList(userSessionList);
+        setDone(userSessionList, adapterRepository);
+        return userSessionList;
+    }
+
 
     @Override
     public boolean cancelSession(Long id) {
