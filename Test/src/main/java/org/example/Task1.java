@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Random;
 
-public class Test {
+public class Task1 {
 
     /*
 В массиве содержатся все числа от 1 до 100, причем одно из них встречается дважды.
