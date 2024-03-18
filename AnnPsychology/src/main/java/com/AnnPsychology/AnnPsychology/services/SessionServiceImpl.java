@@ -32,7 +32,6 @@ public abstract class SessionServiceImpl implements iSessionService {\
 
     @Override
     public void cancelAndDelete(Session session, AdapterRepository adapterRepository) {
-        // TO DO: возврат денежных средств
         session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
         SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
         adapterRepository.getDateRepository().deleteById(sessionDate.getId());
