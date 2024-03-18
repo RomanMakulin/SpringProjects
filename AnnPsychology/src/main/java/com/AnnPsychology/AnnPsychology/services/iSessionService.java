@@ -9,7 +9,7 @@ import java.util.List;
 public interface iSessionService {
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
-    List<Session> getAllSessions();
+    List<Session> getAllSessions(List<Session> sessionList);
     boolean cancelSession(Long sessionId);
     void cancelAndDelete(Session session, AdapterRepository adapterRepository);
     void sortSessionList(List<Session> sessionList);
