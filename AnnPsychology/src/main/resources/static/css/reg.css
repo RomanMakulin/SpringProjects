@@ -39,6 +39,7 @@ a {
     display: grid;
     grid-template-columns: repeat(2, 200px);
     justify-items: start;
+    align-items: center;
 }
 
 form {

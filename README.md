@@ -2,21 +2,52 @@
 Добрый день! В данном репозитории представлены мои актуальные демонстрационные проекты.
 
 **Мой стек технологий:**
-> Java Core, JDK, Spring Framework, Spring Boot, Spring Data JPA, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Mockito, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+> Java Core, JDK, Spring Framework, Spring Boot, Spring Data JPA, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, Ubuntu, PuTTY GIT, JUnit, Mockito, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+
+___
+
+### **Ann Psychology Web-service**   
+> Разработал проект для психолога-специалиста в рамках фриланс заказа для упрощения взаимодействия с его клиентами. Есть главная страница с описанием услуг, вход личный кабинет (админ панель и ЛК пользователя) с возможностью регистрации.
+
+- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру приложения в соответствии в паттернами и принципами ООП;
+- Разработал уникальный дизайн (макет) и верстку (frontend) по нему с использованием технологий: CSS3, HTML5, SASS
+- Реализовал систему аутентификации и регистрации пользователей с помощью Spring Security;
+- Разработал панель администратора:
+    - реализовал календарь с возможностью выбора окон с датами и планирования рабочего времени
+    - реализовал гибкое управление пользователями и их сессиями
+    - реализовал систему контроля и выдачи домашних заданий
+    - реализовал систему аналитики для отслеживания необходимой статистики
+- Разработал панель администратора:
+    - реализовал функционал записи на сессию и выбор свободных окон
+    - реализовал подключение к API ЮКасса для системы оплаты сессий
+    - реализовал гибкое управление собственными сессиями
+- Арендовал VDS сервер. ОС - Ubuntu:
+    - разработал и подключил базу данных MySQL
+    - задеплоил java приложение на арендованный сервер
+    - установил сервер Ngnix, подключил SSL протокол, настроил обратный прокси
+    - присвоил купленное доменное имя [ann-novikova.ru](https://ann-novikova.ru/)
+
+**Среднее кол-во пользователей в день ~ 40 чел.**
+  
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AnnPsychology)
+
+``` Стек технологий: Spring Web, Spring Data JPA, MySQL, Spring Security, VDS Server, Hibernate, PuTTY, Ubuntu 22.04, Thymeleaf, Lombok, JUnit, Mockito, HTML 5, CSS 3 ```
 
 ___
 
 ### **UserCardsTransferApp**   
 > Разработал микро-сервисный проект в fullstack подходе, основная идея которого - это администрирование пользователей, управление счетом (операции с банковской карточкой: пополнение, снятие, перевод средств другому юзеру, изменение пин-кода и т.д..) в личном кабинете .
 > 
-- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру микро-сервисов в соответствии в паттернами и принципами ООП. Использована актуальная версия Spring Boot;
+- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру микро-сервисов в соответствии в паттернами и принципами ООП.
 - Реализовал облачное пространство для микро-сервисов, используя технологии Spring Cloud;
-- Самостоятельно разработал уникальную frontend часть с использованием технологии Thymeleaf, CSS3, HTML5;
-- Реализовал систему аутентификации и регистрации пользователей с помощью технологии Spring Security.
+- Самостоятельно разработал уникальную frontend часть с использованием технологии Thymeleaf, CSS3, HTML5
+- Реализовал систему аутентификации и регистрации пользователей с помощью технологии Spring Security
+- Реализовал имитацию работы БД на базе H2 и подключил Spring Data JPA
+- Подключил логирование транзакций с помощью Spring Integration в отдельный файл
   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/CardTransferApp)
 
-``` Стек технологий: Spring Web, Spring Data JPA, H2 DB, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, Lombok, JUnit, Mockito, AOP, HTML 5, CSS 3, Bootstrap ```
+``` Стек технологий: Spring Web, Spring Data JPA, Spring Integration, H2 DB, Spring Security 6, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Hibernate, Thymeleaf, Lombok, JUnit, Mockito, AOP, HTML 5, CSS 3, Bootstrap ```
 
 ___
 

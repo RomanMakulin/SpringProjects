@@ -1,6 +1,6 @@
 package com.AnnPsychology.AnnPsychology.config;
 
-import com.AnnPsychology.AnnPsychology.services.user.CustomUserDetailsService;
+import com.AnnPsychology.AnnPsychology.services.user.CustomUserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class SecurityConfig {
     /**
      * Сервис управления пользователями
      */
-    private final CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsServiceImpl customUserDetailsServiceImpl;
 
     /**
      * Делаем UserDetailsService кастомным
@@ -33,7 +33,7 @@ public class SecurityConfig {
      */
     @Bean
     public UserDetailsService userDetailsService() {
-        return customUserDetailsService;
+        return customUserDetailsServiceImpl;
     }
 
     /**

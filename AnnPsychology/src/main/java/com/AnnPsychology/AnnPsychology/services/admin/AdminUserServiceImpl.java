@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Data
-public class AdminUserService {
+public class AdminUserServiceImpl implements iAdminUserService {
     private final UserRepository userRepository;
 
     /**
@@ -20,14 +20,17 @@ public class AdminUserService {
      *
      * @return список всех пользователей
      */
+    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public User getUserByID(Long id){
+    @Override
+    public User getUserByID(Long id) {
         return userRepository.findById(id).orElseThrow();
     }
 
+    @Override
     public void changePriceUser(Long id, BigDecimal newPrice) {
         User user = userRepository.findById(id).orElseThrow();
         user.setPrice(newPrice);

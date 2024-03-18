@@ -1,8 +1,8 @@
-package com.AnnPsychology.AnnPsychology.controller.web;
+package com.AnnPsychology.AnnPsychology.controller.web.user;
 
 import com.AnnPsychology.AnnPsychology.config.CustomUserDetails;
 import com.AnnPsychology.AnnPsychology.models.User;
-import com.AnnPsychology.AnnPsychology.services.user.CustomUserDetailsService;
+import com.AnnPsychology.AnnPsychology.services.user.iUserDetailsService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 @Data
 public class RegistrationController {
-
-    private final CustomUserDetailsService customUserDetailsService;
+    private final iUserDetailsService userDetailsService;
 
     @GetMapping("/welcome")
     public String successLogin(){
@@ -30,18 +29,18 @@ public class RegistrationController {
 
     @GetMapping("/login")
     public String login(){
-        return "/registration/login";
+        return "registration/login";
     }
 
     @GetMapping("/registration")
     public String getForm(User user){
-        return "/registration/registration.html";
+        return "registration/registration.html";
     }
 
     @PostMapping("/registration-user")
     public String registration(User user,Model model){
         model.addAttribute("errorMessage", "Данный email уже занят другим пользователем");
-        return customUserDetailsService.createUser(user) ? "redirect:/login" : "/registration/registration-error.html";
+        return userDetailsService.createUser(user) ? "redirect:/login" : "registration/registration-error.html";
     }
 
     @GetMapping("/registration/css/**")

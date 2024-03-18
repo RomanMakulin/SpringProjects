@@ -40,7 +40,7 @@ hr {
 
 .container {
     max-width: 1140px;
-    padding-bottom: 50px;
+    min-height: 100vh;
     margin: 0 auto;
     background-color: white;
 }
@@ -235,11 +235,8 @@ border-radius: 20px;
 .sessions-list {
     position: relative;
     max-width: 1000px;
-    margin-bottom: 50px;
-    margin: 30px auto;
-    padding: 10px;
-    /* background-color: rgba(207, 207, 207, 0.144);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.342); */
+    margin: 30px auto 0;
+    padding: 10px 10px 50px;
     display: grid;
     gap: 10px;
     align-items: start;

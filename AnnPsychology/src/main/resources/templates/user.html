@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/user/css/user.css}" href="../../static/css/user.css">
+    <title>Manage page</title>
+</head>
+
+<body>
+
+    <article class="container">
+        <!-- menu logo -->
+        <aside class="logo-menu">
+            <div class="logo_title-box">
+                <h1 class="logo-title">Личный кабинет</h1>
+                <h2 class="logo-subtitle">управление сессиями</h2>
+            </div>
+            <div class="logo_submenu">
+                <a href="/welcome" class="logo_main-link">главная</a>
+                <a href="/welcome" class="logo_main-link">мой кабинет</a>
+                <a href="/logout" class="logo_main-link">выход</a>
+            </div>
+        </aside>
+        <!--  -->
+
+        <div class="user-page">
+            <p class="user_field username">
+                <span th:text="${user.username}"></span>
+                <span th:text="${user.lastname}"></span>,
+                <span th:text="${user.getAge}"></span>
+            </p>
+            <p class="user_field"> <span>Почта:</span>  <span th:text="${user.email}"></span></p>
+            <p class="user_field"><span>Телеграм:</span> <span th:text="${user.socialLink}"></span></p>
+            <p class="user_field"><span th:text="${user.phone}"></span></p>
+            <p class="user_field"><span>Стоимость сессий:</span> <span th:text="${user.getStringPrice}"></span></p>
+            <a href="/user/edit" class="user_field edit-link">редактировать профиль</a>
+        </div>
+
+        <hr>
+
+
+
+        <p class="sessions">Список сессий</p>
+
+        <div class="sessions-list" th:switch="${user.sessionList.size}">
+
+            <div class="sign-session">
+                <a href="/user/sign-up-session" class="go text">Записаться</a>
+            </div>
+
+
+            <h2 th:case="0" class="text" style="background-color: #d3d3d342;padding: 10px;">
+                Вы ещё не записывались. Здесь будет список сессий</h2>
+            <!--  -->
+            <table class="table" th:case="*">
+                <thead>
+                    <tr class="table-title">
+                        <th scope="col">Статус</th>
+                        <th scope="col">Дата и время</th>
+                        <th scope="col">К встрече</th>
+                        <th scope="col">Домашняя работа</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="table-field" th:each="session_item : ${userSessions}">
+                        <td th:switch="${session_item.sessionStatus}" style="text-align: center;width: 150px;">
+                            <p th:case="${session_item.sessionStatus.SESSION_DONE}" class="sessions-list_item_field" style="background-color: #c3c3c37a;">Закончена</p>
+                            <p th:case="${session_item.sessionStatus.SESSION_ACTIVE}" class="sessions-list_item_field" style="background-color: rgba(70, 250, 109, 0.479);">Активна</p>
+                            <p th:case="${session_item.sessionStatus.SESSION_CANCELLED}" class="sessions-list_item_field" style="background-color:#ff0c0ca3; color: white;">Отменена</p>
+                        </td>
+
+
+                        <td th:switch="${session_item.sessionDate}">
+                            <p th:case="null">No time</p>
+                            <p th:case="*" th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field">25.02.2024, 15:00</p>
+                        </td>
+
+
+                        <td class="users-list_item_field" th:switch="${session_item.sessionLink}">
+                            <p class="sessions-list_item_link" th:case="null">Скоро ссылка появится</p>
+                            <a th:case="*" th:href="@{'https://' + ${session_item.sessionLink}}" target="_blank" class="sessions-list_item_link">Google Meet</a>
+                        </td>
+
+                        <td th:switch="${session_item.sessionHomework}">
+                            <p th:case="null" class="sessions-list_item_link">Пока чиллим!)</p>
+                            <a th:href="@{'/user/hw/' + ${session_item.id}}" th:case="*" class="sessions-list_item_link">Перейти</a>
+                        </td>
+
+                        <td class="users-list_item_field" th:switch="${session_item.sessionStatus}">
+                            <a th:case="${session_item.sessionStatus.SESSION_ACTIVE}" th:href="@{'/user/cancel/' + ${session_item.id}}" class="sessions-list_item_link">Отменить</a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!--  -->
+
+
+        </div>
+
+
+    </article>
+
+</body>
+
+</html>
