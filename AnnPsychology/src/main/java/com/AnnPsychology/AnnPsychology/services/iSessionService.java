@@ -13,5 +13,5 @@ public interface iSessionService {
     boolean cancelSession(Long sessionId);
     void cancelAndDelete(Session session, AdapterRepository adapterRepository);
     void sortSessionList(List<Session> sessionList);
-
+    setDone(List<Session> sessionList);
 }
