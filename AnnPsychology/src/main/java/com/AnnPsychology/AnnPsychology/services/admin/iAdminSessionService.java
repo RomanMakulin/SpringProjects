@@ -18,6 +18,6 @@ public interface iAdminSessionService {
     void giveSessionLink(Long id, String link);
     void giveSessionHomeWork(Long id, String sessionHomework);
     void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time);
-    void setDone(List<Session> sessionList);
+    // void setDone(List<Session> sessionList);
     List<Session> getLatest();
 }
