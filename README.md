@@ -38,14 +38,16 @@ ___
 ### **UserCardsTransferApp**   
 > Разработал микро-сервисный проект в fullstack подходе, основная идея которого - это администрирование пользователей, управление счетом (операции с банковской карточкой: пополнение, снятие, перевод средств другому юзеру, изменение пин-кода и т.д..) в личном кабинете .
 > 
-- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру микро-сервисов в соответствии в паттернами и принципами ООП. Использована актуальная версия Spring Boot;
+- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру микро-сервисов в соответствии в паттернами и принципами ООП.
 - Реализовал облачное пространство для микро-сервисов, используя технологии Spring Cloud;
-- Самостоятельно разработал уникальную frontend часть с использованием технологии Thymeleaf, CSS3, HTML5;
-- Реализовал систему аутентификации и регистрации пользователей с помощью технологии Spring Security.
+- Самостоятельно разработал уникальную frontend часть с использованием технологии Thymeleaf, CSS3, HTML5
+- Реализовал систему аутентификации и регистрации пользователей с помощью технологии Spring Security
+- Реализовал имитацию работы БД на базе H2 и подключил Spring Data JPA
+- Подключил логирование транзакций с помощью Spring Integration в отдельный файл
   
 [Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/CardTransferApp)
 
-``` Стек технологий: Spring Web, Spring Data JPA, H2 DB, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, Lombok, JUnit, Mockito, AOP, HTML 5, CSS 3, Bootstrap ```
+``` Стек технологий: Spring Web, Spring Data JPA, Spring Integration, H2 DB, Spring Security 6, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Hibernate, Thymeleaf, Lombok, JUnit, Mockito, AOP, HTML 5, CSS 3, Bootstrap ```
 
 ___
 
