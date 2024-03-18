@@ -29,7 +29,7 @@ public class SessionManageController {
 
     @GetMapping
     public String adminPage(Model model) {
-        model.addAttribute("sessions", adminSessionService.getAllSessions());
+        model.addAttribute("sessions", adminSessionService.getAllSessions()); // Передавать список всех сессий из репозитория сессий
         return "admin/admin.html";
     }
 
