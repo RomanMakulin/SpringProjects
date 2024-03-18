@@ -35,6 +35,7 @@
     - задеплоил java приложение на арендованный сервер
     - установил сервер Ngnix, подключил SSL протокол, настроил обратный прокси
     - присвоил купленное доменное имя [ann-novikova.ru](https://ann-novikova.ru/)
+
 Среднее кол-во пользователей в день ~ 40 чел.
 
 > **Стек**: Spring Web, Spring Data JPA, Spring Security 6, MySQL DB, VDS Server, Hibernate, PuTTY,  Thymeleaf, Lombok, JUnit, Mockito, HTML 5, CSS 3, SASS
