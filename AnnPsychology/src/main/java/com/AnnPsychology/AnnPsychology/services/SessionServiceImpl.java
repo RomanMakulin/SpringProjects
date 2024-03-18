@@ -9,7 +9,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class SessionServiceImpl implements iSessionService {
+public abstract class SessionServiceImpl implements iSessionService {\
+
+    // добавить Override метод (общий для получения списка всех сессий)
+//    public List<Session> getAllSessions(List<Session> sessionList) { передаем либо сессии авторизованного юзера, либо список всех юзеров
+//        sortSessionList(sessionList);
+//        setDone(sessionList);
+//        return sessionList;
+//    }
 
     @Override
     public Session getSessionById(Long sessionId, AdapterRepository adapterRepository) {
