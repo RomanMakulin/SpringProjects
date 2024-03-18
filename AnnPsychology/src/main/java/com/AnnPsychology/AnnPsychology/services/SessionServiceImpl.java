@@ -48,4 +48,15 @@ public abstract class SessionServiceImpl implements iSessionService {\
                 })
                 .thenComparing(Session::getDate));
     }
+
+   @Override
+    public void setDone(List<Session> sessionList) {
+        sessionList.forEach(item -> {
+            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
+                item.setSessionStatus(SessionStatus.SESSION_DONE);
+                adapterRepository.getSessionsRepository().save(item);
+            }
+        });
+    }
+   
 }
