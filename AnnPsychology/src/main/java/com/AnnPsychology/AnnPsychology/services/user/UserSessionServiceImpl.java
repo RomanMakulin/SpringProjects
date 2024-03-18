@@ -41,12 +41,12 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         return true;
     }
 
-    @Override
-    public List<Session> getAllSessions() {
-        List<Session> userSessionList = customUserDetailsServiceImpl.getAuthUser().getSessionList();
-        sortSessionList(userSessionList);
-        return userSessionList;
-    }
+    // @Override
+    // public List<Session> getAllSessions() {
+    //     List<Session> userSessionList = customUserDetailsServiceImpl.getAuthUser().getSessionList();
+    //     sortSessionList(userSessionList);
+    //     return userSessionList;
+    // }
 
     @Override
     public boolean cancelSession(Long id) {
