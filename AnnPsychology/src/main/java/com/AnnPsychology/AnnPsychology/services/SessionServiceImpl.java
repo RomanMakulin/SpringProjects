@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public abstract class SessionServiceImpl implements iSessionService {\
 
-    // добавить Override метод (общий для получения списка всех сессий)
+// TO DO: добавить Override метод (общий для получения списка всех сессий)
 //    public List<Session> getAllSessions(List<Session> sessionList) { передаем либо сессии авторизованного юзера, либо список всех юзеров
 //        sortSessionList(sessionList);
 //        setDone(sessionList);
