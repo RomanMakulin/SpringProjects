@@ -2,7 +2,36 @@
 Добрый день! В данном репозитории представлены мои актуальные демонстрационные проекты.
 
 **Мой стек технологий:**
-> Java Core, JDK, Spring Framework, Spring Boot, Spring Data JPA, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, GIT, JUnit, Mockito, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+> Java Core, JDK, Spring Framework, Spring Boot, Spring Data JPA, Spring Security, Spring Cloud (Gateway, Eureka, OpenFeign), Grafana, Thymeleaf, MySQL, PostgreSQL, H2, JDBC, Hibernate, Reflection API, Docker, Ubuntu, PuTTY GIT, JUnit, Mockito, Serialization & Externalizable, HTML 5, CSS 3, SCSS, SASS, JavaScript, DOM, Node JS, NPM, Bootstrap;
+
+___
+
+### **Ann Psychology Web-service**   
+> Разработал проект для психолога-специалиста в рамках фриланс заказа для упрощения взаимодействия с его клиентами. Есть главная страница с описанием услуг, вход личный кабинет (админ панель и ЛК пользователя) с возможностью регистрации.
+
+- Реализовал в полном объеме весь функционал по ТЗ, самостоятельно выстроил логику и архитектуру приложения в соответствии в паттернами и принципами ООП;
+- Разработал уникальный дизайн (макет) и верстку (frontend) по нему с использованием технологий: CSS3, HTML5, SASS
+- Реализовал систему аутентификации и регистрации пользователей с помощью Spring Security;
+- Разработал панель администратора:
+    - реализовал календарь с возможностью выбора окон с датами и планирования рабочего времени
+    - реализовал гибкое управление пользователями и их сессиями
+    - реализовал систему контроля и выдачи домашних заданий
+    - реализовал систему аналитики для отслеживания необходимой статистики
+- Разработал панель администратора:
+    - реализовал функционал записи на сессию и выбор свободных окон
+    - реализовал и подключил систему оплаты сессий (ЮКасса API)
+    - реализовал гибкое управление собственными сессиями
+- Арендовал VDS сервер. ОС - Ubuntu:
+    - разработал и подключил базу данных MySQL
+    - задеплоил java приложение на арендованный сервер
+    - установил сервер Ngnix, подключил SSL протокол, настроил обратный прокси
+    - присвоил купленное доменное имя [ann-novikova.ru](https://ann-novikova.ru/)
+
+**Среднее кол-во пользователей в день ~ 40 чел.**
+  
+[Перейти к проекту](https://github.com/RomanMakulin/SpringProjects/tree/main/AnnPsychology)
+
+``` Стек технологий: Spring Web, Spring Data JPA, MySQL, Spring Security, VDS Server, Hibernate, PuTTY, Ubuntu 22.04, Thymeleaf, Lombok, JUnit, Mockito, HTML 5, CSS 3 ```
 
 ___
 
