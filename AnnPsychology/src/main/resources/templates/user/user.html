@@ -48,19 +48,20 @@
 
 
 
-        <p class="sessions">Список сессий</p>
+        
+	<div class="sessions">Список сессий
+	<div class="sign-session">
+               <a href="/user/sign-up-session" class="go text">Записаться</a>
+         </div>
+	</div>
 
         <div class="sessions-list" th:switch="${user.sessionList.size}">
-
-            <div class="sign-session">
-                <a href="/user/sign-up-session" class="go text">Записаться</a>
-            </div>
-
 
             <h2 th:case="0" class="text" style="background-color: #d3d3d342;padding: 10px;">
                 Вы ещё не записывались. Здесь будет список сессий</h2>
             <!--  -->
-            <table class="table" th:case="*">
+            <div class="table-wrap">
+            <table class="table" style="width: 100%;" th:case="*">
                 <thead>
                     <tr class="table-title">
                         <th scope="col">Статус</th>
@@ -103,6 +104,7 @@
 
                 </tbody>
             </table>
+	    </div>
             <!--  -->
 
 
