@@ -17,9 +17,58 @@ hr {
 }
 
 .center {
+    background-color: #d9d9d926;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 50px auto;
+    border-radius: 10px;
 }
+
+.title{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 10px 20px;
+    background-color: #e9e9e994;
+    
+    color: black;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.calendar-box__item{
+position: relative;
+    border-radius: 8px;
+    background-color: #dfeeff63;
+    width: 170px;
+padding: 7px;
+}
+
+.calendar{
+box-shadow: 0 0 10px #91919138;
+}
+
+.cancel-date{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.calendar-box {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.input-date{
+    padding: 20px 20px;
+}
+
+.input-field-date {
+    background: none;
+    margin-left: 10px;
+}
+
 
 .submit {
     margin-top: 20px;
@@ -45,6 +94,7 @@ hr {
 
 .container {
     max-width: 1140px;
+    min-height: 100vh;
     padding-bottom: 50px;
     margin: 0 auto;
     background-color: white;
@@ -299,10 +349,18 @@ td {
 }
 
 table {
+	width: 100%;
     padding: 10px;
     box-shadow: 0 0 30px #dbdbdb;
     border-collapse: collapse;
     /* Убираем двойные рамки */
+}
+
+.table-wrap {
+  text-align: center;
+  display: inline-block;
+  background-color: #fff;
+  color: #000;
 }
 
 .table-title {
@@ -364,7 +422,8 @@ table {
 
 .stat__main{
 display: flex;
-gap: 50px;
+justify-content: space-evenly;
+gap: 10px;
 }
 
 .left-box{
@@ -374,7 +433,7 @@ box-shadow: 0 0 100px #0000003d;
     justify-items: center;
     border-radius: 5px;
     padding: 20px;
-    width: 300px;
+    max-width: 300px;
     background-color: #d3d3d32e;
 }
 
@@ -384,7 +443,7 @@ box-shadow: 0 0 100px #0000003d;
     gap: 30px;
     border-radius: 5px;
     padding: 20px;
-    width: 500px;
+    max-width: 500px;
     background-color: #d3d3d32e;
     align-items: center;
 }
@@ -426,4 +485,53 @@ color:white;
     border-radius: 5px;
     max-width: 1000px;
     margin: 30px auto;
+}
+
+
+@media (max-width: 1025px) {
+  .logo-menu {
+    text-align: left;
+  }
+
+
+  .text {
+    font-size: 14px;
+  }
+
+  .second-menu {
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 5px;
+   }
+
+.table-wrap {
+    overflow-y: scroll;
+  }
+
+}
+
+@media (max-width: 677px) {
+    .logo_submenu {
+    display: none;
+     }
+}
+
+@media (max-width: 580px) {
+    .stat__main{
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+
+@media (max-width: 484px) {
+    .user-page {
+    display: none;
+     }
+
+    .second-menu{
+    flex-direction: column;
+}
+
 }
