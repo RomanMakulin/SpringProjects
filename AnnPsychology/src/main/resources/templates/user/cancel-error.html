@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/user/css/user.css}" href="../../static/css/user.css">
-    <title>Manage page</title>
+    <title>Error</title>
 </head>
 
 <body>
@@ -48,18 +48,14 @@
 
 
 
-    <p class="sessions">Error</p>
+    <div class="sessions">Что-то пошло не так!
+	<div class="sign-session">
+               <a href="/user/sign-up-session" class="go text">Записаться</a>
+         </div>
+	</div>
 
     <div class="sessions-list">
-
-        <div class="sign-session">
-            <a href="/user/sign-up-session" class="go text">Записаться</a>
-        </div>
-
         <p class="text" th:text="${errorMessage}" style="color: #ff6666"></p>
-
-
-
     </div>
 
 
