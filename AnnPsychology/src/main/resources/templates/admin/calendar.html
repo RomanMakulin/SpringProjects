@@ -89,21 +89,9 @@
         <div class="calendar-box">
 
             	<div class="calendar-box__item"  th:each="closeDate : ${closeDates}">
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}">Понедельник</p>
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}">19.03.2024, 13:00</p>
+                <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}"></p>
+                <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}"></p>
 		<p class="cancel-date">❌</p>
-            	</div>
-
-		<div class="calendar-box__item"  th:each="closeDate : ${closeDates}">
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}">Понедельник</p>
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}">19.03.2024, 13:00</p>
-                <p class="cancel-date">❌</p>
-            	</div>
-
-		<div class="calendar-box__item"  th:each="closeDate : ${closeDates}">
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}">Понедельник</p>
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}">19.03.2024, 13:00</p>
-                <p class="cancel-date">❌</p>
             	</div>
 
         </div>
