@@ -52,6 +52,12 @@ public class User {
         this.price = new BigDecimal(1500);
     }
 
+    public BigDecimal getPrice(){
+        if (sessionList.isEmpty()) return this.price;
+        this.price = new BigDecimal(2000);
+        return this.price;
+    }
+
     public List<Session> getDoneSessions(){
         return sessionList.stream().filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE).toList();
     }

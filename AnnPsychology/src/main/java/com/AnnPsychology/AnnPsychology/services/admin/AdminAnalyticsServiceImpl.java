@@ -24,7 +24,7 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
     @Override
     public int earnedMoneyForTheYear() {
         return adapterRepository.getSessionsRepository().findAll().stream()
-                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusYears(1)))
+                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().isAfter(LocalDateTime.now().minusYears(1)))
                 .mapToInt(i -> i.getSessionPrice().intValue()).sum();
     }
 
@@ -36,7 +36,7 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
     @Override
     public int earnedMoneyForTheMonth() {
         return adapterRepository.getSessionsRepository().findAll().stream()
-                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusMonths(1)))
+                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().isAfter(LocalDateTime.now().minusMonths(1)))
                 .mapToInt(i -> i.getSessionPrice().intValue()).sum();
     }
 
@@ -48,28 +48,28 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
     @Override
     public int earnedMoneyForTheWeek() {
         return adapterRepository.getSessionsRepository().findAll().stream()
-                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusWeeks(1)))
+                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().isAfter(LocalDateTime.now().minusWeeks(1)))
                 .mapToInt(i -> i.getSessionPrice().intValue()).sum();
     }
 
     @Override
     public int countSessionsForTheYear() {
         return adapterRepository.getSessionsRepository().findAll().stream()
-                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusYears(1)))
+                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().isAfter(LocalDateTime.now().minusYears(1)))
                 .toList().size();
     }
 
     @Override
     public int countSessionsForTheMonth() {
         return adapterRepository.getSessionsRepository().findAll().stream()
-                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusMonths(1)))
+                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().isAfter(LocalDateTime.now().minusMonths(1)))
                 .toList().size();
     }
 
     @Override
     public int countSessionsForTheWeek() {
         return adapterRepository.getSessionsRepository().findAll().stream()
-                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().getSessionDate().isAfter(LocalDateTime.now().minusWeeks(1)))
+                .filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE && i.getSessionDate().isAfter(LocalDateTime.now().minusWeeks(1)))
                 .toList().size();
     }
 

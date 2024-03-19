@@ -26,6 +26,11 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     private final AdapterRepository adapterRepository;
 
     @Override
+    public List<SessionDate> getCalendarDatesList(){
+        return adapterRepository.getDateRepository().findAll();
+    }
+
+    @Override
     public void calendarManage(LocalDateTime localDateTime){
         SessionDate sessionDate = new SessionDate();
         sessionDate.setSessionDate(localDateTime);
@@ -59,7 +64,7 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     public List<Session> getLatest() {
         return adapterRepository.getSessionsRepository().findAll().stream()
                 .filter(item -> item.getSessionStatus() == SessionStatus.SESSION_DONE)
-                .sorted(Comparator.comparing(s -> s.getSessionDate().getSessionDate()))
+                .sorted(Comparator.comparing(s -> s.getSessionDate()))
                 .toList();
     }
 
@@ -87,7 +92,7 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     @Override
     public void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time) {
         Session session = adapterRepository.getSessionsRepository().findById(sessionId).orElseThrow();
-        session.getSessionDate().setSessionDate(LocalDateTime.of(date, time));
+        session.setSessionDate(LocalDateTime.of(date, time));
         adapterRepository.getSessionsRepository().save(session);
     }
 

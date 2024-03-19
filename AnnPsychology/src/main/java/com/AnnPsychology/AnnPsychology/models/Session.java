@@ -5,15 +5,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
 
 @Entity
 @Table(name = "user_session")
@@ -36,23 +33,25 @@ public class Session {
     @JsonIgnore
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "date_id", referencedColumnName = "id")
-    private SessionDate sessionDate;
+    @Column(name = "session_date")
+    private LocalDateTime sessionDate;
     @Column(name = "session_homework")
     private String sessionHomework;
 
     public LocalDateTime getDate(){
         if (sessionDate == null) return LocalDateTime.now();
-        return sessionDate.getSessionDate();
+        return sessionDate;
     }
 
-    public Session(User user, LocalDate date, LocalTime time) {
+    public Session(User user, LocalDateTime needDate) {
         this.user = user;
         this.sessionPrice = user.getPrice();
-        this.sessionDate = new SessionDate();
-        sessionDate.setSessionDate(LocalDateTime.of(date, time));
+        this.sessionDate = needDate;
         this.sessionStatus = SessionStatus.SESSION_ACTIVE;
+    }
+
+    public String parsingDate() {
+        return sessionDate.format(DateTimeFormatter.ofPattern("dd.MM, HH:mm"));
     }
     
 }

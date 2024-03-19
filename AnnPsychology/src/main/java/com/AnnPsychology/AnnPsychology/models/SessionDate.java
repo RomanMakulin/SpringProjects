@@ -26,7 +26,7 @@ import java.util.List;
 //}
 
 @Entity
-@Table(name = "date_2")
+@Table(name = "open_dates")
 @Data
 @NoArgsConstructor
 public class SessionDate {
@@ -35,7 +35,7 @@ public class SessionDate {
     private Long id;
     @Column(name = "session_date")
     private LocalDateTime sessionDate;
-    @Column(name = "busy")
+    @Column(name = "is_open")
     private boolean open;
 
     public List<String> parsingWithDayName() {
@@ -48,7 +48,11 @@ public class SessionDate {
             case SATURDAY -> "Суббота";
             case SUNDAY -> "Воскресенье";
         };
-        return Arrays.asList(dayOfWeekName, parsingDate());
+
+        String isFree = "не занята";
+        if (open == false) isFree = "занята";
+
+        return Arrays.asList(dayOfWeekName, parsingDate(), isFree);
 
     }
 

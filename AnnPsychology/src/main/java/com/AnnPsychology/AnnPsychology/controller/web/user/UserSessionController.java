@@ -1,5 +1,6 @@
 package com.AnnPsychology.AnnPsychology.controller.web.user;
 
+import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.services.user.iUserDetailsService;
 import com.AnnPsychology.AnnPsychology.services.user.iUserSessionService;
 import lombok.Data;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Controller
@@ -26,10 +28,17 @@ public class UserSessionController {
         return "user/user.html";
     }
 
-    @GetMapping("/sign-up-session")
+    @GetMapping("/sign-up-session-form")
     public String signUpSessionForm(Model model) {
         model.addAttribute("user", userDetailsService.getAuthUser());
+        model.addAttribute("openDateList", userSessionService.openSessionDateList());
         return "user/go-session.html";
+    }
+
+    @PostMapping("/sign-up-session/{id}")
+    public String signUpSession(@PathVariable("id") Long dateID) {
+        userSessionService.signUpSession(dateID);
+        return "redirect:/user";
     }
 
     @GetMapping("/repeat-sign-up-session")
@@ -37,15 +46,6 @@ public class UserSessionController {
         model.addAttribute("user", userDetailsService.getAuthUser());
         model.addAttribute("errorMessage", "Дата недоступна, возможно она уже занята!");
         return "user/error-date.html";
-    }
-
-    @PostMapping("/sign-up-session/{id}")
-    public String signUpSession(@PathVariable("id") Long id,
-                                @ModelAttribute("date") LocalDate date,
-                                @ModelAttribute("time") LocalTime time) {
-
-        if (date == null | time == null) return "redirect:/user/repeat-sign-up-session";
-        return userSessionService.signUpSession(id, date, time) ? "redirect:/user" : "redirect:/user/repeat-sign-up-session";
     }
 
     /**

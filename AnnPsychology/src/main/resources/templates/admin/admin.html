@@ -78,7 +78,7 @@
 
                         <td th:switch="${session_item.sessionDate}">
                             <p th:case="null">No time</p>
-                            <p th:case="*" th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field"></p>
+                            <p th:case="*" th:text="${session_item.parsingDate}" class="sessions-list_item_field"></p>
                         </td>
 <!--                        <td th:text="${session_item.sessionDate.parsingDate}" class="sessions-list_item_field"></td>-->
 

@@ -88,10 +88,11 @@
         <p class="title" style="background-color: #beeefd1f;">Календарь. Свободные окна для записи</p>
         <div class="calendar-box">
 
-            	<div class="calendar-box__item"  th:each="closeDate : ${closeDates}">
+            	<div class="calendar-box__item"  th:each="closeDate : ${closeDates}" th:switch="${closeDate.parsingWithDayName.get(2)}">
                 <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}"></p>
                 <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}"></p>
-		<p class="cancel-date">❌</p>
+                <p class="text" th:text="${closeDate.parsingWithDayName.get(2)}"></p>
+		        <p th:case="'не занята'" class="cancel-date">❌</p>
             	</div>
 
         </div>

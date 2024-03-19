@@ -26,7 +26,7 @@ public abstract class SessionServiceImpl implements iSessionService {
     @Override
     public void cancelAndDelete(Session session, AdapterRepository adapterRepository) {
         session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
-        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate().getSessionDate());
+        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(session.getSessionDate());
         adapterRepository.getDateRepository().deleteById(sessionDate.getId());
         adapterRepository.getSessionsRepository().save(session);
     }
@@ -44,7 +44,7 @@ public abstract class SessionServiceImpl implements iSessionService {
    @Override
     public void setDone(List<Session> sessionList, AdapterRepository adapterRepository) {
         sessionList.forEach(item -> {
-            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().getSessionDate().isBefore(LocalDateTime.now())) {
+            if (item.getSessionStatus() == SessionStatus.SESSION_ACTIVE && item.getSessionDate().isBefore(LocalDateTime.now())) {
                 item.setSessionStatus(SessionStatus.SESSION_DONE);
                 adapterRepository.getSessionsRepository().save(item);
             }

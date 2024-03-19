@@ -48,38 +48,15 @@
 
 
 
-        <p class="sessions">Запись на сессию</p>
+        <p class="sessions">Свободные окна для записи</p>
 
-        <div class="sessions-list">
+        <form action="#" th:action="@{'/user/sign-up-session/' + ${openDate.id}}" method="post" class="input-grid" th:each="openDate : ${openDateList}">
+            <p class="text" th:text="${openDate.parsingWithDayName.get(0)}"></p>
+            <p class="text" th:text="${openDate.parsingWithDayName.get(1)}"></p>
+            <button type="submit">Submit</button>
+        </form>
 
-            <form action="#" th:action="@{'/user/sign-up-session/' + ${user.id}}" th:object="${user}" method="post" class="input-grid">
 
-                <div class="update-input">
-                    <label class="text" for="date">Выбор даты</label>
-                    <input class="text input-zoom" type="date" name="date" id="date" th:value="${date}" required>
-                </div>
-
-                <div class="update-input">
-                    <label class="text" for="time">Выбор времени</label>
-                    <select class="text input-zoom" name="time" id="time" th:value="${time}">
-                        <option selected value="13:00">13:00</option>
-                        <option value="13:30">13:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="14:30">14:30</option>
-                        <option value="15:00">15:00</option>
-                        <option value="15:30">15:30</option>
-                        <option value="16:00">16:00</option>
-                        <option value="16:30">16:30</option>
-                        <option value="17:00">17:00</option>
-                        <option value="17:30">17:30</option>
-                        <option value="18:00">18:00</option>
-                    </select>
-                </div>
-
-                <input type="submit" value="Подтвердить" class="submit text">
-            </form>
-
-        </div>
 
 
     </article>

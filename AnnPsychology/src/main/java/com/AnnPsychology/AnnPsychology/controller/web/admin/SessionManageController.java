@@ -90,8 +90,7 @@ public class SessionManageController {
 //    another class
     @GetMapping("/calendar")
     public String calendar(Model model){
-        List<SessionDate> dates = adminSessionService.getAdapterRepository().getDateRepository().findAll();
-        model.addAttribute("closeDates", dates);
+        model.addAttribute("closeDates", adminSessionService.getCalendarDatesList());
         return "admin/calendar.html";
     }
 

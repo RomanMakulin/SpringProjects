@@ -1,6 +1,7 @@
 package com.AnnPsychology.AnnPsychology.services.admin;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
+import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 
@@ -22,4 +23,5 @@ public interface iAdminSessionService {
     void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time);
     void calendarManage(LocalDateTime localDateTime);
     List<Session> getLatest();
+    List<SessionDate> getCalendarDatesList();
 }
