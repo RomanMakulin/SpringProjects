@@ -513,7 +513,13 @@ color:white;
 
 @media (max-width: 677px) {
     .logo_submenu {
-    display: none;
+    gap: 5px;
+        right: 10px;
+        top: 2px;
+        flex-direction: column;
+     }
+     .logo-menu {
+     padding: 30px 10px;
      }
 }
 

@@ -12,8 +12,5 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface DateRepository extends JpaRepository<SessionDate, Long> {
-    SessionDate getBySessionDate(LocalDateTime sessionDate);
-    @Modifying
-    @Query(value = "delete from sessions_date WHERE id = :id", nativeQuery = true)
-    void deleteById(@Param("id") Long id);
+
 }

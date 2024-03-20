@@ -36,7 +36,7 @@ public class SessionDate {
     @Column(name = "session_date")
     private LocalDateTime sessionDate;
     @Column(name = "is_open")
-    private boolean open;
+    private boolean open = true;
 
     public List<String> parsingWithDayName() {
         String dayOfWeekName = switch (sessionDate.getDayOfWeek()) {
@@ -48,12 +48,9 @@ public class SessionDate {
             case SATURDAY -> "Суббота";
             case SUNDAY -> "Воскресенье";
         };
-
         String isFree = "не занята";
-        if (open == false) isFree = "занята";
-
+        if (!open) isFree = "занята";
         return Arrays.asList(dayOfWeekName, parsingDate(), isFree);
-
     }
 
     public String parsingDate() {

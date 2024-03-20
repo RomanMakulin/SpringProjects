@@ -410,7 +410,7 @@ table {
 .input-grid {
     display: grid;
     justify-items: start;
-    gap: 10px;
+    gap: 3px;
 }
 
 
@@ -491,16 +491,17 @@ table {
 
 }
 
-@media (max-width: 677px) {
-    .logo_submenu {
-    display: none;
-     }
-}
 
 @media (max-width: 736px) {
     .logo_submenu {
-    display: none;
+    gap: 5px;
+        right: 10px;
+        top: 2px;
+        flex-direction: column;
      }
+     .logo-menu {
+          padding: 30px 10px;
+          }
 }
 
 @media (max-width: 484px) {

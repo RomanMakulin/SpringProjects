@@ -4,13 +4,10 @@ import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.models.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,39 +39,38 @@ public class User {
     private String password;
     private BigDecimal price;
 
-    public int getAge(){
+    public int getAge() {
         return Period.between(dateBirth, LocalDate.now()).getYears();
     }
 
-    public User(){
+    public User() {
         this.sessionList = new ArrayList<>();
         this.userRole = UserRole.ROLE_USER;
-        this.price = new BigDecimal(1500);
+        this.price = new BigDecimal(2500);
     }
 
-    public BigDecimal getPrice(){
-        if (sessionList.isEmpty()) return this.price;
-        this.price = new BigDecimal(2000);
+    public BigDecimal checkPrice() {
+        if (sessionList.isEmpty()) return new BigDecimal(2000);
         return this.price;
     }
 
-    public List<Session> getDoneSessions(){
+    public List<Session> getDoneSessions() {
         return sessionList.stream().filter(i -> i.getSessionStatus() == SessionStatus.SESSION_DONE).toList();
     }
 
-    public int getDoneSessionsSize(){
+    public int getDoneSessionsSize() {
         return getDoneSessions().size();
     }
 
-    public int getIntPrice(){
+    public int getIntPrice() {
         return this.price.intValue();
     }
-    
-    public String getStringPrice(){
-        return this.price.intValue() + " руб.";
+
+    public String getStringPrice() {
+        return checkPrice().intValue() + " руб.";
     }
 
-    public int getSessionsCount(){
+    public int getSessionsCount() {
         return sessionList.size();
     }
 

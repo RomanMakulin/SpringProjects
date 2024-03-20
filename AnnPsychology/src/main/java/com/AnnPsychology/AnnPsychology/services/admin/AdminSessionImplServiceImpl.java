@@ -25,29 +25,6 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
     @Autowired
     private final AdapterRepository adapterRepository;
 
-
-    // вынести в отдельный сервис
-    
-    @Override
-    public List<SessionDate> getCalendarDatesList(){
-        return adapterRepository.getDateRepository().findAll(); // добавить фильтрацию по ...before(LocalDateTime().now);
-    }
-
-    @Override
-    public void calendarManage(LocalDateTime localDateTime){ // изменить название метода на newOpenSessionDate
-        SessionDate sessionDate = new SessionDate();
-        sessionDate.setSessionDate(localDateTime);
-        sessionDate.setOpen(true); // удалить скорее всего и добавить default значение true в бд
-        adapterRepository.getDateRepository().save(sessionDate);
-    }
-    // добавить метод отмены (удаления) свободной даты
-    public void deleteOpenSessionDate(Long sessionDateID){
-        // SessionDate sessionDate = adapterRepository.getDateRepository().findByID(sessionDateID);
-        // adapterRepository.getDateRepository().remove(sessionDate);
-    }
-    
-    //
-
     @Override
     public List<Session> getAllSessions() {
         List<Session> sessionList = adapterRepository.getSessionsRepository().findAll();

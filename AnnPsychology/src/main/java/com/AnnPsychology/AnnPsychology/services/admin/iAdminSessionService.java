@@ -21,7 +21,5 @@ public interface iAdminSessionService {
     void giveSessionLink(Long id, String link);
     void giveSessionHomeWork(Long id, String sessionHomework);
     void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time);
-    void calendarManage(LocalDateTime localDateTime);
     List<Session> getLatest();
-    List<SessionDate> getCalendarDatesList();
 }

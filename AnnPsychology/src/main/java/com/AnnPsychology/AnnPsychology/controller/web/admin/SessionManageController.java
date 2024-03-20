@@ -2,7 +2,6 @@ package com.AnnPsychology.AnnPsychology.controller.web.admin;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.SessionDate;
-import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.services.admin.iAdminSessionService;
 import com.AnnPsychology.AnnPsychology.services.admin.iAdminUserService;
 import lombok.Data;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -85,26 +83,4 @@ public class SessionManageController {
         adminSessionService.giveSessionHomeWork(id, sessionHomework);
         return "redirect:/admin/latest";
     }
-
-
-//    another class
-    @GetMapping("/calendar")
-    public String calendar(Model model){
-        model.addAttribute("closeDates", adminSessionService.getCalendarDatesList());
-        return "admin/calendar.html";
-    }
-
-    @PostMapping("/calendar/new")
-    public String openSession(@ModelAttribute("date") LocalDate date,
-                              @ModelAttribute("time") LocalTime time){
-        adminSessionService.calendarManage(LocalDateTime.of(date, time));
-        return "redirect:/admin/calendar";
-    }
-
-    @PostMapping("/calendar/cancel-date")
-    public String openSession(@ModelAttribute("closeDate") SessionDate date){
-        // adminSessionService.getAdapterRepository().getSessionDateRepository().delete(date);
-        return "redirect:/admin/calendar";
-    }
-
 }

@@ -38,20 +38,25 @@ public class Session {
     @Column(name = "session_homework")
     private String sessionHomework;
 
-    public LocalDateTime getDate(){
+    public LocalDateTime getDate() {
         if (sessionDate == null) return LocalDateTime.now();
         return sessionDate;
     }
 
     public Session(User user, LocalDateTime needDate) {
         this.user = user;
-        this.sessionPrice = user.getPrice();
+        this.sessionPrice = checkPrice();
         this.sessionDate = needDate;
         this.sessionStatus = SessionStatus.SESSION_ACTIVE;
+    }
+
+    public BigDecimal checkPrice() {
+        if (user.getSessionList().isEmpty()) return new BigDecimal(2000);
+        return user.getPrice();
     }
 
     public String parsingDate() {
         return sessionDate.format(DateTimeFormatter.ofPattern("dd.MM, HH:mm"));
     }
-    
+
 }
