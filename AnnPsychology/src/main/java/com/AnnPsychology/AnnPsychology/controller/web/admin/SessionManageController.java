@@ -101,4 +101,10 @@ public class SessionManageController {
         return "redirect:/admin/calendar";
     }
 
+    @PostMapping("/calendar/cancel-date")
+    public String openSession(@ModelAttribute("closeDate") SessionDate date){
+        // adminSessionService.getAdapterRepository().getSessionDateRepository().delete(date);
+        return "redirect:/admin/calendar";
+    }
+
 }
