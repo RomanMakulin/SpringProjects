@@ -17,7 +17,6 @@ public interface iUserSessionService {
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
     List<SessionDate> openSessionDateList();
-    void signUpSession(Long dateID);
-    // List<Session> getAllSessions();
+    void signUpSession(Long dateID);;
     boolean cancelSession(Long id);
 }
