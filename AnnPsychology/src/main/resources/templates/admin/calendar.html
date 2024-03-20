@@ -93,7 +93,11 @@
                 <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}">20.03.2024</p>
 		<hr style="margin-top: 3px; margin-bottom: 3px;">
                 <p style="color: grey;" class="text" th:text="${closeDate.parsingWithDayName.get(2)}">не занято</p>
-		<a th:href="@{'/admin/calendar/cancel-date/' + ${closeDate.id}}" th:case="'не занята'" class="cancel-date">❌</a>
+<!-- 		<a th:href="@{'/admin/calendar/cancel-date/' + ${closeDate.id}}" th:case="'не занята'" class="cancel-date">❌</a> -->
+		<form style="padding:0;" action="#" th:action="@{'/admin/calendar/cancel-date'}" th:object="${closeDate}" method="post" class="input-grid input-date">
+			<input type="submit" value="❌" th:case="'не занята'" class="cancel-date">
+<!-- 			<a type="submit" th:case="'не занята'" class="cancel-date">❌</a> -->
+		</form>
             	</div>
 
         </div>
