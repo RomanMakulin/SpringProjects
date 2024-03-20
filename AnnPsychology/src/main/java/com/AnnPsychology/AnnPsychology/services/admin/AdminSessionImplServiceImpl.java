@@ -27,7 +27,7 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
 
     @Override
     public List<SessionDate> getCalendarDatesList(){
-        return adapterRepository.getDateRepository().findAll();
+        return adapterRepository.getDateRepository().findAll(); // добавить фильтрацию по ...before(LocalDateTime().now);
     }
 
     @Override
