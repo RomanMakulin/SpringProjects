@@ -85,14 +85,15 @@
 
     <!--    Список дат, календарь-->
     <div class="calendar center">
-        <p class="title" style="background-color: #beeefd1f;">Календарь. Свободные окна для записи</p>
+        <p class="title" style="background-color: #7cddfb1f;">Календарь. Свободные окна для записи</p>
         <div class="calendar-box">
 
             	<div class="calendar-box__item"  th:each="closeDate : ${closeDates}" th:switch="${closeDate.parsingWithDayName.get(2)}">
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}"></p>
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}"></p>
-                <p class="text" th:text="${closeDate.parsingWithDayName.get(2)}"></p>
-		        <p th:case="'не занята'" class="cancel-date">❌</p>
+                <p class="text" th:text="${closeDate.parsingWithDayName.get(0)}">Понедельник</p>
+                <p class="text" th:text="${closeDate.parsingWithDayName.get(1)}">20.03.2024</p>
+		<hr style="margin-top: 3px; margin-bottom: 3px;">
+                <p style="color: grey;" class="text" th:text="${closeDate.parsingWithDayName.get(2)}">не занято</p>
+		<a th:case="'не занята'" class="cancel-date">❌</a>
             	</div>
 
         </div>
