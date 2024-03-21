@@ -494,14 +494,20 @@ table {
 
 @media (max-width: 736px) {
     .logo_submenu {
+   margin-top: 15px;
+    position: sticky;
     gap: 5px;
-        right: 10px;
-        top: 2px;
-        flex-direction: column;
+    right: 10px;
+    top: 20px;
      }
      .logo-menu {
           padding: 30px 10px;
           }
+.logo_main-link {
+padding: 7px 15px;
+	font-size: 12px;
+}
+	
 }
 
 @media (max-width: 484px) {
