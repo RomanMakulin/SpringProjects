@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
     <title>Main</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <header class="header">
         <article class="header__logo">
             <a href="#">
-                <img class="header__logo_img" src="../../static/img/log.svg" alt="">
+                <img class="header__logo_img" th:src="@{img/log.svg}" alt="">
             </a>
         </article>
         <article class="header__text-block">
@@ -30,24 +30,26 @@
                 Привет! Меня зовут Аня Новикова. Я практикующий психолог Моя цель - помочь найти человеку его собственный, уникальный путь к счастью
             </p>
         </article>
-    </header>
 
+    </header>
+    <a href="/welcome" class="lc">Личный кабинет</a>
 
     <!-- menu -->
     <nav class="menu">
-        <a href="#" class="menu_link">Главная</a>
-        <a href="#" class="menu_link">Правила</a>
-        <a href="#" class="menu_link">Цены</a>
-        <a href="about.html" class="menu_link">Обо мне</a>
-        <a href="#" class="menu_link">Записаться <span class="flare"></span></a>
+        <a href="/" class="menu_link">Главная</a>
+        <a href="/welcome" class="menu_link lc2">Личный кабинет</a>
+        <a href="/about" class="menu_link">Обо мне</a>
+        <a href="#rules" class="menu_link">Правила</a>
+        <a href="#price" class="menu_link">Цены</a>
+        <a href="/welcome" class="menu_link">Записаться <span class="flare"></span></a>
     </nav>
 
-    <img src="../../static/img/line3.png" alt="" class="line1">
+    <img th:src="@{img/line3.png}" alt="" class="line1">
 
 
     <!-- подходы -->
 
-    <div class="work-instruments">
+    <div class="work-instruments adapt-center">
         <h2 class="work-instruments_title">Подходы в которых я работаю</h2>
         <div class="work-instruments__container">
             <article class="work-instruments__container__item">
@@ -79,11 +81,11 @@
     </div>
 
     <!-- Запросы с которыми работаю -->
-    <section class="requests">
+    <section class="requests adapt-center">
         <h2 class="requests_title">Запросы с которыми я работаю</h2>
 
         <div class="requests__box">
-            <img src="../../static/img/horror.png" alt="" class="requests__box__left">
+            <img th:src="@{img/horror.png}" alt="" class="requests__box__left">
             <article class="requests__box__right">
                 <h3 class="requests__box__right_title">Самооценка</h3>
                 <p class="requests__box__right_subtitle">Неуверенность в себе, комплексы, сравнения себя с другими</p>
@@ -103,7 +105,7 @@
     </section>
 
     <!-- Критерии работы -->
-    <section class="rules">
+    <section id="rules" class="rules adapt-center">
         <article class="rules__right">
             <h2 class="rules__right_title">Критерии работы со мной</h2>
             <ul>
@@ -119,15 +121,15 @@
 
         </article>
 
-        <img class="rules__left" src="../../static/img/anya333.JPG" alt="">
+        <img th:src="@{img/anya333.JPG}" class="rules__left" alt="">
 
     </section>
 
     <!-- results-->
-    <section class="results">
+    <section class="results adapt-center">
         <h2 class="results_title">После сессий со мной ты получишь</h2>
         <div class="results__flex">
-            <img class="results_img" src="../../static/img/help.png" alt="help-img">
+            <img class="results_img" th:src="@{img/help.png}"  alt="help-img">
             <article class="results__box">
                 <p class="results__box_name">поддержку</p>
                 <p class="results__box_name">заинтересованность в Вашей проблеме</p>
@@ -146,40 +148,40 @@
 
 
     <!-- price list -->
-    <section class="price">
-        <h2 class="price_title">Цены <br></h2>
+    <section class="price adapt-center">
+        <h2 id="price" class="price_title">Цены <br></h2>
 
         <div class="price__box">
             <p class="price__box_item">Первая консультация</p>
 		<p class="price__box_item_rub">2 000 руб.</p>
-            <a href="#" class="price__box_btn">Купить</a>
+            <a href="/welcome" class="price__box_btn">Купить</a>
         </div>
 
         <div class="price__box">
             <p class="price__box_item">Последующие консультации</p>
 <p class="price__box_item_rub">2 500 руб.</p>
-            <a href="#" class="price__box_btn">Купить</a>
+            <a href="/welcome" class="price__box_btn">Купить</a>
         </div>
 
         <div class="price__box">
             <p class="price__box_item">Пакет 4 сессий: </p>
 <p class="price__box_item_rub">7 000 руб.</p>
             <p class="price__box_item_salary">выгодно!</p>
-            <a href="#" class="price__box_btn">Купить</a>
+            <a href="/welcome" class="price__box_btn">Купить</a>
         </div>
 
         <div class="price__box">
             <p class="price__box_item">Пакет 8 сессий: </p>
 <p class="price__box_item_rub">13 500 руб.</p>
             <p class="price__box_item_salary">выгодно!</p>
-            <a href="#" class="price__box_btn">Купить</a>
+            <a href="/welcome" class="price__box_btn">Купить</a>
         </div>
 
 
         <p class="price_description">*Для клиентов, занимающихся регулярно (хотя бы 1 раз в 3 недели), при повышении стоимости, цена не меняется, то есть остается та, которая обговаривалась в начале работы.</p>
 
-        <p class="price_apply"> <span class="flare">Записаться</span>
-        </p>
+        <a href="/welcome" class="price_apply"> Записаться
+        </a>
     </section>
 
     <footer class="footer">

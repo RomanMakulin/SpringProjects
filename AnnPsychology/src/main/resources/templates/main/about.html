@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <title>About me</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <header class="header">
         <article class="header__logo">
             <a href="#">
-                <img class="header__logo_img" src="../../static/img/log.svg" alt="">
+                <img class="header__logo_img" th:src="@{img/log.svg}"  alt="">
             </a>
         </article>
         <article class="header__text-block">
@@ -30,19 +30,17 @@
                 Привет! Меня зовут Аня Новикова. Я практикующий психолог Моя цель - помочь найти человеку его собственный, уникальный путь к счастью
             </p>
         </article>
+        <a href="/welcome" class="lc">Личный кабинет</a>
     </header>
 
 
     <!-- menu -->
     <nav class="menu">
-        <a href="index.html" class="menu_link">Главная</a>
-        <a href="#" class="menu_link">Правила</a>
-        <a href="#" class="menu_link">Цены</a>
-        <a href="about.html" class="menu_link">Обо мне</a>
-        <a href="#" class="menu_link">Записаться <span class="flare"></span></a>
+        <a href="/" class="menu_link">Главная</a>
+        <a href="/welcome" class="menu_link">Записаться <span class="flare"></span></a>
     </nav>
 
-    <img src="../../static/img/line3.png" alt="" class="line1">
+    <img th:src="@{img/line3.png}" alt="" class="line1">
 
     <!-- about -->
     <section class="about">
@@ -52,12 +50,12 @@
                 переступить порог кабинета и окунуться в долгую терапию. День, когда я села в кресло напротив психолога, перевернул мою жизнь. Долгие месяцы работы, принесли результаты, и тут я поняла, что нашла себя в жизни, я тоже хочу быть психологом.
                 Находясь на последнем курсе университета Правительства Москвы, на нелюбимом направлении, я решаю получить параллельно дополнительное образование по направлению "Психолог-консультант". И вот теперь я здесь. Помогаю людям обрести внутреннюю
                 опору и подаю руку помощи тем, кто ищет свой путь к счастью.</p>
-            <img src="../../static/img/anya2.JPG" alt="" class="about__box_img">
+            <img th:src="@{img/anya2.JPG}"  alt="" class="about__box_img">
 
         </div>
     </section>
 
-    <img src="../../static/img/line3.png" alt="" class="line1">
+    <img th:src="@{img/line3.png}" alt="" class="line1">
 
     <footer class="footer">
         <p class="footer_text">Ann Psychology © 2023</p>

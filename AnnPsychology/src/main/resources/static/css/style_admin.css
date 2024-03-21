@@ -159,7 +159,7 @@ box-shadow: 0 0 10px #91919138;
     background-position: right;
     background-repeat: no-repeat;
     background-size: 600px;
-    background-image: url(/img/cat2.png);
+    background-image: url("/img/cat2.png");
     position: relative;
     padding-top: 50px;
     padding-bottom: 50px;

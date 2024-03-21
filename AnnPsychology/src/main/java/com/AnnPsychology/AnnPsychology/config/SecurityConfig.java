@@ -8,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -43,11 +44,11 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-//                        .requestMatchers("/css/**", "/favicon.ico", "/login").permitAll()
-                                .requestMatchers("/registration/**", "/registration-user", "/").anonymous()
-                                .requestMatchers("/user/**").hasAnyRole("USER")
-                                .requestMatchers("/admin/**").hasAnyRole("ADMIN")
-                                .requestMatchers("/welcome").authenticated()
+                        .requestMatchers("/registration/**", "/registration-user").anonymous()
+                        .requestMatchers("/", "/static/**","/css/**", "/img/**", "/about").permitAll()
+                        .requestMatchers("/user/**").hasAnyRole("USER")
+                        .requestMatchers("/admin/**").hasAnyRole("ADMIN")
+                        .requestMatchers("/welcome").authenticated()
                 )
                 .formLogin(
                         form -> form

@@ -7,6 +7,9 @@
     left: 150%;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +26,7 @@ hr {
 }
 
 body {
-  background-image: url("./img/back4.jpg");
+  background-image: url("/img/back4.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -102,6 +105,23 @@ li:before {
   letter-spacing: 3px;
   text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 5px #fff;
 }
+.header {
+   position: relative;
+}
+.lc {
+    z-index: 2;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #775e52b3;
+    padding: 15px 40px;
+    top: 30px;
+    position: fixed;
+    right: 20%;
+    transition: 0.2s;
+}
+.lc:hover {
+    background-color: #775e52fa;
+}
 .header__text-block_text {
   color: #000;
   font-family: Inter;
@@ -170,11 +190,10 @@ li:before {
 
 .rules {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   background-color: rgba(109, 86, 75, 0.6784313725);
   padding: 40px 40px;
   border-radius: 20px;
-  margin-bottom: 40px;
   box-shadow: 0px 0px 10px 0px #000000;
   display: flex;
   align-items: center;
@@ -184,7 +203,7 @@ li:before {
 }
 .rules::after {
   content: "";
-  background-image: url(./img/roses.png);
+  background-image: url("/img/roses.png");
   opacity: 0.2;
   top: 0;
   left: 0;
@@ -247,11 +266,10 @@ li:before {
 
 .work-instruments {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   background-color: rgba(109, 86, 75, 0.6784313725);
   padding: 40px 40px;
   border-radius: 20px;
-  margin-bottom: 40px;
   box-shadow: 0px 0px 10px 0px #000000;
   transition: 0.2s;
 }
@@ -306,11 +324,10 @@ li:before {
 
 .requests {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   background-color: rgba(109, 86, 75, 0.6784313725);
   padding: 40px 40px;
   border-radius: 20px;
-  margin-bottom: 40px;
   box-shadow: 0px 0px 10px 0px #000000;
   transition: 0.2s;
 }
@@ -362,11 +379,10 @@ li:before {
 
 .results {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   background-color: rgba(109, 86, 75, 0.6784313725);
   padding: 40px 40px;
   border-radius: 20px;
-  margin-bottom: 40px;
   box-shadow: 0px 0px 10px 0px #000000;
   transition: 0.2s;
 }
@@ -413,11 +429,10 @@ li:before {
 
 .price {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   background-color: rgba(109, 86, 75, 0.6784313725);
   padding: 40px 40px;
   border-radius: 20px;
-  margin-bottom: 40px;
   box-shadow: 0px 0px 10px 0px #000000;
   display: flex;
   flex-wrap: wrap;
@@ -428,7 +443,7 @@ li:before {
 }
 .price::after {
   content: "";
-  background-image: url(./img/roses.png);
+  background-image: url("/img/roses.png");
   opacity: 0.2;
   top: 0;
   left: 0;
@@ -564,7 +579,7 @@ margin-top:15px;
 }
 .about::after {
   content: "";
-  background-image: url(./img/roses.png);
+  background-image: url("/img/roses.png");
   opacity: 0.5;
   top: 0;
   left: 0;
@@ -606,7 +621,16 @@ margin-top:15px;
 
 .test {
   background-color: white;
-}/*# sourceMappingURL=style.css.map */
+}
+
+@media (max-width: 1024px) {
+.lc{
+right: 30px;
+}
+.adapt-center{
+    margin: 0 15px 40px;
+}
+}
 
 @media (max-width: 1024px) {
 .about__box{
@@ -615,6 +639,7 @@ flex-direction: column;
 .about_text {
 font-size: 16px;
 }
+
 }
 
 @media (max-width: 801px) {
@@ -643,6 +668,12 @@ max-width: 250px;
 }
 }
 
+@media (max-width: 478px) {
+.adapt-center{
+margin: 0 auto 40px;
+}
+}
+
 @media (max-width: 425px) {
 .about {
 padding: 10px;
@@ -658,6 +689,17 @@ font-size: 14px;
 }
 .price__box_btn {
 font-size: 14px;
+}
+}
+.lc2{
+display: none;
+}
+@media (max-width: 688px) {
+.lc{
+display: none;
+}
+.lc2{
+display: block;
 }
 }
 
