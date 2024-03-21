@@ -248,6 +248,7 @@ border-radius: 20px;
 /*  */
 
 .sessions {
+padding: 0 10px;
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
@@ -410,7 +411,7 @@ table {
 .input-grid {
     display: grid;
     justify-items: start;
-    gap: 3px;
+    gap: 10px;
 }
 
 
@@ -465,6 +466,7 @@ table {
 }
 
 .sign-session{
+    padding: 0 10px;
     top: 80px;
     position: absolute;
     right: 0;
@@ -491,32 +493,21 @@ table {
 
 }
 
+@media (max-width: 677px) {
+    .logo_submenu {
+    display: none;
+     }
+}
 
 @media (max-width: 736px) {
     .logo_submenu {
-   margin-top: 15px;
-    position: sticky;
-    gap: 5px;
-    right: 10px;
-    top: 20px;
+    display: none;
      }
-     .logo-menu {
-          padding: 30px 10px;
-          }
-.logo_main-link {
-padding: 7px 15px;
-	font-size: 12px;
-}
-	
 }
 
 @media (max-width: 484px) {
     .user-page {
     display: none;
-     }
-
-    .sessions-list {
-    padding: 30px;
      }
 
     .update-input {
