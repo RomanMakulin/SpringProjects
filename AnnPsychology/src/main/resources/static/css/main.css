@@ -639,7 +639,15 @@ flex-direction: column;
 .about_text {
 font-size: 16px;
 }
+}
 
+@media (max-width: 768px) {
+body {
+    background-image: none;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-color: #523f35;
+}
 }
 
 @media (max-width: 801px) {
