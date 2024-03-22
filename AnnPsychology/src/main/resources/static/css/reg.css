@@ -12,11 +12,26 @@ a {
     min-height: 100vh;
 }
 
-.reg-title{
+.lc-title{
 margin: 0 auto;
     text-align: center;
-    max-width: 600px;
     padding: 50px 0 80px;
+}
+
+.lc-title_text{
+    text-shadow: 0 0 10px #ffffff;
+    font-family: Roboto;
+    font-weight: 200;
+    font-size: 40px;
+    color: white;
+}
+
+.lc_text{
+    text-shadow: 0 0 10px #ffffff;
+    font-family: 'Roboto';
+    font-weight: 200;
+    font-size: 20px;
+    color: white;
 }
 
 .container {
