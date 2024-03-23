@@ -46,6 +46,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/registration/**", "/registration-user").anonymous()
                         .requestMatchers("/shop-verification-5Pvg3Jkv09.txt").permitAll()
+                        .requestMatchers("/pay").permitAll()
                         .requestMatchers("/", "/static/**","/css/**", "/img/**", "/about").permitAll()
                         .requestMatchers("/user/**").hasAnyRole("USER")
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")

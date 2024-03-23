@@ -1,8 +1,10 @@
 package com.AnnPsychology.AnnPsychology.controller.web.user;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
+import com.AnnPsychology.AnnPsychology.services.user.Payment;
 import com.AnnPsychology.AnnPsychology.services.user.iUserDetailsService;
 import com.AnnPsychology.AnnPsychology.services.user.iUserSessionService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -61,9 +63,9 @@ public class UserSessionController {
      * @return html
      */
     @PostMapping("/sign-up-session/{id}")
-    public String signUpSession(@PathVariable("id") Long dateID) {
+    public String signUpSession(@PathVariable("id") Long dateID) throws JsonProcessingException {
         userSessionService.createNewSession(dateID);
-        return "redirect:/user";
+        return "redirect:" + new Payment().pay(userDetailsService.getAuthUser()).getConfirmation().getConfirmation_url();
     }
 
     /**
