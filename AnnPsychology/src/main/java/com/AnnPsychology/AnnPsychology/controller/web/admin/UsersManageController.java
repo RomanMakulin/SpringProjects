@@ -14,25 +14,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * Контроллер администратора (пользователи)
+ */
 @Controller
 @RequiredArgsConstructor
 @Data
 @RequestMapping("/admin")
 public class UsersManageController {
+
+    /**
+     * Интерфейс управления пользователями
+     */
     private final iAdminUserService adminUserService;
 
+    /**
+     * Запрос на получение списка всех пользователей
+     *
+     * @param model модель взаимодействия с шаблонизатором
+     * @return html
+     */
     @GetMapping("/all-users")
     public String allUsers(Model model) {
         model.addAttribute("users", adminUserService.getAllUsers());
         return "admin/admin_users.html";
     }
 
+    /**
+     * Запрос на изменение цены пользователю за сессии
+     *
+     * @param id          ID пользователя
+     * @param userDetails обновленные данные (цена)
+     * @return html списка всех пользователей
+     */
     @PostMapping("/change-price/{id}")
-    public String changePrice(@PathVariable("id") Long id, User user) {
-        adminUserService.changePriceUser(id, user.getPrice());
+    public String changePrice(@PathVariable("id") Long id, User userDetails) {
+        adminUserService.changePriceUser(id, userDetails.getPrice());
         return "redirect:/admin/all-users";
     }
 
+    /**
+     * Запрос на получение истории ДЗ у конкретного пользователя
+     *
+     * @param model  модель взаимодействия с шаблонизатором
+     * @param userId ID пользователя
+     * @return html с историей ДЗ
+     */
     @GetMapping("/hw-history/{id}")
     public String getUserHomeworkList(Model model, @PathVariable("id") Long userId) {
         User user = adminUserService.getUserByID(userId);
