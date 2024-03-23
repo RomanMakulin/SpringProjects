@@ -15,7 +15,6 @@ public interface iAdminSessionService {
     List<Session> getAllSessions();
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
-    // List<Session> getAllSessions();
     boolean cancelSession(Long id);
     List<Session> getLatestWithoutHW();
     void giveSessionLink(Long id, String link);

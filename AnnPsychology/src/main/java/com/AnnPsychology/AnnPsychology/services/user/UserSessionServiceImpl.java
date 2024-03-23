@@ -11,25 +11,38 @@ import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 
+/**
+ * Сервис для управления сессиями пользователя
+ */
 @EqualsAndHashCode(callSuper = true)
 @Service
-
 @Data
 public class UserSessionServiceImpl extends SessionServiceImpl implements iUserSessionService {
+
+    /**
+     * Адаптер для взаимодействия с базой данных
+     */
     @Autowired
     private final AdapterRepository adapterRepository;
+
+    /**
+     * Сервис управления пользователями
+     */
     private final CustomUserDetailsServiceImpl customUserDetailsServiceImpl;
+
+    /**
+     * Ограничитель дней для отмены сессий
+     */
     private final long daysForCancel = 1;
 
-    @Override
+    /**
+     * Удаление всех дат (прошелших сессий) из базы данных
+     */
     public void deleteLastSessionDate() {
         adapterRepository.getDateRepository().findAll().stream().toList().forEach(i -> {
             if (i.getSessionDate().isBefore(LocalDateTime.now()))
@@ -37,6 +50,11 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         });
     }
 
+    /**
+     * Получить список всех свободных окон (дат) для записи
+     *
+     * @return список дат
+     */
     @Override
     public List<SessionDate> openSessionDateList() {
         deleteLastSessionDate();
@@ -45,8 +63,13 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
                 .sorted(Comparator.comparing(SessionDate::getSessionDate)).toList();
     }
 
+    /**
+     * Создание новой сессии
+     *
+     * @param dateID нужная дата для регистрации сессии
+     */
     @Override
-    public void signUpSession(Long dateID) {
+    public void createNewSession(Long dateID) {
         SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
         User user = adapterRepository.getUserRepository().findById(customUserDetailsServiceImpl.getAuthUser().getId()).orElseThrow();
         Session session = new Session(user, sessionDate.getSessionDate());
@@ -56,14 +79,23 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         adapterRepository.getSessionsRepository().save(session);
     }
 
+    /**
+     * Получение всех сессий пользователя в отсортированном порядке
+     * В реализации пользователя
+     *
+     * @return Список сессий
+     */
     @Override
     public List<Session> getAllSessions() {
-        List<Session> userSessionList = customUserDetailsServiceImpl.getAuthUser().getSessionList();
-        sortSessionList(userSessionList);
-        setDone(userSessionList, adapterRepository);
-        return userSessionList;
+        return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
     }
 
+    /**
+     * Отменить сессию
+     *
+     * @param id ID сессии
+     * @return логический результат выполнения метода
+     */
     @Override
     public boolean cancelSession(Long id) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
@@ -80,6 +112,12 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         return true;
     }
 
+    /**
+     * Получить домашнюю работу по конкретной сессии
+     *
+     * @param sessionID ID сессии
+     * @return домашняя работа в строковом представлении
+     */
     @Override
     public String getUserHomework(Long sessionID) {
         return getSessionById(sessionID, adapterRepository).getSessionHomework();

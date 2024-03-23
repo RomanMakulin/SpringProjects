@@ -1,7 +1,6 @@
 package com.AnnPsychology.AnnPsychology.services.admin;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
-import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 import com.AnnPsychology.AnnPsychology.services.SessionServiceImpl;
@@ -17,33 +16,49 @@ import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Сервис управления сессиями
+ */
 @EqualsAndHashCode(callSuper = true)
 @Service
 @RequiredArgsConstructor
 @Data
 public class AdminSessionImplServiceImpl extends SessionServiceImpl implements iAdminSessionService {
+
+    /**
+     * Адаптер для взаимодействия с Базой Данных
+     */
     @Autowired
     private final AdapterRepository adapterRepository;
 
+    /**
+     * Получить список всех сессий
+     * В реализации администратора
+     *
+     * @return список сессий
+     */
     @Override
     public List<Session> getAllSessions() {
-        List<Session> sessionList = adapterRepository.getSessionsRepository().findAll();
-        sortSessionList(sessionList);
-        setDone(sessionList, adapterRepository);
-        return sessionList;
+        return getAllSessionsAbstract(adapterRepository.getSessionsRepository().findAll(), adapterRepository);
     }
 
+    /**
+     * Отменить сессию
+     *
+     * @param id ID сессии
+     * @return логический результат завершения метода
+     */
     @Override
     public boolean cancelSession(Long id) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
-        cancelAndDelete(session, adapterRepository);
+        cancelSession(session, adapterRepository);
         return true;
     }
 
     /**
      * Получить список недавно завершенных сессий
      * 1. Фильтр по статусу сессий (done)
-     * 2. Фильтр по разнице даты и времени сессии с текущим now (сессии за неделю)
+     * 2. Сортировка по разнице даты и времени сессии с текущим now (сессии за неделю)
      *
      * @return список сессий
      */
@@ -55,6 +70,11 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
                 .toList();
     }
 
+    /**
+     * Получить список сессий без домашних работ
+     *
+     * @return список сессий
+     */
     @Override
     public List<Session> getLatestWithoutHW() {
         return getLatest().stream()
@@ -62,6 +82,12 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
                 .toList();
     }
 
+    /**
+     * Выдать ссылку на сессию (видео конференция)
+     *
+     * @param id   ID сессии
+     * @param link ссылка
+     */
     @Override
     public void giveSessionLink(Long id, String link) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
@@ -69,6 +95,12 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
         adapterRepository.getSessionsRepository().save(session);
     }
 
+    /**
+     * Прикрепить домашнее задание к сессии
+     *
+     * @param id              ID сессии
+     * @param sessionHomework домашнее задание
+     */
     @Override
     public void giveSessionHomeWork(Long id, String sessionHomework) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
@@ -76,6 +108,13 @@ public class AdminSessionImplServiceImpl extends SessionServiceImpl implements i
         adapterRepository.getSessionsRepository().save(session);
     }
 
+    /**
+     * Изменить время сессии
+     *
+     * @param sessionId ID сессии
+     * @param date      дата
+     * @param time      время
+     */
     @Override
     public void editSessionDateByAdmin(Long sessionId, LocalDate date, LocalTime time) {
         Session session = adapterRepository.getSessionsRepository().findById(sessionId).orElseThrow();

@@ -5,9 +5,6 @@ import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 public interface iUserSessionService {
@@ -17,7 +14,6 @@ public interface iUserSessionService {
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
     List<SessionDate> openSessionDateList();
-    void signUpSession(Long dateID);
-    void deleteLastSessionDate();
+    void createNewSession(Long dateID);
     boolean cancelSession(Long id);
 }

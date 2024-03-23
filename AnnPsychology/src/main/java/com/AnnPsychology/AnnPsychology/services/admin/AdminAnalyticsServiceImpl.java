@@ -9,17 +9,24 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+/**
+ * Сервис создания аналитики
+ */
 @Service
 @RequiredArgsConstructor
 @Data
 public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
+
+    /**
+     * Адаптер для взаимодействия с Базой Данных
+     */
     @Autowired
     private final AdapterRepository adapterRepository;
 
     /**
      * Заработано за год
      *
-     * @return int сумма заработка за год
+     * @return int результат
      */
     @Override
     public int earnedMoneyForTheYear() {
@@ -31,7 +38,7 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
     /**
      * Заработано за месяц
      *
-     * @return int сумма заработка за месяц
+     * @return int результат
      */
     @Override
     public int earnedMoneyForTheMonth() {
@@ -43,7 +50,7 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
     /**
      * Заработано за неделю
      *
-     * @return int сумма заработка за неделю
+     * @return int результат
      */
     @Override
     public int earnedMoneyForTheWeek() {
@@ -52,6 +59,11 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
                 .mapToInt(i -> i.getSessionPrice().intValue()).sum();
     }
 
+    /**
+     * Количество сессий в год
+     *
+     * @return int результат
+     */
     @Override
     public int countSessionsForTheYear() {
         return adapterRepository.getSessionsRepository().findAll().stream()
@@ -59,6 +71,11 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
                 .toList().size();
     }
 
+    /**
+     * Количество сессий за месяц
+     *
+     * @return int результат
+     */
     @Override
     public int countSessionsForTheMonth() {
         return adapterRepository.getSessionsRepository().findAll().stream()
@@ -66,6 +83,11 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
                 .toList().size();
     }
 
+    /**
+     * Количество сессий за неделю
+     *
+     * @return int результат
+     */
     @Override
     public int countSessionsForTheWeek() {
         return adapterRepository.getSessionsRepository().findAll().stream()
@@ -73,6 +95,11 @@ public class AdminAnalyticsServiceImpl implements iAdminAnalyticsService {
                 .toList().size();
     }
 
+    /**
+     * Количество всех выполненных сессий за все время
+     *
+     * @return int результат
+     */
     @Override
     public int countAllDoneSessions() {
         return adapterRepository.getSessionsRepository().findAll().stream()
