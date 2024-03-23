@@ -59,49 +59,49 @@
         <div th:case="false">
             <div class="sessions-list">
                 <!--  -->
-<div class="table-wrap">
-                <table class="table">
-                    <thead>
-                    <tr class="table-title">
-                        <th scope="col">Дата и время</th>
-                        <th scope="col">Имя Фамилия</th>
-                        <th scope="col">Телефон</th>
-                        <th scope="col">ДЗ</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                        <tr class="table-title">
+                            <th scope="col">Дата и время</th>
+                            <th scope="col">Имя Фамилия</th>
+                            <th scope="col">Телефон</th>
+                            <th scope="col">ДЗ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
 
-                    <tr class="table-field" th:each="session_item : ${latestSession}">
+                        <tr class="table-field" th:each="session_item : ${latestSession}">
 
 
-                        <td th:text="${session_item.parsingDate}"
-                            class="sessions-list_item_field"></td>
-                        <td class="sessions-list_item_field">
-                            <span th:text="${session_item.user.username}"></span>
-                            <span th:text="${session_item.user.lastname}"></span>
-                        </td>
+                            <td th:text="${session_item.parsingDate}"
+                                class="sessions-list_item_field"></td>
+                            <td class="sessions-list_item_field">
+                                <span th:text="${session_item.user.username}"></span>
+                                <span th:text="${session_item.user.lastname}"></span>
+                            </td>
 
-                        <td th:text="${session_item.user.phone}"></td>
+                            <td th:text="${session_item.user.phone}"></td>
 
-                        <td class="users-list_item_field">
-                            <form action="#" th:action="@{'/admin/give-hw/' + ${session_item.id}}"
-                                  th:object="${session}" method="post">
-                                <div class="update-input"
-                                     style="display: flex; gap: 10px; justify-content: center;">
+                            <td class="users-list_item_field">
+                                <form action="#" th:action="@{'/admin/give-hw/' + ${session_item.id}}"
+                                      th:object="${session}" method="post">
+                                    <div class="update-input"
+                                         style="display: flex; gap: 10px; justify-content: center;">
                                     <textarea th:value="${sessionHomework}" class="text input-zoom"
                                               style="width: 400px; border: 1px solid rgba(205, 205, 205, 0.582);"
                                               name="sessionHomework" id="sessionHomework" cols="30" rows="5"></textarea>
-                                    <input type="submit" value="готово" class="submit-price text">
-                                </div>
-                            </form>
-                        </td>
+                                        <input type="submit" value="готово" class="submit-price text">
+                                    </div>
+                                </form>
+                            </td>
 
-                    </tr>
+                        </tr>
 
-                    </tbody>
-                </table>
-</div>
+                        </tbody>
+                    </table>
+                </div>
                 <!--  -->
             </div>
         </div>
@@ -110,43 +110,43 @@
     <!--  user list  -->
     <div class="sessions-list">
 
-<div class="table-wrap">
-        <table class="table">
-            <thead>
-            <tr class="table-title">
-                <th scope="col">Имя Фамилия</th>
-                <!--                        <th scope="col">Почта</th>-->
-                <th scope="col">Телеграм</th>
-                <th scope="col">Телефон</th>
-                <th scope="col">Завершено</th>
-                <th scope="col">История ДЗ</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr class="table-title">
+                    <th scope="col">Имя Фамилия</th>
+                    <!--                        <th scope="col">Почта</th>-->
+                    <th scope="col">Телеграм</th>
+                    <th scope="col">Телефон</th>
+                    <th scope="col">Завершено</th>
+                    <th scope="col">История ДЗ</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            <tr class="table-field" th:each="user : ${users}">
-                <td class="users-list_item_field">
-                    <span th:text="${user.username}"></span>
-                    <span th:text="${user.lastname}"></span>
-                </td>
+                <tr class="table-field" th:each="user : ${users}">
+                    <td class="users-list_item_field">
+                        <span th:text="${user.username}"></span>
+                        <span th:text="${user.lastname}"></span>
+                    </td>
 
-                <td class="users-list_item_field">
-                    <a th:text="${user.socialLink}" class="sessions-list_item_link"
-                       th:href="@{'https://t.me/' + ${user.socialLink}}"></a>
-                </td>
+                    <td class="users-list_item_field">
+                        <a th:text="${user.socialLink}" class="sessions-list_item_link"
+                           th:href="@{'https://t.me/' + ${user.socialLink}}"></a>
+                    </td>
 
-                <td th:text="${user.phone}" class="users-list_item_field"></td>
-                <td th:text="${user.getDoneSessionsSize}" class="users-list_item_field"></td>
+                    <td th:text="${user.phone}" class="users-list_item_field"></td>
+                    <td th:text="${user.getDoneSessionsSize}" class="users-list_item_field"></td>
 
-                <td class="users-list_item_field">
-                    <a th:href="@{'/admin/hw-history/' + ${user.id}}" class="sessions-list_item_link">Перейти</a>
-                </td>
+                    <td class="users-list_item_field">
+                        <a th:href="@{'/admin/hw-history/' + ${user.id}}" class="sessions-list_item_link">Перейти</a>
+                    </td>
 
-            </tr>
+                </tr>
 
-            </tbody>
-        </table>
-</div>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 

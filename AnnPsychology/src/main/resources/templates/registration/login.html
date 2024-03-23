@@ -9,23 +9,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" th:href="@{/registration/css/reg.css}" href="../../static/css/reg.css">
     <title>Вход в ЛК</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
 
 <div class="back">
 
-<div class="lc-title">
-	<p class="lc-title_text" style="margin-bottom:10px;">Личный Кабинет</p>
-	<p class="lc_text">Запись и управление сессиями</p>
-	</div>
-    
+    <div class="lc-title">
+        <p class="lc-title_text" style="margin-bottom:10px;">Личный Кабинет</p>
+        <p class="lc_text">Запись и управление сессиями</p>
+    </div>
+
     <article class="container">
         <div class="container-title">
             <h1 class="reg-title">ВОЙТИ</h1>
@@ -44,17 +46,17 @@
             <form method="post"
                   role="form"
                   th:action="@{/login}"
-            style="justify-items: center;">
+                  style="justify-items: center;">
 
                 <div class="grid-input ">
                     <label class="text" for="username">Почта (email)</label>
-                    <input  class="text input-custom" type="text" name="username" id="username">
+                    <input class="text input-custom" type="text" name="username" id="username">
                 </div>
 
 
                 <div class="grid-input ">
                     <label class="text" for="password">Пароль</label>
-                    <input  class="text input-custom" type="password" name="password" id="password">
+                    <input class="text input-custom" type="password" name="password" id="password">
                 </div>
 
                 <div class="reg-login_btns">

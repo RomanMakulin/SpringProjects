@@ -32,6 +32,11 @@ public class IndexController {
         return "main/about.html";
     }
 
+    @GetMapping("/shop-verification-5Pvg3Jkv09.txt")
+    public String test(){
+        return "shop-verification-5Pvg3Jkv09.txt";
+    }
+
     /**
      * Подключение файла стилей
      *

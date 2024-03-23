@@ -1,11 +1,3 @@
-DROP DATABASE anya;
-
--- создаем базу данных под названием "anya"
-CREATE DATABASE anya;
-
--- выбираем базу данных для дальнейшей работы с запросами
-use anya;
-
 -- создаем таблицу пользователей
 CREATE TABLE users
 (
@@ -22,10 +14,12 @@ CREATE TABLE users
 );
 
 -- создаем таблицу сессий
-CREATE TABLE sessions_date
+CREATE TABLE open_dates
 (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    session_date DATETIME
+    session_date DATETIME,
+    is_open BOOLEAN
+
 );
 
 -- создаем таблицу сессий
@@ -37,9 +31,7 @@ CREATE TABLE user_session
     payment_status BOOL,
     session_status VARCHAR(30),
     session_homework VARCHAR(1000),
-    
-    date_id INT, -- задаем айди группы
-    FOREIGN KEY (date_id)  REFERENCES sessions_date (id) ON DELETE SET NULL ON UPDATE SET NULL,
+    session_date DATETIME,
 
     user_id INT, -- задаем айди группы
     FOREIGN KEY (user_id)  REFERENCES users (id) ON DELETE SET NULL ON UPDATE SET NULL
@@ -47,4 +39,3 @@ CREATE TABLE user_session
 );
 
 
-select * from users;

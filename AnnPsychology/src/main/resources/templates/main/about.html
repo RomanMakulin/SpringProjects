@@ -9,55 +9,63 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Open+Sans:wght@600;700;800&display=swap"
+          rel="stylesheet">
     <title>Кто она?</title>
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
 </head>
 
 <body>
 
-    <!-- logo -->
-    <header class="header">
-        <article class="header__logo">
-            <a href="#">
-                <img class="header__logo_img" th:src="@{img/log.svg}"  alt="">
-            </a>
-        </article>
-        <article class="header__text-block">
-            <h3 class="header__text-block_description">психолог-консультант</h3>
-            <h1 class="header__text-block_title">Анна Новикова</h1>
-            <p class="header__text-block_text">
-                Привет! Меня зовут Аня Новикова. Я практикующий психолог Моя цель - помочь найти человеку его собственный, уникальный путь к счастью
-            </p>
-        </article>
-        <a href="/welcome" class="lc">Личный кабинет</a>
-    </header>
+<!-- logo -->
+<header class="header">
+    <article class="header__logo">
+        <a href="#">
+            <img class="header__logo_img" th:src="@{img/log.svg}" alt="">
+        </a>
+    </article>
+    <article class="header__text-block">
+        <h3 class="header__text-block_description">психолог-консультант</h3>
+        <h1 class="header__text-block_title">Анна Новикова</h1>
+        <p class="header__text-block_text">
+            Привет! Меня зовут Аня Новикова. Я практикующий психолог Моя цель - помочь найти человеку его собственный,
+            уникальный путь к счастью
+        </p>
+    </article>
+    <a href="/welcome" class="lc">Личный кабинет</a>
+</header>
 
 
-    <!-- menu -->
-    <nav class="menu">
-        <a href="/" class="menu_link">Главная</a>
-        <a href="/welcome" class="menu_link">Записаться <span class="flare"></span></a>
-    </nav>
+<!-- menu -->
+<nav class="menu">
+    <a href="/" class="menu_link">Главная</a>
+    <a href="/welcome" class="menu_link">Записаться <span class="flare"></span></a>
+</nav>
 
-    <img th:src="@{img/line3.png}" alt="" class="line1">
+<img th:src="@{img/line3.png}" alt="" class="line1">
 
-    <!-- about -->
-    <section class="about">
-        <h2 class="about_title">Обо мне</h2>
-        <div class="about__box">
-            <p class="about_text">... Однажды, потеряв смысл жизни и желание просыпаться утром, я оказалась на пороге кабинета психолога. Это был мой первый опыт, я ощутила страх и беспомощность, но понимала, что моя жизнь рушится и мне нужна помощь. Это дало мне сил, чтобы
-                переступить порог кабинета и окунуться в долгую терапию. День, когда я села в кресло напротив психолога, перевернул мою жизнь. Долгие месяцы работы, принесли результаты, и тут я поняла, что нашла себя в жизни, я тоже хочу быть психологом.
-                Находясь на последнем курсе университета Правительства Москвы, на нелюбимом направлении, я решаю получить параллельно дополнительное образование по направлению "Психолог-консультант". И вот теперь я здесь. Помогаю людям обрести внутреннюю
-                опору и подаю руку помощи тем, кто ищет свой путь к счастью.</p>
-            <img th:src="@{img/anya2.JPG}"  alt="" class="about__box_img">
+<!-- about -->
+<section class="about">
+    <h2 class="about_title">Обо мне</h2>
+    <div class="about__box">
+        <p class="about_text">... Однажды, потеряв смысл жизни и желание просыпаться утром, я оказалась на пороге
+            кабинета психолога. Это был мой первый опыт, я ощутила страх и беспомощность, но понимала, что моя жизнь
+            рушится и мне нужна помощь. Это дало мне сил, чтобы
+            переступить порог кабинета и окунуться в долгую терапию. День, когда я села в кресло напротив психолога,
+            перевернул мою жизнь. Долгие месяцы работы, принесли результаты, и тут я поняла, что нашла себя в жизни, я
+            тоже хочу быть психологом.
+            Находясь на последнем курсе университета Правительства Москвы, на нелюбимом направлении, я решаю получить
+            параллельно дополнительное образование по направлению "Психолог-консультант". И вот теперь я здесь. Помогаю
+            людям обрести внутреннюю
+            опору и подаю руку помощи тем, кто ищет свой путь к счастью.</p>
+        <img th:src="@{img/anya2.JPG}" alt="" class="about__box_img">
 
-        </div>
-    </section>
+    </div>
+</section>
 
-    <img th:src="@{img/line3.png}" alt="" class="line1">
+<img th:src="@{img/line3.png}" alt="" class="line1">
 
-    <footer class="footer">
-        <p class="footer_text">Ann Psychology © 2024</p>
-        <p class="footer_text">developed by Roman Makulin</p>
-    </footer>
+<footer class="footer">
+    <p class="footer_text">Ann Psychology © 2024</p>
+    <p class="footer_text">developed by Roman Makulin</p>
+</footer>
