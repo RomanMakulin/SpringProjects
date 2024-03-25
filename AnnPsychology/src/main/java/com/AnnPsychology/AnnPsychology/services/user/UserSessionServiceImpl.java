@@ -71,12 +71,24 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     @Override
     public void createNewSession(Long dateID) {
         SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
-        User user = adapterRepository.getUserRepository().findById(customUserDetailsServiceImpl.getAuthUser().getId()).orElseThrow();
+        // User user = adapterRepository.getUserRepository().findById(customUserDetailsServiceImpl.getAuthUser().getId()).orElseThrow();
+        User user = customUserDetailsServiceImpl.getAuthUser();
         Session session = new Session(user, sessionDate.getSessionDate());
 
         sessionDate.setOpen(false);
         adapterRepository.getDateRepository().save(sessionDate);
         adapterRepository.getSessionsRepository().save(session);
+    }
+
+    public void reserveSession(Long dateID) {
+        SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
+        User user = customUserDetailsServiceImpl.getAuthUser();
+        Session session = new Session(user, sessionDate.getSessionDate());
+        sessionDate.setOpen(false);
+
+        // Добавить новую сущность и записать в нее сохраненные данные заказа
+        // adapterRepository.getDateRepository().save(sessionDate); 
+        // adapterRepository.getSessionsRepository().save(session);
     }
 
     /**
