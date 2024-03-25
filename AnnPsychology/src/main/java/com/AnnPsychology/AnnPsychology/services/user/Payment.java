@@ -15,19 +15,24 @@ public class Payment {
     public PaymentStatusForAPI pay(User user) throws JsonProcessingException {
         
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
+        HttpHeaders headers = headersSetManage();
         
         PaymentForAPI payment = new PaymentForAPI(user, "RUB", "Оплата онлайн сессии");
         String json = new ObjectMapper().writeValueAsString(payment);
         String url = "https://api.yookassa.ru/v3/payments";
-
-        headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
-        headers.set("Idempotence-Key", "17edd6235d"); // настроить генерацию ключа рандомно
-        headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<String> request = new HttpEntity<>(json, headers);
         ResponseEntity<PaymentStatusForAPI> response = restTemplate.exchange(url, HttpMethod.POST, request, PaymentStatusForAPI.class);
 
         return response.getBody();
     }
+
+    public HttpHeaders headersSetManage(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
+        headers.set("Idempotence-Key", "17edd6235d"); // настроить генерацию ключа рандомно
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return headers;
+    }
+    
 }
