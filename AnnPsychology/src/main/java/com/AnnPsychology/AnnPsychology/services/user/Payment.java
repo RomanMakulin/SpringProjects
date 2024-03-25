@@ -27,6 +27,13 @@ public class Payment {
         return response.getBody();
     }
 
+    public boolean checkPayStatus(String id) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
+        // order ...
+    }
+
     public HttpHeaders headersSetManage(){
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
