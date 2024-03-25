@@ -38,7 +38,7 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     /**
      * Ограничитель дней для отмены сессий
      */
-    private final long daysForCancel = 1;
+    private final long daysForCancel = 1; // поправить на часы (24 часа)
 
     /**
      * Удаление всех дат (прошелших сессий) из базы данных
@@ -99,7 +99,7 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     @Override
     public boolean cancelSession(Long id) {
         Session session = adapterRepository.getSessionsRepository().findById(id).orElseThrow();
-        long daysDiff = ChronoUnit.DAYS.between(LocalDateTime.now(), session.getSessionDate());
+        long daysDiff = ChronoUnit.DAYS.between(LocalDateTime.now(), session.getSessionDate()); // дни поменять на часы
 
         if (!(daysDiff >= daysForCancel)) return false;
         session.setSessionStatus(SessionStatus.SESSION_CANCELLED);
