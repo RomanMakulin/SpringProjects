@@ -12,5 +12,5 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface DateRepository extends JpaRepository<SessionDate, Long> {
-
+    SessionDate getBySessionDate(LocalDateTime sessionDate);
 }

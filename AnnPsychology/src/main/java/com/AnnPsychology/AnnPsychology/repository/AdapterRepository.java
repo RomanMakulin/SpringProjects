@@ -26,4 +26,9 @@ public class AdapterRepository {
      * Взаимодействие с репозиторирем пользователей
      */
     private final UserRepository userRepository;
+
+    /**
+     * Взаимодействие с репозиторирем заказов
+     */
+    private final OrderRepository orderRepository;
 }

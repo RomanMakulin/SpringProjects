@@ -1,4 +1,4 @@
-package com.AnnPsychology.AnnPsychology.models.test;
+package com.AnnPsychology.AnnPsychology.dto;
 
 import lombok.Data;
 

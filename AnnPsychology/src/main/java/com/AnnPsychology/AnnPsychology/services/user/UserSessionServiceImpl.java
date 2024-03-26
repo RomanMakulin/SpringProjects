@@ -1,11 +1,16 @@
 package com.AnnPsychology.AnnPsychology.services.user;
 
+import com.AnnPsychology.AnnPsychology.dto.Payment;
+import com.AnnPsychology.AnnPsychology.dto.PaymentAnswer;
+import com.AnnPsychology.AnnPsychology.models.Order;
 import com.AnnPsychology.AnnPsychology.models.Session;
 import com.AnnPsychology.AnnPsychology.models.SessionDate;
 import com.AnnPsychology.AnnPsychology.models.User;
 import com.AnnPsychology.AnnPsychology.models.enums.SessionStatus;
 import com.AnnPsychology.AnnPsychology.repository.AdapterRepository;
+import com.AnnPsychology.AnnPsychology.repository.SessionsRepository;
 import com.AnnPsychology.AnnPsychology.services.SessionServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,33 +68,51 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
                 .sorted(Comparator.comparing(SessionDate::getSessionDate)).toList();
     }
 
-    /**
-     * Создание новой сессии
-     *
-     * @param dateID нужная дата для регистрации сессии
-     */
-    @Override
-    public void createNewSession(Long dateID) {
-        SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
-        // User user = adapterRepository.getUserRepository().findById(customUserDetailsServiceImpl.getAuthUser().getId()).orElseThrow();
-        User user = customUserDetailsServiceImpl.getAuthUser();
-        Session session = new Session(user, sessionDate.getSessionDate());
+//    /**
+//     * Создание новой сессии
+//     *
+//     * @param dateID нужная дата для регистрации сессии
+//     */
+//    @Override
+//    public void createNewSession(Long dateID) {
+//        SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
+//        // User user = adapterRepository.getUserRepository().findById(customUserDetailsServiceImpl.getAuthUser().getId()).orElseThrow();
+//        User user = customUserDetailsServiceImpl.getAuthUser();
+//        Session session = new Session(user, sessionDate.getSessionDate());
+//
+//        sessionDate.setOpen(false);
+//        adapterRepository.getDateRepository().save(sessionDate);
+//        adapterRepository.getSessionsRepository().save(session);
+//    }
 
-        sessionDate.setOpen(false);
-        adapterRepository.getDateRepository().save(sessionDate);
+
+    public void createNewSession(LocalDateTime sessionDate) {
+        User user = customUserDetailsServiceImpl.getAuthUser();
+        Session session = new Session(user, sessionDate);
         adapterRepository.getSessionsRepository().save(session);
     }
 
-    public void reserveSession(Long dateID) {
+    @Override
+    public String reserveSession(Long dateID) throws JsonProcessingException {
+
+        UserPaymentService paymentService = new UserPaymentService();
         SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
-        User user = customUserDetailsServiceImpl.getAuthUser();
-        Session session = new Session(user, sessionDate.getSessionDate());
+
+        Order order = new Order(sessionDate.getSessionDate());
+        String orderId = order.getId() + "";
+        PaymentAnswer paymentAnswer = paymentService.pay(customUserDetailsServiceImpl.getAuthUser(), orderId);
+        String identificator = paymentAnswer.getId();
+
+        order.setPayID(identificator);
         sessionDate.setOpen(false);
 
-        // Добавить новую сущность и записать в нее сохраненные данные заказа
-        // adapterRepository.getDateRepository().save(sessionDate); 
-        // adapterRepository.getSessionsRepository().save(session);
+        adapterRepository.getOrderRepository().save(order);
+        adapterRepository.getDateRepository().save(sessionDate);
+
+        return paymentAnswer.getConfirmation().getConfirmation_url();
+
     }
+
 
     /**
      * Получение всех сессий пользователя в отсортированном порядке
@@ -99,6 +122,22 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
      */
     @Override
     public List<Session> getAllSessions() {
+
+        List<Session> allSessions = getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
+        allSessions.forEach(i -> {
+            if (i.getUser().getOrder() != null) {
+                Order order = i.getUser().getOrder();
+
+//                if (paymentService.checkPayStatus(order).equals("succeeded")) // *
+//                    createNewSession(i.getUser().getOrder().getSessionDate());
+//                else if (paymentService.checkPayStatus(order).equals("canceled")) {
+//                    SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(i.getSessionDate());
+//                    sessionDate.setOpen(true);
+//                    adapterRepository.getDateRepository().save(sessionDate);
+//                    adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
+//                }
+            }
+        });
         return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
     }
 

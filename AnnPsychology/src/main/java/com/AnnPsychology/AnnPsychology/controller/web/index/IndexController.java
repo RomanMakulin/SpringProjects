@@ -1,15 +1,8 @@
 package com.AnnPsychology.AnnPsychology.controller.web.index;
 
-import com.AnnPsychology.AnnPsychology.models.test.Amount;
-import com.AnnPsychology.AnnPsychology.models.test.PaymentForAPI;
-import com.AnnPsychology.AnnPsychology.models.test.PaymentStatusForAPI;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Контроллер главной страницы

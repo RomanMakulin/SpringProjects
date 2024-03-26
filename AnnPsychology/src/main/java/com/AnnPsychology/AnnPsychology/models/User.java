@@ -33,6 +33,8 @@ public class User {
     private LocalDate dateBirth;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Session> sessionList;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Order order;
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     private UserRole userRole;

@@ -1,9 +1,9 @@
-package com.AnnPsychology.AnnPsychology.models.test;
+package com.AnnPsychology.AnnPsychology.dto;
 
 import lombok.Data;
 
 @Data
-public class PaymentStatusForAPI {
+public class PaymentAnswer {
     private String id;
     private String pending;
     private Amount amount;

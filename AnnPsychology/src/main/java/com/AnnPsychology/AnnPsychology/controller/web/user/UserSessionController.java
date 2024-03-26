@@ -1,7 +1,7 @@
 package com.AnnPsychology.AnnPsychology.controller.web.user;
 
 import com.AnnPsychology.AnnPsychology.models.Session;
-import com.AnnPsychology.AnnPsychology.services.user.Payment;
+import com.AnnPsychology.AnnPsychology.services.user.UserPaymentService;
 import com.AnnPsychology.AnnPsychology.services.user.iUserDetailsService;
 import com.AnnPsychology.AnnPsychology.services.user.iUserSessionService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -64,8 +64,8 @@ public class UserSessionController {
      */
     @PostMapping("/sign-up-session/{id}")
     public String signUpSession(@PathVariable("id") Long dateID) throws JsonProcessingException {
-        userSessionService.createNewSession(dateID);
-        return "redirect:" + new Payment().pay(userDetailsService.getAuthUser()).getConfirmation().getConfirmation_url();
+//        userSessionService.createNewSession(dateID);
+        return "redirect:" + userSessionService.reserveSession(dateID);
     }
 
     /**

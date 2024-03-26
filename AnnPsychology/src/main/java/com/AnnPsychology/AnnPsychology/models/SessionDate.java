@@ -9,22 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-//@Entity
-//@Table(name = "sessions_date")
-//@Data
-//@NoArgsConstructor
-//public class SessionDate {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//    @Column(name = "session_date")
-//    private LocalDateTime sessionDate;
-//
-//    public String parsingDate(){
-//        return sessionDate.format(DateTimeFormatter.ofPattern("dd.MM, HH:mm"));
-//    }
-//}
-
 @Entity
 @Table(name = "open_dates")
 @Data
