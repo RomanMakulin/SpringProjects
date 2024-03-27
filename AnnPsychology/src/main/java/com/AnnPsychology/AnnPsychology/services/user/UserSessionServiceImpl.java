@@ -126,17 +126,16 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         List<Session> allSessions = getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
         allSessions.forEach(i -> {
             if (i.getUser().getOrder() != null) {
-                paymentService.updatePayStatus();
-                String status = paymentService.getPaymentAnswer.getStatus();
+                String payStatus = paymentService.getUpdatedStatus();
 
-//                if (paymentService.checkPayStatus(order).equals("succeeded")) // *
-//                    createNewSession(i.getUser().getOrder().getSessionDate());
-//                else if (paymentService.checkPayStatus(order).equals("canceled")) {
-//                    SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(i.getSessionDate());
-//                    sessionDate.setOpen(true);
-//                    adapterRepository.getDateRepository().save(sessionDate);
-//                    adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
-//                }
+                if (payStatus.equals("succeeded")) // *
+                    createNewSession(i.getUser().getOrder().getSessionDate());
+                else if (payStatus.equals("canceled")) {
+                    SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(i.getSessionDate());
+                    sessionDate.setOpen(true);
+                    adapterRepository.getDateRepository().save(sessionDate);
+                    adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
+                }
             }
         });
         return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
