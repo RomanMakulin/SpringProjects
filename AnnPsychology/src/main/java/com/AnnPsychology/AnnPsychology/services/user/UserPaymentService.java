@@ -51,6 +51,11 @@ public class UserPaymentService {
         this.paymentAnswer = restTemplate.exchange(urlAnswer, HttpMethod.GET, entity, PaymentAnswer.class).getBody();
     }
 
+    public String getUpdatedStatus(){
+        updatePayStatus();
+        return paymentAnswer.getStatus();
+    }
+
     public HttpHeaders headersSetManage(String idempotenceKey){
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
