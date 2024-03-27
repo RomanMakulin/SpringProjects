@@ -36,7 +36,7 @@ public class UserPaymentService {
         this.paymentAnswer = response.getBody();
     }
 
-    public String checkPayStatus() {
+    public void updatePayStatus() {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://api.yookassa.ru/v3/payments";
         
@@ -46,9 +46,9 @@ public class UserPaymentService {
         headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<PaymentStatus> response = restTemplate.exchange(urlAnswer, HttpMethod.GET, entity, PaymentStatus.class);
+        // ResponseEntity<PaymentAnswer> response = restTemplate.exchange(urlAnswer, HttpMethod.GET, entity, PaymentAnswer.class);
 
-        return response.getBody().getStatus();
+        this.paymentAnswer = restTemplate.exchange(urlAnswer, HttpMethod.GET, entity, PaymentAnswer.class).getBody();
     }
 
     public HttpHeaders headersSetManage(String idempotenceKey){
