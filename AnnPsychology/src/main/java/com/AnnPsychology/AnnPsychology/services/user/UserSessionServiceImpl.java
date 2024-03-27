@@ -89,10 +89,11 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
 //    }
 
 
-    public void createNewSession(LocalDateTime sessionDate) {
+    public void createNewSession(Order order) {
         User user = customUserDetailsServiceImpl.getAuthUser();
-        Session session = new Session(user, sessionDate);
+        Session session = new Session(user, order.getSessionDate());
         adapterRepository.getSessionsRepository().save(session);
+        adapterRepository.getOrderRepository().delete(order);
     }
 
     @Override
@@ -127,18 +128,20 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         allSessions.forEach(i -> {
             if (i.getUser().getOrder() != null) {
                 String payStatus = paymentService.getUpdatedStatus();
+                Order order = i.getUser().getOrder();
 
-                if (payStatus.equals("succeeded")) // *
-                    createNewSession(i.getUser().getOrder().getSessionDate());
-                else if (payStatus.equals("canceled")) {
-                    SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(i.getSessionDate());
-                    sessionDate.setOpen(true);
-                    adapterRepository.getDateRepository().save(sessionDate);
-                    adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
-                }
+                if (payStatus.equals("succeeded")) createNewSession(i.getUser().getOrder().getSessionDate(), order);
+                else if (payStatus.equals("canceled")) cancelPay();
             }
         });
         return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
+    }
+
+    public void cancelPay(){
+        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(i.getSessionDate());
+        sessionDate.setOpen(true);
+        adapterRepository.getDateRepository().save(sessionDate);
+        adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
     }
 
     /**
