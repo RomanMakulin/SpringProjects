@@ -19,12 +19,11 @@ import java.util.Objects;
 public class UserPaymentService {
 
     private PaymentAnswer paymentAnswer;
+    RestTemplate restTemplate = new RestTemplate();
+    String url = "https://api.yookassa.ru/v3/payments";
 
     public void pay(User user, String idempotenceKey) throws JsonProcessingException {
-
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "https://api.yookassa.ru/v3/payments";
-
+        
         HttpHeaders headers = headersSetManage(idempotenceKey);
         
         Payment payment = new Payment(user, "RUB", "Оплата онлайн сессии");
@@ -36,10 +35,7 @@ public class UserPaymentService {
         this.paymentAnswer = response.getBody();
     }
 
-    public void updatePayStatus() {
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "https://api.yookassa.ru/v3/payments";
-        
+    public void updatePayStatus() { 
         HttpHeaders headers = new HttpHeaders();
         String urlAnswer = url + "/" + paymentAnswer.getID();
 
