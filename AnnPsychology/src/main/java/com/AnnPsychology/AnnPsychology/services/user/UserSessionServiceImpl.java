@@ -126,7 +126,8 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         List<Session> allSessions = getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
         allSessions.forEach(i -> {
             if (i.getUser().getOrder() != null) {
-                Order order = i.getUser().getOrder();
+                paymentService.updatePayStatus();
+                String status = paymentService.getPaymentAnswer.getStatus();
 
 //                if (paymentService.checkPayStatus(order).equals("succeeded")) // *
 //                    createNewSession(i.getUser().getOrder().getSessionDate());
