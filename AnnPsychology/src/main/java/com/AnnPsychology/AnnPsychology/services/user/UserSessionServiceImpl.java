@@ -45,6 +45,9 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
      */
     private final long daysForCancel = 1; // поправить на часы (24 часа)
 
+    @Autowired
+    private UserPaymentService paymentService;
+
     /**
      * Удаление всех дат (прошелших сессий) из базы данных
      */
@@ -95,15 +98,12 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     @Override
     public String reserveSession(Long dateID) throws JsonProcessingException {
 
-        UserPaymentService paymentService = new UserPaymentService();
         SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
 
         Order order = new Order(sessionDate.getSessionDate());
-        String orderId = order.getId() + "";
-        PaymentAnswer paymentAnswer = paymentService.pay(customUserDetailsServiceImpl.getAuthUser(), orderId);
-        String identificator = paymentAnswer.getId();
+        paymentService.pay(customUserDetailsServiceImpl.getAuthUser(), "id" + order.getId());
 
-        order.setPayID(identificator);
+        order.setPayID(paymentService.getPaymentAnswer().getId());
         sessionDate.setOpen(false);
 
         adapterRepository.getOrderRepository().save(order);
