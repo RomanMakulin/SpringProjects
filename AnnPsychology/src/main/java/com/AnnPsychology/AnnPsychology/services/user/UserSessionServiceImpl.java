@@ -123,14 +123,11 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
      */
     @Override
     public List<Session> getAllSessions() {
-
         List<Session> allSessions = getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
         allSessions.forEach(i -> {
             if (i.getUser().getOrder() != null) {
                 String payStatus = paymentService.getUpdatedStatus();
-                Order order = i.getUser().getOrder();
-
-                if (payStatus.equals("succeeded")) createNewSession(i.getUser().getOrder().getSessionDate(), order);
+                if (payStatus.equals("succeeded")) createNewSession(i.getUser().getOrder());
                 else if (payStatus.equals("canceled")) cancelPay();
             }
         });
