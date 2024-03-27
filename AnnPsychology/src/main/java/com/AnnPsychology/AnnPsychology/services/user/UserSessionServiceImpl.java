@@ -128,17 +128,10 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
             if (i.getUser().getOrder() != null) {
                 String payStatus = paymentService.getUpdatedStatus();
                 if (payStatus.equals("succeeded")) createNewSession(i.getUser().getOrder());
-                else if (payStatus.equals("canceled")) cancelPay();
+                else if (payStatus.equals("canceled")) paymentService.cancelPay(i.getSessionDate());
             }
         });
         return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
-    }
-
-    public void cancelPay(){
-        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(i.getSessionDate());
-        sessionDate.setOpen(true);
-        adapterRepository.getDateRepository().save(sessionDate);
-        adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
     }
 
     /**
