@@ -63,5 +63,12 @@ public class UserPaymentService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
     }
+
+    public void cancelPay(LocalDateTime sessionDate){
+        SessionDate sessionDate = adapterRepository.getDateRepository().getBySessionDate(sessionDate);
+        sessionDate.setOpen(true);
+        adapterRepository.getDateRepository().save(sessionDate);
+        adapterRepository.getOrderRepository().delete(i.getUser().getOrder());
+    }
     
 }
