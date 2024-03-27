@@ -18,12 +18,12 @@ import java.util.Objects;
 @Data
 public class UserPaymentService {
 
-    public PaymentAnswer pay(User user, String orderID) throws JsonProcessingException {
+    public PaymentAnswer pay(User user, String idempotenceKey) throws JsonProcessingException {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://api.yookassa.ru/v3/payments";
 
-        HttpHeaders headers = headersSetManage(orderID);
+        HttpHeaders headers = headersSetManage(idempotenceKey);
         
         Payment payment = new Payment(user, "RUB", "Оплата онлайн сессии");
         String json = new ObjectMapper().writeValueAsString(payment);
@@ -56,10 +56,10 @@ public class UserPaymentService {
         return response.getBody().getStatus();
     }
 
-    public HttpHeaders headersSetManage(String orderID){
+    public HttpHeaders headersSetManage(String idempotenceKey){
         HttpHeaders headers = new HttpHeaders();
         headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
-        headers.set("Idempotence-Key", orderID);
+        headers.set("Idempotence-Key", idempotenceKey);
         headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
     }
