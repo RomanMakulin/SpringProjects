@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class PaymentStatus {
+public class PaymentStatus { // УДАЛИТЬ. PaymentAnswer - основа.
     private String id;
     private String status;
     private Amount amount;
