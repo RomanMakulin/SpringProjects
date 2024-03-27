@@ -17,24 +17,25 @@ public class CustomUserDetails implements UserDetails {
     public CustomUserDetails(User user) {
         this.user = user;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(user.getUserRole().name()));
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return user.getEmail();
     }
 
-    public User getUser(){
+    public User getUser() {
         return this.user;
     }
 
-    public String getRole(){
+    public String getRole() {
         return user.getUserRole().name();
     }
 
-    public List<Session> getSessions(){
+    public List<Session> getSessions() {
         return user.getSessionList();
     }
 
