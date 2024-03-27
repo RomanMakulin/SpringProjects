@@ -18,7 +18,9 @@ import java.util.Objects;
 @Data
 public class UserPaymentService {
 
-    public PaymentAnswer pay(User user, String idempotenceKey) throws JsonProcessingException {
+    private PaymentAnswer paymentAnswer;
+
+    public void pay(User user, String idempotenceKey) throws JsonProcessingException {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://api.yookassa.ru/v3/payments";
@@ -31,22 +33,15 @@ public class UserPaymentService {
         HttpEntity<String> request = new HttpEntity<>(json, headers);
         ResponseEntity<PaymentAnswer> response = restTemplate.exchange(url, HttpMethod.POST, request, PaymentAnswer.class);
 
-        return response.getBody();
+        this.paymentAnswer = response.getBody();
     }
 
-//    public PaymentAnswer getAnswer(){
-//        HttpEntity<String> request = new HttpEntity<>(json, headers);
-//        ResponseEntity<PaymentAnswer> response = restTemplate.exchange(url, HttpMethod.POST, request, PaymentAnswer.class);
-//
-//        return response.getBody();
-//    }
-
-    public String checkPayStatus(Order order) {
+    public String checkPayStatus() {
         RestTemplate restTemplate = new RestTemplate();
         String url = "https://api.yookassa.ru/v3/payments";
         
         HttpHeaders headers = new HttpHeaders();
-        String urlAnswer = url + "/" + order.getPayID();
+        String urlAnswer = url + "/" + paymentAnswer.getID();
 
         headers.setBasicAuth("352122", "test_R9DnTTLp0AJ5mth_es0DTrnGgeQOQIH7320XtzesxnI");
 
