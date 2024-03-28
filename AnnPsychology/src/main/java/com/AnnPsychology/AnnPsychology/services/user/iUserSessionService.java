@@ -15,7 +15,7 @@ public interface iUserSessionService {
     Session getSessionById(Long sessionId, AdapterRepository adapterRepository);
     User getUserBySessionId(Long sessionId, AdapterRepository adapterRepository);
     List<SessionDate> openSessionDateList();
-//    void createNewSession(Long dateID);
-String reserveSession(Long dateID) throws JsonProcessingException;
+    void createNewSession();
+    String reserveSession(Long dateID) throws JsonProcessingException;
     boolean cancelSession(Long id);
 }
