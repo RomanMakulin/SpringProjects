@@ -36,6 +36,12 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     private final AdapterRepository adapterRepository;
 
     /**
+     * Платежный сервис
+     */
+    @Autowired
+    private UserPaymentService paymentService;
+
+    /**
      * Сервис управления пользователями
      */
     private final CustomUserDetailsServiceImpl customUserDetailsServiceImpl;
@@ -44,9 +50,6 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
      * Ограничитель дней для отмены сессий
      */
     private final long daysForCancel = 1; // поправить на часы (24 часа)
-
-    @Autowired
-    private UserPaymentService paymentService;
 
     /**
      * Получить список всех свободных окон (дат) для записи
@@ -61,6 +64,10 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
                 .sorted(Comparator.comparing(SessionDate::getSessionDate)).toList();
     }
 
+    /**
+     * Создать новую сессию
+     */
+    @Override
     public void createNewSession() {
         User user = customUserDetailsServiceImpl.getAuthUser();
         Session session = new Session(user, user.getOrder().getSessionDate());
@@ -73,11 +80,9 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     public String reserveSession(Long dateID) throws JsonProcessingException {
         SessionDate sessionDate = adapterRepository.getDateRepository().findById(dateID).orElseThrow();
         User user = customUserDetailsServiceImpl.getAuthUser();
-
+        
         user.setOrder(new Order(sessionDate.getSessionDate()));
-
         paymentService.pay(user.checkPrice());
-
         user.getOrder().setPayID(paymentService.getPaymentAnswer().getId());
         sessionDate.setOpen(false);
 
@@ -98,22 +103,23 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     public List<Session> getAllSessions() {
         List<Session> allSessions = customUserDetailsServiceImpl.getAuthUser().getSessionList();
         User user = customUserDetailsServiceImpl.getAuthUser();
+        checkPay();
+        
+       // if (user.getOrder() != null) {
+       //     String payStatus = paymentService.getUpdatedStatus(user.getOrder());
+      //      if (payStatus.equals("succeeded")) createNewSession();
+      //      else if (payStatus.equals("canceled")) paymentService.cancelPay();
+      //  }
+        
+        return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
+    }
 
-        if (user.getOrder() != null) {
+    public void checkPay(){
+        try {
             String payStatus = paymentService.getUpdatedStatus(user.getOrder());
             if (payStatus.equals("succeeded")) createNewSession();
             else if (payStatus.equals("canceled")) paymentService.cancelPay();
-        }
-
-//        allSessions.forEach(i -> {
-//            if (i.getUser().getOrder() != null) {
-//                String payStatus = paymentService.getUpdatedStatus(i.getUser().getOrder());
-//                if (payStatus.equals("succeeded")) createNewSession(i.getUser().getOrder());
-//                else if (payStatus.equals("canceled"))
-//                    paymentService.cancelPay();
-//            }
-//        });
-        return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
+        } catch (NullPointerException e) e.printStackTrace();
     }
 
     /**
