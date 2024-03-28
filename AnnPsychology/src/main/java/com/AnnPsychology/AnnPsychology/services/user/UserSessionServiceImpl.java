@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -36,6 +39,12 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
     private final AdapterRepository adapterRepository;
 
     /**
+     * Платежный сервис
+     */
+    @Autowired
+    private UserPaymentService paymentService;
+
+    /**
      * Сервис управления пользователями
      */
     private final CustomUserDetailsServiceImpl customUserDetailsServiceImpl;
@@ -44,9 +53,6 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
      * Ограничитель дней для отмены сессий
      */
     private final long daysForCancel = 1; // поправить на часы (24 часа)
-
-    @Autowired
-    private UserPaymentService paymentService;
 
     /**
      * Получить список всех свободных окон (дат) для записи
@@ -61,6 +67,10 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
                 .sorted(Comparator.comparing(SessionDate::getSessionDate)).toList();
     }
 
+    /**
+     * Создать новую сессию
+     */
+    @Override
     public void createNewSession() {
         User user = customUserDetailsServiceImpl.getAuthUser();
         Session session = new Session(user, user.getOrder().getSessionDate());
@@ -75,9 +85,7 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
         User user = customUserDetailsServiceImpl.getAuthUser();
 
         user.setOrder(new Order(sessionDate.getSessionDate()));
-
         paymentService.pay(user.checkPrice());
-
         user.getOrder().setPayID(paymentService.getPaymentAnswer().getId());
         sessionDate.setOpen(false);
 
@@ -96,15 +104,17 @@ public class UserSessionServiceImpl extends SessionServiceImpl implements iUserS
      */
     @Override
     public List<Session> getAllSessions() {
-        User user = customUserDetailsServiceImpl.getAuthUser();
+        checkPay();
+        return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
+    }
 
+    public void checkPay() {
+        User user = customUserDetailsServiceImpl.getAuthUser();
         if (user.getOrder() != null) {
             String payStatus = paymentService.getUpdatedStatus(user.getOrder());
             if (payStatus.equals("succeeded")) createNewSession();
             else if (payStatus.equals("canceled")) paymentService.cancelPay();
         }
-
-        return getAllSessionsAbstract(customUserDetailsServiceImpl.getAuthUser().getSessionList(), adapterRepository);
     }
 
     /**
